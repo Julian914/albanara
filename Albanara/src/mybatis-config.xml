@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>		
+		<typeAlias type="java.lang.String" alias="String"/>
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="JNDI">
+				<property name="data_source" value="java:comp/env/jdbc/oracle"/>
+			</dataSource>
+		</environment>		
+	</environments>
+	
+	<mappers>
+		<mapper resource="kosta/albanara/mapper/Employee.xml"/>
+		<mapper resource="kosta/albanara/mapper/Employer.xml"/>
+		<mapper resource="kosta/albanara/mapper/Evaluation.xml"/>
+		<mapper resource="kosta/albanara/mapper/Messenger.xml"/>
+		<mapper resource="kosta/albanara/mapper/Recruitment.xml"/>
+	</mappers>
+	
+</configuration>
