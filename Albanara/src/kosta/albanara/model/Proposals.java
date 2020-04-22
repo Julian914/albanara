@@ -1,11 +1,13 @@
 package kosta.albanara.model;
 
+import java.util.Date;
+
 public class Proposals {
 	private int proposalSeq;   //제안seq
 	private int recruitmentSeq;	//공고seq
 	private int employeeSeq;	//구직자seq
-	private boolean isAccepted;  //수락여부
-	private String proposalDate; //제안날짜
+	private int isAccepted;  //수락여부
+	private Date proposalDate; //제안날짜
 	
 	
 	public int getProposalSeq() {
@@ -26,18 +28,21 @@ public class Proposals {
 	public void setEmployeeSeq(int employeeSeq) {
 		this.employeeSeq = employeeSeq;
 	}
-	public boolean isAccepted() {
+	public int getIsAccepted() {
 		return isAccepted;
 	}
-	public void setAccepted(boolean isAccepted) {
+	public void setIsAccepted(int isAccepted) {
 		this.isAccepted = isAccepted;
 	}
-	public String getProposalDate() {
+	public Date getProposalDate() {
 		return proposalDate;
 	}
-	public void setProposalDate(String proposalDate) {
+	public void setProposalDate(Date proposalDate) {
 		this.proposalDate = proposalDate;
 	}
+	
+	
+	
 	
 	
 	
