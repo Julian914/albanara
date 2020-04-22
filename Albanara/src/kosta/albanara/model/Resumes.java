@@ -1,5 +1,7 @@
 package kosta.albanara.model;
 
+import java.util.Date;
+
 public class Resumes {
 
 	private int resumeSeq;  //이력서번호
@@ -7,8 +9,7 @@ public class Resumes {
 	private String resumeTitle;  	//이력서제목
 	private String resumeContents;	//이력서 내용
 	private String desiredWorkingArea; //희망근무지역
-	private String lastModifyDate;  //마지막수정날짜
-	
+	private Date lastModifyDate;  //마지막수정날짜
 	
 	
 	public int getResumeSeq() {
@@ -41,15 +42,14 @@ public class Resumes {
 	public void setDesiredWorkingArea(String desiredWorkingArea) {
 		this.desiredWorkingArea = desiredWorkingArea;
 	}
-	public String getLastModifyDate() {
+	public Date getLastModifyDate() {
 		return lastModifyDate;
 	}
-	public void setLastModifyDate(String lastModifyDate) {
+	public void setLastModifyDate(Date lastModifyDate) {
 		this.lastModifyDate = lastModifyDate;
 	}
 	
 	
-
 	
 	
 

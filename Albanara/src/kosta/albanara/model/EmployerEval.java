@@ -1,5 +1,7 @@
 package kosta.albanara.model;
 
+import java.util.Date;
+
 public class EmployerEval {
 	private int employeeEvalSeq;    //기업평가seq
 	private int employerSeq;		//기업seq
@@ -8,7 +10,7 @@ public class EmployerEval {
 	private int ownerPersonnality;		//대표자성격점수
 	private int coworkerPersonality;	//동료성격점수
 	private int wageContentment;		//시급만족도점수
-	private String lastModifyDate;		//마지막수정날짜
+	private Date lastModifyDate;		//마지막수정날짜
 	
 	
 	public int getEmployeeEvalSeq() {
@@ -53,10 +55,10 @@ public class EmployerEval {
 	public void setWageContentment(int wageContentment) {
 		this.wageContentment = wageContentment;
 	}
-	public String getLastModifyDate() {
+	public Date getLastModifyDate() {
 		return lastModifyDate;
 	}
-	public void setLastModifyDate(String lastModifyDate) {
+	public void setLastModifyDate(Date lastModifyDate) {
 		this.lastModifyDate = lastModifyDate;
 	}
 
