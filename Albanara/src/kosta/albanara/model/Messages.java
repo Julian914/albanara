@@ -1,11 +1,13 @@
 package kosta.albanara.model;
 
+import java.util.Date;
+
 public class Messages {
 	private int messageSeq; 	//쪽지번호
 	private int employeeSeq; 	//기업번호
 	private int employerSeq;	//구직자번호
 	private String contents; 	//쪽지내용
-	private String sendDate;	//보낸날짜
+	private Date sendDate;	//보낸날짜
 	private String senderType; 	//발신구분
 	
 	
@@ -33,10 +35,10 @@ public class Messages {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public String getSendDate() {
+	public Date getSendDate() {
 		return sendDate;
 	}
-	public void setSendDate(String sendDate) {
+	public void setSendDate(Date sendDate) {
 		this.sendDate = sendDate;
 	}
 	public String getSenderType() {

@@ -1,22 +1,27 @@
 package kosta.albanara.model;
 
+import java.util.Date;
+
 public class Recruitments {
 	private int recruitmentSeq;		//공고번호
 	private int employerSeq;		//기업번호
-	private String workingPeriod;		//근무기간
-	private String dayOfWeek;		//근무요일
-	private String workingTime;	 //근무시간
+	private Date startingWorkingDate;	//근무시작일
+	private Date endingWorkingDate;	//근무종료일
+	private String totalWorkingDay;	//총근무일수
+	private int startingWorkingTime;	 //근무시작시간
+	private int endingWorkingTime; //근무종료시간
+	private int totalWorkingTime;	//총근무시간
 	private int wage;	//급여
+	private String wageType;	//급여타입, 일당/시급
 	private String gender; 	//성별
 	private int minAge;		//최소연령
 	private int maxAge; 	//최대연령
 	private String requirementQuestion1; 	//우대조건질문1
 	private String requirementQuestion2;	 //우대조건질문2
 	private String requirementQuestion3;	 //우대조건질문3
-	private String lastModifyDate; 	//마지막수정날짜
+	private Date lastModifyDate; 	//마지막수정날짜
 	private String workingPlaceAddress; 	//근무지주소
-	private String closingDate;		 //모집종료일
-	private String applyingType; 	//접수방법
+	private Date closingDate;		 //모집종료일
 	
 	
 	
@@ -32,29 +37,53 @@ public class Recruitments {
 	public void setEmployerSeq(int employerSeq) {
 		this.employerSeq = employerSeq;
 	}
-	public String getWorkingPeriod() {
-		return workingPeriod;
+	public Date getStartingWorkingDate() {
+		return startingWorkingDate;
 	}
-	public void setWorkingPeriod(String workingPeriod) {
-		this.workingPeriod = workingPeriod;
+	public void setStartingWorkingDate(Date startingWorkingDate) {
+		this.startingWorkingDate = startingWorkingDate;
 	}
-	public String getDayOfWeek() {
-		return dayOfWeek;
+	public Date getEndingWorkingDate() {
+		return endingWorkingDate;
 	}
-	public void setDayOfWeek(String dayOfWeek) {
-		this.dayOfWeek = dayOfWeek;
+	public void setEndingWorkingDate(Date endingWorkingDate) {
+		this.endingWorkingDate = endingWorkingDate;
 	}
-	public String getWorkingTime() {
-		return workingTime;
+	public String getTotalWorkingDay() {
+		return totalWorkingDay;
 	}
-	public void setWorkingTime(String workingTime) {
-		this.workingTime = workingTime;
+	public void setTotalWorkingDay(String totalWorkingDay) {
+		this.totalWorkingDay = totalWorkingDay;
+	}
+	public int getStartingWorkingTime() {
+		return startingWorkingTime;
+	}
+	public void setStartingWorkingTime(int startingWorkingTime) {
+		this.startingWorkingTime = startingWorkingTime;
+	}
+	public int getEndingWorkingTime() {
+		return endingWorkingTime;
+	}
+	public void setEndingWorkingTime(int endingWorkingTime) {
+		this.endingWorkingTime = endingWorkingTime;
+	}
+	public int getTotalWorkingTime() {
+		return totalWorkingTime;
+	}
+	public void setTotalWorkingTime(int totalWorkingTime) {
+		this.totalWorkingTime = totalWorkingTime;
 	}
 	public int getWage() {
 		return wage;
 	}
 	public void setWage(int wage) {
 		this.wage = wage;
+	}
+	public String getWageType() {
+		return wageType;
+	}
+	public void setWageType(String wageType) {
+		this.wageType = wageType;
 	}
 	public String getGender() {
 		return gender;
@@ -92,10 +121,10 @@ public class Recruitments {
 	public void setRequirementQuestion3(String requirementQuestion3) {
 		this.requirementQuestion3 = requirementQuestion3;
 	}
-	public String getLastModifyDate() {
+	public Date getLastModifyDate() {
 		return lastModifyDate;
 	}
-	public void setLastModifyDate(String lastModifyDate) {
+	public void setLastModifyDate(Date lastModifyDate) {
 		this.lastModifyDate = lastModifyDate;
 	}
 	public String getWorkingPlaceAddress() {
@@ -104,17 +133,11 @@ public class Recruitments {
 	public void setWorkingPlaceAddress(String workingPlaceAddress) {
 		this.workingPlaceAddress = workingPlaceAddress;
 	}
-	public String getClosingDate() {
+	public Date getClosingDate() {
 		return closingDate;
 	}
-	public void setClosingDate(String closingDate) {
+	public void setClosingDate(Date closingDate) {
 		this.closingDate = closingDate;
-	}
-	public String getApplyingType() {
-		return applyingType;
-	}
-	public void setApplyingType(String applyingType) {
-		this.applyingType = applyingType;
 	}
 	
 }

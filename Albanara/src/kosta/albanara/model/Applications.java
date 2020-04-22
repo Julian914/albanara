@@ -1,10 +1,12 @@
 package kosta.albanara.model;
 
+import java.util.Date;
+
 public class Applications {
 	private int applicationSeq;		//지원번호
 	private int recruitmentSeq;		//공고번호
 	private int employeeSeq;		//구직자번호
-	private String applicationDate;		//지원날짜
+	private Date applicationDate;		//지원날짜
 	private String requirementAnswer1;	//우대조건답변1
 	private String requirementAnswer2;	//우대조건답변2
 	private String requirementAnswer3;	//우대조건답변3
@@ -28,10 +30,10 @@ public class Applications {
 	public void setEmployeeSeq(int employeeSeq) {
 		this.employeeSeq = employeeSeq;
 	}
-	public String getApplicationDate() {
+	public Date getApplicationDate() {
 		return applicationDate;
 	}
-	public void setApplicationDate(String applicationDate) {
+	public void setApplicationDate(Date applicationDate) {
 		this.applicationDate = applicationDate;
 	}
 	public String getRequirementAnswer1() {
