@@ -1,14 +1,14 @@
 package kosta.albanara.model;
 
 public class EmployerEval {
-	private int employeeEvalSeq;
-	private int employerSeq;
-	private int employeeSeq;
-	private int workingSpaceEnviroment;
-	private int ownerPersonnality;
-	private int coworkerPersonality;
-	private int wageContentment;
-	private String lastModifyDate;
+	private int employeeEvalSeq;    //기업평가seq
+	private int employerSeq;		//기업seq
+	private int employeeSeq;		//구직자seq
+	private int workingSpaceEnviroment;	//근무환경점수
+	private int ownerPersonnality;		//대표자성격점수
+	private int coworkerPersonality;	//동료성격점수
+	private int wageContentment;		//시급만족도점수
+	private String lastModifyDate;		//마지막수정날짜
 	
 	
 	public int getEmployeeEvalSeq() {
