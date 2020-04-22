@@ -1,12 +1,14 @@
 package kosta.albanara.model;
 
 public class Resumes {
-	private int resumeSeq;
-	private String pictureName;
-	private String resumeTitle;
-	private String resumeContents;
-	private String desiredWorkingArea;
-	private String lastModifyDate;
+
+	private int resumeSeq;  //이력서번호
+	private String pictureFilename;	//사진
+	private String resumeTitle;  	//이력서제목
+	private String resumeContents;	//이력서 내용
+	private String desiredWorkingArea; //희망근무지역
+	private String lastModifyDate;  //마지막수정날짜
+	
 	
 	
 	public int getResumeSeq() {
@@ -15,11 +17,11 @@ public class Resumes {
 	public void setResumeSeq(int resumeSeq) {
 		this.resumeSeq = resumeSeq;
 	}
-	public String getPictureName() {
-		return pictureName;
+	public String getPictureFilename() {
+		return pictureFilename;
 	}
-	public void setPictureName(String pictureName) {
-		this.pictureName = pictureName;
+	public void setPictureFilename(String pictureFilename) {
+		this.pictureFilename = pictureFilename;
 	}
 	public String getResumeTitle() {
 		return resumeTitle;
@@ -45,6 +47,9 @@ public class Resumes {
 	public void setLastModifyDate(String lastModifyDate) {
 		this.lastModifyDate = lastModifyDate;
 	}
+	
+	
+
 	
 	
 

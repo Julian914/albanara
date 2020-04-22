@@ -2,12 +2,12 @@ package kosta.albanara.model;
 
 public class Notifications {
 	
-	private int notificationSeq;
-	private int receiverSeq;
-	private String receiverType;
-	private String notificationContents;
-	private boolean isChecked;
-	private String notificationDate;
+	private int notificationSeq;     //알림 seq
+	private int receiverSeq;	     //받는사람 seq
+	private String receiverType;	 //수신구분
+	private String notificationContents; //알림내용
+	private boolean isChecked;  	 //수신확인여부
+	private String notificationDate; //알림날짜
 	
 	
 	public int getNotificationSeq() {

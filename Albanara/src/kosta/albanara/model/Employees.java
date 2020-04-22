@@ -1,28 +1,28 @@
 package kosta.albanara.model;
 
 public class Employees {
-	private int employeeSeq;
-	private int resumeSeq;
-	private String employeeId;
-	private String employeePw;
-	private String employeeName;
-	private String employeeBirthday;
-	private String employeeEmail;
-	private String employeeGender;
-	private String employeePhone;
-	private String employeeAddress;
-	private int attributeCount;
-	private int noshowCount;
-	private int workingDayCount;
-	private String favoriteField1;
-	private String favoriteField2;
-	private String favoriteField3;
-	private int activityAvg;
-	private int collaborationAvg;
-	private int diligencyAvg;
-	private int leadershipAvg;
-	private int comprehensionAvg;
-	private int contentmentAvg;
+	private int employeeSeq;   
+	private int resumeSeq;  //이력서 번호
+	private String employeeId;   //구직자id
+	private String employeePw;   //구직자 pw
+	private String employeeName; //구직자이름
+	private String employeeBirthday; //구직자생년월일
+	private String employeeEmail;   //구직자이메일
+	private String employeeGender;  //성별
+	private String employeePhone;   //전화번호	
+	private String employeeAddress; // 주소
+	private int attributeCount; 	//평가받은 횟수
+	private int noshowCount; 		//무단결근 수
+	private int workingDayCount;  	//근무일수
+	private String favoriteField1;  //관심직종1
+	private String favoriteField2; 	//관심직종2	
+	private String favoriteField3;	//관심직종3
+	private int activityAvg;		//능력치_적극성
+	private int collaborationAvg;	//능력치_협력성
+	private int diligencyAvg;		//능력치 성실성
+	private int leadershipAvg;		//능력치_리더십
+	private int comprehensionAvg;	//능력치_이해도
+	private int contentmentAvg;		//능력치_만족도
 	
 	
 	public int getEmployeeSeq() {

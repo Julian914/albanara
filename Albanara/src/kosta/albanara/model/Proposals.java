@@ -1,11 +1,11 @@
 package kosta.albanara.model;
 
 public class Proposals {
-	private int proposalSeq;
-	private int recruitmentSeq;
-	private int employeeSeq;
-	private boolean isAccepted;
-	private String proposalDate;
+	private int proposalSeq;   //제안seq
+	private int recruitmentSeq;	//공고seq
+	private int employeeSeq;	//구직자seq
+	private boolean isAccepted;  //수락여부
+	private String proposalDate; //제안날짜
 	
 	
 	public int getProposalSeq() {
