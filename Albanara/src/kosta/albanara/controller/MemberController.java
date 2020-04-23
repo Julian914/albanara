@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kosta.albanara.action.Action;
 import kosta.albanara.action.ActionForward;
+import kosta.albanara.action.EmployeeFormAction;
+import kosta.albanara.action.EmployeeSignUpAction;
 
 @WebServlet("/Member/*")
 public class MemberController extends HttpServlet {
@@ -24,7 +27,8 @@ public class MemberController extends HttpServlet {
 		requestURI = request.getRequestURI();
 		contextPath = request.getContextPath();
 		command = requestURI.substring(contextPath.length() + 8);
-
+		
+		Action action = null;
 		ActionForward actionForward = null;
 
 		switch (command) {
@@ -36,11 +40,28 @@ public class MemberController extends HttpServlet {
 			}
 			break;
 		}
+		if(command.equals("employeeSignUpForm.do")) {
+    		action = new EmployeeFormAction();
+    		try {
+				actionForward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}else if(command.equals("insertEmployees.do")){
+    		action = new EmployeeSignUpAction();
+    		try {
+				actionForward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}
 		// forward using redirect or dispatch
+		
+		
 
-		if (actionForward != null)
-
-		{
+		if (actionForward != null){
 			if (actionForward.isRedirect()) {
 				response.sendRedirect(actionForward.getPath());
 			} else {
