@@ -6,6 +6,7 @@
 <configuration>
 	<typeAliases>		
 		<typeAlias type="java.lang.String" alias="String"/>
+		<typeAlias type="kosta.albanara.model.Employees" alias="Employees"/>
 		<typeAlias type="kosta.albanara.model.Map" alias="MapClass"/>
 		<typeAlias type="kosta.albanara.model.Recruitments" alias="Recruitments"/>
 	</typeAliases>
