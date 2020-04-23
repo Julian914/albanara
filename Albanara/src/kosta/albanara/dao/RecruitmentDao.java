@@ -34,6 +34,7 @@ public class RecruitmentDao {
 
 		return new SqlSessionFactoryBuilder().build(in);
 	}
+
 	
 	
 	public List<Recruitments> recruitmentList() {
@@ -54,4 +55,25 @@ public class RecruitmentDao {
 		
 	}
 	
+
+	public int insertRecruitment(Recruitments recruitment) {
+		int resultCount = -1;
+		SqlSession session = getSqlSessionFactory().openSession();
+		RecruitmentMapper mapper = null;
+		try {
+			mapper = session.getMapper(RecruitmentMapper.class);
+			resultCount = mapper.insertRecruitment(recruitment);
+			if (resultCount > 0)
+				session.commit();
+			else
+				session.rollback();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		return resultCount;
+	}
+
 }

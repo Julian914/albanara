@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="recruitment/insertRecruitmentForm.do">공고 등록 페이지 이동</a>
-<a href="member/employeeSignUpForm.do">구직자 회원가입 페이지 이동</a>
+	ㅎㅎ
 </body>
 </html>
