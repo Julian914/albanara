@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kosta.albanara.action.ActionForward;
+import kosta.albanara.action.InsertRecruitmentAction;
 import kosta.albanara.action.InsertRecruitmentForm;
 
 @WebServlet("/recruitment/*")
@@ -38,7 +39,7 @@ public class RecruitmentController extends HttpServlet {
 			break;
 		case "insertRecruitmentAction.do":
 			try {
-				// actionForward = new TestAction().execute(request, response);
+				actionForward = new InsertRecruitmentAction().execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
