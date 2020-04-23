@@ -33,7 +33,7 @@
 		<div id="accordion">			
 			<c:forEach var="recruitmentList" items="${recruitmentList}">
 			<div id="accordion-title">
-				<ul class="recruitmentUp">
+				<ul class="recruitmentUp" >
 					<li>접수마감 : ${recruitmentList.closingDate}</li>
 					<li>공고제목 : ${recruitmentList.recruitmentTitle}</li>
 				</ul>

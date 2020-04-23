@@ -39,7 +39,6 @@
 		#{closingDate},
 		sysdate
 		)
-
 	</insert>
 
 
