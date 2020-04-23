@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,30 +10,30 @@
 </head>
 <body>
 <form>
-	주소<input type ="text" name ="location" value="" id ="addr">
-	<input type ="submit" value ="전송" onclick ="Click()">
+   주소<input type ="text" name ="location" value="" id ="addr">
+   <input type ="submit" value ="전송" onclick ="Click()">
 </form>
 
 <script type="text/javascript">
 
 function Click() {
-	var location = $("#addr").val();
-	$.ajax({
-		url : 'map/kakaoMap.go',
-		type : 'post',
-		dataType:'text',
-		data: {
-			"location" : location, 
-		},
-		success: function(data){
-			console.log(data);
-		},
-		error : function(xhr, status, error){
-			console.log('실패?')
-			console.log(xhr);
-			console.log(error);
-		}		
-	});	
+   var location = $("#addr").val();
+   $.ajax({
+      url : 'map/kakaoMap.go',
+      type : 'post',
+      dataType:'text',
+      data: {
+         "location" : location, 
+      },
+      success: function(data){
+         console.log(data);
+      },
+      error : function(xhr, status, error){
+         console.log('실패?')
+         console.log(xhr);
+         console.log(error);
+      }      
+   });   
 }
 
 
