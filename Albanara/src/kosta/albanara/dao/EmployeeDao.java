@@ -3,8 +3,12 @@ package kosta.albanara.dao;
 import java.io.InputStream;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import kosta.albanara.mapper.EmployeeMapper;
+import kosta.albanara.model.Employees;
 
 public class EmployeeDao {
 	private static EmployeeDao instance;
@@ -27,4 +31,29 @@ public class EmployeeDao {
 
 		return new SqlSessionFactoryBuilder().build(in);
 	}
+	
+	public int insertEmployee(Employees employees) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = -1;
+		System.out.println("11111111");
+		System.out.println(employees.getEmployeeBirthday());
+		try {
+			re = sqlSession.getMapper(EmployeeMapper.class).insertEmployee(employees);
+	
+			if(re > 0) {
+				sqlSession.commit();		
+			}else {
+				sqlSession.rollback();		
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		return re;
+	}
+	
 }

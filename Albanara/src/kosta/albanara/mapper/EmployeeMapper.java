@@ -1,5 +1,7 @@
 package kosta.albanara.mapper;
 
-public interface EmployeeMapper {
+import kosta.albanara.model.Employees;
 
+public interface EmployeeMapper {
+	int insertEmployee(Employees employees);
 }
