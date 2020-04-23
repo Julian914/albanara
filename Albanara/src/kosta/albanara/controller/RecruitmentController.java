@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kosta.albanara.action.ActionForward;
+import kosta.albanara.action.RecruitmentListAction;
 
 @WebServlet("/Recruitment/*")
 public class RecruitmentController extends HttpServlet {
@@ -24,13 +25,14 @@ public class RecruitmentController extends HttpServlet {
 		requestURI = request.getRequestURI();
 		contextPath = request.getContextPath();
 		command = requestURI.substring(contextPath.length() + 13);
+		System.out.println(command);
 
 		ActionForward actionForward = null;
 
 		switch (command) {
-		case "testAction.do":
+		case "recruitmentList.do":
 			try {
-				// actionForward = new TestAction().execute(request, response);
+				actionForward = new RecruitmentListAction().execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

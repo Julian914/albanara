@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Recruitments {
 	private int recruitmentSeq;		//공고번호
+	private String recruitmentTitle;//공고제목
 	private int employerSeq;		//기업번호
 	private Date startingWorkingDate;	//근무시작일
 	private Date endingWorkingDate;	//근무종료일
@@ -139,5 +140,14 @@ public class Recruitments {
 	public void setClosingDate(Date closingDate) {
 		this.closingDate = closingDate;
 	}
+	public String getRecruitmentTitle() {
+		return recruitmentTitle;
+	}
+	public void setRecruitmentTitle(String recruitmentTitle) {
+		this.recruitmentTitle = recruitmentTitle;
+	
+	}
+	
+	
 	
 }

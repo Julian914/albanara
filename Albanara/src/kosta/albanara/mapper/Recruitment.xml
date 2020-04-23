@@ -4,5 +4,10 @@
 
 <mapper namespace="kosta.albanara.mapper.RecruitmentMapper">
 	<cache />
+	
+	<select id="recruitmentList" resultType="Recruitments">
+		select *from Recruitments
+	</select>
+			
 			
 </mapper>

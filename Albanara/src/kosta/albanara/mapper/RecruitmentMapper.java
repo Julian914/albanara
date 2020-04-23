@@ -1,5 +1,9 @@
 package kosta.albanara.mapper;
 
-public interface RecruitmentMapper {
+import java.util.List;
 
+import kosta.albanara.model.Recruitments;
+
+public interface RecruitmentMapper {
+	List<Recruitments> recruitmentList();
 }
