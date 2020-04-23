@@ -23,7 +23,7 @@ import kosta.albanara.action.ActionForward;
 
 @WebServlet("/map/*")
 public class KakaoMapController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
        
 
     public KakaoMapController() {
@@ -69,7 +69,7 @@ public class KakaoMapController extends HttpServlet {
              System.out.println(responseString);
                response.setCharacterEncoding("utf-8");
                PrintWriter out = response.getWriter();
-//               out.print(responseString);
+               out.print(responseString);
                out.flush();             
          } catch (Exception e) {
             e.printStackTrace();
