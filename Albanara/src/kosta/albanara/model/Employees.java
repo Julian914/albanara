@@ -1,6 +1,6 @@
 package kosta.albanara.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Employees {
 	private int employeeSeq;   
@@ -121,24 +121,6 @@ public class Employees {
 	public void setWorkingDayCount(int workingDayCount) {
 		this.workingDayCount = workingDayCount;
 	}
-	public String getFavoriteField1() {
-		return favoriteField1;
-	}
-	public void setFavoriteField1(String favoriteField1) {
-		this.favoriteField1 = favoriteField1;
-	}
-	public String getFavoriteField2() {
-		return favoriteField2;
-	}
-	public void setFavoriteField2(String favoriteField2) {
-		this.favoriteField2 = favoriteField2;
-	}
-	public String getFavoriteField3() {
-		return favoriteField3;
-	}
-	public void setFavoriteField3(String favoriteField3) {
-		this.favoriteField3 = favoriteField3;
-	}
 	public int getActivityAvg() {
 		return activityAvg;
 	}
@@ -175,7 +157,4 @@ public class Employees {
 	public void setContentmentAvg(int contentmentAvg) {
 		this.contentmentAvg = contentmentAvg;
 	}
-	
-	
-	
 }

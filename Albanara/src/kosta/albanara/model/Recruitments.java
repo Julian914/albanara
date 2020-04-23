@@ -1,246 +1,263 @@
 package kosta.albanara.model;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.sql.Date;
 
-public class Recruitments {
-	private int recruitmentSeq;
-	private int employerSeq;
-	private String recruitmentTitle;
-	private String recruitmentType;
-	private int recruitmentSize;
-	private Date startingWorkingDate;
-	private Date endingWorkingDate;
-	private int totalWorkingDay;
-	private int startingWorkingTime;
-	private int endingWorkingTime;
-	private int totalWorkingTime;
-	private String wageType;
-	private int wage;
-	private String gender;
-	private int minAge;
-	private int maxAge;
-	private String requirementQuestion1;
-	private String requirementQuestion2;
-	private String requirementQuestion3;
-	private Date lastModifyDate;
-	private String workingPlaceAddress;
-	private Date closingDate;
-	private String recruitmentContents;
 
-	public Recruitments() {
-		super();
-	}
+public class Recruitments implements Serializable {
+   private int recruitmentSeq;
+   private int employerSeq;
+   private String recruitmentTitle;
+   private String recruitmentType;
+   private int recruitmentSize;
+   private Date startingWorkingDate;
+   private Date endingWorkingDate;
+   private int totalWorkingDay;
+   private int startingWorkingTime;
+   private int endingWorkingTime;
+   private int totalWorkingTime;   
+   private int wage;
+   private String wageType;
+   private String gender;
+   private int minAge;
+   private int maxAge;
+   private String recruitmentContents;
+   private String requirementQuestion1;
+   private String requirementQuestion2;
+   private String requirementQuestion3;   
+   private String workingPlaceAddress;
+   private Date closingDate;
+   private Date lastModifyDate;   
 
-	public Recruitments(String recruitmentTitle, String recruitmentType, int recruitmentSize, Date startingWorkingDate,
-			Date endingWorkingDate, int totalWorkingDay, int startingWorkingTime, int endingWorkingTime,
-			int totalWorkingTime, String wageType, int wage, String gender, int minAge, int maxAge,
-			String requirementQuestion1, String requirementQuestion2, String requirementQuestion3,
-			String workingPlaceAddress, Date closingDate, String recruitmentContents) {
-		super();
-		this.recruitmentTitle = recruitmentTitle;
-		this.recruitmentType = recruitmentType;
-		this.recruitmentSize = recruitmentSize;
-		this.startingWorkingDate = startingWorkingDate;
-		this.endingWorkingDate = endingWorkingDate;
-		this.totalWorkingDay = totalWorkingDay;
-		this.startingWorkingTime = startingWorkingTime;
-		this.endingWorkingTime = endingWorkingTime;
-		this.totalWorkingTime = totalWorkingTime;
-		this.wageType = wageType;
-		this.wage = wage;
-		this.gender = gender;
-		this.minAge = minAge;
-		this.maxAge = maxAge;
-		this.requirementQuestion1 = requirementQuestion1;
-		this.requirementQuestion2 = requirementQuestion2;
-		this.requirementQuestion3 = requirementQuestion3;
-		this.workingPlaceAddress = workingPlaceAddress;
-		this.closingDate = closingDate;
-		this.recruitmentContents = recruitmentContents;
-	}
+   public Recruitments() {
+      super();
+   }
 
-	public int getRecruitmentSeq() {
-		return recruitmentSeq;
-	}
+   public Recruitments(int employerSeq, String recruitmentTitle, String recruitmentType, int recruitmentSize, Date startingWorkingDate,
+         Date endingWorkingDate, int totalWorkingDay, int startingWorkingTime, int endingWorkingTime,
+         int totalWorkingTime, String wageType, int wage, String gender, int minAge, int maxAge,
+         String requirementQuestion1, String requirementQuestion2, String requirementQuestion3,
+         String workingPlaceAddress, Date closingDate, String recruitmentContents) {
+      super();
+      this.employerSeq = employerSeq;
+      this.recruitmentTitle = recruitmentTitle;
+      this.recruitmentType = recruitmentType;
+      this.recruitmentSize = recruitmentSize;
+      this.startingWorkingDate = startingWorkingDate;
+      this.endingWorkingDate = endingWorkingDate;
+      this.totalWorkingDay = totalWorkingDay;
+      this.startingWorkingTime = startingWorkingTime;
+      this.endingWorkingTime = endingWorkingTime;
+      this.totalWorkingTime = totalWorkingTime;
+      this.wageType = wageType;
+      this.wage = wage;
+      this.gender = gender;
+      this.minAge = minAge;
+      this.maxAge = maxAge;
+      this.requirementQuestion1 = requirementQuestion1;
+      this.requirementQuestion2 = requirementQuestion2;
+      this.requirementQuestion3 = requirementQuestion3;
+      this.workingPlaceAddress = workingPlaceAddress;
+      this.closingDate = closingDate;
+      this.recruitmentContents = recruitmentContents;
+   }
 
-	public void setRecruitmentSeq(int recruitmentSeq) {
-		this.recruitmentSeq = recruitmentSeq;
-	}
+   public int getRecruitmentSeq() {
+      return recruitmentSeq;
+   }
 
-	public int getEmployerSeq() {
-		return employerSeq;
-	}
+   public void setRecruitmentSeq(int recruitmentSeq) {
+      this.recruitmentSeq = recruitmentSeq;
+   }
 
-	public void setEmployerSeq(int employerSeq) {
-		this.employerSeq = employerSeq;
-	}
+   public int getEmployerSeq() {
+      return employerSeq;
+   }
 
-	public String getRecruitmentTitle() {
-		return recruitmentTitle;
-	}
+   public void setEmployerSeq(int employerSeq) {
+      this.employerSeq = employerSeq;
+   }
 
-	public void setRecruitmentTitle(String recruitmentTitle) {
-		this.recruitmentTitle = recruitmentTitle;
-	}
+   public String getRecruitmentTitle() {
+      return recruitmentTitle;
+   }
 
-	public String getRecruitmentType() {
-		return recruitmentType;
-	}
+   public void setRecruitmentTitle(String recruitmentTitle) {
+      this.recruitmentTitle = recruitmentTitle;
+   }
 
-	public void setRecruitmentType(String recruitmentType) {
-		this.recruitmentType = recruitmentType;
-	}
+   public String getRecruitmentType() {
+      return recruitmentType;
+   }
 
-	public int getRecruitmentSize() {
-		return recruitmentSize;
-	}
+   public void setRecruitmentType(String recruitmentType) {
+      this.recruitmentType = recruitmentType;
+   }
 
-	public void setRecruitmentSize(int recruitmentSize) {
-		this.recruitmentSize = recruitmentSize;
-	}
+   public int getRecruitmentSize() {
+      return recruitmentSize;
+   }
 
-	public Date getStartingWorkingDate() {
-		return startingWorkingDate;
-	}
+   public void setRecruitmentSize(int recruitmentSize) {
+      this.recruitmentSize = recruitmentSize;
+   }
 
-	public void setStartingWorkingDate(Date startingWorkingDate) {
-		this.startingWorkingDate = startingWorkingDate;
-	}
+   public Date getStartingWorkingDate() {
+      return startingWorkingDate;
+   }
 
-	public Date getEndingWorkingDate() {
-		return endingWorkingDate;
-	}
+   public void setStartingWorkingDate(Date startingWorkingDate) {
+      this.startingWorkingDate = startingWorkingDate;
+   }
 
-	public void setEndingWorkingDate(Date endingWorkingDate) {
-		this.endingWorkingDate = endingWorkingDate;
-	}
+   public Date getEndingWorkingDate() {
+      return endingWorkingDate;
+   }
 
-	public int getTotalWorkingDay() {
-		return totalWorkingDay;
-	}
+   public void setEndingWorkingDate(Date endingWorkingDate) {
+      this.endingWorkingDate = endingWorkingDate;
+   }
 
-	public void setTotalWorkingDay(int totalWorkingDay) {
-		this.totalWorkingDay = totalWorkingDay;
-	}
+   public int getTotalWorkingDay() {
+      return totalWorkingDay;
+   }
 
-	public int getStartingWorkingTime() {
-		return startingWorkingTime;
-	}
+   public void setTotalWorkingDay(int totalWorkingDay) {
+      this.totalWorkingDay = totalWorkingDay;
+   }
 
-	public void setStartingWorkingTime(int startingWorkingTime) {
-		this.startingWorkingTime = startingWorkingTime;
-	}
+   public int getStartingWorkingTime() {
+      return startingWorkingTime;
+   }
 
-	public int getEndingWorkingTime() {
-		return endingWorkingTime;
-	}
+   public void setStartingWorkingTime(int startingWorkingTime) {
+      this.startingWorkingTime = startingWorkingTime;
+   }
 
-	public void setEndingWorkingTime(int endingWorkingTime) {
-		this.endingWorkingTime = endingWorkingTime;
-	}
+   public int getEndingWorkingTime() {
+      return endingWorkingTime;
+   }
 
-	public int getTotalWorkingTime() {
-		return totalWorkingTime;
-	}
+   public void setEndingWorkingTime(int endingWorkingTime) {
+      this.endingWorkingTime = endingWorkingTime;
+   }
 
-	public void setTotalWorkingTime(int totalWorkingTime) {
-		this.totalWorkingTime = totalWorkingTime;
-	}
+   public int getTotalWorkingTime() {
+      return totalWorkingTime;
+   }
 
-	public String getWageType() {
-		return wageType;
-	}
+   public void setTotalWorkingTime(int totalWorkingTime) {
+      this.totalWorkingTime = totalWorkingTime;
+   }
 
-	public void setWageType(String wageType) {
-		this.wageType = wageType;
-	}
+   public String getWageType() {
+      return wageType;
+   }
 
-	public int getWage() {
-		return wage;
-	}
+   public void setWageType(String wageType) {
+      this.wageType = wageType;
+   }
 
-	public void setWage(int wage) {
-		this.wage = wage;
-	}
+   public int getWage() {
+      return wage;
+   }
 
-	public String getGender() {
-		return gender;
-	}
+   public void setWage(int wage) {
+      this.wage = wage;
+   }
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+   public String getGender() {
+      return gender;
+   }
 
-	public int getMinAge() {
-		return minAge;
-	}
+   public void setGender(String gender) {
+      this.gender = gender;
+   }
 
-	public void setMinAge(int minAge) {
-		this.minAge = minAge;
-	}
+   public int getMinAge() {
+      return minAge;
+   }
 
-	public int getMaxAge() {
-		return maxAge;
-	}
+   public void setMinAge(int minAge) {
+      this.minAge = minAge;
+   }
 
-	public void setMaxAge(int maxAge) {
-		this.maxAge = maxAge;
-	}
+   public int getMaxAge() {
+      return maxAge;
+   }
 
-	public String getRequirementQuestion1() {
-		return requirementQuestion1;
-	}
+   public void setMaxAge(int maxAge) {
+      this.maxAge = maxAge;
+   }
 
-	public void setRequirementQuestion1(String requirementQuestion1) {
-		this.requirementQuestion1 = requirementQuestion1;
-	}
+   public String getRequirementQuestion1() {
+      return requirementQuestion1;
+   }
 
-	public String getRequirementQuestion2() {
-		return requirementQuestion2;
-	}
+   public void setRequirementQuestion1(String requirementQuestion1) {
+      this.requirementQuestion1 = requirementQuestion1;
+   }
 
-	public void setRequirementQuestion2(String requirementQuestion2) {
-		this.requirementQuestion2 = requirementQuestion2;
-	}
+   public String getRequirementQuestion2() {
+      return requirementQuestion2;
+   }
 
-	public String getRequirementQuestion3() {
-		return requirementQuestion3;
-	}
+   public void setRequirementQuestion2(String requirementQuestion2) {
+      this.requirementQuestion2 = requirementQuestion2;
+   }
 
-	public void setRequirementQuestion3(String requirementQuestion3) {
-		this.requirementQuestion3 = requirementQuestion3;
-	}
+   public String getRequirementQuestion3() {
+      return requirementQuestion3;
+   }
 
-	public Date getLastModifyDate() {
-		return lastModifyDate;
-	}
+   public void setRequirementQuestion3(String requirementQuestion3) {
+      this.requirementQuestion3 = requirementQuestion3;
+   }
 
-	public void setLastModifyDate(Date lastModifyDate) {
-		this.lastModifyDate = lastModifyDate;
-	}
+   public Date getLastModifyDate() {
+      return lastModifyDate;
+   }
 
-	public String getWorkingPlaceAddress() {
-		return workingPlaceAddress;
-	}
+   public void setLastModifyDate(Date lastModifyDate) {
+      this.lastModifyDate = lastModifyDate;
+   }
 
-	public void setWorkingPlaceAddress(String workingPlaceAddress) {
-		this.workingPlaceAddress = workingPlaceAddress;
-	}
+   public String getWorkingPlaceAddress() {
+      return workingPlaceAddress;
+   }
 
-	public Date getClosingDate() {
-		return closingDate;
-	}
+   public void setWorkingPlaceAddress(String workingPlaceAddress) {
+      this.workingPlaceAddress = workingPlaceAddress;
+   }
 
-	public void setClosingDate(Date closingDate) {
-		this.closingDate = closingDate;
-	}
+   public Date getClosingDate() {
+      return closingDate;
+   }
 
-	public String getRecruitmentContents() {
-		return recruitmentContents;
-	}
+   public void setClosingDate(Date closingDate) {
+      this.closingDate = closingDate;
+   }
 
-	public void setRecruitmentContents(String recruitmentContents) {
-		this.recruitmentContents = recruitmentContents;
-	}
+   public String getRecruitmentContents() {
+      return recruitmentContents;
+   }
+
+   public void setRecruitmentContents(String recruitmentContents) {
+      this.recruitmentContents = recruitmentContents;
+   }
+
+   @Override
+   public String toString() {
+      return "Recruitments [recruitmentSeq=" + recruitmentSeq + ", employerSeq=" + employerSeq + ", recruitmentTitle="
+            + recruitmentTitle + ", recruitmentType=" + recruitmentType + ", recruitmentSize=" + recruitmentSize
+            + ", startingWorkingDate=" + startingWorkingDate + ", endingWorkingDate=" + endingWorkingDate
+            + ", totalWorkingDay=" + totalWorkingDay + ", startingWorkingTime=" + startingWorkingTime
+            + ", endingWorkingTime=" + endingWorkingTime + ", totalWorkingTime=" + totalWorkingTime + ", wageType="
+            + wageType + ", wage=" + wage + ", gender=" + gender + ", minAge=" + minAge + ", maxAge=" + maxAge
+            + ", requirementQuestion1=" + requirementQuestion1 + ", requirementQuestion2=" + requirementQuestion2
+            + ", requirementQuestion3=" + requirementQuestion3 + ", lastModifyDate=" + lastModifyDate
+            + ", workingPlaceAddress=" + workingPlaceAddress + ", closingDate=" + closingDate
+            + ", recruitmentContents=" + recruitmentContents + "]";
+   }
 
 }
