@@ -1,12 +1,14 @@
 package kosta.albanara.model;
 
+import java.util.Date;
+
 public class Employees {
 	private int employeeSeq;   
 	private int resumeSeq;  //이력서 번호
 	private String employeeId;   //구직자id
 	private String employeePw;   //구직자 pw
 	private String employeeName; //구직자이름
-	private String employeeBirthday; //구직자생년월일
+	private Date employeeBirthday; //구직자생년월일
 	private String employeeEmail;   //구직자이메일
 	private String employeeGender;  //성별
 	private String employeePhone;   //전화번호	
@@ -23,6 +25,22 @@ public class Employees {
 	private int leadershipAvg;		//능력치_리더십
 	private int comprehensionAvg;	//능력치_이해도
 	private int contentmentAvg;		//능력치_만족도
+	
+	public Employees() {}
+	
+	public Employees(String employeeId, String employeePw, String employeeName,
+			Date employeeBirthday, String employeeEmail, String employeeGender, String employeePhone,
+			String employeeAddress) {
+		super();
+		this.employeeId = employeeId;
+		this.employeePw = employeePw;
+		this.employeeName = employeeName;
+		this.employeeBirthday = employeeBirthday;
+		this.employeeEmail = employeeEmail;
+		this.employeeGender = employeeGender;
+		this.employeePhone = employeePhone;
+		this.employeeAddress = employeeAddress;
+	}
 	
 	
 	public int getEmployeeSeq() {
@@ -55,10 +73,10 @@ public class Employees {
 	public void setEmployeeName(String employeeName) {
 		this.employeeName = employeeName;
 	}
-	public String getEmployeeBirthday() {
+	public Date getEmployeeBirthday() {
 		return employeeBirthday;
 	}
-	public void setEmployeeBirthday(String employeeBirthday) {
+	public void setEmployeeBirthday(Date employeeBirthday) {
 		this.employeeBirthday = employeeBirthday;
 	}
 	public String getEmployeeEmail() {

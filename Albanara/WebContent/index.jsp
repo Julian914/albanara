@@ -5,11 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-	//location.href="recruitment/insertRecruitmentForm.do";
-</script>
 </head>
 <body>
 <a href="recruitment/insertRecruitmentForm.do">공고 등록 페이지 이동</a>
+<a href="member/employeeSignUpForm.do">구직자 회원가입 페이지 이동</a>
 </body>
 </html>
