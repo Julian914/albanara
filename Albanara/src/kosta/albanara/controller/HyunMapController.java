@@ -9,13 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kosta.albanara.action.Action;
 import kosta.albanara.action.ActionForward;
-import kosta.albanara.action.EmployeeFormAction;
-import kosta.albanara.action.EmployeeSignUpAction;
+import kosta.albanara.action.HyunMapAction;
 
-@WebServlet("/member/*")
-public class MemberController extends HttpServlet {
+@WebServlet("/Recruitment/*")
+public class HyunMapController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
@@ -26,9 +24,8 @@ public class MemberController extends HttpServlet {
 
 		requestURI = request.getRequestURI();
 		contextPath = request.getContextPath();
-		command = requestURI.substring(contextPath.length() + 8);
-		
-		Action action = null;
+		command = requestURI.substring(contextPath.length() + 13);
+
 		ActionForward actionForward = null;
 
 		switch (command) {
@@ -39,29 +36,19 @@ public class MemberController extends HttpServlet {
 				e.printStackTrace();
 			}
 			break;
+		case "hyunMapAction.do":
+			try {
+				actionForward = new HyunMapAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
 		}
-		if(command.equals("employeeSignUpForm.do")) {
-    		action = new EmployeeFormAction();
-    		try {
-				actionForward = action.execute(request, response);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-    	}else if(command.equals("insertEmployees.do")){
-    		action = new EmployeeSignUpAction();
-    		try {
-				actionForward = action.execute(request, response);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-    	}
 		// forward using redirect or dispatch
-		
-		
 
-		if (actionForward != null){
+		if (actionForward != null)
+
+		{
 			if (actionForward.isRedirect()) {
 				response.sendRedirect(actionForward.getPath());
 			} else {

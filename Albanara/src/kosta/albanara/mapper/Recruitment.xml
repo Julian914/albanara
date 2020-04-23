@@ -4,5 +4,9 @@
 
 <mapper namespace="kosta.albanara.mapper.RecruitmentMapper">
 	<cache />
+	
+	<insert id="insertRecruitment" parameterType="Recruitments">		
+		<!-- insert into T_POST values(T_POST_SEQ.nextval, #{title}, #{writer}, #{contents}, sysdate, 0, #{fileName}) -->
+	</insert>
 			
 </mapper>

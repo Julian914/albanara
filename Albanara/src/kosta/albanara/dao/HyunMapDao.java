@@ -1,21 +1,21 @@
 package kosta.albanara.dao;
 
 import java.io.InputStream;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import kosta.albanara.mapper.RecruitmentMapper;
-import kosta.albanara.model.Recruitments;
+import kosta.albanara.model.HyunMap;
 
-public class RecruitmentDao {
-	private static RecruitmentDao instance;
+public class HyunMapDao {
+	private static HyunMapDao instance;
 
-	public static RecruitmentDao getInstance() {
+	public static HyunMapDao getInstance() {
 		if (instance == null)
-			return new RecruitmentDao();
+			return new HyunMapDao();
 		return instance;
 	}
 
@@ -31,24 +31,20 @@ public class RecruitmentDao {
 
 		return new SqlSessionFactoryBuilder().build(in);
 	}
-
-	public int insertRecruitment(Recruitments recruitment) {
-		int resultCount = -1;
-		SqlSession session = getSqlSessionFactory().openSession();
-		RecruitmentMapper mapper = null;
+	
+	public List<HyunMap> mapList() {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		List<HyunMap> list = null;
 		try {
-			mapper = session.getMapper(RecruitmentMapper.class);
-			resultCount = mapper.insertRecruitment(recruitment);
-			if (resultCount > 0)
-				session.commit();
-			else
-				session.rollback();
+			list = sqlSession.selectList("kosta.albanara.mapper.MapMapper.mapList");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			session.close();
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
 		}
-
-		return resultCount;
+		
+		return list;
 	}
 }

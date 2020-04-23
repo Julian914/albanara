@@ -3,12 +3,14 @@ package kosta.albanara.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kosta.albanara.service.RecruitmentService;
+
 public class InsertRecruitmentAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// Call Service
-		//int resultCount = BoardService.getInstance().insertPost(request);
+		int resultCount = RecruitmentService.getInstance().insertRecruitment(request);
 
 		// Set value to HttpSession
 
@@ -16,13 +18,13 @@ public class InsertRecruitmentAction implements Action {
 		ActionForward actionForward = new ActionForward();
 		actionForward.setRedirect(true);
 
-		/*
-		 * if (resultCount == 1) { System.out.println("Success to write a post. ");
-		 * actionForward.setPath("listAction.do");
-		 * //actionForward.setPath("PostAction.do?seq="+request.getParameter("seq")); }
-		 * else { System.err.println("Fail to write a post. " +
-		 * actionForward.isRedirect()); actionForward.setPath("listAction.do"); }
-		 */
+		if (resultCount == 1) {
+			System.out.println("Success to regist a recruitment. ");
+			actionForward.setPath("insertRecruitmentForm.do");
+		} else {
+			System.err.println("Fail to regist a recruitment. " + actionForward.isRedirect());
+			actionForward.setPath("insertRecruitmentForm.do");
+		}
 
 		return actionForward;
 	}

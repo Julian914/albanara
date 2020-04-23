@@ -6,6 +6,7 @@
 <configuration>
 	<typeAliases>		
 		<typeAlias type="java.lang.String" alias="String"/>
+		<typeAlias type="kosta.albanara.model.Map" alias="MapClass"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -23,6 +24,7 @@
 		<mapper resource="kosta/albanara/mapper/Evaluation.xml"/>
 		<mapper resource="kosta/albanara/mapper/Messenger.xml"/>
 		<mapper resource="kosta/albanara/mapper/Recruitment.xml"/>
+		<mapper resource="kosta/albanara/mapper/Map.xml"/>
 	</mappers>
 	
 </configuration>
