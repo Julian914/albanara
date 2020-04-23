@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import kosta.albanara.dao.EmployeeDao;
 import kosta.albanara.model.Employees;
+import kosta.albanara.model.Resumes;
 
 public class EmployeeService {
 	public static EmployeeService instance;
@@ -49,4 +50,16 @@ public class EmployeeService {
 		return employeeDao.insertEmployee(employees);
 		
 	}
+	
+	public int insertResumeService(Resumes resume){
+		return employeeDao.insertResume(resume);
+	}
+	
+	public Resumes searchResumeService(int employeeSeq) {
+		return employeeDao.searchResume(employeeSeq);
+	}
+	
+	
+	
+	
 }

@@ -9,6 +9,7 @@ public class Resumes {
 	private String resumeTitle;  	//이력서제목
 	private String resumeContents;	//이력서 내용
 	private String desiredWorkingArea; //희망근무지역
+	private String favoriteField; //관심 직종
 	private Date lastModifyDate;  //마지막수정날짜
 	
 	
@@ -41,6 +42,12 @@ public class Resumes {
 	}
 	public void setDesiredWorkingArea(String desiredWorkingArea) {
 		this.desiredWorkingArea = desiredWorkingArea;
+	}
+	public String getFavoriteField() {
+		return favoriteField;
+	}
+	public void setFavoriteField(String favoriteField) {
+		this.favoriteField = favoriteField;
 	}
 	public Date getLastModifyDate() {
 		return lastModifyDate;

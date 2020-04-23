@@ -53,7 +53,7 @@
 			<input type="number" name="endingWorkingTime">
 			<div>총 시간</div>
 			<input type="number" name="totalWorkingTime">
-			<div>급여</div>
+			<div>급여</div>e
 			<select id="wageType" name="wageType">
 				<option value="hourlyWage" selected>시급</option>
 				<option value="dailyWage">일급</option>
