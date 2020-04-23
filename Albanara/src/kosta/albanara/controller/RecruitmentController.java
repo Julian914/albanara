@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kosta.albanara.action.ActionForward;
+import kosta.albanara.action.InsertRecruitmentForm;
 
-@WebServlet("/Recruitment/*")
+@WebServlet("/recruitment/*")
 public class RecruitmentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -28,7 +29,14 @@ public class RecruitmentController extends HttpServlet {
 		ActionForward actionForward = null;
 
 		switch (command) {
-		case "testAction.do":
+		case "insertRecruitmentForm.do":
+			try {
+				actionForward = new InsertRecruitmentForm().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case "insertRecruitmentAction.do":
 			try {
 				// actionForward = new TestAction().execute(request, response);
 			} catch (Exception e) {
@@ -36,6 +44,7 @@ public class RecruitmentController extends HttpServlet {
 			}
 			break;
 		}
+
 		// forward using redirect or dispatch
 
 		if (actionForward != null)
