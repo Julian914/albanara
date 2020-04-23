@@ -4,5 +4,24 @@
 
 <mapper namespace="kosta.albanara.mapper.EmployeeMapper">
 	<cache />
-
+	<insert id="insertEmployee" parameterType="Employees">
+		insert into employees(
+			employee_seq.nextval, employee_id, employee_pw, employee_name, employee_birthday,
+			employee_email, employee_gender, employee_phone, employee_address) 
+			values(#{employeeId}, #{employeePw}, #{employeeName}, #{employeeBirthday}, #{employeeEmail}, 
+			#{employeeGender}, #{employeePhone}, #{employeeAddress})
+	</insert>
+	
+	<!-- 이력서 등록 (동현)-->
+	<insert id="insertResume" parameterType="Resumes">
+		insert into resumes value(resume_seq.nextval, #{picture_filename}, #{resume_title}, #{resume_contents}, #{desired_working_area}, #{favorite_field}, sysdate)
+	</insert>
+	
+	<!-- 이력서 조회  (동현)-->
+	<select id="searchResume" parameterType="employeeSeq" resultType="Resumes">
+		select * from resume where seq=#{employeeSeq}
+	</select>
+	
+	
+	
 </mapper>
