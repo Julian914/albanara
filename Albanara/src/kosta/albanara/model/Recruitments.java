@@ -1,8 +1,11 @@
 package kosta.albanara.model;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.sql.Date;
 
-public class Recruitments {
+
+public class Recruitments implements Serializable {
+
 	private int recruitmentSeq;
 	private int employerSeq;
 	private String recruitmentTitle;
@@ -13,30 +16,31 @@ public class Recruitments {
 	private int totalWorkingDay;
 	private int startingWorkingTime;
 	private int endingWorkingTime;
-	private int totalWorkingTime;
-	private String wageType;
+	private int totalWorkingTime;	
 	private int wage;
+	private String wageType;
 	private String gender;
 	private int minAge;
 	private int maxAge;
+	private String recruitmentContents;
 	private String requirementQuestion1;
 	private String requirementQuestion2;
-	private String requirementQuestion3;
-	private Date lastModifyDate;
+	private String requirementQuestion3;	
 	private String workingPlaceAddress;
 	private Date closingDate;
-	private String recruitmentContents;
+	private Date lastModifyDate;	
 
 	public Recruitments() {
 		super();
 	}
 
-	public Recruitments(String recruitmentTitle, String recruitmentType, int recruitmentSize, Date startingWorkingDate,
+	public Recruitments(int employerSeq, String recruitmentTitle, String recruitmentType, int recruitmentSize, Date startingWorkingDate,
 			Date endingWorkingDate, int totalWorkingDay, int startingWorkingTime, int endingWorkingTime,
 			int totalWorkingTime, String wageType, int wage, String gender, int minAge, int maxAge,
 			String requirementQuestion1, String requirementQuestion2, String requirementQuestion3,
 			String workingPlaceAddress, Date closingDate, String recruitmentContents) {
 		super();
+		this.employerSeq = employerSeq;
 		this.recruitmentTitle = recruitmentTitle;
 		this.recruitmentType = recruitmentType;
 		this.recruitmentSize = recruitmentSize;
@@ -243,5 +247,19 @@ public class Recruitments {
 		this.recruitmentContents = recruitmentContents;
 	}
 
+
+	@Override
+	public String toString() {
+		return "Recruitments [recruitmentSeq=" + recruitmentSeq + ", employerSeq=" + employerSeq + ", recruitmentTitle="
+				+ recruitmentTitle + ", recruitmentType=" + recruitmentType + ", recruitmentSize=" + recruitmentSize
+				+ ", startingWorkingDate=" + startingWorkingDate + ", endingWorkingDate=" + endingWorkingDate
+				+ ", totalWorkingDay=" + totalWorkingDay + ", startingWorkingTime=" + startingWorkingTime
+				+ ", endingWorkingTime=" + endingWorkingTime + ", totalWorkingTime=" + totalWorkingTime + ", wageType="
+				+ wageType + ", wage=" + wage + ", gender=" + gender + ", minAge=" + minAge + ", maxAge=" + maxAge
+				+ ", requirementQuestion1=" + requirementQuestion1 + ", requirementQuestion2=" + requirementQuestion2
+				+ ", requirementQuestion3=" + requirementQuestion3 + ", lastModifyDate=" + lastModifyDate
+				+ ", workingPlaceAddress=" + workingPlaceAddress + ", closingDate=" + closingDate
+				+ ", recruitmentContents=" + recruitmentContents + "]";
+	}
 
 }

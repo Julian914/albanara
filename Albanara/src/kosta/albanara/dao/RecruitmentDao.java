@@ -61,8 +61,10 @@ public class RecruitmentDao {
 		SqlSession session = getSqlSessionFactory().openSession();
 		RecruitmentMapper mapper = null;
 		try {
+			System.out.println("DAO 출력" + recruitment.toString() );
 			mapper = session.getMapper(RecruitmentMapper.class);
 			resultCount = mapper.insertRecruitment(recruitment);
+			System.out.println("카운트: " + resultCount);
 			if (resultCount > 0)
 				session.commit();
 			else

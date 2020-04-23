@@ -4,14 +4,42 @@
 
 <mapper namespace="kosta.albanara.mapper.RecruitmentMapper">
 	<cache />
+
 	
 	<select id="recruitmentList" resultType="Recruitments">
 		select *from Recruitments
 	</select>
 			
-	
-	<insert id="insertRecruitment" parameterType="Recruitments">		
-		<!-- insert into T_POST values(T_POST_SEQ.nextval, #{title}, #{writer}, #{contents}, sysdate, 0, #{fileName}) -->
+
+
+	<insert id="insertRecruitment" parameterType="Recruitments">
+		insert into RECRUITMENTS
+		values(
+		S_RECRUITMENT_SEQ.nextval,
+		#{employerSeq},
+		#{recruitmentTitle},
+		#{recruitmentType},
+		#{recruitmentSize},
+		#{startingWorkingDate},
+		#{endingWorkingDate},
+		#{totalWorkingDay},
+		#{startingWorkingTime},
+		#{endingWorkingTime},
+		#{totalWorkingTime},
+		#{wage},
+		#{wageType},		
+		#{gender},
+		#{minAge},
+		#{maxAge},
+		#{recruitmentContents},
+		#{requirementQuestion1},
+		#{requirementQuestion2},
+		#{requirementQuestion3},
+		#{workingPlaceAddress},
+		#{closingDate},
+		sysdate
+		)
+
 	</insert>
-			
+
 </mapper>
