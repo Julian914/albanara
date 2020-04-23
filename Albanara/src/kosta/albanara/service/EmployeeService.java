@@ -1,6 +1,7 @@
 package kosta.albanara.service;
 
 import kosta.albanara.dao.EmployeeDao;
+import kosta.albanara.model.Resumes;
 
 public class EmployeeService {
 	public static EmployeeService instance;
@@ -13,4 +14,16 @@ public class EmployeeService {
 		}
 		return instance;
 	}
+	
+	public int insertResumeService(Resumes resume){
+		return employeeDao.insertResume(resume);
+	}
+	
+	public Resumes searchResumeService(int employeeSeq) {
+		return employeeDao.searchResume(employeeSeq);
+	}
+	
+	
+	
+	
 }
