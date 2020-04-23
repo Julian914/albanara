@@ -9,6 +9,7 @@
 		<typeAlias type="kosta.albanara.model.Recruitments" alias="Recruitments"/>		
 		<typeAlias type="kosta.albanara.model.Map" alias="MapClass"/>
 		<typeAlias type="kosta.albanara.model.Employees" alias="Employees"/>
+		<typeAlias type="kosta.albanara.model.Employers" alias="Employers"/>
 	</typeAliases>
 	
 	<environments default="development">
