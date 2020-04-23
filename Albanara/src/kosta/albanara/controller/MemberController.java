@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kosta.albanara.action.ActionForward;
 
-@WebServlet("/Member/*")
+@WebServlet("/member/*")
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
