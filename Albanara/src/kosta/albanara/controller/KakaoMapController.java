@@ -18,9 +18,7 @@ import javax.xml.parsers.DocumentBuilder;
 
 import com.sun.xml.internal.txw2.Document;
 
-import kosta.albanara.action.Action;
 import kosta.albanara.action.ActionForward;
-import kosta.albanara.action.mapAcion;
 
 
 @WebServlet("/map/*")
@@ -71,7 +69,7 @@ public class KakaoMapController extends HttpServlet {
     			System.out.println(responseString);
     		     response.setCharacterEncoding("utf-8");
     		     PrintWriter out = response.getWriter();
-    		     out.print(responseString);
+//    		     out.print(responseString);
     		     out.flush();    			
 			} catch (Exception e) {
 				e.printStackTrace();
