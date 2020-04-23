@@ -1,7 +1,6 @@
 package kosta.albanara.dao;
 
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -41,7 +40,8 @@ public class RecruitmentDao {
 		List<Recruitments> list = null;
 		try {
 			list = sqlSession.getMapper(RecruitmentMapper.class).recruitmentList();
-			System.out.println("dao :"+list);
+			//list = sqlSession.selectList("kosta.albanara.mapper.RecruitmentMapper.recruitmentList");
+			System.out.println(list);	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -50,8 +50,7 @@ public class RecruitmentDao {
 			}
 		}
 		
-		return list;
-		
+		return list;		
 	}
 	
 }

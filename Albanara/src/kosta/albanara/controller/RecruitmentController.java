@@ -49,7 +49,7 @@ public class RecruitmentController extends HttpServlet {
 			}
 			break;
 		
-		case "recruitmentList.do":
+		case "recruitmentList.do":  //진행중인 공고목록 불러오기
 			try {
 				actionForward = new RecruitmentListAction().execute(request, response);
 			} catch (Exception e) {

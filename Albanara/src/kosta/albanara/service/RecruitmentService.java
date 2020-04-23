@@ -2,6 +2,8 @@ package kosta.albanara.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import kosta.albanara.dao.RecruitmentDao;
 import kosta.albanara.model.Recruitments;
 
@@ -17,8 +19,9 @@ public class RecruitmentService {
 		return instance;
 	}
 	
-	public List<Recruitments> recruitmentListService()throws Exception {
-		return recruitmentDao.recruitmentList();
-		
+	public List<Recruitments> recruitmentListService(HttpServletRequest request)throws Exception {
+		request.setCharacterEncoding("utf-8");
+		List<Recruitments> list = recruitmentDao.recruitmentList(); 
+		return list;		
 	}
 }

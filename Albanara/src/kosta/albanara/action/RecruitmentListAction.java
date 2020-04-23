@@ -14,12 +14,12 @@ public class RecruitmentListAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward actionforward = new ActionForward();
-		RecruitmentService recruitmentService = RecruitmentService.getInstance();
+		RecruitmentService Service = RecruitmentService.getInstance();
 		request.setCharacterEncoding("utf-8");
 		
-		List<Recruitments> recruitmentList = recruitmentService.recruitmentListService();   //service에서 공고목록을 불러옴 
+		List<Recruitments> recruitmentList = Service.recruitmentListService(request);  
 		request.setAttribute("recruitmentList", recruitmentList);
-		System.out.println("action : "+recruitmentList);
+		
 		
 		actionforward.setRedirect(false);
 		actionforward.setPath("/recruitmentList.jsp");

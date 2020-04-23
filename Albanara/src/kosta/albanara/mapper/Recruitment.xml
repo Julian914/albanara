@@ -3,11 +3,37 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kosta.albanara.mapper.RecruitmentMapper">
+
+   <resultMap id="Recruitments" type="Recruitments">
+      <result column="recruitment_seq" property="recruitmentSeq" />
+      <result column="employer_seq" property="employerSeq" />
+      <result column="recruitment_title" property="recruitmentTitle" />
+      <result column="recruitment_type" property="recruitmentType" />
+      <result column="recruitment_size" property="recruitmentSize" />
+      <result column="starting_Working_Date" property="startingWorkingDate" />
+      <result column="ending_Working_Date" property="endingWorkingDate" />
+      <result column="total_Working_Day" property="totalWorkingDay"/>
+      <result column="starting_Working_Time" property="startingWorkingTime" />
+      <result column="ending_Working_Time" property="endingWorkingTime" />
+      <result column="total_Working_Time" property="totalWorkingTime" />
+      <result column="wage" property="wage" />
+      <result column="wage_Type" property="wageType" />
+      <result column="gender" property="gender" />
+      <result column="min_Age" property="minAge" />
+      <result column="max_Age" property="maxAge" />
+      <result column="recruitment_Contents" property="recruitmentContents" />
+      <result column="requirement_Question1" property="requirementQuestion1" />
+      <result column="requirement_Question2" property="requirementQuestion2" />
+      <result column="requirement_Question3" property="requirementQuestion3" />
+      <result column="working_Place_Address" property="workingPlaceAddress" />
+      <result column="closing_Date" property="closingDate" />
+      <result column="last_Modify_Date" property="lastModifyDate" />
+   </resultMap>
+
 	<cache />
 	
-	<select id="recruitmentList" resultType="Recruitments">
-		select *from Recruitments
-	</select>
-			
-			
+	
+	<select id="recruitmentList" resultMap="Recruitments">
+		SELECT * FROM Recruitments
+	</select>		
 </mapper>

@@ -1,35 +1,59 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri ="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<link rel="stylesheet" href="/Albanara/css/jquery-ui.css">
+<link rel="stylesheet" href="/Albanara/css/bootstrap.css">
+<link rel="stylesheet" href="/Albanara/css/bootstrap-theme.css">
+<script src="/Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
+<script src="/Albanara/js/jquery-ui.js" type="text/javascript"></script>
+<script src="/Albanara/js/bootstrap.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	$(function(){
+		$('#accordion').accordion();
+	});
+
+	
+	
+	
+</script>
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>ÁøÇàÁßÀÎ °ø°í</h3>
-		
-	<c:forEach var ="list" items="${recruitmentList}">
-	
-	<ul class = "recruitmentTitle">
-		<li>Á¢¼ö¸¶°¨ : ${list.closingDate}</li>
-	<%-- 	<li>${list.recruitmentTitle}</li> --%>
-	</ul>
-	
-	<ul class = "recruitmentContents">	
-		<li>±â¾÷ÀÌ¸§ : ${list.employerSeq.employerName}</li>
-		<%-- <li>ÃÑ ±Ù¹«½Ã°£ : ${list.totalWorkingTime}</li> --%>
-		<li>¿¬·ÉÁ¦ÇÑ : ${list.minAge}~${list.maxAge}</li>
-		<li> ½Ã±Ş : ${list.wage}</li>
-		<li>±Ù¹«Áö ÁÖ¼Ò : ${list.workingPlaceAddress}</li>
-	<%-- 	<li>$±Ù¹«ÀÏÀÚ : {list.startingWorkingDate}~${list.endingWorkingDate}</li> --%>
-	</ul>
-	</c:forEach>
 
-
+	<h3>ì§„í–‰ì¤‘ì¸ ê³µê³ </h3>
+	<div id="wrap">
+		<div id="accordion">			
+			<c:forEach var="recruitmentList" items="${recruitmentList}">
+			<div id="accordion-title">
+				<ul class="recruitmentUp">
+					<li>ì ‘ìˆ˜ë§ˆê° : ${recruitmentList.closingDate}</li>
+					<li>ê³µê³ ì œëª© : ${recruitmentList.recruitmentTitle}</li>
+				</ul>
+			</div>
+			<div id="accordion-contents">
+				<ul class="recruitmentDown">
+					<li>ê¸°ì—…ì´ë¦„ : ${recruitmentList.employerSeq}</li>
+					<li>ì´ ê·¼ë¬´ì‹œê°„ : ${recruitmentList.totalWorkingTime}</li>
+					<li>ì—°ë ¹ì œí•œ : ${recruitmentList.minAge}~${list.maxAge}</li>
+					<li>ì‹œê¸‰ : ${recruitmentList.wage}</li>
+					<li>ê·¼ë¬´ì§€ ì£¼ì†Œ : ${recruitmentList.workingPlaceAddress}</li>
+					<li>ê·¼ë¬´ì¼ì :<fmt:parseDate var="startdate" value="${recruitmentList.startingWorkingDate}" pattern="yyyy-MM-dd"/>
+        					   <fmt:formatDate value="${startdate}" pattern="yyyy.MM.dd"/> 
+								~<fmt:parseDate var="enddate" value="${recruitmentList.endingWorkingDate}" pattern="yyyy-MM-dd"/>
+        					   <fmt:formatDate value="${enddate}" pattern="yyyy.MM.dd"/></li>
+				</ul>
+			</div>
+			</c:forEach>
+		</div>
+	</div>
 
 </body>
 </html>
