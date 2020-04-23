@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <script type="text/javascript" src="js/jquery-3.4.1.js"></script> -->
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -15,16 +15,18 @@
 </form>
 
 <script type="text/javascript">
+
 function Click() {
-	console.log($("#addr"));
+	var location = $("#addr").val();
 	$.ajax({
 		url : 'map/kakaoMap.go',
 		type : 'post',
 		dataType:'text',
-		data: $(this).serialize(), 
+		data: {
+			"location" : location, 
+		},
 		success: function(data){
 			console.log(data);
-			console.log('성공적?')
 		},
 		error : function(xhr, status, error){
 			console.log('실패?')
@@ -33,6 +35,7 @@ function Click() {
 		}		
 	});	
 }
+
 
 </script>
 </body>
