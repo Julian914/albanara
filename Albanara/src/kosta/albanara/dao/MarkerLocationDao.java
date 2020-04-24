@@ -13,9 +13,8 @@ import kosta.albanara.model.MarkerLocation;
 public class MarkerLocationDao {
 	private static MarkerLocationDao instance;
 	public static MarkerLocationDao getInstance() {
-		if(instance == null) {
-			return new MarkerLocationDao();
-		}
+		if (instance == null)
+			instance = new MarkerLocationDao();
 		return instance;
 	}
 	
