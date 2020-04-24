@@ -85,10 +85,6 @@
 				name="workingPlaceAddress"> <input type="button"
 				onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 
-			<input type="text" id="sample5_address" placeholder="주소" name="employeeAddress"> 
-			<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색">
-			<br>
-
 			<div id="map"
 				style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
 			<br>
