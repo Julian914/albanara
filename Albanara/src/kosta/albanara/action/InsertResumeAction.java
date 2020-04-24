@@ -13,21 +13,8 @@ public class InsertResumeAction implements Action {
 		ActionForward actionForward = new ActionForward();
 		EmployeeService service = new EmployeeService();
 		
-		Resumes resume = new Resumes();
-		String pictureFilename = request.getParameter("pictureFilename");
-		String resumeTitle = request.getParameter("resumeTitle");
-		String resumeContents = request.getParameter("resumeContents");
-		String desiredWorkingArea = request.getParameter("desiredWorkingArea");
-		String favoriteField = request.getParameter("favoriteField");
-		
-		resume.setPictureFilename(pictureFilename);
-		resume.setResumeTitle(resumeTitle);
-		resume.setResumeContents(resumeContents);
-		resume.setDesiredWorkingArea(desiredWorkingArea);
-		resume.setFavoriteField(favoriteField);
-		
-		
-		service.insertResumeService(resume);
+	
+		service.insertResumeService(request);
 		
 		
 		actionForward.setRedirect(false);

@@ -14,9 +14,9 @@
 <body>
 
 	<div class="resume">
-		<form action="insertResumeAction.do" method="get" enctype="multipart/form-data">
+		<form action="insertResume.do" method="post" enctype="multipart/form-data">
 			<h3>이력서</h3>
-			<div>사진</div>
+			<div>사진 첨부</div>
 			<input type="file" name="pictureFilename"><br>
 			<div>이력서 제목</div>
 			<input type="text" name="resumeTitle" value="이력서 제목 등록"><br>
@@ -27,7 +27,6 @@
 			<input type="text" name="desiredWorkingArea" value="희망 근무 지역"><br>
 			<div>관심직종</div>
 			<input type="text" name="favoriteField" value="관심 직종"><br>
-			<div>마지막 수정날짜</div>
 			<br>
 			<br>
 

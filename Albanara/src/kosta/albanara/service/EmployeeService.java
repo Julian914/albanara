@@ -6,6 +6,8 @@ import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kosta.albanara.dao.EmployeeDao;
 import kosta.albanara.model.Employees;
@@ -51,7 +53,47 @@ public class EmployeeService {
 		
 	}
 	
-	public int insertResumeService(Resumes resume){
+	public int insertResumeService(HttpServletRequest request)throws Exception{
+		request.setCharacterEncoding("utf-8");
+		
+		//파일업로드(경로, 파일크기, 인코딩, 파일이름중첩 정책)
+		String uploadPath = request.getRealPath("upload/resumePicture");
+		int size = 20 * 1024 * 1024;		//20MB
+		
+		//파일업로드 리퀘스트를 처리해주는 API(우리가 tomcat에 넣은 cos.jar에 있다). 이 객체에 request 객체도 같이 넣어준다. 그래서 request대신 multi로 넣어준다.
+		MultipartRequest multi =		
+				new MultipartRequest(request, uploadPath, size, "utf-8", new DefaultFileRenamePolicy());
+		
+		Resumes resume = new Resumes();
+		
+		String resumeTitle = multi.getParameter("resumeTitle");
+		String resumeContents = multi.getParameter("resumeContents");
+		String desiredWorkingArea = multi.getParameter("desiredWorkingArea");
+		String favoriteField = multi.getParameter("favoriteField");
+		
+		
+		resume.setResumeTitle(resumeTitle);
+		resume.setResumeContents(resumeContents);
+		resume.setDesiredWorkingArea(desiredWorkingArea);
+		resume.setFavoriteField(favoriteField);
+		
+		
+		//파일업로드 시 DB에 파일이름 저장하는 법
+				if(multi.getFilesystemName("pictureFilename") != null) {		//해석 : 파일을 업로드 했을 때
+					String pictureFilename = (String)multi.getFilesystemName("pictureFilename");
+					resume.setPictureFilename(pictureFilename);
+
+				}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		return employeeDao.insertResume(resume);
 	}
 	

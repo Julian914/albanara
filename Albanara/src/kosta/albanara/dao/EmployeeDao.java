@@ -72,7 +72,7 @@ public class EmployeeDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			
+			sqlSession.close();
 		}
 		
 		return re;
