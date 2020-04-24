@@ -36,6 +36,12 @@ public class RecruitmentDao {
 
 	
 	
+	public int applicantList(int recruitmentSeq) {
+		return
+	}
+	
+	
+	
 	public List<Recruitments> recruitmentList() {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<Recruitments> list = null;

@@ -18,7 +18,7 @@
 	</insert>
 	
 	<!-- 이력서 조회  (동현)-->
-	<select id="searchResume" parameterType="employeeSeq" resultType="Resumes">
+	<select id="searchResume" parameterType="int" resultType="Resumes">
 		select * from resume where seq=#{employeeSeq}
 	</select>
 	
