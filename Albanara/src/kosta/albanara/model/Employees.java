@@ -31,13 +31,32 @@ public class Employees {
 	public Employees() {};
 	
 	
+
 	
 	
 	
 	
 	
-	
-	
+	public Employees(String employeeId, String employeePw, String employeeName, Date employeeBirthday,
+			String employeeEmail, String employeeGender, String employeePhone, String employeeAddress) {
+		super();
+		this.employeeId = employeeId;
+		this.employeePw = employeePw;
+		this.employeeName = employeeName;
+		this.employeeBirthday = employeeBirthday;
+		this.employeeEmail = employeeEmail;
+		this.employeeGender = employeeGender;
+		this.employeePhone = employeePhone;
+		this.employeeAddress = employeeAddress;
+	}
+
+
+
+
+
+
+
+
 	public int getEmployeeSeq() {
 		return employeeSeq;
 	}
