@@ -80,14 +80,23 @@
 		</textarea>
 			<div>근무지 주소</div>
 
+
 			<input type="text" id="sample5_address" placeholder="주소"
 				name="workingPlaceAddress"> <input type="button"
 				onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+
+			<input type="text" id="sample5_address" placeholder="주소" name="employeeAddress"> 
+			<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색">
+			<br>
+
 			<div id="map"
 				style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
-			<br> <input type="reset" value="초기화"><input
-				type="submit" value="등록">
-
+			<br>
+			<input type="hidden" id="latitude" placeholder="위도" name="latitude">
+			<input type="hidden" id="longitude" placeholder="경도" name="longitude">
+			<input type="button" onclick="addrInsertClick" value="주소 등록"><br> 
+			<input type="reset" value="초기화">
+			<input type="submit" value="등록">
 		</form>
 	</div>
 </body>
@@ -138,5 +147,30 @@
 			}
 		}).open();
 	}
+	
+    function addrInsertClick() {
+		var location = document.getElementById('sample5_address').value;
+	   $.ajax({
+	      url : 'map/kakaoMap.go',
+	      type : 'get',
+	      dataType:'text',
+	      data: {
+	         "location" : location, 
+	      },
+	      success: function(data){
+	         console.log(data);
+	    longitude = JSON.parse(data);
+	         var latitude = data.documents[0].x;
+	         var longitude = data.documents[0].y;
+ 			document.getElementById("latitude").value = latitude;
+			document.getElementById("longitude").value = longitude;
+	      },
+	      error : function(xhr, status, error){
+	         console.log('실패?')
+	         console.log(xhr);
+	         console.log(error);
+	      }      
+	   });   
+	}	
 </script>
 </html>

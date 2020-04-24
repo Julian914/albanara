@@ -10,6 +10,7 @@ public class InsertResumeAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
 		ActionForward actionForward = new ActionForward();
 		EmployeeService service = new EmployeeService().getInstance();
 		

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>기업로그인폼</title>
 </head>
 <body>
 <div class="container">
