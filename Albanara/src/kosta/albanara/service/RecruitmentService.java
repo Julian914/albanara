@@ -1,4 +1,3 @@
-
 package kosta.albanara.service;
 
 import java.util.List;
