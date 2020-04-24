@@ -9,7 +9,7 @@ public class EvaluationService {
 	public static EvaluationService getInstance() {
 		if (instance == null) {
 			evaluationDao = EvaluationDao.getInstance();
-			return new EvaluationService();
+			instance = new EvaluationService();
 		}
 		return instance;
 	}

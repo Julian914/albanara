@@ -17,7 +17,7 @@ public class EmployerDao {
 
 	public static EmployerDao getInstance() {
 		if (instance == null)
-			return new EmployerDao();
+			instance = new EmployerDao();
 		return instance;
 	}
 
@@ -33,24 +33,24 @@ public class EmployerDao {
 
 		return new SqlSessionFactoryBuilder().build(in);
 	}
-	
+
 	public int insertEmployer(Employers employers) {
-		
+
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = -1;
 
 		try {
 			re = sqlSession.getMapper(EmployerMapper.class).insertEmployer(employers);
-	
-			if(re > 0) {
-				sqlSession.commit();		
-			}else {
-				sqlSession.rollback();		
+
+			if (re > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			if(sqlSession != null) {
+		} finally {
+			if (sqlSession != null) {
 				sqlSession.close();
 			}
 		}

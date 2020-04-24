@@ -1,6 +1,5 @@
 package kosta.albanara.service;
 
-
 import java.util.List;
 
 import java.sql.Date;
@@ -18,21 +17,21 @@ public class RecruitmentService {
 	public static RecruitmentService getInstance() {
 		if (instance == null) {
 			recruitmentDao = RecruitmentDao.getInstance();
-			return new RecruitmentService();
+			instance = new RecruitmentService();
 		}
 		return instance;
 	}
-	
-	public List<Recruitments> recruitmentListService(HttpServletRequest request)throws Exception {
+
+	public List<Recruitments> recruitmentListService(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		List<Recruitments> list = recruitmentDao.recruitmentList(); 
-		return list;		
+		List<Recruitments> list = recruitmentDao.recruitmentList();
+		return list;
 	}
 
 	public int insertRecruitment(HttpServletRequest request) throws ParseException {
 		int resultCount = -1;
 		System.out.println("insert 서비스 출력");
-		//int employerSeq = Integer.parseInt(request.getParameter("employerSeq"));
+		// int employerSeq = Integer.parseInt(request.getParameter("employerSeq"));
 		int employerSeq = 1;
 		String recruitmentTitle = request.getParameter("recruitmentTitle");
 		String recruitmentType = request.getParameter("recruitmentType");
@@ -54,10 +53,10 @@ public class RecruitmentService {
 		String requirementQuestion1 = request.getParameter("requirementQuestion1");
 		String requirementQuestion2 = request.getParameter("requirementQuestion2");
 		String requirementQuestion3 = request.getParameter("requirementQuestion3");
-		//String workingPlaceAddress = request.getParameter("workingPlaceAddress");
+		// String workingPlaceAddress = request.getParameter("workingPlaceAddress");
 		String workingPlaceAddress = "도로명주소값";
-		Date closingDate = Date.valueOf(request.getParameter("closingDate"));		
-		//String recruitmentContents = request.getParameter("recruitmentContents");
+		Date closingDate = Date.valueOf(request.getParameter("closingDate"));
+		// String recruitmentContents = request.getParameter("recruitmentContents");
 		String recruitmentContents = "상세정보값";
 		System.out.println("상세정보: " + recruitmentContents);
 

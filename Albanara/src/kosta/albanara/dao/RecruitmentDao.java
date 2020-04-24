@@ -11,13 +11,12 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import kosta.albanara.mapper.RecruitmentMapper;
 import kosta.albanara.model.Recruitments;
 
-
 public class RecruitmentDao {
 	private static RecruitmentDao instance;
 
 	public static RecruitmentDao getInstance() {
 		if (instance == null)
-			return new RecruitmentDao();
+			instance = new RecruitmentDao();
 		return instance;
 	}
 
@@ -34,33 +33,30 @@ public class RecruitmentDao {
 		return new SqlSessionFactoryBuilder().build(in);
 	}
 
-	
-	
 	public List<Recruitments> recruitmentList() {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<Recruitments> list = null;
 		try {
 			list = sqlSession.getMapper(RecruitmentMapper.class).recruitmentList();
-			System.out.println(list);	
-			
+			System.out.println(list);
+
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			if(sqlSession != null) {
+		} finally {
+			if (sqlSession != null) {
 				sqlSession.close();
 			}
 		}
-		
-		return list;		
+
+		return list;
 	}
-	
 
 	public int insertRecruitment(Recruitments recruitment) {
 		int resultCount = -1;
 		SqlSession session = getSqlSessionFactory().openSession();
 		RecruitmentMapper mapper = null;
 		try {
-			System.out.println("DAO 출력" + recruitment.toString() );
+			System.out.println("DAO 출력" + recruitment.toString());
 			mapper = session.getMapper(RecruitmentMapper.class);
 			resultCount = mapper.insertRecruitment(recruitment);
 			System.out.println("카운트: " + resultCount);

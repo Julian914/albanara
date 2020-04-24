@@ -11,13 +11,12 @@ import kosta.albanara.mapper.EmployeeMapper;
 import kosta.albanara.model.Employees;
 import kosta.albanara.model.Resumes;
 
-
 public class EmployeeDao {
 	private static EmployeeDao instance;
 
 	public static EmployeeDao getInstance() {
 		if (instance == null)
-			return new EmployeeDao();
+			instance = new EmployeeDao();
 		return instance;
 	}
 
@@ -33,67 +32,63 @@ public class EmployeeDao {
 
 		return new SqlSessionFactoryBuilder().build(in);
 	}
-	
+
 	public int insertEmployee(Employees employees) {
-		
+
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = -1;
 
 		try {
 			re = sqlSession.getMapper(EmployeeMapper.class).insertEmployee(employees);
-	
-			if(re > 0) {
-				sqlSession.commit();		
-			}else {
-				sqlSession.rollback();		
+
+			if (re > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			if(sqlSession != null) {
+		} finally {
+			if (sqlSession != null) {
 				sqlSession.close();
 			}
 		}
 		return re;
 	}
-	
-	
-	public int insertResume(Resumes resume){
+
+	public int insertResume(Resumes resume) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = -1;
-		
+
 		try {
 			re = sqlSession.getMapper(EmployeeMapper.class).insertResume(resume);
 			if (re > 0) {
 				sqlSession.commit();
-			}else {
+			} else {
 				sqlSession.rollback();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			
+		} finally {
+
 		}
-		
+
 		return re;
 	}
-	
-	
+
 	public Resumes searchResume(int employeeSeq) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		Resumes resume = null;
-		
+
 		try {
 			resume = sqlSession.getMapper(EmployeeMapper.class).searchResume(employeeSeq);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			sqlSession.close();
 		}
-		
+
 		return resume;
 	}
-	
-	
-	
+
 }

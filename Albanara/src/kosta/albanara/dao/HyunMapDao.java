@@ -15,8 +15,8 @@ public class HyunMapDao {
 
 	public static HyunMapDao getInstance() {
 		if (instance == null)
-			return new HyunMapDao();
-		 return instance;
+			instance = new HyunMapDao();
+		return instance;
 	}
 
 	public SqlSessionFactory getSqlSessionFactory() {
@@ -31,7 +31,7 @@ public class HyunMapDao {
 
 		return new SqlSessionFactoryBuilder().build(in);
 	}
-	
+
 	public List<HyunMap> mapList() {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<HyunMap> list = null;
@@ -40,11 +40,11 @@ public class HyunMapDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(sqlSession != null) {
+			if (sqlSession != null) {
 				sqlSession.close();
 			}
 		}
-		
+
 		return list;
 	}
 }

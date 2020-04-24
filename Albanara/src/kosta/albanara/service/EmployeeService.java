@@ -1,11 +1,8 @@
 package kosta.albanara.service;
 
-
-
 import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
-
 
 import kosta.albanara.dao.EmployeeDao;
 import kosta.albanara.model.Employees;
@@ -18,48 +15,47 @@ public class EmployeeService {
 	public static EmployeeService getInstance() {
 		if (instance == null) {
 			employeeDao = EmployeeDao.getInstance();
-			return new EmployeeService();
+			instance = new EmployeeService();
 		}
 		return instance;
 	}
-	
-	public int insertEmployeeService(HttpServletRequest request)throws Exception{
+
+	public int insertEmployeeService(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		
+
 		String employeeId = request.getParameter("employeeId");
 		String employeePw = request.getParameter("employeePw");
 		String employeeName = request.getParameter("employeeName");
-		Date employeeBirthday = Date.valueOf(request.getParameter("employeeBirthYear")+"-"+request.getParameter("employeeBirthMonth")+"-"+request.getParameter("employeeBirthDay"));
-		String employeeEmail = request.getParameter("employeeEmailInput1")+request.getParameter("employeeEmailInput2");
+		Date employeeBirthday = Date.valueOf(request.getParameter("employeeBirthYear") + "-"
+				+ request.getParameter("employeeBirthMonth") + "-" + request.getParameter("employeeBirthDay"));
+		String employeeEmail = request.getParameter("employeeEmailInput1")
+				+ request.getParameter("employeeEmailInput2");
 		String employeeGender = request.getParameter("employeeGender");
-		String employeePhone = request.getParameter("employeePhone1")+request.getParameter("employeePhone2")+request.getParameter("employeePhone3");
+		String employeePhone = request.getParameter("employeePhone1") + request.getParameter("employeePhone2")
+				+ request.getParameter("employeePhone3");
 		String employeeAddress = request.getParameter("employeeAddress");
-		
+
 		/*
 		 * String employeeId = "ID"; String employeePw = "Password"; String employeeName
-		 * = "ÀÌ¸§"; Date employeeBirthday = Date.valueOf("1992-05-11"); String
+		 * = "ï¿½Ì¸ï¿½"; Date employeeBirthday = Date.valueOf("1992-05-11"); String
 		 * employeeEmail = "employeeEmailInput1"+"employeeEmailInput2"; String
-		 * employeeGender = "¿©ÀÚ"; String employeePhone = "010"+"2785"+"1111"; String
-		 * employeeAddress ="¼­¿ï";
+		 * employeeGender = "ï¿½ï¿½ï¿½ï¿½"; String employeePhone = "010"+"2785"+"1111"; String
+		 * employeeAddress ="ï¿½ï¿½ï¿½ï¿½";
 		 */
-		
-		
-		
-		Employees employees = new Employees(employeeId, employeePw, employeeName, employeeBirthday, employeeEmail, employeeGender, employeePhone, employeeAddress);
-		
+
+		Employees employees = new Employees(employeeId, employeePw, employeeName, employeeBirthday, employeeEmail,
+				employeeGender, employeePhone, employeeAddress);
+
 		return employeeDao.insertEmployee(employees);
-		
+
 	}
-	
-	public int insertResumeService(Resumes resume){
+
+	public int insertResumeService(Resumes resume) {
 		return employeeDao.insertResume(resume);
 	}
-	
+
 	public Resumes searchResumeService(int employeeSeq) {
 		return employeeDao.searchResume(employeeSeq);
 	}
-	
-	
-	
-	
+
 }

@@ -15,23 +15,26 @@ public class EmployerService {
 	public static EmployerService getInstance() {
 		if (instance == null) {
 			employerDao = EmployerDao.getInstance();
-			return new EmployerService();
+			instance = new EmployerService();
 		}
 		return instance;
 	}
-	public int insertEmployerService(HttpServletRequest request)throws Exception{
+
+	public int insertEmployerService(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		
+
 		String employerId = request.getParameter("employerId");
 		String employerPw = request.getParameter("employerPw");
 		String employerName = request.getParameter("employerName");
-		String employerNumber = request.getParameter("employerNo1")+"-"+request.getParameter("employerNo2")+"-"+request.getParameter("employerNo3");
+		String employerNumber = request.getParameter("employerNo1") + "-" + request.getParameter("employerNo2") + "-"
+				+ request.getParameter("employerNo3");
 		String employerAddress = request.getParameter("employerAddress");
 		String employerHomepage = request.getParameter("employerHomepage");
 		String employerField = request.getParameter("employerField");
 		String ownerName = request.getParameter("ownerName");
-		String ownerPhoneNo = request.getParameter("ownerPhoneNo1")+request.getParameter("ownerPhoneNo2")+request.getParameter("ownerPhoneNo3");
-		
+		String ownerPhoneNo = request.getParameter("ownerPhoneNo1") + request.getParameter("ownerPhoneNo2")
+				+ request.getParameter("ownerPhoneNo3");
+
 		System.out.println("employerId");
 		System.out.println("employerPw");
 		System.out.println("employerName");
@@ -41,13 +44,11 @@ public class EmployerService {
 		System.out.println("employerField");
 		System.out.println("ownerName");
 		System.out.println("ownerPhoneNo");
-		
-		
-		Employers employers = new Employers(employerId, employerPw, employerName, employerNumber, employerAddress, employerHomepage, employerField, ownerName, ownerPhoneNo);
-				
-				
-				
+
+		Employers employers = new Employers(employerId, employerPw, employerName, employerNumber, employerAddress,
+				employerHomepage, employerField, ownerName, ownerPhoneNo);
+
 		return employerDao.insertEmployer(employers);
-		
+
 	}
 }
