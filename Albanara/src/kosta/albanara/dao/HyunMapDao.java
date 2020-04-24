@@ -16,7 +16,7 @@ public class HyunMapDao {
 	public static HyunMapDao getInstance() {
 		if (instance == null)
 			return new HyunMapDao();
-		return instance;
+		 return instance;
 	}
 
 	public SqlSessionFactory getSqlSessionFactory() {

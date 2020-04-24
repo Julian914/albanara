@@ -29,7 +29,7 @@ public class HyunMapController extends HttpServlet {
 		ActionForward actionForward = null;
 
 		switch (command) {
-		case "testAction.do":
+		 case "testAction.do":
 			try {
 				// actionForward = new TestAction().execute(request, response);
 			} catch (Exception e) {

@@ -18,7 +18,7 @@ public class HyunMapAction implements Action {
 		List<HyunMap> list = service.mapList();
 		request.setAttribute("list", list);
 		forward.setRedirect(false);
-		forward.setPath("/NewFile.jsp");
+		 forward.setPath("/NewFile.jsp");
 		return forward;
 	}
 

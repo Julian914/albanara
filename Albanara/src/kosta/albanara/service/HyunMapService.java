@@ -6,7 +6,7 @@ import kosta.albanara.dao.HyunMapDao;
 import kosta.albanara.model.HyunMap;
 
 public class HyunMapService {
-	public static HyunMapService instance;
+	 public static HyunMapService instance;
 	public static HyunMapDao mapDao;
 
 	public static HyunMapService getInstance() {

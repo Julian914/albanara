@@ -3,7 +3,7 @@ package kosta.albanara.model;
 import java.io.Serializable;
 
 public class HyunMap implements Serializable {
-	private String content;
+	 private String content;
 	private String latlngX;
 	private String latlngY;
 	
