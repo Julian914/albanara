@@ -41,8 +41,8 @@ public class RecruitmentDao {
 		List<Recruitments> list = null;
 		try {
 			list = sqlSession.getMapper(RecruitmentMapper.class).recruitmentList();
-			//list = sqlSession.selectList("kosta.albanara.mapper.RecruitmentMapper.recruitmentList");
 			System.out.println(list);	
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
