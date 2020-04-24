@@ -101,8 +101,7 @@
 		<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
 		<input type="hidden" id="latitude" placeholder="위도" name="latitude">
 		<input type="hidden" id="longitude" placeholder="경도" name="longitude">
-		<input type="button" onclick="addrInsertClick" value="주소 등록"><br>
-
+		<input type="button" onclick="getLatlng()" value="주소 등록"><br>
 
 <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
@@ -150,31 +149,32 @@
             }
         }).open();
     };
-
-    function addrInsertClick() {
-    		var location = document.getElementById('sample5_address').value;
-    	   $.ajax({
-    	      url : 'map/kakaoMap.go',
-    	      type : 'get',
-    	      dataType:'text',
-    	      data: {
-    	         "location" : location, 
-    	      },
-    	      success: function(data){
-    	         console.log(data);
-    	         data = JSON.parse(data);
-    	         var latitude = data.documents[0].x;
-    	         var longitude = data.documents[0].y;
-     			document.getElementById("latitude").value = latitude;
-    			document.getElementById("longitude").value = longitude;
-    	      },
-    	      error : function(xhr, status, error){
-    	         console.log('실패?')
-    	         console.log(xhr);
-    	         console.log(error);
-    	      }      
-    	   });   
-    	}
+    
+    function getLatlng() {
+    	var query = document.getElementById('sample5_address').value;
+    	var totalUrl = 'https://dapi.kakao.com/v2/local/search/address.json?query=' + query;
+    	$.ajax({
+    		url : 'https://dapi.kakao.com/v2/local/search/address.json' ,
+    		headers : { 'Authorization' : 'KakaoAK e8a788b4cc661ab86dff50abd5c61f6c'	},
+    		type : 'get',
+    		dataType:'text',
+    		data: {
+    			"query" : query 
+    		},
+    		success: function(data){
+    			console.log('성공했다');
+    			var obj = JSON.parse(data);
+    			var x = obj.documents[0].x;
+    			var y = obj.documents[0].y;
+    			document.getElementById("latitude").value = x;
+    			document.getElementById("longitude").value = y;
+    			
+    		},
+    		error : function(request, status, error){
+    			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    		}		
+    	});	
+    };
 </script>
 
 		<br> <input id="joinbutton" type="submit" value="회원가입" />	
