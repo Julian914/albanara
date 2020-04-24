@@ -11,6 +11,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import kosta.albanara.mapper.RecruitmentMapper;
 import kosta.albanara.model.Recruitments;
 
+
+
 public class RecruitmentDao {
 	private static RecruitmentDao instance;
 
@@ -33,6 +35,8 @@ public class RecruitmentDao {
 		return new SqlSessionFactoryBuilder().build(in);
 	}
 
+	
+	
 	public List<Recruitments> recruitmentList() {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<Recruitments> list = null;
