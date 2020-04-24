@@ -11,24 +11,24 @@
 <body>
 	
 	<div>사진</div>
-	<div>${resume.pictureFilename }</div>
+	<div>${Resume.pictureFilename }</div>
 	
 	<div>이력서 제목</div>
-	<div>${resume.resumeTitle }</div>
+	<div>${Resume.resumeTitle }</div>
 	
 	<div>이력서 내용</div>
-	<div>${resume.resumeContents }</div>
+	<div>${Resume.resumeContents }</div>
 	
 	<div>희망근무지역</div>
-	<div>${resume.desired_workingArea }</div>
+	<div>${Resume.desiredWorkingArea }</div>
 	
 	<div>관심직종</div>
-	<div>${resume.favoriteField }</div>
+	<div>${Resume.favoriteField }</div>
 	
 	<div>마지막 수정날짜</div>
-	<div>${resume.lastModifyDate }</div>
+	<div>${Resume.lastModifyDate }</div>
 	
-	<button type="button" onclick="location.href='' ">확인하기</button>
+	<button type="button" onclick="location.href='/index.jsp' ">확인하기</button>
 	
 </body>
 </html>
