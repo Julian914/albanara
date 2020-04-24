@@ -1,8 +1,9 @@
 package kosta.albanara.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Employees {
+public class Employees implements Serializable{
 	private int employeeSeq;   
 	private int resumeSeq;  //�̷¼� ��ȣ
 	private String employeeId;   //������id

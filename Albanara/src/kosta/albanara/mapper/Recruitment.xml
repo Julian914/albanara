@@ -63,12 +63,12 @@
 	</resultMap>
 
 	<resultMap id="Applications" type="Applications">
-		<result column="applicationSeq" property="applicationSeq" />
-		<result column="employeeSeq" property="employeeSeq" />
-		<result column="applicationDate" property="applicationDate" />
-		<result column="requirementAnswer1"	property="requirementAnswer1" />
-		<result column="requirementAnswer2"	property="requirementAnswer2" />
-		<result column="requirementAnswer3"	property="requirementAnswer3" />
+		<result column="application_Seq" property="applicationSeq" />
+		<result column="employee_Seq" property="employeeSeq" />
+		<result column="application_Date" property="applicationDate" />
+		<result column="requirement_Answer1" property="requirementAnswer1" />
+		<result column="requirement_Answer2" property="requirementAnswer2" />
+		<result column="requirement_Answer3" property="requirementAnswer3" />
 	</resultMap>
 
 	<select id="getRecruitment" parameterType="int" resultMap="Recruitments">
@@ -130,14 +130,6 @@
 	</resultMap>
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	<select id="recruitmentList" resultMap="Recruitments">
 		SELECT * FROM Recruitments
@@ -146,8 +138,8 @@
 
 <!-- 해당 공고의 지원자 목록 불러오기-->
 	<select id="applicantList" parameterType="int" resultMap="Employees">
-		select *from employees where employeeSeq in(select employeeSeq from applications where recruitmentSeq=#{recruitmentSeq})
-	</select>
+		select * from employees where employee_Seq in(select employee_Seq from applications where recruitment_Seq=#{recruitment_Seq})
+	</select> 
 
 	
 
