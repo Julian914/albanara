@@ -16,13 +16,25 @@ public class Employers {
 	private int unlikeCount; //별로에요 받은 횟수
 	private int favoriteEmployerCount;	//관심기업 받은 횟수
 	
+	public Employers() {}
 	
-	public int getEmployerSeq() {
-		return employerSeq;
+	
+	public Employers(String employerId, String employerPw, String employerName, String employerNumber,
+			String employerAddress, String employerHomepage, String employerField, String ownerName,
+			String ownerPhone) {
+		super();
+		this.employerId = employerId;
+		this.employerPw = employerPw;
+		this.employerName = employerName;
+		this.employerNumber = employerNumber;
+		this.employerAddress = employerAddress;
+		this.employerHomepage = employerHomepage;
+		this.employerField = employerField;
+		this.ownerName = ownerName;
+		this.ownerPhone = ownerPhone;
 	}
-	public void setEmployerSeq(int employerSeq) {
-		this.employerSeq = employerSeq;
-	}
+
+
 	public String getEmployerId() {
 		return employerId;
 	}

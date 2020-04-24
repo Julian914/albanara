@@ -38,8 +38,7 @@ public class EmployeeDao {
 		
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = -1;
-		System.out.println("11111111");
-		System.out.println(employees.getEmployeeBirthday());
+
 		try {
 			re = sqlSession.getMapper(EmployeeMapper.class).insertEmployee(employees);
 	
