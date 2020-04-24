@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import kosta.albanara.action.ActionForward;
 import kosta.albanara.action.HyunMapAction;
 
-@WebServlet("/Recruitment/*")
+@WebServlet("/Map/*")
 public class HyunMapController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -91,7 +91,6 @@ public class KakaoMapController extends HttpServlet {
       doProcess(request, response);
    }
 
-
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       doProcess(request, response);
    }
