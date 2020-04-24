@@ -9,6 +9,7 @@ import java.text.ParseException;
 import javax.servlet.http.HttpServletRequest;
 
 import kosta.albanara.dao.RecruitmentDao;
+import kosta.albanara.model.Employees;
 import kosta.albanara.model.Recruitments;
 
 public class RecruitmentService {
@@ -29,6 +30,12 @@ public class RecruitmentService {
 		return list;
 	}
 
+	public List<Employees> applicantListService(int recruitmentSeq)throws Exception {
+		List<Employees> applicantList = recruitmentDao.applicantList(recruitmentSeq);		
+		return applicantList;
+	}
+
+	
 	public int insertRecruitment(HttpServletRequest request) throws ParseException {
 		int resultCount = -1;
 		System.out.println("insert 서비스 출력");
