@@ -165,8 +165,8 @@
     	         data = JSON.parse(data);
     	         var latitude = data.documents[0].x;
     	         var longitude = data.documents[0].y;
-     			document.getElementById("latitude").value = x;
-    			document.getElementById("longitude").value = y;
+     			document.getElementById("latitude").value = latitude;
+    			document.getElementById("longitude").value = longitude;
     	      },
     	      error : function(xhr, status, error){
     	         console.log('실패?')

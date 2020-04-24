@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kosta.albanara.service.EmployeeService;
 import kosta.albanara.service.EmployerService;
+import kosta.albanara.service.MarkerLocationService;
 
 public class EmployerSignUpAction implements Action {
 
@@ -12,7 +13,8 @@ public class EmployerSignUpAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();
 		EmployerService service = EmployerService.getInstance(); 
-		
+		MarkerLocationService markerLocationService = MarkerLocationService.getInstance();
+		markerLocationService.insertMarkerLocation(request);
 		service.insertEmployerService(request);		
 		
 		

@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
 
-/* css´Ü */
+/* cssë‹¨ */
 </style>
 
 </head>
@@ -15,26 +15,26 @@
 
 	<div class="resume">
 		<form action="insertResumeAction.do" method="get" enctype="multipart/form-data">
-			<h3>ÀÌ·Â¼­</h3>
-			<div>»çÁø</div>
+			<h3>ì´ë ¥ì„œ</h3>
+			<div>ì‚¬ì§„</div>
 			<input type="file" name="pictureFilename"><br>
-			<div>ÀÌ·Â¼­ Á¦¸ñ</div>
-			<input type="text" name="resumeTitle" value="ÀÌ·Â¼­ Á¦¸ñ µî·Ï"><br>
-			<div>ÀÌ·Â¼­ Á¦¸ñ</div>
+			<div>ì´ë ¥ì„œ ì œëª©</div>
+			<input type="text" name="resumeTitle" value="ì´ë ¥ì„œ ì œëª© ë“±ë¡"><br>
+			<div>ì´ë ¥ì„œ ì œëª©</div>
 			<textarea cols="100" rows="10" name="resumeContents"
-				placeholder="ÀÚ±â¼Ò°³" style="overflow-x: hidden; overflow-y: auto"></textarea><br>
-			<div>Èñ¸Á ±Ù¹« Áö¿ª</div>
-			<input type="text" name="desiredWorkingArea" value="Èñ¸Á ±Ù¹« Áö¿ª"><br>
-			<div>°ü½ÉÁ÷Á¾</div>
-			<input type="text" name="favoriteField" value="°ü½É Á÷Á¾"><br>
-			<div>¸¶Áö¸· ¼öÁ¤³¯Â¥</div>
+				placeholder="ìžê¸°ì†Œê°œ" style="overflow-x: hidden; overflow-y: auto"></textarea><br>
+			<div>í¬ë§ ê·¼ë¬´ ì§€ì—­</div>
+			<input type="text" name="desiredWorkingArea" value="í¬ë§ ê·¼ë¬´ ì§€ì—­"><br>
+			<div>ê´€ì‹¬ì§ì¢…</div>
+			<input type="text" name="favoriteField" value="ê´€ì‹¬ ì§ì¢…"><br>
+			<div>ë§ˆì§€ë§‰ ìˆ˜ì •ë‚ ì§œ</div>
 			<br>
 			<br>
 
 			<button type="button"
-				onclick="location.href='' ">µî·ÏÇÏ±â</button>
+				onclick="location.href='' ">ë“±ë¡í•˜ê¸°</button>
 			<button type="button"
-				onclick="location.href='' ">Ãë¼ÒÇÏ±â</button>
+				onclick="location.href='' ">ì·¨ì†Œí•˜ê¸°</button>
 		</form>
 	</div>
 

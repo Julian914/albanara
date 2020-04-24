@@ -3,6 +3,8 @@ package kosta.albanara.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kosta.albanara.service.HyunMapService;
+import kosta.albanara.service.MarkerLocationService;
 import kosta.albanara.service.RecruitmentService;
 
 public class InsertRecruitmentAction implements Action {
@@ -16,6 +18,8 @@ public class InsertRecruitmentAction implements Action {
 
 		// Set ActionForward
 		ActionForward actionForward = new ActionForward();
+		MarkerLocationService markerLocationService = MarkerLocationService.getInstance();
+		markerLocationService.insertMarkerLocation(request);
 		actionForward.setRedirect(true);
 
 		if (resultCount == 1) {

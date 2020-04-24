@@ -21,25 +21,30 @@ import com.sun.xml.internal.txw2.Document;
 import kosta.albanara.action.ActionForward;
 
 
-@WebServlet("/map/*")
+@WebServlet({"/member/map/*","/recruitment/map/*"})
 public class KakaoMapController extends HttpServlet {
    private static final long serialVersionUID = 1L;
        
 
     public KakaoMapController() {
         super();
-
     }
     
     @SuppressWarnings("unused")
    protected void doProcess(HttpServletRequest request, HttpServletResponse response) 
          throws ServletException, IOException {
-       String requestURI = request.getRequestURI();
-       System.out.println(requestURI);
-       String contextPath = request.getContextPath();
-       System.out.println(contextPath);
-       String command = requestURI.substring(contextPath.length() + 5);
-       System.out.println(command);
+        String requestURI = request.getRequestURI();
+        System.out.println(requestURI);
+//        String contextPath = request.getContextPath();
+//        System.out.println(contextPath);
+        int findIndex = 0;
+        for (int i = 0; i < requestURI.length(); i++) {
+           String find = requestURI.substring(i, i + 1);
+           if (find.equals("/")) {
+              findIndex = i+1;
+           }
+        }
+        String command = requestURI.substring(findIndex);
        
        ActionForward actionForward = null;
        if(command.equals("kakaoMap.go")) {

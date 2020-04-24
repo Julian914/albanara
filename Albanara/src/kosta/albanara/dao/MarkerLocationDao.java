@@ -61,8 +61,7 @@ public class MarkerLocationDao {
 			if(sqlSession != null) {
 				sqlSession.close();
 			}
-		}
-		
+		}		
 		return re;
 	}
 	
