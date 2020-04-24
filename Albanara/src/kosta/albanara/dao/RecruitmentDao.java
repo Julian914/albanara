@@ -36,10 +36,7 @@ public class RecruitmentDao {
 
 	
 	
-	public int applicantList(int recruitmentSeq) {
-		return
-	}
-	
+
 	
 	
 	public List<Recruitments> recruitmentList() {
