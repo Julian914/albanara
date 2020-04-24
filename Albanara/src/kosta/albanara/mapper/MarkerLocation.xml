@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kosta.albanara.mapper.MarkerLocationMapper">
+
+   <cache />		
+
+	<resultMap type="MarkerLocation" id="MarkerLocation">
+		<result column="marker_location_seq" property="markerLocationSeq"/>
+		<result column="road_address " property="roadAddress" />
+		<result column="latitude" property="latitude"/>
+		<result column="longitude" property="longitude "/>
+	</resultMap>
+	
+	<insert id="insertMarkerLocation" parameterType="MarkerLocation">
+		insert into marker_location 
+		values(s_marker_location_seq.nextval, #{roadAddress}, #{latitude}, #{longitude})
+	</insert>
+	
+	<select id="existMarkerLocation" parameterType="String" resultType="int">
+		select count(*)
+		from marker_location
+		where ROAD_ADDRESS = #{road_address}
+	</select>		
+
+</mapper>

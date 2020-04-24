@@ -35,6 +35,10 @@ public class EmployeeService {
 				+ request.getParameter("employeePhone3");
 		String employeeAddress = request.getParameter("employeeAddress");
 
+		String employeeLatitude = request.getParameter("latitude");
+		String employeeLongitude = request.getParameter("longitude");
+		
+
 		/*
 		 * String employeeId = "ID"; String employeePw = "Password"; String employeeName
 		 * = "�̸�"; Date employeeBirthday = Date.valueOf("1992-05-11"); String
