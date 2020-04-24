@@ -56,4 +56,28 @@ public class EmployerDao {
 		}
 		return re;
 	}
+	
+	public int employerLogIn(Employers employers) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = -1;
+
+		try {
+			re = sqlSession.getMapper(EmployerMapper.class).employerLogIn(employers);
+	
+			if(re > 0) {
+				sqlSession.commit();		
+			}else {
+				sqlSession.rollback();		
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		return re;
+	}
+		
+	
 }

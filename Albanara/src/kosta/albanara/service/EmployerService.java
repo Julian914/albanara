@@ -29,25 +29,14 @@ public class EmployerService {
 		String employerNumber = request.getParameter("employerNo1") + "-" + request.getParameter("employerNo2") + "-"
 				+ request.getParameter("employerNo3");
 		String employerAddress = request.getParameter("employerAddress");
-		String employerHomepage = request.getParameter("employerHomepage");
+		String employerHomePage = request.getParameter("employerHomePage");
 		String employerField = request.getParameter("employerField");
 		String ownerName = request.getParameter("ownerName");
-		String ownerPhoneNo = request.getParameter("ownerPhoneNo1") + request.getParameter("ownerPhoneNo2")
-				+ request.getParameter("ownerPhoneNo3");
-
-		System.out.println("employerId");
-		System.out.println("employerPw");
-		System.out.println("employerName");
-		System.out.println("employerNumber");
-		System.out.println("employerAddress");
-		System.out.println("employerHomepage");
-		System.out.println("employerField");
-		System.out.println("ownerName");
-		System.out.println("ownerPhoneNo");
-
-		Employers employers = new Employers(employerId, employerPw, employerName, employerNumber, employerAddress,
-				employerHomepage, employerField, ownerName, ownerPhoneNo);
-
+		String ownerPhone = request.getParameter("ownerPhoneNo1")+request.getParameter("ownerPhoneNo2")+request.getParameter("ownerPhoneNo3");
+		
+		Employers employers = new Employers(employerId, employerPw, employerName, employerNumber, employerAddress, employerHomePage, employerField, ownerName, ownerPhone);
+				
+				
 		return employerDao.insertEmployer(employers);
 
 	}

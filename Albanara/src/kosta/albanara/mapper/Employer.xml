@@ -13,4 +13,7 @@
 			#{employerField}, #{ownerName}, #{ownerPhone}, #{employerHomePage})
 	</insert>
 	
+	<select id="employerLogIn" parameterType="Employers" resultType="int">
+		select * from employers where employer_id= #{employerId} AND employer_pw = #{employerPw}
+	</select>
 </mapper>

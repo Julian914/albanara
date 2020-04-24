@@ -10,12 +10,9 @@
 		<typeAlias type="kosta.albanara.model.HyunMap" alias="MapClass"/>
 		<typeAlias type="kosta.albanara.model.Employees" alias="Employees"/>
 		<typeAlias type="kosta.albanara.model.Employers" alias="Employers"/>
-
 		<typeAlias type="kosta.albanara.model.Resumes" alias="Resumes"/>
 		<typeAlias type="kosta.albanara.model.Applications" alias="Applications"/>
-
 		<typeAlias type="kosta.albanara.model.MarkerLocation" alias="MarkerLocation"/>
-
 	</typeAliases>
 	
 	<environments default="development">
