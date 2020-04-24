@@ -16,11 +16,6 @@
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=814861f68a4b2c5498535e608555d96a&libraries=services"></script>
-<script>
-	$(function() {
-		$(".datepicker").datepicker();
-	});
-</script>
 <title>공고 등록</title>
 </head>
 <body>
