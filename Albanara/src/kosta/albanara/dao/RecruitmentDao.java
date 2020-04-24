@@ -9,9 +9,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kosta.albanara.mapper.RecruitmentMapper;
+import kosta.albanara.model.Employees;
 import kosta.albanara.model.Recruitments;
-
-
 
 public class RecruitmentDao {
 	private static RecruitmentDao instance;
@@ -35,15 +34,12 @@ public class RecruitmentDao {
 		return new SqlSessionFactoryBuilder().build(in);
 	}
 
-	
-	
 	public List<Recruitments> recruitmentList() {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<Recruitments> list = null;
 		try {
 			list = sqlSession.getMapper(RecruitmentMapper.class).recruitmentList();
 			System.out.println(list);
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -55,6 +51,39 @@ public class RecruitmentDao {
 		return list;
 	}
 
+	
+	/*
+	 * public int employeeList(int recruitmentSeq) { SqlSession sqlSession =
+	 * getSqlSessionFactory().openSession(); int }
+	 */
+	
+	
+	
+	
+	
+	// 한 공고에 해당하는 지원자목록
+	public List<Employees> applicantList(int recruitmentSeq) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		List<Employees> applicantList = null;
+		
+		try {
+			applicantList = sqlSession.getMapper(RecruitmentMapper.class).applicantList(recruitmentSeq);
+			System.out.println("dao: "+applicantList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		return applicantList;
+		
+	}
+	
+	
+	
+	
+	
 	public int insertRecruitment(Recruitments recruitment) {
 		int resultCount = -1;
 		SqlSession session = getSqlSessionFactory().openSession();

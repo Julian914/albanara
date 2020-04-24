@@ -1,15 +1,17 @@
 package kosta.albanara.model;
 
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class Applications {
-	private int applicationSeq;		//Áö¿ø¹øÈ£
-	private int recruitmentSeq;		//°ø°í¹øÈ£
-	private int employeeSeq;		//±¸Á÷ÀÚ¹øÈ£
-	private Date applicationDate;		//Áö¿ø³¯Â¥
-	private String requirementAnswer1;	//¿ì´ëÁ¶°Ç´äº¯1
-	private String requirementAnswer2;	//¿ì´ëÁ¶°Ç´äº¯2
-	private String requirementAnswer3;	//¿ì´ëÁ¶°Ç´äº¯3
+public class Applications implements Serializable {
+	private int applicationSeq;		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+	private int recruitmentSeq;		//ï¿½ï¿½ï¿½ï¿½ï¿½È£
+	private int employeeSeq;		//ï¿½ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½È£
+	private Date applicationDate;		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¥
+	private String requirementAnswer1;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç´äº¯1
+	private String requirementAnswer2;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç´äº¯2
+	private String requirementAnswer3;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç´äº¯3
 	
 	
 	public int getApplicationSeq() {
