@@ -64,35 +64,27 @@ public class EmployeeService {
 		MultipartRequest multi =		
 				new MultipartRequest(request, uploadPath, size, "utf-8", new DefaultFileRenamePolicy());
 		
-		Resumes resume = new Resumes();
+		
 		
 		String resumeTitle = multi.getParameter("resumeTitle");
 		String resumeContents = multi.getParameter("resumeContents");
 		String desiredWorkingArea = multi.getParameter("desiredWorkingArea");
 		String favoriteField = multi.getParameter("favoriteField");
+		String pictureFilename = (String)multi.getFilesystemName("pictureFilename");
 		
 		
-		resume.setResumeTitle(resumeTitle);
-		resume.setResumeContents(resumeContents);
-		resume.setDesiredWorkingArea(desiredWorkingArea);
-		resume.setFavoriteField(favoriteField);
 		
-		
+		/*
 		//파일업로드 시 DB에 파일이름 저장하는 법
 				if(multi.getFilesystemName("pictureFilename") != null) {		//해석 : 파일을 업로드 했을 때
-					String pictureFilename = (String)multi.getFilesystemName("pictureFilename");
-					resume.setPictureFilename(pictureFilename);
+				String pictureFilename = (String)multi.getFilesystemName("pictureFilename");
+				
 
 				}
+		*/
 		
-		
-		
-		
-		
-		
-		
-		
-		
+		Resumes resume = new Resumes(pictureFilename, resumeTitle, resumeContents, desiredWorkingArea, favoriteField);
+	System.out.println(resume.toString());
 		
 		return employeeDao.insertResume(resume);
 	}
@@ -100,7 +92,6 @@ public class EmployeeService {
 	public Resumes searchResumeService(int employeeSeq) {
 		return employeeDao.searchResume(employeeSeq);
 	}
-	
 	
 	
 	

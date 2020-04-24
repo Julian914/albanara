@@ -12,7 +12,22 @@ public class Resumes {
 	private String favoriteField; //관심 직종
 	private Date lastModifyDate;  //마지막수정날짜
 	
+	public Resumes() {}
+
 	
+	
+	public Resumes(String pictureFilename, String resumeTitle, String resumeContents, String desiredWorkingArea,
+			String favoriteField) {
+		super();
+		this.pictureFilename = pictureFilename;
+		this.resumeTitle = resumeTitle;
+		this.resumeContents = resumeContents;
+		this.desiredWorkingArea = desiredWorkingArea;
+		this.favoriteField = favoriteField;
+	}
+
+
+
 	public int getResumeSeq() {
 		return resumeSeq;
 	}
@@ -54,6 +69,15 @@ public class Resumes {
 	}
 	public void setLastModifyDate(Date lastModifyDate) {
 		this.lastModifyDate = lastModifyDate;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Resumes [resumeSeq=" + resumeSeq + ", pictureFilename=" + pictureFilename + ", resumeTitle="
+				+ resumeTitle + ", resumeContents=" + resumeContents + ", desiredWorkingArea=" + desiredWorkingArea
+				+ ", favoriteField=" + favoriteField + ", lastModifyDate=" + lastModifyDate + "]";
 	}
 	
 	
