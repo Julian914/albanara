@@ -6,9 +6,9 @@
 	<cache />
 	<insert id="insertEmployee" parameterType="Employees">
 		insert into employees(
-			employee_seq.nextval, employee_id, employee_pw, employee_name, employee_birthday,
+			employee_seq, employee_id, employee_pw, employee_name, employee_birthday,
 			employee_email, employee_gender, employee_phone, employee_address) 
-			values(#{employeeId}, #{employeePw}, #{employeeName}, #{employeeBirthday}, #{employeeEmail}, 
+			values(s_employee_seq.nextval, #{employeeId}, #{employeePw}, #{employeeName}, #{employeeBirthday}, #{employeeEmail}, 
 			#{employeeGender}, #{employeePhone}, #{employeeAddress})
 	</insert>
 

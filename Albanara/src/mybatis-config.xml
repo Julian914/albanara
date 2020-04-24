@@ -7,7 +7,7 @@
 	<typeAliases>		
 		<typeAlias type="java.lang.String" alias="String"/>
 		<typeAlias type="kosta.albanara.model.Employees" alias="Employees"/>
-		<typeAlias type="kosta.albanara.model.Map" alias="MapClass"/>
+		<typeAlias type="kosta.albanara.model.Employers" alias="Employers"/>
 		<typeAlias type="kosta.albanara.model.Recruitments" alias="Recruitments"/>
 	</typeAliases>
 	
@@ -26,7 +26,6 @@
 		<mapper resource="kosta/albanara/mapper/Evaluation.xml"/>
 		<mapper resource="kosta/albanara/mapper/Messenger.xml"/>
 		<mapper resource="kosta/albanara/mapper/Recruitment.xml"/>
-		<mapper resource="kosta/albanara/mapper/Map.xml"/>
 	</mappers>
 	
 </configuration>

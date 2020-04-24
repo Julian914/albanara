@@ -4,5 +4,13 @@
 
 <mapper namespace="kosta.albanara.mapper.EmployerMapper">
 	<cache />
-
+	
+	<insert id="insertEmployer" parameterType="Employers">
+		insert into employers(
+			employer_seq, employer_id, employer_pw, employer_name, employer_number,
+			employer_address, employer_field, owner_name, owner_phone, employer_homepage) 
+			values(s_employer_seq.nextval, #{employerId}, #{employerPw}, #{employerName}, #{employerNumber}, #{employerAddress}, 
+			#{employerField}, #{ownerName}, #{ownerPhone}, #{employerHomePage})
+	</insert>
+	
 </mapper>

@@ -13,6 +13,8 @@ import kosta.albanara.action.Action;
 import kosta.albanara.action.ActionForward;
 import kosta.albanara.action.EmployeeFormAction;
 import kosta.albanara.action.EmployeeSignUpAction;
+import kosta.albanara.action.EmployerFormAction;
+import kosta.albanara.action.EmployerSignUpAction;
 
 @WebServlet("/member/*")
 public class MemberController extends HttpServlet {
@@ -50,6 +52,22 @@ public class MemberController extends HttpServlet {
 			}
     	}else if(command.equals("insertEmployees.do")){
     		action = new EmployeeSignUpAction();
+    		try {
+				actionForward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}else if(command.equals("employerSignUpForm.do")) {
+    		action = new EmployerFormAction();
+    		try {
+				actionForward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}else if(command.equals("insertEmployers.do")){
+    		action = new EmployerSignUpAction();
     		try {
 				actionForward = action.execute(request, response);
 				
