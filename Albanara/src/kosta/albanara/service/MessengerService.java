@@ -9,7 +9,7 @@ public class MessengerService {
 	public static MessengerService getInstance() {
 		if (instance == null) {
 			messengerDao = MessengerDao.getInstance();
-			return new MessengerService();
+			instance = new MessengerService();
 		}
 		return instance;
 	}

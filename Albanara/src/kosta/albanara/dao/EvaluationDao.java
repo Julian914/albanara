@@ -11,7 +11,7 @@ public class EvaluationDao {
 
 	public static EvaluationDao getInstance() {
 		if (instance == null)
-			return new EvaluationDao();
+			instance = new EvaluationDao();
 		return instance;
 	}
 

@@ -7,42 +7,35 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import kosta.albanara.mapper.EmployeeMapper;
-import kosta.albanara.mapper.EmployerMapper;
-import kosta.albanara.model.Employees;
-import kosta.albanara.model.Employers;
+import kosta.albanara.mapper.MarkerLocationMapper;
+import kosta.albanara.model.MarkerLocation;
 
-public class EmployerDao {
-	private static EmployerDao instance;
-
-	public static EmployerDao getInstance() {
+public class MarkerLocationDao {
+	private static MarkerLocationDao instance;
+	public static MarkerLocationDao getInstance() {
 		if (instance == null)
-			instance = new EmployerDao();
+			instance = new MarkerLocationDao();
 		return instance;
 	}
-
+	
 	public SqlSessionFactory getSqlSessionFactory() {
 		String resource = "mybatis-config.xml";
 		InputStream in = null;
-
 		try {
 			in = Resources.getResourceAsStream(resource);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
 		return new SqlSessionFactoryBuilder().build(in);
 	}
-
-	public int insertEmployer(Employers employers) {
-
-		SqlSession sqlSession = getSqlSessionFactory().openSession();
+	
+	public void insertMarkerLocation(MarkerLocation markerLocation) {
 		int re = -1;
-
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		try {
-			re = sqlSession.getMapper(EmployerMapper.class).insertEmployer(employers);
-
-			if (re > 0) {
+			re = sqlSession.getMapper(MarkerLocationMapper.class).insertMarkerLocation(markerLocation);
+			if(re > 0) {
 				sqlSession.commit();
 			} else {
 				sqlSession.rollback();
@@ -50,34 +43,27 @@ public class EmployerDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if (sqlSession != null) {
-				sqlSession.close();
-			}
-		}
-		return re;
-	}
-	
-	public int employerLogIn(Employers employers) {
-		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		int re = -1;
-
-		try {
-			re = sqlSession.getMapper(EmployerMapper.class).employerLogIn(employers);
-	
-			if(re > 0) {
-				sqlSession.commit();		
-			}else {
-				sqlSession.rollback();		
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
 			if(sqlSession != null) {
 				sqlSession.close();
 			}
 		}
+	}
+	
+	public int existMarkerLocation(String road_address) {
+		int re = 0;
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			re = sqlSession.getMapper(MarkerLocationMapper.class).existMarkerLocation(road_address);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		
 		return re;
 	}
-		
 	
 }

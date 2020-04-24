@@ -11,7 +11,7 @@ public class MessengerDao {
 
 	public static MessengerDao getInstance() {
 		if (instance == null)
-			return new MessengerDao();
+			instance = new MessengerDao();
 		return instance;
 	}
 

@@ -17,7 +17,7 @@ public class EmployeeDao {
 
 	public static EmployeeDao getInstance() {
 		if (instance == null)
-			return new EmployeeDao();
+			instance = new EmployeeDao();
 		return instance;
 	}
 

@@ -19,7 +19,6 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=814861f68a4b2c5498535e608555d96a&libraries=services"></script>
 <script>
-
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     mapOption = {
         center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
@@ -38,6 +37,7 @@ var marker = new daum.maps.Marker({
 
 
 function sample5_execDaumPostcode() {
+	
     new daum.Postcode({
         oncomplete: function(data) {
             var addr = data.address; // 최종 주소 변수
