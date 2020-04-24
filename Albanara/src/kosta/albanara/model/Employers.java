@@ -7,7 +7,7 @@ public class Employers {
 	private String employerName;	//기업이름
 	private String employerNumber;		//사업자번호
 	private String employerAddress;		//사업장주소
-	private String employerHomepage;	//기업홈페이지주소
+	private String employerHomePage;	//기업홈페이지주소
 	private String employerField;	//사업장분야
 	private String ownerName;	//대표자이름
 	private String ownerPhone;	//대표자전화번호
@@ -20,7 +20,7 @@ public class Employers {
 	
 	
 	public Employers(String employerId, String employerPw, String employerName, String employerNumber,
-			String employerAddress, String employerHomepage, String employerField, String ownerName,
+			String employerAddress, String employerHomePage, String employerField, String ownerName,
 			String ownerPhone) {
 		super();
 		this.employerId = employerId;
@@ -28,7 +28,7 @@ public class Employers {
 		this.employerName = employerName;
 		this.employerNumber = employerNumber;
 		this.employerAddress = employerAddress;
-		this.employerHomepage = employerHomepage;
+		this.employerHomePage = employerHomePage;
 		this.employerField = employerField;
 		this.ownerName = ownerName;
 		this.ownerPhone = ownerPhone;
@@ -65,11 +65,11 @@ public class Employers {
 	public void setEmployerAddress(String employerAddress) {
 		this.employerAddress = employerAddress;
 	}
-	public String getEmployerHomepage() {
-		return employerHomepage;
+	public String getEmployerHomePage() {
+		return employerHomePage;
 	}
 	public void setEmployerHomepage(String employerHomepage) {
-		this.employerHomepage = employerHomepage;
+		this.employerHomePage = employerHomepage;
 	}
 	public String getEmployerField() {
 		return employerField;
