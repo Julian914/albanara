@@ -99,7 +99,9 @@
 		<input type="text" id="sample5_address" placeholder="주소" name = "employeeAddress">
 		<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 		<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
-
+		<input type="hidden" id="latitude" placeholder="위도" name="latitude">
+		<input type="hidden" id="longitude" placeholder="경도" name="longitude">
+		<input type="button" onclick="getLatlng()" value="주소 등록"><br>
 
 <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
@@ -146,7 +148,33 @@
                 });
             }
         }).open();
-    }
+    };
+    
+    function getLatlng() {
+    	var query = document.getElementById('sample5_address').value;
+    	var totalUrl = 'https://dapi.kakao.com/v2/local/search/address.json?query=' + query;
+    	$.ajax({
+    		url : 'https://dapi.kakao.com/v2/local/search/address.json' ,
+    		headers : { 'Authorization' : 'KakaoAK e8a788b4cc661ab86dff50abd5c61f6c'	},
+    		type : 'get',
+    		dataType:'text',
+    		data: {
+    			"query" : query 
+    		},
+    		success: function(data){
+    			console.log('성공했다');
+    			var obj = JSON.parse(data);
+    			var x = obj.documents[0].x;
+    			var y = obj.documents[0].y;
+    			document.getElementById("latitude").value = x;
+    			document.getElementById("longitude").value = y;
+    			
+    		},
+    		error : function(request, status, error){
+    			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    		}		
+    	});	
+    };
 </script>
 
 		<br> <input id="joinbutton" type="submit" value="회원가입" />	

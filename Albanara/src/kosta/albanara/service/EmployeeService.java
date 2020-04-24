@@ -34,13 +34,15 @@ public class EmployeeService {
 		String employeeGender = request.getParameter("employeeGender");
 		String employeePhone = request.getParameter("employeePhone1")+request.getParameter("employeePhone2")+request.getParameter("employeePhone3");
 		String employeeAddress = request.getParameter("employeeAddress");
+		String employeeLatitude = request.getParameter("latitude");
+		String employeeLongitude = request.getParameter("longitude");
 		
 		/*
 		 * String employeeId = "ID"; String employeePw = "Password"; String employeeName
-		 * = "ÀÌ¸§"; Date employeeBirthday = Date.valueOf("1992-05-11"); String
+		 * = "ï¿½Ì¸ï¿½"; Date employeeBirthday = Date.valueOf("1992-05-11"); String
 		 * employeeEmail = "employeeEmailInput1"+"employeeEmailInput2"; String
-		 * employeeGender = "¿©ÀÚ"; String employeePhone = "010"+"2785"+"1111"; String
-		 * employeeAddress ="¼­¿ï";
+		 * employeeGender = "ï¿½ï¿½ï¿½ï¿½"; String employeePhone = "010"+"2785"+"1111"; String
+		 * employeeAddress ="ï¿½ï¿½ï¿½ï¿½";
 		 */
 		
 		
