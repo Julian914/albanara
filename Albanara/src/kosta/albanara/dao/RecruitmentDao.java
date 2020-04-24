@@ -73,4 +73,21 @@ public class RecruitmentDao {
 		return resultCount;
 	}
 
+	public Recruitments getRecruitment(int seq) {
+		SqlSession session = getSqlSessionFactory().openSession();
+		RecruitmentMapper mapper = null;
+		Recruitments recruitment = null;
+		try {
+			mapper = session.getMapper(RecruitmentMapper.class);
+			System.out.println("공고수정 SEQ: " + seq);
+			recruitment = mapper.getRecruitment(seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		return recruitment;
+	}
+
 }

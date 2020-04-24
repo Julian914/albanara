@@ -1,3 +1,4 @@
+
 package kosta.albanara.service;
 
 import java.util.List;
@@ -68,5 +69,10 @@ public class RecruitmentService {
 		resultCount = recruitmentDao.insertRecruitment(recruitment);
 
 		return resultCount;
+	}
+
+	public Recruitments getRecruitment(HttpServletRequest request) {
+		int seq = Integer.parseInt(request.getParameter("seq"));
+		return recruitmentDao.getRecruitment(seq);
 	}
 }

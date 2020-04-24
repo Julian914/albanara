@@ -35,7 +35,9 @@
 		)
 	</insert>
 
-
+	<select id="getRecruitment" parameterType="int" resultMap="Recruitments">
+		select * from RECRUITMENTS where RECRUITMENT_SEQ = #{seq}		
+	</select>
 
    <resultMap id="Recruitments" type="Recruitments">
       <result column="recruitment_seq" property="recruitmentSeq" />
