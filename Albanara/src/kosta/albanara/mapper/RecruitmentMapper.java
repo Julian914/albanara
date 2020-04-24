@@ -7,4 +7,5 @@ public interface RecruitmentMapper {
 	List<Recruitments> recruitmentList();
 	int insertRecruitment(Recruitments recruitment);
 	int applicantList(int recruitmentSeq);
+	Recruitments getRecruitment(int seq);
 }
