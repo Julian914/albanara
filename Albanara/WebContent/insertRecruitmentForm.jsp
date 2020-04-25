@@ -97,7 +97,7 @@
 			<br> <input type="reset" value="초기화"><input
 				type="submit" value="등록">
 
->>>>>>> refs/heads/Ahhyun
+
 		</form>
 	</div>
 </body>
