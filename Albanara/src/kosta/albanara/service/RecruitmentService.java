@@ -37,7 +37,6 @@ public class RecruitmentService {
 	
 	public int insertRecruitment(HttpServletRequest request) throws ParseException {
 		int resultCount = -1;
-		System.out.println("insert 서비스 출력");
 		// int employerSeq = Integer.parseInt(request.getParameter("employerSeq"));
 		int employerSeq = 1;
 		String recruitmentTitle = request.getParameter("recruitmentTitle");
@@ -60,12 +59,9 @@ public class RecruitmentService {
 		String requirementQuestion1 = request.getParameter("requirementQuestion1");
 		String requirementQuestion2 = request.getParameter("requirementQuestion2");
 		String requirementQuestion3 = request.getParameter("requirementQuestion3");
-		// String workingPlaceAddress = request.getParameter("workingPlaceAddress");
-		String workingPlaceAddress = "도로명주소값";
+		String workingPlaceAddress = request.getParameter("workingPlaceAddress");
 		Date closingDate = Date.valueOf(request.getParameter("closingDate"));
-		// String recruitmentContents = request.getParameter("recruitmentContents");
-		String recruitmentContents = "상세정보값";
-		System.out.println("상세정보: " + recruitmentContents);
+		String recruitmentContents = request.getParameter("recruitmentContents");
 
 		Recruitments recruitment = new Recruitments(employerSeq, recruitmentTitle, recruitmentType, recruitmentSize,
 				startingWorkingDate, endingWorkingDate, totalWorkingDay, startingWorkingTime, endingWorkingTime,

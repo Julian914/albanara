@@ -30,16 +30,14 @@
 				<input type="text" name="recruitmentTitle"
 					value="${recruitment.recruitmentTitle }">
 			</div>
-			<div>분류</div>
-			${recruitment.recruitmentType }		
-			<c:if test="${recruitment.recruitmentType == 'intelligence' }">checked</c:if>
+			<div>분류</div>			
 			<input type="radio" id="strength" name="recruitmentType"
 				value="strength"> <label for="strength">힘</label> <input
 				type="radio" id="intelligence" name="recruitmentType"
-				value="inteligence"> <label for="inteligence">지능</label> <input
-				type="radio" id="kindness" name="recruitmentType" value="kindness">
+				value="inteligence" <c:if test="${recruitment.recruitmentType == 'strength' }">checked</c:if>> <label for="inteligence" <c:if test="${recruitment.recruitmentType == 'intelligence' }">checked</c:if>>지능</label> <input
+				type="radio" id="kindness" name="recruitmentType" value="kindness" <c:if test="${recruitment.recruitmentType == 'kindness' }">checked</c:if>>
 			<label for="kindness">친절</label> <input type="radio" id="patience"
-				name="recruitmentType" value="patience"> <label
+				name="recruitmentType" value="patience" <c:if test="${recruitment.recruitmentType == 'patience' }">checked</c:if>> <label
 				for="patience">끈기</label>			
 				
 			<div>모집 인원</div>
@@ -61,14 +59,14 @@
 			<input type="number" name="totalWorkingTime" value="${recruitment.totalWorkingTime }">
 			<div>급여</div>
 			<select id="wageType" name="wageType">
-				<option value="hourlyWage" selected>시급</option>
-				<option value="dailyWage">일급</option>
+				<option value="hourlyWage" <c:if test="${recruitment.wageType == 'hourlyWage' }">selected</c:if>>시급</option>
+				<option value="dailyWage" <c:if test="${recruitment.wageType == 'dailyWage' }">selected</c:if>>일급</option>
 			</select> <input type="number" name="wage" value="${recruitment.wage }">
 			<div>성별</div>
 			<input type="radio" id="other" name="gender" value="other"> <label
 				for="other">성별무관</label> <input type="radio" id="male" name="gender"
-				value="male"> <label for="male">남자</label> <input
-				type="radio" id="female" name="gender" value="female"> <label
+				value="male" <c:if test="${recruitment.gender == 'male' }">checked</c:if>> <label for="male">남자</label> <input
+				type="radio" id="female" name="gender" value="female" <c:if test="${recruitment.gender == 'female' }">checked</c:if>> <label
 				for="female">여자</label>
 			<div>연령</div>
 			<input type="radio" id="other" name="age" value="other"> <label
