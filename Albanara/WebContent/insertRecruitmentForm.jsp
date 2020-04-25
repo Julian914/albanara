@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,83 +17,83 @@
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=814861f68a4b2c5498535e608555d96a&libraries=services"></script>
-<title>공고 등록</title>
+<title>공고 수정</title>
 </head>
 <body>
 	<div class="container">
 		<h1>모집 공고</h1>
-		<form action="insertRecruitmentAction.do" method="post">
+		<form action="updateRecruitmentAction.do" method="post">
 			<div>모집 공고</div>
+			<input type="hidden" name="recruitmentSeq"
+				value="${recruitment.recruitmentSeq }">
 			<div>
-				<input type="text" name="recruitmentTitle">
+				<input type="text" name="recruitmentTitle"
+					value="${recruitment.recruitmentTitle }">
 			</div>
-			<div>분류</div>
+			<div>분류</div>			
 			<input type="radio" id="strength" name="recruitmentType"
 				value="strength"> <label for="strength">힘</label> <input
 				type="radio" id="intelligence" name="recruitmentType"
-				value="inteligence"> <label for="intelligence">지능</label> <input
-				type="radio" id="kindness" name="recruitmentType" value="kindness">
+				value="inteligence" <c:if test="${recruitment.recruitmentType == 'strength' }">checked</c:if>> <label for="inteligence" <c:if test="${recruitment.recruitmentType == 'intelligence' }">checked</c:if>>지능</label> <input
+				type="radio" id="kindness" name="recruitmentType" value="kindness" <c:if test="${recruitment.recruitmentType == 'kindness' }">checked</c:if>>
 			<label for="kindness">친절</label> <input type="radio" id="patience"
-				name="recruitmentType" value="patience"> <label
-				for="patience">끈기</label>
+				name="recruitmentType" value="patience" <c:if test="${recruitment.recruitmentType == 'patience' }">checked</c:if>> <label
+				for="patience">끈기</label>			
+				
 			<div>모집 인원</div>
 			<div>
-				<input type="number" name="recruitmentSize">
+				<input type="number" name="recruitmentSize" value="${recruitment.recruitmentSize }">
 			</div>
 			<div>근무 시작일</div>
-			<input type="date" name="startingWorkingDate">
+			<input type="date" name="startingWorkingDate" value="${recruitment.startingWorkingDate }">
 			<div>근무 종료일</div>
-			<input type="date" name="endingWorkingDate">
+			<input type="date" name="endingWorkingDate" value="${recruitment.endingWorkingDate }">
 			<div>총 근무일수</div>
-			<input type="number" name="totalWorkingDay">
+			<input type="number" name="totalWorkingDay" value="${recruitment.totalWorkingDay }">
 			<div>근무 시간</div>
 			<div>시작 시간</div>
-			<input type="number" name="startingWorkingTime">
+			<input type="number" name="startingWorkingTime" value="${recruitment.startingWorkingTime }">
 			<div>종료 시간</div>
-			<input type="number" name="endingWorkingTime">
+			<input type="number" name="endingWorkingTime" value="${recruitment.endingWorkingTime }">
 			<div>총 시간</div>
-			<input type="number" name="totalWorkingTime">
+			<input type="number" name="totalWorkingTime" value="${recruitment.totalWorkingTime }">
 			<div>급여</div>
-			e <select id="wageType" name="wageType">
-				<option value="hourlyWage" selected>시급</option>
-				<option value="dailyWage">일급</option>
-			</select> <input type="number" name="wage">
+			<select id="wageType" name="wageType">
+				<option value="hourlyWage" <c:if test="${recruitment.wageType == 'hourlyWage' }">selected</c:if>>시급</option>
+				<option value="dailyWage" <c:if test="${recruitment.wageType == 'dailyWage' }">selected</c:if>>일급</option>
+			</select> <input type="number" name="wage" value="${recruitment.wage }">
 			<div>성별</div>
 			<input type="radio" id="other" name="gender" value="other"> <label
 				for="other">성별무관</label> <input type="radio" id="male" name="gender"
-				value="male"> <label for="male">남자</label> <input
-				type="radio" id="female" name="gender" value="female"> <label
+				value="male" <c:if test="${recruitment.gender == 'male' }">checked</c:if>> <label for="male">남자</label> <input
+				type="radio" id="female" name="gender" value="female" <c:if test="${recruitment.gender == 'female' }">checked</c:if>> <label
 				for="female">여자</label>
 			<div>연령</div>
 			<input type="radio" id="other" name="age" value="other"> <label
 				for="other">연령무관</label> <input type="radio" id="age" name="age"
 				value="age"> <label for="age">연령제한 있음</label> <input
-				type="number" name="minAge">세 이상 <input type="number"
-				name="maxAge">세 이하
+				type="number" name="minAge" value="${recruitment.minAge }">세 이상 <input type="number"
+				name="maxAge" value="${recruitment.maxAge }">세 이하
 			<div>우대 조건</div>
-			<input type="text" name="requirementQuestion1"> <input
-				type="text" name="requirementQuestion2"> <input type="text"
-				name="requirementQuestion3">
+			<input type="text" name="requirementQuestion1" value="${recruitment.requirementQuestion1 }"> <input
+				type="text" name="requirementQuestion2" value="${recruitment.requirementQuestion2 }"> <input type="text"
+				name="requirementQuestion3" value="${recruitment.requirementQuestion3 }">
 			<div>모집 종료일</div>
-			<input type="date" name="closingDate">
+			<input type="date" name="closingDate" value="${recruitment.closingDate }">
 			<div>상세 정보</div>
 			<textarea name="recruitmentContents" rows="4" cols="50">
-		</textarea>
+			${recruitment.recruitmentContents }
+			</textarea>
 			<div>근무지 주소</div>
 
-
 			<input type="text" id="sample5_address" placeholder="주소"
-				name="workingPlaceAddress"> <input type="button"
+				name="workingPlaceAddress" value="${recruitment.workingPlaceAddress }"> <input type="button"
 				onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
-
 			<div id="map"
 				style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
-			<br>
-			<input type="hidden" id="latitude" placeholder="위도" name="latitude">
-			<input type="hidden" id="longitude" placeholder="경도" name="longitude">
-			<input type="button" onclick="addrInsertClick" value="주소 등록"><br> 
-			<input type="reset" value="초기화">
-			<input type="submit" value="등록">
+			<br> <input type="reset" value="초기화"><input
+				type="submit" value="수정">
+
 		</form>
 	</div>
 </body>
@@ -143,30 +144,5 @@
 			}
 		}).open();
 	}
-	
-    function addrInsertClick() {
-		var location = document.getElementById('sample5_address').value;
-	   $.ajax({
-	      url : 'map/kakaoMap.go',
-	      type : 'get',
-	      dataType:'text',
-	      data: {
-	         "location" : location, 
-	      },
-	      success: function(data){
-	         console.log(data);
-	    longitude = JSON.parse(data);
-	         var latitude = data.documents[0].x;
-	         var longitude = data.documents[0].y;
- 			document.getElementById("latitude").value = latitude;
-			document.getElementById("longitude").value = longitude;
-	      },
-	      error : function(xhr, status, error){
-	         console.log('실패?')
-	         console.log(xhr);
-	         console.log(error);
-	      }      
-	   });   
-	}	
 </script>
 </html>
