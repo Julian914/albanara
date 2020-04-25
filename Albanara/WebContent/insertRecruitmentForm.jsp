@@ -85,6 +85,12 @@
 				onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 			<div id="map"
 				style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
+				<input type="hidden" id="latitude" placeholder="위도" name="latitude">
+				<input type="hidden" id="longitude"
+				 placeholder="경도" name="longitude">
+				<input type="button" onclick="Click()" value="주소 등록"><br>
+				
+				
 			<br> <input type="reset" value="초기화"><input
 				type="submit" value="등록">
 
