@@ -4,12 +4,37 @@
 
 <mapper namespace="kosta.albanara.mapper.EmployeeMapper">
 	<cache />
+	<resultMap id="Employees" type="Employees">
+		<result column="EMPLOYEE_SEQ" property="employeeSeq" />
+		<result column="RESUME_SEQ" property="resumeSeq" />
+		<result column="EMPLOYEE_ID" property="employeeId" />
+		<result column="EMPLOYEE_PW" property="employeePw" />
+		<result column="EMPLOYEE_NAME" property="employeeName" />
+		<result column="EMPLOYEE_BIRTHDAY" property="employeeBirthday" />
+		<result column="EMPLOYEE_EMAIL" property="employeeEmail" />
+		<result column="EMPLOYEE_GENDER" property="employeeGender" />
+		<result column="EMPLOYEE_PHONE" property="employeePhone" />
+		<result column="EMPLOYEE_ADDRESS" property="employeeAddress" />
+		<result column="ATTRIBUTE_COUNT" property="attributeCount" />
+		<result column="NOSHOW_COUNT" property="noshowCount" />
+		<result column="WORKING_DAY_COUNT" property="workingDayCount" />
+		<result column="ACTIVITY_AVG" property="activityAvg" />
+		<result column="COLLABORATION_AVG" property="collaborationAvg" />
+		<result column="DILIGENCY_AVG" property="diligencyAvg" />
+		<result column="LEADERSHIP_AVG" property="leadershipAvg" />
+		<result column="COMPREHENSION_AVG" property="comprehensionAvg" />
+		<result column="CONTENTMENT_AVG" property="contentmentAvg" />
+		<result column="STRENGTH_COUNT" property="strengthcount" />
+		<result column="INTELLIGENCE_COUNT" property="intelligenceCount" />
+		<result column="KINDNESS_COUNT" property="kindnessCount" />
+		<result column="PATIENCE_COUNT" property="patienceCount" />
+	</resultMap>
+	
 	<insert id="insertEmployee" parameterType="Employees">
 		insert into employees(
-			employee_seq, employee_id, employee_pw, employee_name, employee_birthday,
-			employee_email, employee_gender, employee_phone, employee_address) 
-			values(s_employee_seq.nextval, #{employeeId}, #{employeePw}, #{employeeName}, #{employeeBirthday}, #{employeeEmail}, 
-			#{employeeGender}, #{employeePhone}, #{employeeAddress})
+			employee_seq, employee_id, employee_pw, employee_name, employee_birthday, employee_email, employee_gender, employee_phone, employee_address) 
+			values(s_employee_seq.nextval, #{employeeId, jdbcType=VARCHAR}, #{employeePw, jdbcType=VARCHAR}, #{employeeName, jdbcType=VARCHAR}, #{employeeBirthday, jdbcType=DATE}, #{employeeEmail, jdbcType=VARCHAR}, 
+			#{employeeGender, jdbcType=VARCHAR}, #{employeePhone, jdbcType=VARCHAR}, #{employeeAddress, jdbcType=VARCHAR})
 	</insert>
 	
 	<!-- 이력서 등록 (동현)-->
