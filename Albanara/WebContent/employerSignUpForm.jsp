@@ -67,7 +67,7 @@
 			<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
 			<input type="hidden" id="latitude" placeholder="위도" name="latitude">
 			<input type="hidden" id="longitude" placeholder="경도" name="longitude">
-			<input type="button" onclick="addrInsertClick" value="주소 등록"><br>
+			<input type="button" onclick="addrInsertClick()" value="주소 등록"><br>
 		</div>
 		<div>
 			<div class="employerField" valign=top>* 사업장 분야</div>
