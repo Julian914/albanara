@@ -17,6 +17,8 @@ import kosta.albanara.action.InsertResumeAction;
 import kosta.albanara.action.InsertResumeForm;
 import kosta.albanara.action.EmployeeLogInFormAction;
 import kosta.albanara.action.SearchResumeAction;
+import kosta.albanara.action.UpdateResumeAction;
+import kosta.albanara.action.UpdateResumeFormAction;
 import kosta.albanara.action.EmployerFormAction;
 import kosta.albanara.action.EmployerSignUpAction;
 
@@ -115,7 +117,32 @@ public class MemberController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+    	}else if(command.equals("updateResume.do")) {
+    		action = new UpdateResumeFormAction();
+    		try {
+				actionForward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}else if(command.equals("updateResumeAction.do")) {
+    		action = new UpdateResumeAction();
+    		try {
+				actionForward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
     	}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		// forward using redirect or dispatch
 		

@@ -97,5 +97,31 @@ public class EmployeeService {
 	public Resumes searchResumeService(int employeeSeq) {
 		return employeeDao.searchResume(employeeSeq);
 	}
+	
+	
+	public int updateResumeService(HttpServletRequest request)throws Exception {
+		request.setCharacterEncoding("utf-8");
+		
+		String uploadPath = request.getRealPath("upload");
+		int size = 20 * 1024 * 1024;
+		
+		MultipartRequest multi =
+				new MultipartRequest(request, uploadPath, size, "utf-8", new DefaultFileRenamePolicy());
+		
+		//String resumeSeq = multi.getParameter("resumeSeq");
+		String resumeTitle = multi.getParameter("resumeTitle");
+		String resumeContents = multi.getParameter("resumeContents");
+		String desiredWorkingArea = multi.getParameter("desiredWorkingArea");
+		String pictureFilename = (String)multi.getFilesystemName("pictureFilename");
+		String favoriteField = multi.getParameter("favoriteField");
+		
+		Resumes resume = new Resumes(pictureFilename, resumeTitle, resumeContents, desiredWorkingArea, favoriteField);
+		
+		return employeeDao.updateResume(resume);
+	}
+	
+	
+	
+	
 
 }

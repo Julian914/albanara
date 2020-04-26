@@ -44,8 +44,13 @@
 	
 	<!-- 이력서 조회  (동현)-->
 	<select id="searchResume" parameterType="int" resultType="Resumes">
-		select * from resume where seq=#{employeeSeq}
+		select * from resumes where s_resume_seq= (select s_resume_seq from employees where s_employee_seq = #{employeeSeq});
 	</select>
+	
+	<update id="updateResume" parameterType="Resumes">
+		update resumes set picture_filename = #{pictureFilename}, resume_title = #{resumeTitle}, resume_contents = #{resumeContents}, desired_working_area = #{desiredWorkingArea}, favorite_field = #{favoriteField} where s_resume_seq = #{resumeSeq};
+	</update>
+	
 	
 	
 	
