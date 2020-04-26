@@ -9,8 +9,18 @@
 		insert into employers(
 			employer_seq, employer_id, employer_pw, employer_name, employer_number,
 			employer_address, employer_field, owner_name, owner_phone, employer_homepage) 
-			values(s_employer_seq.nextval, #{employerId}, #{employerPw}, #{employerName}, #{employerNumber}, #{employerAddress}, 
-			#{employerField}, #{ownerName}, #{ownerPhone}, #{employerHomePage})
+			values(
+			s_employer_seq.nextval, 
+			#{employerId, jdbcType=VARCHAR}, 
+			#{employerPw, jdbcType=VARCHAR },
+			#{employerName, jdbcType=VARCHAR}, 
+			#{employerNumber, jdbcType=VARCHAR}, 
+			#{employerAddress, jdbcType=VARCHAR}, 
+			#{employerField, jdbcType=VARCHAR},
+			#{ownerName, jdbcType=VARCHAR}, 
+			#{ownerPhone}, jdbcType=VARCHAR, 
+			#{employerHomePage, jdbcType=VARCHAR}
+			)
 	</insert>
 	
 	<select id="employerLogIn" parameterType="Employers" resultType="int">

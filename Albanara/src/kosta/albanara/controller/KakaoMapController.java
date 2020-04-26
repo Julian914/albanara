@@ -21,7 +21,7 @@ import com.sun.xml.internal.txw2.Document;
 import kosta.albanara.action.ActionForward;
 
 
-@WebServlet("/member/map/*")
+@WebServlet({"/member/map/*","/recruitment/map/*"})
 public class KakaoMapController extends HttpServlet {
    private static final long serialVersionUID = 1L;
        

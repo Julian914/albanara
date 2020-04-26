@@ -79,22 +79,14 @@
 			<textarea name="recruitmentContents" rows="4" cols="50">
 		</textarea>
 			<div>근무지 주소</div>
-
-
-			<input type="text" id="sample5_address" placeholder="주소"
-				name="workingPlaceAddress"> <input type="button"
-				onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
-
-			<div id="map"
-				style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
-
-			<br> <input type="hidden" id="latitude" placeholder="위도"
-				name="latitude"> <input type="hidden" id="longitude"
-				placeholder="경도" name="longitude"> <input type="button"
-				onclick="addrInsertClick" value="주소 등록"><br> <br>
-			<input type="reset" value="초기화"><input type="submit"
-				value="등록">
-
+			<input type="text" id="sample5_address" placeholder="주소" name = "workingPlaceAddress">
+			<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+			<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
+			<input type="hidden" id="latitude" placeholder="위도" name="latitude">
+			<input type="hidden" id="longitude" placeholder="경도" name="longitude">
+			<input type="button" onclick="addrInsertClick()" value="주소 등록"><br>
+			<input type="reset" value="초기화">
+			<input type="submit" value="등록">
 
 		</form>
 	</div>
