@@ -3,7 +3,8 @@ package kosta.albanara.service;
 import java.util.List;
 
 import kosta.albanara.dao.HyunMapDao;
-import kosta.albanara.model.HyunMap;
+import kosta.albanara.model.NearRecruitments;
+
 
 public class HyunMapService {
 	public static HyunMapService instance;
@@ -17,7 +18,7 @@ public class HyunMapService {
 		return instance;
 	}
 
-	public List<HyunMap> mapList() {
-		return mapDao.mapList();
+	public List<NearRecruitments> nearRecruitment() {
+		return mapDao.nearRecruitment();
 	}
 }

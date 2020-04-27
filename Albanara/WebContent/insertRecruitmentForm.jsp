@@ -137,7 +137,7 @@
 				});
 			}
 		}).open();
-	}
+	};
 
 	function addrInsertClick() {
 		var location = document.getElementById('sample5_address').value;
@@ -152,7 +152,7 @@
 				console.log(data);
 				data = JSON.parse(data);
 				var latitude = data.documents[0].x;
-				var longitude = data.documents[0].y;
+	            var longitude = data.documents[0].y;
 				document.getElementById("latitude").value = latitude;
 				document.getElementById("longitude").value = longitude;
 			},

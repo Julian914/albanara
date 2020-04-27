@@ -8,7 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import kosta.albanara.model.HyunMap;
+import kosta.albanara.model.NearRecruitments;
+
 
 public class HyunMapDao {
 	private static HyunMapDao instance;
@@ -32,11 +33,12 @@ public class HyunMapDao {
 		return new SqlSessionFactoryBuilder().build(in);
 	}
 
-	public List<HyunMap> mapList() {
+	public List<NearRecruitments> nearRecruitment() {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<HyunMap> list = null;
+		List<NearRecruitments> list = null;
 		try {
-			list = sqlSession.selectList("kosta.albanara.mapper.MapMapper.mapList");
+			list = sqlSession.selectList("kosta.albanara.mapper.RecruitmentMapper.showNearRecruitments");
+			System.out.println(list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
