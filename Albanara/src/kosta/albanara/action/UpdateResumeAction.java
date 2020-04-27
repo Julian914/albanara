@@ -9,12 +9,14 @@ public class UpdateResumeAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
 		ActionForward actionForward = new ActionForward();
 		EmployeeService service = new EmployeeService().getInstance();
 		
+		System.out.println("updateAction");
 		
 		service.updateResumeService(request);
-		System.out.println("command");
+		
 		
 		actionForward.setRedirect(false);
 		actionForward.setPath("/resumetotal.jsp");

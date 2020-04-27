@@ -85,6 +85,7 @@ public class EmployeeDao {
 		
 		try {
 			resume = sqlSession.getMapper(EmployeeMapper.class).searchResume(employeeSeq);
+			System.out.println(resume);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

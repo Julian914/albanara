@@ -25,8 +25,6 @@
 	<div>관심직종</div>
 	<div>${Resume.favoriteField }</div>
 	
-	<div>마지막 수정날짜</div>
-	<div>${Resume.lastModifyDate }</div>
 	
 	<button type="button" onclick="location.href='/index.jsp' ">확인하기</button>
 	

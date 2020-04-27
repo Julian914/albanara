@@ -82,6 +82,7 @@ public class MemberController extends HttpServlet {
     		action = new SearchResumeAction();
     		try {
 				actionForward = action.execute(request, response);
+				System.out.println("123");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -121,6 +122,7 @@ public class MemberController extends HttpServlet {
     		action = new UpdateResumeFormAction();
     		try {
 				actionForward = action.execute(request, response);
+				System.out.println("5678");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -128,6 +130,7 @@ public class MemberController extends HttpServlet {
     		action = new UpdateResumeAction();
     		try {
 				actionForward = action.execute(request, response);
+				System.out.println("1234");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

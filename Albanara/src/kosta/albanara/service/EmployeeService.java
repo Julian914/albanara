@@ -94,15 +94,16 @@ public class EmployeeService {
 		return employeeDao.insertResume(resume);
 	}
 
-	public Resumes searchResumeService(int employeeSeq) {
+	public Resumes searchResumeService(int employeeSeq)throws Exception {
+	System.out.println(employeeSeq);
 		return employeeDao.searchResume(employeeSeq);
 	}
 	
 	
-	public int updateResumeService(HttpServletRequest request)throws Exception {
+	public int updateResumeService(HttpServletRequest request)throws Exception{
 		request.setCharacterEncoding("utf-8");
 		
-		String uploadPath = request.getRealPath("upload");
+		String uploadPath = request.getRealPath("upload/resumePicture");
 		int size = 20 * 1024 * 1024;
 		
 		MultipartRequest multi =
@@ -116,6 +117,8 @@ public class EmployeeService {
 		String favoriteField = multi.getParameter("favoriteField");
 		
 		Resumes resume = new Resumes(pictureFilename, resumeTitle, resumeContents, desiredWorkingArea, favoriteField);
+		
+	System.out.println(resume.toString());
 		
 		return employeeDao.updateResume(resume);
 	}

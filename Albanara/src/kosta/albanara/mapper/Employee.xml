@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kosta.albanara.mapper.EmployeeMapper">
-	<cache />
+	<!-- <cache /> -->
 	<resultMap id="Employees" type="Employees">
 		<result column="EMPLOYEE_SEQ" property="employeeSeq" />
 		<result column="RESUME_SEQ" property="resumeSeq" />
@@ -30,6 +30,17 @@
 		<result column="PATIENCE_COUNT" property="patienceCount" />
 	</resultMap>
 	
+	<resultMap type="Resumes" id="Resumes">
+		<result column="RESUME_SEQ" property="resumeSeq"/>
+		<result column="PICTURE_FILENAME" property="pictureFilename"/>
+		<result column="RESUME_TITLE" property="resumeTitle"/>
+		<result column="RESUME_CONTENTS" property="resumeContents"/>
+		<result column="DESIRED_WORKING_AREA" property="desiredWorkingArea"/>
+		<result column="FAVORITE_FIELD" property="favoriteField"/>
+		<result column="LAST_MODIFY_DATE" property="lastModifyDate"/>
+	</resultMap>
+	
+	
 	<insert id="insertEmployee" parameterType="Employees">
 		insert into employees(
 			employee_seq, employee_id, employee_pw, employee_name, employee_birthday, employee_email, employee_gender, employee_phone, employee_address) 
@@ -43,12 +54,14 @@
 	</insert>
 	
 	<!-- 이력서 조회  (동현)-->
-	<select id="searchResume" parameterType="int" resultType="Resumes">
-		select * from resumes where s_resume_seq= (select s_resume_seq from employees where s_employee_seq = #{employeeSeq});
+	<select id="searchResume" parameterType="int" resultMap="Resumes">
+		<!-- select picture_filename, resume_title, resume_contents, desired_working_area, favorite_field from resumes where resume_seq = (select resume_seq from employees where employee_seq = #{employeeSeq}) -->
+		select * from resumes where resume_seq = (select resume_seq from employees where employee_seq = #{employeeSeq})
 	</select>
 	
+	<!-- 이력서 수정 (동현) -->
 	<update id="updateResume" parameterType="Resumes">
-		update resumes set picture_filename = #{pictureFilename}, resume_title = #{resumeTitle}, resume_contents = #{resumeContents}, desired_working_area = #{desiredWorkingArea}, favorite_field = #{favoriteField} where s_resume_seq = #{resumeSeq};
+		update resumes set picture_filename = #{pictureFilename}, resume_title = #{resumeTitle}, resume_contents = #{resumeContents}, desired_working_area = #{desiredWorkingArea}, favorite_field = #{favoriteField}, last_modify_date = sysdate where s_resume_seq = 1
 	</update>
 	
 	

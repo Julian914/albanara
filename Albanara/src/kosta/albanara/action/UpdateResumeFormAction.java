@@ -9,6 +9,8 @@ public class UpdateResumeFormAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward actionForward = new ActionForward();
 		
+		System.out.println("updateForm");
+		
 		actionForward.setRedirect(false);
 		actionForward.setPath("/updateResumeForm.jsp");
 		

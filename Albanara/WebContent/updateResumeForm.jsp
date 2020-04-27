@@ -8,7 +8,7 @@
 </head>
 <body>
 	
-	<form action="member/updateResumeAction.do" method="post" enctype="multipart/form-data">
+	<form action="updateResumeAction.do" method="post" enctype="multipart/form-data">
 			<h3>이력서</h3>
 			<div>사진 첨부</div>
 			<input type="file" name="pictureFilename"><br>
