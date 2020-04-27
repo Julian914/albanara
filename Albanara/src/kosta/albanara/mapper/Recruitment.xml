@@ -65,6 +65,7 @@
 	<resultMap id="Applications" type="Applications">
 		<result column="application_Seq" property="applicationSeq" />
 		<result column="employee_Seq" property="employeeSeq" />
+		<result column="requirement_Seq" property="requirementSeq" />
 		<result column="application_Date" property="applicationDate" />
 		<result column="requirement_Answer1" property="requirementAnswer1" />
 		<result column="requirement_Answer2" property="requirementAnswer2" />
@@ -74,32 +75,6 @@
 	<select id="getRecruitment" parameterType="int" resultMap="Recruitments">
 		select * from RECRUITMENTS where RECRUITMENT_SEQ = #{seq}		
 	</select>
-
-   <resultMap id="Recruitments" type="Recruitments">
-      <result column="recruitment_seq" property="recruitmentSeq" />
-      <result column="employer_seq" property="employerSeq" />
-      <result column="recruitment_title" property="recruitmentTitle" />
-      <result column="recruitment_type" property="recruitmentType" />
-      <result column="recruitment_size" property="recruitmentSize" />
-      <result column="starting_Working_Date" property="startingWorkingDate" />
-      <result column="ending_Working_Date" property="endingWorkingDate" />
-      <result column="total_Working_Day" property="totalWorkingDay"/>
-      <result column="starting_Working_Time" property="startingWorkingTime" />
-      <result column="ending_Working_Time" property="endingWorkingTime" />
-      <result column="total_Working_Time" property="totalWorkingTime" />
-      <result column="wage" property="wage" />
-      <result column="wage_Type" property="wageType" />
-      <result column="gender" property="gender" />
-      <result column="min_Age" property="minAge" />
-      <result column="max_Age" property="maxAge" />
-      <result column="recruitment_Contents" property="recruitmentContents" />
-      <result column="requirement_Question1" property="requirementQuestion1" />
-      <result column="requirement_Question2" property="requirementQuestion2" />
-      <result column="requirement_Question3" property="requirementQuestion3" />
-      <result column="working_Place_Address" property="workingPlaceAddress" />
-      <result column="closing_Date" property="closingDate" />
-      <result column="last_Modify_Date" property="lastModifyDate" />
-   </resultMap>
 
 	<cache />
 	
@@ -131,17 +106,39 @@
 	
 	
 
-	<select id="recruitmentList" resultMap="Recruitments">
+	<select id="totalRecruitmentList" resultMap="Recruitments">
 		SELECT * FROM Recruitments
 	</select>
 
 
-<!-- 해당 공고의 지원자 목록 불러오기-->
-	<select id="applicantList" parameterType="int" resultMap="Employees">
+	<!-- 해당 공고의 지원자 목록 불러오기-->
+	<select id="employeeList" parameterType="int" resultMap="Employees">
 		select * from employees where employee_Seq in(select employee_Seq from applications where recruitment_Seq=#{recruitment_Seq})
 	</select> 
 
-	
 
+	<select id="totalEmployeeList" resultMap="Employees">
+		select *from Employees
+	</select>
+	
+	
+	<select id="totalApplicationList" resultMap="Applications">
+		select*from Applications
+	</select>
+	
+	<insert id="insertApplication" parameterType="Applications">
+		insert into applications 
+		values (
+		s_application_seq.nextval,
+		#{recruitmentSeq},
+		#{employeeSeq},
+		sysdate,
+		#{requirementAnswer1},
+		#{requirementAnswer2},
+		#{requirementAnswer3}
+		)
+	
+	</insert>
+	
 
 </mapper>

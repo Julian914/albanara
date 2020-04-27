@@ -9,6 +9,7 @@ import java.text.ParseException;
 import javax.servlet.http.HttpServletRequest;
 
 import kosta.albanara.dao.RecruitmentDao;
+import kosta.albanara.model.Applications;
 import kosta.albanara.model.Employees;
 import kosta.albanara.model.Recruitments;
 
@@ -26,13 +27,13 @@ public class RecruitmentService {
 
 	public List<Recruitments> recruitmentListService(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		List<Recruitments> list = recruitmentDao.recruitmentList();
+		List<Recruitments> list = recruitmentDao.totalRecruitmentList();
 		return list;
 	}
 
-	public List<Employees> applicantListService(int recruitmentSeq)throws Exception {
-		List<Employees> applicantList = recruitmentDao.applicantList(recruitmentSeq);		
-		return applicantList;
+	public List<Employees> employeeListService(int recruitmentSeq)throws Exception {
+		List<Employees> employeeList = recruitmentDao.employeeList(recruitmentSeq);		
+		return employeeList;
 	}
 
 	
@@ -82,4 +83,37 @@ public class RecruitmentService {
 		int seq = Integer.parseInt(request.getParameter("seq"));
 		return recruitmentDao.getRecruitment(seq);
 	}
+
+	
+	public List<Employees> totalEmployeeListService()throws Exception{
+		return recruitmentDao.totalEmployeeList();
+	}
+
+
+	public List<Applications> totalApplicationListService()throws Exception{
+		return recruitmentDao.totalApplicationList();
+	}
+	
+	
+	
+	public int insertApplicationService(HttpServletRequest request) throws Exception{
+		int resultCount=-1;
+		
+		int recruitmentSeq= Integer.parseInt(request.getParameter("recruitmentSeq"));
+		//int employeeSeq = Integer.parseInt(request.getParameter("employeeSeq"));
+		int employeeSeq = 1;
+		
+		String requirementAnswer1 = request.getParameter("requirementAnswer1");
+		String requirementAnswer2 = request.getParameter("requirementAnswer2");
+		String requirementAnswer3 = request.getParameter("requirementAnswer3");
+		
+		Applications application = new Applications(recruitmentSeq, employeeSeq, requirementAnswer1, requirementAnswer2, requirementAnswer3);
+		
+		resultCount = recruitmentDao.insertApplication(application);
+		
+		return resultCount;
+		
+	}
+
+
 }
