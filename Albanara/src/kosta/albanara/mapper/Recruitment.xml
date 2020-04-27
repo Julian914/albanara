@@ -103,6 +103,20 @@
 		<result column="patience_Count"	property="patienceCount" />
 	</resultMap>
 	
+	<resultMap type="NearRecruitments" id="NearRecruitments">
+		<result column="recruitment_seq" property="recruitmentSeq" />
+		<result column="recruitment_title" property="recruitmentTitle" />
+		<result column="recruitment_type" property="recruitmentType" />
+		<result column="starting_Working_Date" property="startingWorkingDate" />			
+		<result column="ending_working_Date" property="endingWorkingDate" />		
+		<result column="starting_Working_Time" property="startingWorkingTime" />
+		<result column="ending_Working_Time" property="endingWorkingTime" />
+		<result column="wage" property="wage" />
+		<result column="wage_Type" property="wageType" />
+		<result column="latitude" property="latitude" />
+		<result column="longitude" property="longitude" />
+	</resultMap>
+	
 	
 
 	<select id="recruitmentList" resultMap="Recruitments">
@@ -114,6 +128,12 @@
 	<select id="applicantList" parameterType="int" resultMap="Employees">
 		select * from employees where employee_Seq in(select employee_Seq from applications where recruitment_Seq=#{recruitment_Seq})
 	</select> 
+	
+	<select id = "showNearRecruitments" resultMap = "NearRecruitments">
+		select RECRUITMENT_SEQ, recruitment_Title, recruitment_Type, starting_Working_Date, ending_Working_Date, 
+		starting_Working_Time, ending_Working_Time, wage, wage_Type, latitude, longitude 
+		from recruitments r inner join marker_location m on r.WORKING_PLACE_ADDRESS = m.ROAD_ADDRESS
+	</select>
 
 	
 
