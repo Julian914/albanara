@@ -9,6 +9,7 @@
 <body>
 <a href="recruitment/insertRecruitmentForm.do">공고 등록 페이지 이동</a><br>
 <a href="recruitment/updateRecruitmentForm.do?seq=1">공고 수정 페이지 이동</a><br>
+<a href="recruitment/deleteRecruitmentAction.do?seq=10">공고 삭제 페이지 이동</a><br>
 <a href="member/employeeSignUpForm.do">구직자 회원가입 페이지 이동</a><br>
 <a href="member/employerSignUpForm.do">기업 회원가입 페이지 이동</a>
 <a href="member/employeeLogInForm.do">구직자 로그인 페이지 이동</a><br>

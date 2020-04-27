@@ -23,8 +23,14 @@ public class HyunMapController extends HttpServlet {
 		String command = null;
 
 		requestURI = request.getRequestURI();
-		contextPath = request.getContextPath();
-		command = requestURI.substring(contextPath.length() + 13);
+		int findIndex = 0;
+	       for (int i = 0; i < requestURI.length(); i++) {
+	          String find = requestURI.substring(i, i + 1);
+	          if (find.equals("/")) {
+	             findIndex = i+1;
+	          }
+	       }
+	    command = requestURI.substring(findIndex);
 
 		ActionForward actionForward = null;
 

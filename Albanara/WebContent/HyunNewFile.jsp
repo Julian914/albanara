@@ -13,73 +13,58 @@
 </head>
 <body>
 	
-	
-	<input type="text" id="sample5_address" placeholder="주소">
-	<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
-	<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
+	<div id="map" style="width:300px;height:300px;margin-top:10px;"></div>
 
 		
 	
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=814861f68a4b2c5498535e608555d96a&libraries=services"></script>
 <script>
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-        mapOption = {
-            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-            level: 5 // 지도의 확대 레벨
-        };
 
-    //지도를 미리 생성
-    var map = new daum.maps.Map(mapContainer, mapOption);
-    //주소-좌표 변환 객체를 생성
-    var geocoder = new daum.maps.services.Geocoder();
-    //마커를 미리 생성
-    var marker = new daum.maps.Marker({
-        position: new daum.maps.LatLng(37.537187, 127.005476),
-        map: map
-    });
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+mapOption = { 
+    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+    level: 3 // 지도의 확대 레벨
+};
 
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-    function sample5_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                var addr = data.address; // 최종 주소 변수
-
-                // 주소 정보를 해당 필드에 넣는다.
-                document.getElementById("sample5_address").value = addr;
-                // 주소로 상세 정보를 검색
-                geocoder.addressSearch(data.address, function(results, status) {
-                    // 정상적으로 검색이 완료됐으면
-                    if (status === daum.maps.services.Status.OK) {
-
-                        var result = results[0]; //첫번째 결과의 값을 활용
-
-                        // 해당 주소에 대한 좌표를 받아서
-                        var coords = new daum.maps.LatLng(result.y, result.x);
-                        // 지도를 보여준다.
-                        mapContainer.style.display = "block";
-                        map.relayout();
-                        // 지도 중심을 변경한다.
-                        map.setCenter(coords);
-                        // 마커를 결과값으로 받은 위치로 옮긴다.
-                        marker.setPosition(coords)
-                    }
-                });
-            }
-        }).open();
-    }
-    
-    
-/* 마커 표시 */
-// var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
+var latitude = '';
+var longitude = '';
+function calcDistance(lat1, lon1, lat2, lon2){
+    var EARTH_R, Rad, radLat1, radLat2, radDist; 
+       var distance, ret;
+          EARTH_R = 6371000.0;
+          Rad = Math.PI/180;
+          radLat1 = Rad * parseFloat(lat1);
+          radLat2 = Rad * parseFloat(lat2);
+          radDist = Rad * (parseFloat(lon1) - parseFloat(lon2));            
+          distance = Math.sin(radLat1) * Math.sin(radLat2);
+          distance = distance + Math.cos(radLat1) * Math.cos(radLat2) * Math.cos(radDist);
+          ret = EARTH_R * Math.acos(distance);                  
+       var rtn = Math.round(Math.round(ret) / 1000);
+/*          if(rtn <= 0){
+            rtn = Math.round(ret) + " m";
+         }else{
+            rtn = rtn + " km";
+         } */
+       return  rtn;
+   } 
+   //document.getElementById("latitude").value
+   //document.getElementById("longitude").value
 var positions = [];
 var list = new Array();
-<c:forEach items="${list}" var="list">
-	positions.push({
-		content : "${list.content}",
-		latlng : new kakao.maps.LatLng(parseFloat("${list.latlngX}"), parseFloat("${list.latlngY}"))
-	});
+<c:forEach items="${list}" var="item"> 
+	latitude = ${item.latitude}
+	longitude = ${item.longitude}
+	if(calcDistance(126.890098469594, 37.4798037664073, latitude, longitude) <= 3) {
+		positions.push({
+			content : "<div>${item.recruitmentTitle}</div><div>${item.recruitmentType}</div><div>${item.startingWorkingDate}~${item.endingWorkingDate}</div><div>${item.startingWorkingTime}:00~${item.endingWorkingTime}:00</div>" + 
+			"<div>${item.wageType} ${item.wage}원</div>",
+			latlng : new kakao.maps.LatLng(parseFloat("${item.longitude}"), parseFloat("${item.latitude}"))
+		});
+	}
+	
 </c:forEach>
 
 console.log(positions);
@@ -119,6 +104,9 @@ function makeOutListener(infowindow) {
         infowindow.close();
     };
 }
+
+//마커가 지도 위에 표시되도록 설정합니다
+//marker.setMap(map);
 
 /* 아래와 같이도 할 수 있습니다 */
 /*
