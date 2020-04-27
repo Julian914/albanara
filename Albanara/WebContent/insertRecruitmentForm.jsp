@@ -6,12 +6,12 @@
 <meta charset="UTF-8">
 <style type="text/css">
 </style>
-<link rel="stylesheet" href="Albanara/css/jquery-ui.css">
-<link rel="stylesheet" href="Albanara/css/bootstrap.css">
-<link rel="stylesheet" href="Albanara/css/bootstrap-theme.css">
-<script src="Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
-<script src="Albanara/js/jquery-ui.js" type="text/javascript"></script>
-<script src="Albanara/js/bootstrap.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/Albanara/css/jquery-ui.css">
+<link rel="stylesheet" href="/Albanara/css/bootstrap.css">
+<link rel="stylesheet" href="/Albanara/css/bootstrap-theme.css">
+<script src="/Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
+<script src="/Albanara/js/jquery-ui.js" type="text/javascript"></script>
+<script src="/Albanara/js/bootstrap.js" type="text/javascript"></script>
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script
@@ -137,7 +137,7 @@
 				});
 			}
 		}).open();
-	}
+	};
 
 	function addrInsertClick() {
 		var location = document.getElementById('sample5_address').value;
@@ -150,9 +150,9 @@
 			},
 			success : function(data) {
 				console.log(data);
-				longitude = JSON.parse(data);
+				data = JSON.parse(data);
 				var latitude = data.documents[0].x;
-				var longitude = data.documents[0].y;
+	            var longitude = data.documents[0].y;
 				document.getElementById("latitude").value = latitude;
 				document.getElementById("longitude").value = longitude;
 			},

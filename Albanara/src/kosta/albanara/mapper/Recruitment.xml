@@ -35,29 +35,38 @@
 		sysdate
 		)
 	</insert>
-	
+
 	<resultMap id="Recruitments" type="Recruitments">
 		<result column="recruitment_seq" property="recruitmentSeq" />
 		<result column="employer_seq" property="employerSeq" />
 		<result column="recruitment_title" property="recruitmentTitle" />
 		<result column="recruitment_type" property="recruitmentType" />
 		<result column="recruitment_size" property="recruitmentSize" />
-		<result column="starting_Working_Date" property="startingWorkingDate" />
-		<result column="ending_Working_Date" property="endingWorkingDate" />
+		<result column="starting_Working_Date"
+			property="startingWorkingDate" />
+		<result column="ending_Working_Date"
+			property="endingWorkingDate" />
 		<result column="total_Working_Day" property="totalWorkingDay" />
-		<result column="starting_Working_Time" property="startingWorkingTime" />
-		<result column="ending_Working_Time" property="endingWorkingTime" />
+		<result column="starting_Working_Time"
+			property="startingWorkingTime" />
+		<result column="ending_Working_Time"
+			property="endingWorkingTime" />
 		<result column="total_Working_Time" property="totalWorkingTime" />
 		<result column="wage" property="wage" />
 		<result column="wage_Type" property="wageType" />
 		<result column="gender" property="gender" />
 		<result column="min_Age" property="minAge" />
 		<result column="max_Age" property="maxAge" />
-		<result column="recruitment_Contents" property="recruitmentContents" />
-		<result column="requirement_Question1" property="requirementQuestion1" />
-		<result column="requirement_Question2" property="requirementQuestion2" />
-		<result column="requirement_Question3" property="requirementQuestion3" />
-		<result column="working_Place_Address" property="workingPlaceAddress" />
+		<result column="recruitment_Contents"
+			property="recruitmentContents" />
+		<result column="requirement_Question1"
+			property="requirementQuestion1" />
+		<result column="requirement_Question2"
+			property="requirementQuestion2" />
+		<result column="requirement_Question3"
+			property="requirementQuestion3" />
+		<result column="working_Place_Address"
+			property="workingPlaceAddress" />
 		<result column="closing_Date" property="closingDate" />
 		<result column="last_Modify_Date" property="lastModifyDate" />
 	</resultMap>
@@ -66,56 +75,85 @@
 		<result column="application_Seq" property="applicationSeq" />
 		<result column="employee_Seq" property="employeeSeq" />
 		<result column="application_Date" property="applicationDate" />
-		<result column="requirement_Answer1" property="requirementAnswer1" />
-		<result column="requirement_Answer2" property="requirementAnswer2" />
-		<result column="requirement_Answer3" property="requirementAnswer3" />
+		<result column="requirement_Answer1"
+			property="requirementAnswer1" />
+		<result column="requirement_Answer2"
+			property="requirementAnswer2" />
+		<result column="requirement_Answer3"
+			property="requirementAnswer3" />
 	</resultMap>
 
-	<select id="getRecruitment" parameterType="int" resultMap="Recruitments">
-		select * from RECRUITMENTS where RECRUITMENT_SEQ = #{seq}		
+	<select id="getRecruitment" parameterType="int"
+		resultMap="Recruitments">
+		select * from RECRUITMENTS where RECRUITMENT_SEQ = #{seq}
 	</select>
 
 	<cache />
-	
+
 	<resultMap id="Employees" type="Employees">
 		<result column="employee_Seq" property="employeeSeq" />
 		<result column="resume_Seq" property="resumeSeq" />
 		<result column="employee_Id" property="employeeId" />
-		<result column="employee_Pw"	property="employeePw" />
-		<result column="employee_Name"	property="employeeName" />
-		<result column="employee_Birthday"	property="employeeBirthday" />
-		<result column="employee_Email"	property="employeeEmail" />
-		<result column="employee_Gender"	property="employeeGender" />
-		<result column="employee_Phone"	property="employeePhone" />
-		<result column="employee_Address"	property="employeeAddress" />
-		<result column="attribute_Count"	property="attributeCount" />
-		<result column="noshow_Count"	property="noshowCount" />
-		<result column="workingDay_Count"	property="workingDayCount" />
-		<result column="activity_Avg"	property="activityAvg" />
-		<result column="collaboration_Avg"	property="collaborationAvg" />
-		<result column="diligency_Avg"	property="diligencyAvg" />
-		<result column="leadership_Avg"	property="leadershipAvg" />
-		<result column="comprehension_Avg"	property="comprehensionAvg" />
-		<result column="contentment_Avg"	property="contentmentAvg" />
-		<result column="strength_count"	property="strengthcount" />
-		<result column="intelligence_Count"	property="intelligenceCount" />
-		<result column="kindness_Count"	property="kindnessCount" />
-		<result column="patience_Count"	property="patienceCount" />
+		<result column="employee_Pw" property="employeePw" />
+		<result column="employee_Name" property="employeeName" />
+		<result column="employee_Birthday" property="employeeBirthday" />
+		<result column="employee_Email" property="employeeEmail" />
+		<result column="employee_Gender" property="employeeGender" />
+		<result column="employee_Phone" property="employeePhone" />
+		<result column="employee_Address" property="employeeAddress" />
+		<result column="attribute_Count" property="attributeCount" />
+		<result column="noshow_Count" property="noshowCount" />
+		<result column="workingDay_Count" property="workingDayCount" />
+		<result column="activity_Avg" property="activityAvg" />
+		<result column="collaboration_Avg" property="collaborationAvg" />
+		<result column="diligency_Avg" property="diligencyAvg" />
+		<result column="leadership_Avg" property="leadershipAvg" />
+		<result column="comprehension_Avg" property="comprehensionAvg" />
+		<result column="contentment_Avg" property="contentmentAvg" />
+		<result column="strength_count" property="strengthcount" />
+		<result column="intelligence_Count"
+			property="intelligenceCount" />
+		<result column="kindness_Count" property="kindnessCount" />
+		<result column="patience_Count" property="patienceCount" />
 	</resultMap>
-	
-	
+
+
 
 	<select id="recruitmentList" resultMap="Recruitments">
-		SELECT * FROM Recruitments
+		SELECT * FROM
+		Recruitments
 	</select>
 
 
-<!-- 해당 공고의 지원자 목록 불러오기-->
-	<select id="applicantList" parameterType="int" resultMap="Employees">
-		select * from employees where employee_Seq in(select employee_Seq from applications where recruitment_Seq=#{recruitment_Seq})
-	</select> 
+	<!-- 해당 공고의 지원자 목록 불러오기 -->
+	<select id="applicantList" parameterType="int"
+		resultMap="Employees">
+		select * from employees where employee_Seq in(select
+		employee_Seq from applications where
+		recruitment_Seq=#{recruitment_Seq})
+	</select>
 
-	
 
+
+   <resultMap type="NearRecruitments" id="NearRecruitments">
+      <result column="recruitment_Seq" property="recruitmentSeq" />
+      <result column="recruitment_Title" property="recruitmentTitle" />
+      <result column="recruitment_Type" property="recruitmentType" />
+      <result column="starting_Working_Date" property="startingWorkingDate" />         
+      <result column="ending_working_Date" property="endingWorkingDate" />      
+      <result column="starting_Working_Time" property="startingWorkingTime" />
+      <result column="ending_Working_Time" property="endingWorkingTime" />
+      <result column="wage" property="wage" />
+      <result column="wage_Type" property="wageType" />
+      <result column="latitude" property="latitude" />
+      <result column="longitude" property="longitude" />
+   </resultMap>
+
+	<select id="showNearRecruitments" resultMap="NearRecruitments">
+		select RECRUITMENT_SEQ, recruitment_Title, recruitment_Type,
+		starting_Working_Date, ending_Working_Date,
+		starting_Working_Time, ending_Working_Time, wage, wage_Type, latitude, longitude
+		from recruitments r inner join marker_location m on	r.WORKING_PLACE_ADDRESS	= m.ROAD_ADDRESS
+	</select>
 
 </mapper>

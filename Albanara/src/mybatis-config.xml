@@ -13,6 +13,7 @@
 		<typeAlias type="kosta.albanara.model.Resumes" alias="Resumes"/>
 		<typeAlias type="kosta.albanara.model.Applications" alias="Applications"/>
 		<typeAlias type="kosta.albanara.model.MarkerLocation" alias="MarkerLocation"/>
+		<typeAlias type="kosta.albanara.model.NearRecruitments" alias="NearRecruitments"/>
 	</typeAliases>
 	
 	<environments default="development">
