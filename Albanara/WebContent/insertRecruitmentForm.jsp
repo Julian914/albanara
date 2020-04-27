@@ -30,7 +30,7 @@
 			<input type="radio" id="strength" name="recruitmentType"
 				value="strength"> <label for="strength">힘</label> <input
 				type="radio" id="intelligence" name="recruitmentType"
-				value="inteligence"> <label for="intelligence">지능</label> <input
+				value="intelligence"> <label for="intelligence">지능</label> <input
 				type="radio" id="kindness" name="recruitmentType" value="kindness">
 			<label for="kindness">친절</label> <input type="radio" id="patience"
 				name="recruitmentType" value="patience"> <label

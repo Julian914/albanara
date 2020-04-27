@@ -89,10 +89,32 @@ public class RecruitmentDao {
 		SqlSession session = getSqlSessionFactory().openSession();
 		RecruitmentMapper mapper = null;
 		try {
-			System.out.println("DAO 출력" + recruitment.toString());
+			System.out.println("DAO insertRecruitment 출력" + recruitment.toString());
 			mapper = session.getMapper(RecruitmentMapper.class);
 			resultCount = mapper.insertRecruitment(recruitment);
-			System.out.println("카운트: " + resultCount);
+			System.out.println("insertRecruitment 카운트: " + resultCount);
+			if (resultCount > 0)
+				session.commit();
+			else
+				session.rollback();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		return resultCount;
+	}
+
+	public int updateRecruitment(Recruitments recruitment) {
+		int resultCount = -1;
+		SqlSession session = getSqlSessionFactory().openSession();
+		RecruitmentMapper mapper = null;
+		try {
+			System.out.println("DAO updateRecruitment 출력" + recruitment.toString());
+			mapper = session.getMapper(RecruitmentMapper.class);
+			resultCount = mapper.updateRecruitment(recruitment);
+			System.out.println("updateRecruitment 카운트: " + resultCount);
 			if (resultCount > 0)
 				session.commit();
 			else

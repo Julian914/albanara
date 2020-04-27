@@ -36,6 +36,35 @@
 		)
 	</insert>
 	
+	<update id="updateRecruitment" parameterType="Recruitments">
+		update RECRUITMENTS
+		set
+			RECRUITMENT_SEQ = #{recruitmentSeq},
+			EMPLOYER_SEQ = #{employerSeq},
+			RECRUITMENT_TITLE = #{recruitmentTitle},
+			RECRUITMENT_TYPE = #{recruitmentType},
+			RECRUITMENT_SIZE = #{recruitmentSize},
+			STARTING_WORKING_DATE = #{startingWorkingDate},
+			ENDING_WORKING_DATE = #{endingWorkingDate},
+			TOTAL_WORKING_DAY = #{totalWorkingDay},
+			STARTING_WORKING_TIME = #{startingWorkingTime},
+			ENDING_WORKING_TIME = #{endingWorkingTime},
+			TOTAL_WORKING_TIME = #{totalWorkingTime},
+			WAGE = #{wage},
+			WAGE_TYPE = #{wageType},
+			GENDER = #{gender},
+			MIN_AGE = #{minAge},
+			MAX_AGE = #{maxAge},
+			RECRUITMENT_CONTENTS = #{recruitmentContents},
+			REQUIREMENT_QUESTION1 = #{requirementQuestion1},
+			REQUIREMENT_QUESTION2 = #{requirementQuestion2},
+			REQUIREMENT_QUESTION3 = #{requirementQuestion3},
+			WORKING_PLACE_ADDRESS = #{workingPlaceAddress},
+			CLOSING_DATE = #{closingDate},
+			LAST_MODIFY_DATE = sysdate
+		where RECRUITMENT_SEQ = #{recruitmentSeq}
+	</update>
+	
 	<resultMap id="Recruitments" type="Recruitments">
 		<result column="recruitment_seq" property="recruitmentSeq" />
 		<result column="employer_seq" property="employerSeq" />

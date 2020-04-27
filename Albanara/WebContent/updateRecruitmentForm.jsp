@@ -26,15 +26,17 @@
 			<div>모집 공고</div>
 			<input type="hidden" name="recruitmentSeq"
 				value="${recruitment.recruitmentSeq }">
+			<input type="hidden" name="employerSeq"
+				value="${recruitment.employerSeq }">
 			<div>
 				<input type="text" name="recruitmentTitle"
 					value="${recruitment.recruitmentTitle }">
 			</div>
 			<div>분류</div>			
 			<input type="radio" id="strength" name="recruitmentType"
-				value="strength"> <label for="strength">힘</label> <input
+				value="strength" <c:if test="${recruitment.recruitmentType == 'strength' }">checked</c:if>> <label for="strength">힘</label> <input
 				type="radio" id="intelligence" name="recruitmentType"
-				value="inteligence" <c:if test="${recruitment.recruitmentType == 'strength' }">checked</c:if>> <label for="inteligence" <c:if test="${recruitment.recruitmentType == 'intelligence' }">checked</c:if>>지능</label> <input
+				value="intelligence" <c:if test="${recruitment.recruitmentType == 'intelligence' }">checked</c:if>> <label for="intelligence">지능</label> <input
 				type="radio" id="kindness" name="recruitmentType" value="kindness" <c:if test="${recruitment.recruitmentType == 'kindness' }">checked</c:if>>
 			<label for="kindness">친절</label> <input type="radio" id="patience"
 				name="recruitmentType" value="patience" <c:if test="${recruitment.recruitmentType == 'patience' }">checked</c:if>> <label
@@ -93,7 +95,6 @@
 				style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
 			<br> <input type="reset" value="초기화"><input
 				type="submit" value="수정">
-
 		</form>
 	</div>
 </body>
