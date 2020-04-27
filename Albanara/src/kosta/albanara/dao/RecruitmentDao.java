@@ -145,4 +145,25 @@ public class RecruitmentDao {
 		return recruitment;
 	}
 
+	public int deleteRecruitment(int seq) {
+		int resultCount = -1;
+		SqlSession session = getSqlSessionFactory().openSession();
+		RecruitmentMapper mapper = null;
+		try {
+			mapper = session.getMapper(RecruitmentMapper.class);
+			resultCount = mapper.deleteRecruitment(seq);
+			System.out.println("deleteRecruitment 카운트: " + resultCount);
+			if (resultCount > 0)
+				session.commit();
+			else
+				session.rollback();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		return resultCount;
+	}
+
 }

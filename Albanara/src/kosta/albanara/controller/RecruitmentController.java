@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kosta.albanara.action.ActionForward;
-
+import kosta.albanara.action.DeleteRecruitmentAction;
 import kosta.albanara.action.RecruitmentListAction;
 import kosta.albanara.action.UpdateRecruitmentAction;
 import kosta.albanara.action.UpdateRecruitmentForm;
@@ -58,6 +58,13 @@ public class RecruitmentController extends HttpServlet {
 		case "updateRecruitmentAction.do":
 			try {
 				  actionForward = new UpdateRecruitmentAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case "deleteRecruitmentAction.do":
+			try {
+				  actionForward = new DeleteRecruitmentAction().execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

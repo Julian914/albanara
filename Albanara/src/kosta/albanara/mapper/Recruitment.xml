@@ -103,6 +103,11 @@
 	<select id="getRecruitment" parameterType="int" resultMap="Recruitments">
 		select * from RECRUITMENTS where RECRUITMENT_SEQ = #{seq}		
 	</select>
+	
+	<delete id="deleteRecruitment" parameterType="int">
+		delete from RECRUITMENTS		
+		where RECRUITMENT_SEQ = #{seq}		
+	</delete>	
 
 	<cache />
 	

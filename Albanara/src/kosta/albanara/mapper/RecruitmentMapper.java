@@ -15,4 +15,6 @@ public interface RecruitmentMapper {
 	Recruitments getRecruitment(int seq);
 
 	List<Employees> applicantList(int recruitmentSeq);
+
+	int deleteRecruitment(int seq);
 }

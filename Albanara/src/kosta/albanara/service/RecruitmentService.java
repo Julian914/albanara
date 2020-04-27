@@ -116,4 +116,14 @@ public class RecruitmentService {
 
 		return resultCount;
 	}
+
+	public int deleteRecruitment(HttpServletRequest request) {
+		int resultCount = -1;
+
+		int seq = Integer.parseInt(request.getParameter("seq"));
+
+		resultCount = recruitmentDao.deleteRecruitment(seq);
+
+		return resultCount;
+	}
 }
