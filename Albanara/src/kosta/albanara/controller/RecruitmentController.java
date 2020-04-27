@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import kosta.albanara.action.ActionForward;
 import kosta.albanara.action.DeleteRecruitmentAction;
 import kosta.albanara.action.RecruitmentListAction;
+import kosta.albanara.action.ShowRecruitmentAction;
 import kosta.albanara.action.UpdateRecruitmentAction;
 import kosta.albanara.action.UpdateRecruitmentForm;
 import kosta.albanara.action.InsertRecruitmentAction;
@@ -69,6 +70,13 @@ public class RecruitmentController extends HttpServlet {
 				e.printStackTrace();
 			}
 			break;
+		case "showRecruitmentAction.do":
+			try {
+				  actionForward = new ShowRecruitmentAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;	
 		case "recruitmentList.do":  //진행중인 공고목록 불러오기
 			try {
 				actionForward = new RecruitmentListAction().execute(request, response);
