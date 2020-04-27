@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kosta.albanara.action.ActionForward;
+
 import kosta.albanara.action.DeleteRecruitmentAction;
+import kosta.albanara.action.InsertApplicationAction;
 import kosta.albanara.action.RecruitmentListAction;
 import kosta.albanara.action.ShowRecruitmentAction;
 import kosta.albanara.action.UpdateRecruitmentAction;
@@ -31,6 +33,8 @@ public class RecruitmentController extends HttpServlet {
 		requestURI = request.getRequestURI();
 		contextPath = request.getContextPath();
 		command = requestURI.substring(contextPath.length() + 13);
+		
+		System.out.println(command);
 
 		ActionForward actionForward = null;
 
@@ -84,6 +88,14 @@ public class RecruitmentController extends HttpServlet {
 				e.printStackTrace();
 			}
 			break;
+		case "insertApplication.do": 
+			try {
+				actionForward = new InsertApplicationAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+			
 		}
 
 		// forward using redirect or dispatch

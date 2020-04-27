@@ -104,6 +104,7 @@
 	<resultMap id="Applications" type="Applications">
 		<result column="application_Seq" property="applicationSeq" />
 		<result column="employee_Seq" property="employeeSeq" />
+		<result column="requirement_Seq" property="requirementSeq" />
 		<result column="application_Date" property="applicationDate" />
 		<result column="requirement_Answer1"
 			property="requirementAnswer1" />
@@ -117,11 +118,13 @@
 		resultMap="Recruitments">
 		select * from RECRUITMENTS where RECRUITMENT_SEQ = #{seq}
 	</select>
+
 	
 	<delete id="deleteRecruitment" parameterType="int">
 		delete from RECRUITMENTS		
 		where RECRUITMENT_SEQ = #{seq}		
 	</delete>	
+
 
 	<cache />
 
@@ -154,21 +157,42 @@
 
 
 
-	<select id="recruitmentList" resultMap="Recruitments">
-		SELECT * FROM
-		Recruitments
+
+	<select id="totalRecruitmentList" resultMap="Recruitments">
+		SELECT * FROM Recruitments
 	</select>
 
 
-	<!-- 해당 공고의 지원자 목록 불러오기 -->
-	<select id="applicantList" parameterType="int"
-		resultMap="Employees">
-		select * from employees where employee_Seq in(select
-		employee_Seq from applications where
-		recruitment_Seq=#{recruitment_Seq})
+	<!-- 해당 공고의 지원자 목록 불러오기-->
+	<select id="employeeList" parameterType="int" resultMap="Employees">
+		select * from employees where employee_Seq in(select employee_Seq from applications where recruitment_Seq=#{recruitment_Seq})
+	</select> 
+
+
+
+	<select id="totalEmployeeList" resultMap="Employees">
+		select *from Employees
 	</select>
-
-
+	
+	
+	<select id="totalApplicationList" resultMap="Applications">
+		select*from Applications
+	</select>
+	
+	<insert id="insertApplication" parameterType="Applications">
+		insert into applications 
+		values (
+		s_application_seq.nextval,
+		#{recruitmentSeq},
+		#{employeeSeq},
+		sysdate,
+		#{requirementAnswer1},
+		#{requirementAnswer2},
+		#{requirementAnswer3}
+		)
+	
+	</insert>
+	
 
    <resultMap type="NearRecruitments" id="NearRecruitments">
       <result column="recruitment_Seq" property="recruitmentSeq" />
