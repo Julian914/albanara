@@ -21,6 +21,11 @@ public interface RecruitmentMapper {
 	List<Employees> totalEmployeeList();
 	List<Applications> totalApplicationList();
 	int insertApplication(Applications application);
+
 	List<NearRecruitments> showNearRecruitments();
+
+
+
+
 
 }
