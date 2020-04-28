@@ -5,6 +5,23 @@
 <mapper namespace="kosta.albanara.mapper.EmployerMapper">
 	<cache />
 	
+	<resultMap id="Employers" type="Employers">
+		<result column="employer_seq" property="employerSeq" />
+		<result column="employer_id" property="employerId" />
+		<result column="employer_pw" property="employerPw" />
+		<result column="employer_name" property="employerName" />
+		<result column="employer_number" property="employerNumber" />
+		<result column="employer_address" property="employerAddress" />
+		<result column="employer_field" property="employerField" />
+		<result column="owner_name" property="ownerName" />
+		<result column="owner_phone" property="ownerPhone" />
+		<result column="report_count" property="reportCount" />
+		<result column="like_count" property="likeCount" />
+		<result column="unlike_count" property="unlikeCount" />
+		<result column="favorite_employer_count" property="favoriteEmployerCount" />
+		<result column="employer_homepage" property="employerHomePage" />
+	</resultMap>
+	
 	<insert id="insertEmployer" parameterType="Employers">
 		insert into employers(
 			employer_seq, employer_id, employer_pw, employer_name, employer_number,
@@ -23,7 +40,18 @@
 			)
 	</insert>
 	
-	<select id="employerLogIn" parameterType="Employers" resultType="int">
+	<select id="employerLogIn" parameterType="Employers" resultMap="Employers">
 		select * from employers where employer_id= #{employerId} AND employer_pw = #{employerPw}
 	</select>
+	
+	<update id="updateEmployer" parameterType="Employers">
+		update employers set employer_pw = #{employerPw}, employer_number = #{employerNumber}, employer_address = #{employerAddress},
+			employer_field = #{employerField}, owner_name = #{ownerName}, owner_phone = #{ownerPhone},
+			employer_homepage = #{employerHomePage} where employer_id = #{employerId}
+	</update> 
+	
+	<delete id="deleteEmployer" parameterType="Employers">
+		delete from employers where employer_id = #{employerId}
+	</delete>
+	
 </mapper>

@@ -16,7 +16,7 @@ public class EmployeeSignUpAction implements Action {
 		
 		employeeService.insertEmployeeService(request);		
 		markerService.insertMarkerLocation(request);
-		
+
 		forward.setRedirect(true); 
 		forward.setPath("employeeSignUpForm.do");
 		

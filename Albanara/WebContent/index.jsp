@@ -12,7 +12,10 @@
 <a href="recruitment/deleteRecruitmentAction.do?seq=10">공고(10) 삭제 페이지 이동</a><br>
 <a href="recruitment/showRecruitmentAction.do?seq=1">공고(1) 상세 페이지 이동</a><br>
 <a href="member/employeeSignUpForm.do">구직자 회원가입 페이지 이동</a><br>
-<a href="member/employerSignUpForm.do">기업 회원가입 페이지 이동</a>
-<a href="member/employeeLogInForm.do">구직자 로그인 페이지 이동</a><br>
+<a href="member/employerSignUpForm.do">기업 회원가입 페이지 이동</a><br>
+<a href="member/employerLogInForm.do">기업 로그인 페이지 이동</a><br>
+<a href="member/UpdateEmployeesForm.do">구직자 수정페이지 이동</a><br>
+<a href="member/UpdateEmployersForm.do">기업 수정페이지 이동</a><br>
+
 </body>
 </html>

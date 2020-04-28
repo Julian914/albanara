@@ -63,8 +63,12 @@
 	<update id="updateResume" parameterType="Resumes">
 		update resumes set picture_filename = #{pictureFilename}, resume_title = #{resumeTitle}, resume_contents = #{resumeContents}, desired_working_area = #{desiredWorkingArea}, favorite_field = #{favoriteField}, last_modify_date = sysdate where s_resume_seq = 1
 	</update>
-	
-	
+
+	<update id="updateEmployee" parameterType="Employees">
+		update employees set employee_pw = #{employeePw}, employee_email = #{employeeEmail}, 
+			employee_address = #{employeeAddress}, employee_phone = #{employeePhone} where employee_id = #{employeeId}
+	</update> 
+
 	
 	
 </mapper>
