@@ -29,7 +29,7 @@
 	연락처: ${employee.employeePhone }<br>
 	이메일: ${employee.employeeEmail }<br>
 	
-	<h3>진행중인 공고</h3>
+	<h3>제안 받은 공고</h3>
 	<div id="wrap">
 		<div class="accordion">
 			<c:forEach var="list" items="${recruitmentList}" varStatus="status">
@@ -52,6 +52,10 @@
 								var="enddate" value="${list.endingWorkingDate}"
 								pattern="yyyy-MM-dd" /> <fmt:formatDate value="${enddate}"
 								pattern="yyyy.MM.dd" /></li>
+						<li><input type="button" onclick="location.href='../recruitment/showRecruitmentAction.do?seq=${list.recruitmentSeq}'" value="상세 보기">
+						<input type="button" onclick="location.href='../recruitment/acceptProposalAction.do?recruitment=${list.recruitmentSeq}&employee=${employee.employeeSeq}'" value="수락하기">
+						<input type="button" onclick="location.href='../recruitment/rejectProposalAction.do?recruitment=${list.recruitmentSeq}&employee=${employee.employeeSeq}'" value="거절하기">
+						</li>
 					</ul>
 				</div>
 			</c:forEach>

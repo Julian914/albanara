@@ -216,4 +216,39 @@
 		from recruitments r inner join marker_location m on	r.WORKING_PLACE_ADDRESS	= m.ROAD_ADDRESS
 	</select>
 
+   
+	<!-- 제안 받은 공고 리스트 -->
+	<select id="showProposalRecruitments" resultMap="Recruitments" parameterType="int">
+   		select recruitment_seq, employer_seq, recruitment_title, recruitment_type, recruitment_size, starting_Working_Date, ending_Working_Date, total_Working_Day, starting_Working_Time, ending_Working_Time, total_Working_Time, wage, wage_Type, gender, min_Age, max_Age, recruitment_Contents, requirement_Question1, requirement_Question2, requirement_Question3, working_Place_Address, closing_Date, last_Modify_Date 
+		from RECRUITMENTS inner join proposals using(RECRUITMENT_seq)
+		where employee_seq = #{seq} and IS_ACCEPTED = 2
+	</select>
+	
+   	<!-- 제안 받은 공고 수락 -->
+   	<update id="acceptProposalRecruitments" parameterType="String">
+   		update proposals
+   		set IS_ACCEPTED=1
+		where employee_seq = #{employSeq} and recruitment_seq = #{recruitmentSeq}
+   	</update>
+   	
+	<!-- 제안 받은 공고 거절 -->
+	<update id="rejectProposalRecruitments" parameterType="String">
+		update proposals
+		set IS_ACCEPTED=0
+		where employee_seq = #{employSeq} and recruitment_seq = #{recruitmentSeq}
+	</update>
+
+	<!-- 공고에 지원한 남자 수 -->
+	<select id="selectRecruitmentManCount" parameterType="int" resultType="int">
+		select count(*)
+		from applications inner join employees using(employee_seq)
+		where recruitment_seq = #{seq} and employee_gender='man'
+	</select>
+	
+	<!-- 공고에 지원한 여자 수 -->
+	<select id="selectRecruitmentWomanCount" parameterType="int" resultType="int">
+		select count(*)
+		from applications inner join employees using(employee_seq)
+		where recruitment_seq = #{seq} and employee_gender='woman'
+	</select>
 </mapper>

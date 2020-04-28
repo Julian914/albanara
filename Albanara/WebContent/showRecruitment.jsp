@@ -10,11 +10,12 @@
 <link rel="stylesheet" href="Albanara/css/jquery-ui.css">
 <link rel="stylesheet" href="Albanara/css/bootstrap.css">
 <link rel="stylesheet" href="Albanara/css/bootstrap-theme.css">
-<script src="Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
-<script src="Albanara/js/jquery-ui.js" type="text/javascript"></script>
-<script src="Albanara/js/bootstrap.js" type="text/javascript"></script>
-<script src="./js/Chart.js" type="text/javascript"></script>
-<script src="./js/Chart.bundle.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/Albanara/css/Chart.css">
+<script src="/Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
+<script src="/Albanara/js/jquery-ui.js" type="text/javascript"></script>
+<script src="/Albanara/js/bootstrap.js" type="text/javascript"></script>
+<script src="/Albanara/js/Chart.js" type="text/javascript"></script>
+<script src="/Albanara/js/Chart.bundle.js" type="text/javascript"></script>
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script
@@ -95,6 +96,8 @@
 			<div id="map"
 				style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
 			<br>
+			
+			<canvas id="applicationGender" width="800"></canvas>
 	</div>
 </body>
 
@@ -144,5 +147,28 @@
 			}
 		}).open();
 	}
+	
+	var applicationGender = $('#applicationGender');
+	var myDoughnutChart = new Chart(applicationGender, {
+	    type: 'pie',
+	    data: {
+	        labels: ['Red', 'Blue'],
+	        datasets: [{
+	            label: '지원자 성별 현황',
+	            data: [${woman}, ${man}],
+	            backgroundColor: [
+	            	'rgba(255, 99, 132, 0.2)',
+	            	'rgba(54, 162, 235, 0.2)'
+	            ],
+	            borderColor: [
+	                'rgba(255, 99, 132, 1)',
+	                'rgba(54, 162, 235, 1)'
+	            ],
+	            borderWidth: 1
+	        }]
+	    },
+	    options: {}
+	});
+
 </script>
 </html>
