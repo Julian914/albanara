@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kosta.albanara.model.NearRecruitments;
 import kosta.albanara.service.HyunMapService;
@@ -43,7 +44,7 @@ public class HyunMapAction implements Action {
 		ActionForward forward = new ActionForward();
 		HyunMapService service = HyunMapService.getInstance();
 		List<NearRecruitments> list = service.nearRecruitment();
-		List<NearRecruitments> list1 = null;
+//		HttpSession session =
 		double lat1 = 126.890098469594; 
 		double lon1 = 37.4798037664073;
 		for (int i = 0; i < list.size(); i++) {
