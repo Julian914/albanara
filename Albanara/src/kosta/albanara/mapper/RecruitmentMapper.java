@@ -4,6 +4,7 @@ import java.util.List;
 
 import kosta.albanara.model.Applications;
 import kosta.albanara.model.Employees;
+import kosta.albanara.model.NearRecruitments;
 import kosta.albanara.model.Recruitments;
 
 public interface RecruitmentMapper {
@@ -20,6 +21,6 @@ public interface RecruitmentMapper {
 	List<Employees> totalEmployeeList();
 	List<Applications> totalApplicationList();
 	int insertApplication(Applications application);
-
+	List<NearRecruitments> showNearRecruitments();
 
 }
