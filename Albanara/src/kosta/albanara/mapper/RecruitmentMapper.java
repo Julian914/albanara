@@ -12,14 +12,14 @@ public interface RecruitmentMapper {
 	int insertRecruitment(Recruitments recruitment);
 	int updateRecruitment(Recruitments recruitment);
 	List<Recruitments> totalRecruitmentList();
-	
 	Recruitments getRecruitment(int seq);
-	List<Employees> applicantList(int recruitmentSeq);
 	int deleteRecruitment(int seq);
 	List<Employees> employeeList(int recruitmentSeq);
-	List<Employees> totalEmployeeList();
-	List<Applications> totalApplicationList();
-	int insertApplication(Applications application);
+	int insertApplication(Applications applications);
+	List<Recruitments> nowRecruinmentList();
+	List<Recruitments> endRecruitmentList();
 
+	
+	List<Applications> totalApplicationList();
 
 }

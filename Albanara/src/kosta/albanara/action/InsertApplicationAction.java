@@ -12,11 +12,14 @@ public class InsertApplicationAction implements Action {
 		ActionForward actionForward = new ActionForward();
 		RecruitmentService service = RecruitmentService.getInstance();
 		
-		service.insertApplicationService(request);
+		int result = service.insertApplicationService(request);
 		
+		if(result > 0) {
+			System.out.println("지원완료");
+		}
 		
 		actionForward.setRedirect(true);
-		actionForward.setPath("/recruitmentList.jsp");
+		actionForward.setPath("recruitmentList.do");
 		
 		
 		return actionForward;

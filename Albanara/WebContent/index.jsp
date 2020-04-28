@@ -14,5 +14,6 @@
 <a href="member/employeeSignUpForm.do">구직자 회원가입 페이지 이동</a><br>
 <a href="member/employerSignUpForm.do">기업 회원가입 페이지 이동</a>
 <a href="member/employeeLogInForm.do">구직자 로그인 페이지 이동</a><br>
+<a href="recruitment/recruitmentList.do">공고목록으로 이동</a><br>
 </body>
 </html>

@@ -157,9 +157,20 @@
 
 
 
-
+	<!--전체 공고 목록  -->
 	<select id="totalRecruitmentList" resultMap="Recruitments">
 		SELECT * FROM Recruitments
+	</select>
+
+	<!--현재 진행중인 공고목록  -->
+	<select id="nowRecruinmentList" resultMap="Recruitments">
+		select *from recruitments where closing_date > sysdate
+	</select>
+
+
+	<!--마감된 공고목록  -->
+	<select id="endRecruitmentList" resultMap="Recruitments">
+		select *from recruitments where sysdate > closing_date
 	</select>
 
 
@@ -170,28 +181,20 @@
 
 
 
-	<select id="totalEmployeeList" resultMap="Employees">
-		select *from Employees
-	</select>
-	
-	
+	<!-- 모든 지원 정보 -->
 	<select id="totalApplicationList" resultMap="Applications">
-		select*from Applications
+		select *from Applications
 	</select>
-	
+
 	<insert id="insertApplication" parameterType="Applications">
 		insert into applications 
-		values (
-		s_application_seq.nextval,
-		#{recruitmentSeq},
-		#{employeeSeq},
-		sysdate,
-		#{requirementAnswer1},
-		#{requirementAnswer2},
+		values(
+		s_application_seq.nextval, #{recruitmentSeq}, #{employeeSeq}, sysdate, #{requirementAnswer1}, #{requirementAnswer2},
 		#{requirementAnswer3}
 		)
-	
 	</insert>
+	
+	
 	
 
    <resultMap type="NearRecruitments" id="NearRecruitments">
