@@ -30,10 +30,16 @@ public class RecruitmentService {
 		return list;
 	}
 
+	public List<Recruitments> nowRecruinmentListService() throws Exception {
+		return recruitmentDao.nowRecruinmentList();
+	}
 
+	public List<Recruitments> endRecruitmentListService() throws Exception {
+		return recruitmentDao.endRecruitmentList();
+	}
 
-	public List<Employees> employeeListService(int recruitmentSeq)throws Exception {
-		List<Employees> employeeList = recruitmentDao.employeeList(recruitmentSeq);		
+	public List<Employees> employeeListService(int recruitmentSeq) throws Exception {
+		List<Employees> employeeList = recruitmentDao.employeeList(recruitmentSeq);
 		return employeeList;
 	}
 
@@ -51,7 +57,7 @@ public class RecruitmentService {
 		int endingWorkingTime = Integer.parseInt(request.getParameter("endingWorkingTime"));
 		int totalWorkingTime = Integer.parseInt(request.getParameter("totalWorkingTime"));
 		int wage = Integer.parseInt(request.getParameter("wage"));
-		String wageType = request.getParameter("wageType");		
+		String wageType = request.getParameter("wageType");
 		String gender = request.getParameter("gender");
 		int minAge = 0, maxAge = 0;
 		if (request.getParameter("age") == "age") {
@@ -80,7 +86,6 @@ public class RecruitmentService {
 		return recruitmentDao.getRecruitment(seq);
 	}
 
-
 	public int updateRecruitment(HttpServletRequest request) {
 		int resultCount = -1;
 
@@ -96,7 +101,7 @@ public class RecruitmentService {
 		int endingWorkingTime = Integer.parseInt(request.getParameter("endingWorkingTime"));
 		int totalWorkingTime = Integer.parseInt(request.getParameter("totalWorkingTime"));
 		int wage = Integer.parseInt(request.getParameter("wage"));
-		String wageType = request.getParameter("wageType");		
+		String wageType = request.getParameter("wageType");
 		String gender = request.getParameter("gender");
 		int minAge = 0, maxAge = 0;
 		if (request.getParameter("age") == "age") {
@@ -108,7 +113,7 @@ public class RecruitmentService {
 		String requirementQuestion2 = request.getParameter("requirementQuestion2");
 		String requirementQuestion3 = request.getParameter("requirementQuestion3");
 		String workingPlaceAddress = request.getParameter("workingPlaceAddress");
-		Date closingDate = Date.valueOf(request.getParameter("closingDate"));		
+		Date closingDate = Date.valueOf(request.getParameter("closingDate"));
 
 		Recruitments recruitment = new Recruitments(employerSeq, recruitmentTitle, recruitmentType, recruitmentSize,
 				startingWorkingDate, endingWorkingDate, totalWorkingDay, startingWorkingTime, endingWorkingTime,
@@ -131,34 +136,51 @@ public class RecruitmentService {
 		return resultCount;
 	}
 
-	
-	public List<Employees> totalEmployeeListService()throws Exception{
-		return recruitmentDao.totalEmployeeList();
+	public int insertApplicationService(HttpServletRequest request) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		int result = -1;
+
+		int recruitmentSeq = Integer.parseInt(request.getParameter("seq"));
+		System.out.println("공고번호 : "+recruitmentSeq);
+
+		// int employeeSeq = Integer.parseInt(request.getParameter("employeeSeq"));
+		int employeeSeq = 1;
+		
+		
+		int requirementAnswer1 = -2;
+		int requirementAnswer2 = -2;
+		int requirementAnswer3 = -2;
+		
+		System.out.println("test1: " + request.getParameter("answer1"));
+		if(request.getParameter("answer1").equals("1")||request.getParameter("answer1").equals("0")){
+			requirementAnswer1 = Integer.parseInt(request.getParameter("answer1"));
+			System.out.println("답변 1 :" +requirementAnswer1);
+		}
+		
+		 if(request.getParameter("answer2").equals("1")||request.getParameter("answer2").equals("0")){ 
+			 requirementAnswer2 = Integer.parseInt(request.getParameter("answer2"));
+			 System.out.println("답변 2 :" +requirementAnswer2); 
+		 };
+		 
+		 if(request.getParameter("answer3").equals("1")||request.getParameter("answer3").equals("0")){ 
+			 requirementAnswer3 = Integer.parseInt(request.getParameter("answer3"));
+			 System.out.println("답변 3 :" +requirementAnswer3); 
+		};
+		  
+		Applications application = new Applications(recruitmentSeq, employeeSeq, requirementAnswer1, requirementAnswer2, requirementAnswer3); 
+		  result = recruitmentDao.insertApplication(application);
+
+		return result;
 	}
-
-
-	public List<Applications> totalApplicationListService()throws Exception{
+	
+	
+	
+	public List<Applications> totalApplicationListService() throws Exception{
 		return recruitmentDao.totalApplicationList();
 	}
 	
 	
 	
-	public int insertApplicationService(HttpServletRequest request) throws Exception{
-		int result=-1;
-		
-		int recruitmentSeq= Integer.parseInt(request.getParameter("recruitmentSeq"));
-		//int employeeSeq = Integer.parseInt(request.getParameter("employeeSeq"));
-		int employeeSeq = 1;
-		
-		String requirementAnswer1 = request.getParameter("requirementAnswer1");
-		String requirementAnswer2 = request.getParameter("requirementAnswer2");
-		String requirementAnswer3 = request.getParameter("requirementAnswer3");
-		
-		Applications application = new Applications(recruitmentSeq, employeeSeq, requirementAnswer1, requirementAnswer2, requirementAnswer3);
-		
-		result = recruitmentDao.insertApplication(application);
-		
-		return result;
-		
-	}
+	
+	
 }

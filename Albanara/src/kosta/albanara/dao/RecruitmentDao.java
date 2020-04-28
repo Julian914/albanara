@@ -40,7 +40,7 @@ public class RecruitmentDao {
 		List<Recruitments> list = null;
 		try {
 			list = sqlSession.getMapper(RecruitmentMapper.class).totalRecruitmentList();
-			System.out.println(list);
+			//System.out.println("dao : "+list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -59,7 +59,7 @@ public class RecruitmentDao {
 
 		try {
 			employeeList = sqlSession.getMapper(RecruitmentMapper.class).employeeList(recruitmentSeq);
-			System.out.println("dao: " + employeeList);
+			//System.out.println("dao: " + employeeList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -153,37 +153,48 @@ public class RecruitmentDao {
 	}
 
 
-	public List<Employees> totalEmployeeList() {
+	public List<Recruitments> nowRecruinmentList() {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<Employees> employeeList = null;
-
+		List<Recruitments> nowRecruinmentList= null;
+		
 		try {
-			employeeList = sqlSession.getMapper(RecruitmentMapper.class).totalEmployeeList();
-
+			nowRecruinmentList = sqlSession.getMapper(RecruitmentMapper.class).nowRecruinmentList();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			if (sqlSession != null) {
+				sqlSession.close();
+			}
 		}
-		return employeeList;
+		return nowRecruinmentList;
 	};
-
-	public List<Applications> totalApplicationList() {
+	
+	
+	public List<Recruitments> endRecruitmentList() {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<Applications> applicationList = null;
-
+		List<Recruitments> endRecruitmentList = null;
+		
 		try {
-			applicationList = sqlSession.getMapper(RecruitmentMapper.class).totalApplicationList();
-
+			endRecruitmentList= sqlSession.getMapper(RecruitmentMapper.class).endRecruitmentList();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		return applicationList;
+		}finally {
+			if (sqlSession != null) {
+				sqlSession.close();
+			}
+		}	
+		return endRecruitmentList;
 	};
-
+	
+	
+	
+	
 	public int insertApplication(Applications application) {
 		int result = -1;
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		try {
-			result = sqlSession.getMapper(RecruitmentMapper.class).insertApplication(application);
+			result = sqlSession.getMapper(RecruitmentMapper.class).insertApplication(application);			
 			if (result > 0) {
 				sqlSession.commit();
 			} else {
@@ -198,4 +209,20 @@ public class RecruitmentDao {
 		return result;
 	}
 
+	
+	public List<Applications> totalApplicationList(){
+		List<Applications> totalApplicationList = null;
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		try {
+			totalApplicationList = sqlSession.getMapper(RecruitmentMapper.class).totalApplicationList();			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return totalApplicationList;
+	};
+	
+	
 }
