@@ -11,7 +11,7 @@
    </resultMap>
 
 	<insert id = "insertHiredHistory"  parameterType= "HiredHistory">
-		insert into hired_histroy values(
+		insert into hired_history values(
 			s_hired_history_seq.nextval,
 			#{employeeSeq},
 			#{recruitmentSeq},

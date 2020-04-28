@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kosta.albanara.mapper.HiredHistroyMapper;
-import kosta.albanara.model.HiredHistroy;
+import kosta.albanara.model.HiredHistory;
 
 public class HiredHistoryDao {
 	private static HiredHistoryDao instance;
@@ -32,7 +32,7 @@ public class HiredHistoryDao {
 		return new SqlSessionFactoryBuilder().build(in);
 	}
 	
-	public int insertHiredHistroy(HiredHistroy hiredHistory) {
+	public int insertHiredHistroy(HiredHistory hiredHistory) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int success = 0;
 		try {
