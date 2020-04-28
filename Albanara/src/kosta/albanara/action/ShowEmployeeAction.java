@@ -17,8 +17,7 @@ public class ShowEmployeeAction implements Action {
 		// Call Service
 		Employees employee = EmployeeService.getInstance().getEmployee(1);
 		
-		List<Recruitments> recruitmentList = RecruitmentService.getInstance().recruitmentListService(request);
-		
+		List<Recruitments> recruitmentList = RecruitmentService.getInstance().recruitmentListService(request);		
 
 		// Set value to HttpSession
 		request.setAttribute("employee", employee);
