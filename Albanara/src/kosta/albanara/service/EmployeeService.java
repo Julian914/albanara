@@ -61,11 +61,11 @@ public class EmployeeService {
 	public int insertResumeService(HttpServletRequest request)throws Exception{
 		request.setCharacterEncoding("utf-8");
 		
-		//ÆÄÀÏ¾÷·Îµå(°æ·Î, ÆÄÀÏÅ©±â, ÀÎÄÚµù, ÆÄÀÏÀÌ¸§ÁßÃ¸ Á¤Ã¥)
+		//ï¿½ï¿½ï¿½Ï¾ï¿½ï¿½Îµï¿½(ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½Å©ï¿½ï¿½, ï¿½ï¿½ï¿½Úµï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½Ã¸ ï¿½ï¿½Ã¥)
 		String uploadPath = request.getRealPath("upload/resumePicture");
 		int size = 20 * 1024 * 1024;		//20MB
 		
-		//ÆÄÀÏ¾÷·Îµå ¸®Äù½ºÆ®¸¦ Ã³¸®ÇØÁÖ´Â API(¿ì¸®°¡ tomcat¿¡ ³ÖÀº cos.jar¿¡ ÀÖ´Ù). ÀÌ °´Ã¼¿¡ request °´Ã¼µµ °°ÀÌ ³Ö¾îÁØ´Ù. ±×·¡¼­ request´ë½Å multi·Î ³Ö¾îÁØ´Ù.
+		//ï¿½ï¿½ï¿½Ï¾ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ API(ï¿½ì¸®ï¿½ï¿½ tomcatï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ cos.jarï¿½ï¿½ ï¿½Ö´ï¿½). ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ request ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½Ø´ï¿½. ï¿½×·ï¿½ï¿½ï¿½ requestï¿½ï¿½ï¿½ multiï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½Ø´ï¿½.
 		MultipartRequest multi =		
 				new MultipartRequest(request, uploadPath, size, "utf-8", new DefaultFileRenamePolicy());
 		
@@ -80,8 +80,8 @@ public class EmployeeService {
 		
 		
 		/*
-		//ÆÄÀÏ¾÷·Îµå ½Ã DB¿¡ ÆÄÀÏÀÌ¸§ ÀúÀåÇÏ´Â ¹ý
-				if(multi.getFilesystemName("pictureFilename") != null) {		//ÇØ¼® : ÆÄÀÏÀ» ¾÷·Îµå ÇßÀ» ¶§
+		//ï¿½ï¿½ï¿½Ï¾ï¿½ï¿½Îµï¿½ ï¿½ï¿½ DBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½
+				if(multi.getFilesystemName("pictureFilename") != null) {		//ï¿½Ø¼ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 				String pictureFilename = (String)multi.getFilesystemName("pictureFilename");
 				
 
@@ -121,6 +121,10 @@ public class EmployeeService {
 	System.out.println(resume.toString());
 		
 		return employeeDao.updateResume(resume);
+	}
+
+	public Employees getEmployee(int seq) {
+		return employeeDao.getEmployee(seq);
 	}
 	
 	

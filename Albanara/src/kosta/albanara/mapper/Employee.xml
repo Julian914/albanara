@@ -64,7 +64,10 @@
 		update resumes set picture_filename = #{pictureFilename}, resume_title = #{resumeTitle}, resume_contents = #{resumeContents}, desired_working_area = #{desiredWorkingArea}, favorite_field = #{favoriteField}, last_modify_date = sysdate where s_resume_seq = 1
 	</update>
 	
-	
+	<select id="getEmployee" parameterType="int"
+		resultMap="Employees">
+		select * from EMPLOYEES where EMPLOYEE_SEQ = #{seq}
+	</select>
 	
 	
 </mapper>

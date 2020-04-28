@@ -8,7 +8,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kosta.albanara.mapper.EmployeeMapper;
+import kosta.albanara.mapper.RecruitmentMapper;
 import kosta.albanara.model.Employees;
+import kosta.albanara.model.Recruitments;
 import kosta.albanara.model.Resumes;
 
 
@@ -114,6 +116,23 @@ public class EmployeeDao {
 		}
 		
 		return re;
+	}
+
+	public Employees getEmployee(int seq) {
+		SqlSession session = getSqlSessionFactory().openSession();
+		EmployeeMapper mapper = null;
+		Employees employee = null;
+		try {
+			mapper = session.getMapper(EmployeeMapper.class);
+			System.out.println("구직자 SEQ: " + seq);
+			employee = mapper.getEmployee(seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		return employee;
 	}
 	
 	
