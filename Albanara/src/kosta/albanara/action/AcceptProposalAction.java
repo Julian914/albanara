@@ -3,25 +3,22 @@ package kosta.albanara.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kosta.albanara.model.Recruitments;
 import kosta.albanara.service.RecruitmentService;
 
-public class UpdateRecruitmentForm implements Action {
+public class AcceptProposalAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// Call Service
-		int seq = Integer.parseInt(request.getParameter("seq"));
-		Recruitments recruitment = RecruitmentService.getInstance().getRecruitment(seq);
-
-		// Set value to HttpSession
-		request.setAttribute("recruitment", recruitment);
-
+		request.setCharacterEncoding("utf-8");
+		String employeeSeq = request.getParameter("employee");
+		String recruitmentSeq = request.getParameter("recruitment");
+		RecruitmentService.getInstance().acceptProposalRecruitments(employeeSeq, recruitmentSeq);
+		
 		// Set ActionForward
 		ActionForward actionForward = new ActionForward();
-		actionForward.setRedirect(false);
-		actionForward.setPath("/updateRecruitmentForm.jsp");
-
+		actionForward.setRedirect(true);
+		actionForward.setPath("../member/showEmployee.do?seq=" + employeeSeq);
 		return actionForward;
 	}
 

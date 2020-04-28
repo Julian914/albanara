@@ -15,9 +15,12 @@ public class ShowEmployeeAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// Call Service
-		Employees employee = EmployeeService.getInstance().getEmployee(1);
+		request.setCharacterEncoding("utf-8");
+		int seq = Integer.parseInt(request.getParameter("seq"));
 		
-		List<Recruitments> recruitmentList = RecruitmentService.getInstance().recruitmentListService(request);
+		Employees employee = EmployeeService.getInstance().getEmployee(seq);
+		
+		List<Recruitments> recruitmentList = RecruitmentService.getInstance().showProposalRecruitments(seq);
 		
 
 		// Set value to HttpSession

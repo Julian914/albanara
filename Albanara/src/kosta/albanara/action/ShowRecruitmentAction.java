@@ -11,10 +11,16 @@ public class ShowRecruitmentAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// Call Service
-		Recruitments recruitment = RecruitmentService.getInstance().getRecruitment(request);
+		int seq = Integer.parseInt(request.getParameter("seq"));
+		Recruitments recruitment = RecruitmentService.getInstance().getRecruitment(seq);
+		
+		int man = RecruitmentService.getInstance().selectRecruitmentManCount(seq);
+		int woman = RecruitmentService.getInstance().selectRecruitmentWomanCount(seq);
 
 		// Set value to HttpSession
 		request.setAttribute("recruitment", recruitment);
+		request.setAttribute("man", man);
+		request.setAttribute("woman", woman);
 
 		// Set ActionForward
 		ActionForward actionForward = new ActionForward();

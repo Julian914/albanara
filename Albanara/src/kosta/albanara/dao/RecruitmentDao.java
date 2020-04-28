@@ -3,6 +3,7 @@ package kosta.albanara.dao;
 import java.io.InputStream;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -197,5 +198,96 @@ public class RecruitmentDao {
 		}
 		return result;
 	}
-
+	
+	/*제안 받은 공고 리스트 */
+	public List<Recruitments> showProposalRecruitments(int seq) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		List<Recruitments> list = null;
+		
+		try {
+			list = sqlSession.getMapper(RecruitmentMapper.class).showProposalRecruitments(seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		
+		return list;
+	}
+	
+	/*제안 받은 공고 수락*/
+	public void acceptProposalRecruitments(String employeeSeq, String recruitmentSeq) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = -1;
+		try {
+			re = sqlSession.getMapper(RecruitmentMapper.class).acceptProposalRecruitments(employeeSeq, recruitmentSeq);
+			if(re > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+	}
+	
+	/*제안 받은 공고 거절*/
+	public void rejectProposalRecruitments(String employeeSeq, String recruitmentSeq) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = -1;
+		try {
+			re = sqlSession.getMapper(RecruitmentMapper.class).rejectProposalRecruitments(employeeSeq, recruitmentSeq);
+			if(re > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+	}
+	
+	/* 공고에 지원한 남자 수 */
+	public int selectRecruitmentManCount(int seq) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = -1;
+		try {
+			re = sqlSession.getMapper(RecruitmentMapper.class).selectRecruitmentManCount(seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		
+		return re;
+	}
+	
+	/* 공고에 지원한 여자 수 */
+	public int selectRecruitmentWomanCount(int seq) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = -1;
+		try {
+			re = sqlSession.getMapper(RecruitmentMapper.class).selectRecruitmentWomanCount(seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		
+		return re;
+	}
 }

@@ -7,6 +7,8 @@ import java.text.ParseException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.annotations.Param;
+
 import kosta.albanara.dao.RecruitmentDao;
 import kosta.albanara.model.Applications;
 import kosta.albanara.model.Employees;
@@ -75,8 +77,7 @@ public class RecruitmentService {
 		return resultCount;
 	}
 
-	public Recruitments getRecruitment(HttpServletRequest request) {
-		int seq = Integer.parseInt(request.getParameter("seq"));
+	public Recruitments getRecruitment(int seq) {
 		return recruitmentDao.getRecruitment(seq);
 	}
 
@@ -160,5 +161,32 @@ public class RecruitmentService {
 		
 		return result;
 		
+	}
+	
+	/*제안 받은 공고 리스트*/
+	public List<Recruitments> showProposalRecruitments(int seq) throws Exception {
+		List<Recruitments> list = recruitmentDao.showProposalRecruitments(seq);
+		return list;
+	}
+	
+	/*제안 받은 공고 수락*/
+	public void acceptProposalRecruitments(String employeeSeq, String recruitmentSeq) {
+		recruitmentDao.acceptProposalRecruitments(employeeSeq, recruitmentSeq);
+	}
+	
+	/*제안 받은 공고 거절*/
+	public void rejectProposalRecruitments(String employeeSeq, String recruitmentSeq) throws Exception {
+		recruitmentDao.rejectProposalRecruitments(employeeSeq, recruitmentSeq);
+	}
+	
+	
+	/*공고에 지원한 남자 수*/
+	public int selectRecruitmentManCount(int seq) {
+		return recruitmentDao.selectRecruitmentManCount(seq);
+	}
+	
+	/*공고에 지원한 여자 수*/
+	public int selectRecruitmentWomanCount(int seq) {
+		return recruitmentDao.selectRecruitmentWomanCount(seq);
 	}
 }
