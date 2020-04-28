@@ -13,6 +13,8 @@
 <script src="Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
 <script src="Albanara/js/jquery-ui.js" type="text/javascript"></script>
 <script src="Albanara/js/bootstrap.js" type="text/javascript"></script>
+<script src="./js/Chart.js" type="text/javascript"></script>
+<script src="./js/Chart.bundle.js" type="text/javascript"></script>
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script
