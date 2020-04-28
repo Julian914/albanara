@@ -1,6 +1,8 @@
 package kosta.albanara.model;
 
-public class Employers {
+import java.io.Serializable;
+
+public class Employers implements Serializable{
 	private int employerSeq;	//기업번호
 	private String employerId;	//기업아이디
 	private String employerPw;	//기업비밀번호

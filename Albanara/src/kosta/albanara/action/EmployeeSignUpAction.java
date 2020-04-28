@@ -12,7 +12,7 @@ public class EmployeeSignUpAction implements Action {
 		ActionForward forward = new ActionForward();
 		EmployeeService service = EmployeeService.getInstance(); 
 		
-		service.insertEmployeeService(request);		
+		service.insertEmployeeService(request);
 		
 		
 		forward.setRedirect(true); 

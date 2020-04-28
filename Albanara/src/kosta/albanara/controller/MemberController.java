@@ -13,12 +13,18 @@ import kosta.albanara.action.Action;
 import kosta.albanara.action.ActionForward;
 import kosta.albanara.action.EmployeeFormAction;
 import kosta.albanara.action.EmployeeSignUpAction;
+import kosta.albanara.action.EmployeeUpdateAction;
+import kosta.albanara.action.EmployeeUpdateFormAction;
+import kosta.albanara.action.EmployerDeleteAction;
 import kosta.albanara.action.InsertResumeAction;
 import kosta.albanara.action.InsertResumeForm;
-import kosta.albanara.action.EmployeeLogInFormAction;
+import kosta.albanara.action.EmployerLogInFormAction;
 import kosta.albanara.action.SearchResumeAction;
 import kosta.albanara.action.EmployerFormAction;
+import kosta.albanara.action.EmployerLogInAction;
 import kosta.albanara.action.EmployerSignUpAction;
+import kosta.albanara.action.EmployerUpdateAction;
+import kosta.albanara.action.EmployerUpdateFormAction;
 
 @WebServlet("/member/*")
 public class MemberController extends HttpServlet {
@@ -100,7 +106,7 @@ public class MemberController extends HttpServlet {
 				e.printStackTrace();
 			}
     	}else if(command.equals("employeeLogInForm.do")){
-    		action = new EmployeeLogInFormAction();
+    		action = new EmployerLogInFormAction();
     		try {
 				actionForward = action.execute(request, response);
 				
@@ -108,7 +114,68 @@ public class MemberController extends HttpServlet {
 				e.printStackTrace();
 			}
     	}else if(command.equals("employerLogInForm.do")){
-    		action = new EmployeeLogInFormAction();
+    		action = new EmployerLogInFormAction();
+    		try {
+				actionForward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}else if(command.equals("employerLogIn.do")){
+    		
+    		action = new EmployerLogInAction();
+    		
+    		try {
+				actionForward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}else if(command.equals("UpdateEmployeesForm.do")){
+    		
+    		action = new EmployeeUpdateFormAction();
+    		
+    		try {
+				actionForward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}else if(command.equals("UpdateEmployees.do")){
+    		
+    		action = new EmployeeUpdateAction();
+    		
+    		try {
+				actionForward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}else if(command.equals("UpdateEmployersForm.do")){
+    		
+    		action = new EmployerUpdateFormAction();
+    		
+    		try {
+				actionForward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}else if(command.equals("UpdateEmployers.do")){
+    		
+    		action = new EmployerUpdateAction();
+    		
+    		try {
+				actionForward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}else if(command.equals("deleteEmployers.do")){
+    		
+    		
+    		action = new EmployerDeleteAction();
+    		
     		try {
 				actionForward = action.execute(request, response);
 				

@@ -22,6 +22,11 @@
 		select * from resume where seq=#{employeeSeq}
 	</select>
 	
+	<update id="updateEmployee" parameterType="Employees">
+		update employees set employee_pw = #{employeePw}, employee_email = #{employeeEmail}, 
+			employee_address = #{employeeAddress}, employee_phone = #{employeePhone} where employee_id = #{employeeId}
+	</update> 
+
 	
 	
 </mapper>

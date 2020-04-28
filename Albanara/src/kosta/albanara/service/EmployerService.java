@@ -3,7 +3,11 @@ package kosta.albanara.service;
 import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.SendResult;
 
+import kosta.albanara.action.ActionForward;
 import kosta.albanara.dao.EmployerDao;
 import kosta.albanara.model.Employees;
 import kosta.albanara.model.Employers;
@@ -40,4 +44,54 @@ public class EmployerService {
 		return employerDao.insertEmployer(employers);
 
 	}
+	
+	public Employers employerLogInService(HttpServletRequest request) throws Exception {
+		
+		request.setCharacterEncoding("utf-8");
+		
+		Employers employer = new Employers();
+		Employers login = new Employers();
+	      
+		employer.setEmployerId(request.getParameter("employerLogInId"));
+		employer.setEmployerPw(request.getParameter("employerLogInPw"));
+		
+	      login = employerDao.employerLogIn(employer);
+	      
+	      if(login==null) {
+	    	  System.out.println("로그인 실패");
+	    	  return null;
+//	    	  ActionForward forward = new ActionForward();
+//	    	    forward.setRedirect(false); 
+//	  			forward.setPath("/employerLogInForm.jsp");
+	    	 
+	      }else if(login.getEmployerId().equals(employer.getEmployerId()) && login.getEmployerPw().equals(employer.getEmployerPw())) {
+	    	  System.out.println(login.getEmployerId()+employer.getEmployerId());
+	    	  System.out.println(login.getEmployerPw()+employer.getEmployerPw());
+	    	  System.out.println("로그인 성공");
+	    	 
+	    	  
+	    	  HttpSession session = request.getSession();
+	    	  
+	    	  session.setAttribute("login",login);
+	    	  /*String employerId = (String)session.getAttribute("login");*/
+	    	
+	      }
+		return login;
+	}
+	
+	public int updateEmployerService(Employers employer) throws Exception{
+		
+		System.out.println(employer.getEmployerId());
+		System.out.println(employer.getEmployerName());
+		
+		
+		return employerDao.updateEmployer(employer);
+	}
+	
+	public int deleteEmployerService(Employers employer) throws Exception{
+		
+		
+		return employerDao.deleteEmployer(employer);
+	}
+	
 }

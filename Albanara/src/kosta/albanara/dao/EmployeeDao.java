@@ -90,5 +90,24 @@ public class EmployeeDao {
 
 		return resume;
 	}
-
+	
+	public int updateEmployee(Employees employee) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re= -1;
+		
+		try {
+			
+			re = sqlSession.getMapper(EmployeeMapper.class).updateEmployee(employee);
+			
+			if (re > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return re;
+	}
 }

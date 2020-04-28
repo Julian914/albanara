@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import kosta.albanara.dao.EmployeeDao;
 import kosta.albanara.model.Employees;
 import kosta.albanara.model.Resumes;
+import sun.rmi.transport.proxy.HttpReceiveSocket;
 
 public class EmployeeService {
 	public static EmployeeService instance;
@@ -23,6 +24,8 @@ public class EmployeeService {
 	public int insertEmployeeService(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
 
+	
+	
 		String employeeId = request.getParameter("employeeId");
 		String employeePw = request.getParameter("employeePw");
 		String employeeName = request.getParameter("employeeName");
@@ -47,11 +50,10 @@ public class EmployeeService {
 		 * employeeAddress ="����";
 		 */
 
-		Employees employees = new Employees(employeeId, employeePw, employeeName, employeeBirthday, employeeEmail,
+		Employees employee = new Employees(employeeId, employeePw, employeeName, employeeBirthday, employeeEmail,
 				employeeGender, employeePhone, employeeAddress);
 
-		return employeeDao.insertEmployee(employees);
-
+		return employeeDao.insertEmployee(employee);
 	}
 
 	public int insertResumeService(Resumes resume) {
@@ -61,5 +63,9 @@ public class EmployeeService {
 	public Resumes searchResumeService(int employeeSeq) {
 		return employeeDao.searchResume(employeeSeq);
 	}
-
+	
+	public int updateEmployeeService(Employees employee) throws Exception{
+		
+		return employeeDao.updateEmployee(employee);
+	}
 }

@@ -57,18 +57,14 @@ public class EmployerDao {
 		return re;
 	}
 	
-	public int employerLogIn(Employers employers) {
+	public Employers employerLogIn(Employers employers) {
+		
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		int re = -1;
-
+		Employers employer = new Employers();
+		
 		try {
-			re = sqlSession.getMapper(EmployerMapper.class).employerLogIn(employers);
+			employer = sqlSession.getMapper(EmployerMapper.class).employerLogIn(employers);
 	
-			if(re > 0) {
-				sqlSession.commit();		
-			}else {
-				sqlSession.rollback();		
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -76,8 +72,49 @@ public class EmployerDao {
 				sqlSession.close();
 			}
 		}
+		return employer;
+	}
+	
+	public int updateEmployer(Employers employer) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re= -1;
+		
+		try {
+			
+			re = sqlSession.getMapper(EmployerMapper.class).updateEmployer(employer);
+			
+			if (re > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return re;
 	}
+	
+public int deleteEmployer(Employers employer) {
 		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re= -1;
+		
+		try {
+			
+			re = sqlSession.getMapper(EmployerMapper.class).deleteEmployer(employer);
+			
+			if (re > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return re;
+	}
 	
 }
