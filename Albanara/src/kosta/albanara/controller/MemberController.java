@@ -20,6 +20,7 @@ import kosta.albanara.action.InsertResumeAction;
 import kosta.albanara.action.InsertResumeForm;
 import kosta.albanara.action.EmployerLogInFormAction;
 import kosta.albanara.action.SearchResumeAction;
+import kosta.albanara.action.ShowEmployeeAction;
 import kosta.albanara.action.UpdateResumeAction;
 import kosta.albanara.action.UpdateResumeFormAction;
 import kosta.albanara.action.EmployerFormAction;
@@ -53,6 +54,13 @@ public class MemberController extends HttpServlet {
 				e.printStackTrace();
 			}
 			break;
+		case "showEmployee.do":
+			try {
+				actionForward = new ShowEmployeeAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;			
 		}
 		if(command.equals("employeeSignUpForm.do")) {
     		action = new EmployeeFormAction();
