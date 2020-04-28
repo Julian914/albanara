@@ -94,4 +94,9 @@ public class EmployerService {
 		return employerDao.deleteEmployer(employer);
 	}
 	
+	public Employers detailEmployerService(String employerId) throws Exception{
+		System.out.println("¼­ºñ½º" + employerId);
+		return employerDao.detailEmployers(employerId);
+	}
+	
 }

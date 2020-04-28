@@ -8,4 +8,5 @@ public interface EmployerMapper {
 	Employers employerLogIn(Employers employers);
 	int updateEmployer(Employers employer);
 	int deleteEmployer(Employers employer);
+	Employers detailEmployer(String employerId);
 }
