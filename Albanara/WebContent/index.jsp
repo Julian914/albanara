@@ -16,6 +16,7 @@
 <a href="member/employerLogInForm.do">기업 로그인 페이지 이동</a><br>
 <a href="member/UpdateEmployeesForm.do">구직자 수정페이지 이동</a><br>
 <a href="member/UpdateEmployersForm.do">기업 수정페이지 이동</a><br>
+<a href="member/detailEmployers.do">기업 상세페이지 이동</a><br>
 
 </body>
 </html>

@@ -116,5 +116,21 @@ public int deleteEmployer(Employers employer) {
 		}
 		return re;
 	}
-	
+
+public Employers detailEmployers(String employerId) {
+	SqlSession sqlSession = getSqlSessionFactory().openSession();
+	Employers employer = null;
+	try {
+		employer = sqlSession.getMapper(EmployerMapper.class).detailEmployer(employerId);
+		
+		System.out.println("´Ù¿À"+employer.getEmployerId());
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		return employer;
+	}
 }
