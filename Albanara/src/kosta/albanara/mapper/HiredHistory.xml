@@ -15,7 +15,7 @@
 			s_hired_history_seq.nextval,
 			#{employeeSeq},
 			#{recruitmentSeq},
-			#{isCompleted}
+			2
 		)
 	</insert>
 

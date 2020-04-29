@@ -14,9 +14,10 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=814861f68a4b2c5498535e608555d96a&libraries=services"></script>
 <script type="text/javascript">
-	function deleteBtn_onClick() {
-		location.href="deleteEmployers.do";
-	}
+function deleteBtn_onClick(employerId) {
+	alert('회원탈퇴 하시겠습니까?');
+	document.location.href="deleteEmployees.do?employeeId=ggggg";
+}
 </script>
 </head>
 <body>
@@ -181,7 +182,7 @@
 </script>
 
 		<br> <input id="updatebutton" type="submit" value="정보수정완료" />
-		
+		<input type="button" id="deletebutton" onclick="deleteBtn_onClick(this.form.employeeIdInput.value);" value="회원탈퇴"/>
 		
 	</form>
 </div>

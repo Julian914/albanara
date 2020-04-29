@@ -5,11 +5,13 @@ package kosta.albanara.service;
 import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import kosta.albanara.dao.EmployeeDao;
 import kosta.albanara.model.Employees;
+import kosta.albanara.model.Employers;
 import kosta.albanara.model.Resumes;
 import sun.rmi.transport.proxy.HttpReceiveSocket;
 
@@ -48,10 +50,10 @@ public class EmployeeService {
 
 		/*
 		 * String employeeId = "ID"; String employeePw = "Password"; String employeeName
-		 * = "�̸�"; Date employeeBirthday = Date.valueOf("1992-05-11"); String
+		 * = "占싱몌옙"; Date employeeBirthday = Date.valueOf("1992-05-11"); String
 		 * employeeEmail = "employeeEmailInput1"+"employeeEmailInput2"; String
-		 * employeeGender = "����"; String employeePhone = "010"+"2785"+"1111"; String
-		 * employeeAddress ="����";
+		 * employeeGender = "占쏙옙占쏙옙"; String employeePhone = "010"+"2785"+"1111"; String
+		 * employeeAddress ="占쏙옙占쏙옙";
 		 */
 
 		Employees employee = new Employees(employeeId, employeePw, employeeName, employeeBirthday, employeeEmail,
@@ -63,11 +65,11 @@ public class EmployeeService {
 	public int insertResumeService(HttpServletRequest request)throws Exception{
 		request.setCharacterEncoding("utf-8");
 		
-		//���Ͼ��ε�(���, ����ũ��, ���ڵ�, �����̸���ø ��å)
+		//占쏙옙占싹억옙占싸듸옙(占쏙옙占�, 占쏙옙占쏙옙크占쏙옙, 占쏙옙占쌘듸옙, 占쏙옙占쏙옙占싱몌옙占쏙옙첩 占쏙옙책)
 		String uploadPath = request.getRealPath("upload/resumePicture");
 		int size = 20 * 1024 * 1024;		//20MB
 		
-		//���Ͼ��ε� ������Ʈ�� ó�����ִ� API(�츮�� tomcat�� ���� cos.jar�� �ִ�). �� ��ü�� request ��ü�� ���� �־��ش�. �׷��� request��� multi�� �־��ش�.
+		//占쏙옙占싹억옙占싸듸옙 占쏙옙占쏙옙占쏙옙트占쏙옙 처占쏙옙占쏙옙占쌍댐옙 API(占쎌리占쏙옙 tomcat占쏙옙 占쏙옙占쏙옙 cos.jar占쏙옙 占쌍댐옙). 占쏙옙 占쏙옙체占쏙옙 request 占쏙옙체占쏙옙 占쏙옙占쏙옙 占쌍억옙占쌔댐옙. 占쌓뤄옙占쏙옙 request占쏙옙占� multi占쏙옙 占쌍억옙占쌔댐옙.
 		MultipartRequest multi =		
 				new MultipartRequest(request, uploadPath, size, "utf-8", new DefaultFileRenamePolicy());
 		
@@ -82,8 +84,8 @@ public class EmployeeService {
 		
 		
 		/*
-		//���Ͼ��ε� �� DB�� �����̸� �����ϴ� ��
-				if(multi.getFilesystemName("pictureFilename") != null) {		//�ؼ� : ������ ���ε� ���� ��
+		//占쏙옙占싹억옙占싸듸옙 占쏙옙 DB占쏙옙 占쏙옙占쏙옙占싱몌옙 占쏙옙占쏙옙占싹댐옙 占쏙옙
+				if(multi.getFilesystemName("pictureFilename") != null) {		//占쌔쇽옙 : 占쏙옙占쏙옙占쏙옙 占쏙옙占싸듸옙 占쏙옙占쏙옙 占쏙옙
 				String pictureFilename = (String)multi.getFilesystemName("pictureFilename");
 				
 
@@ -133,6 +135,51 @@ public class EmployeeService {
 	public int updateEmployeeService(Employees employee) throws Exception{
 		
 		return employeeDao.updateEmployee(employee);
+	}
+	
+	public int deleteEmployeeService(Employees employee) throws Exception{
+		
+		
+		return employeeDao.deleteEmployee(employee);
+	}
+	
+public Employees employeeLogInService(HttpServletRequest request) throws Exception {
+		
+		request.setCharacterEncoding("utf-8");
+		
+		Employees employee = new Employees();
+		Employees login = new Employees();
+	      
+		employee.setEmployeeId(request.getParameter("employeeLogInId"));
+		employee.setEmployeePw(request.getParameter("employeeLogInPw"));
+		
+	      login = employeeDao.employeeLogIn(employee);
+	      
+	      if(login==null) {
+	    	  System.out.println("�α��� ����");
+	    	  return null;
+//	    	  ActionForward forward = new ActionForward();
+//	    	    forward.setRedirect(false); 
+//	  			forward.setPath("/employerLogInForm.jsp");
+	    	 
+	      }else if(login.getEmployeeId().equals(employee.getEmployeeId()) && login.getEmployeePw().equals(employee.getEmployeePw())) {
+	    	  
+	    	  System.out.println("로그인성공");
+	    	  HttpSession session = request.getSession();
+	    	  
+	    	  session.setAttribute("id",login.getEmployeeId());
+	    	  session.setAttribute("seq", login.getEmployeeSeq());
+	    	  
+	    	  System.out.println(session.getAttribute("id"));
+	    	  /*String employerId = (String)session.getAttribute("login");*/
+	    	
+	      }
+		return login;
+	}
+public void logOut(HttpServletRequest request) throws Exception{
+	
+	HttpSession session = request.getSession();
+	session.invalidate();
 	}
 
 }

@@ -8,8 +8,10 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kosta.albanara.mapper.EmployeeMapper;
+import kosta.albanara.mapper.EmployerMapper;
 import kosta.albanara.mapper.RecruitmentMapper;
 import kosta.albanara.model.Employees;
+import kosta.albanara.model.Employers;
 import kosta.albanara.model.Recruitments;
 import kosta.albanara.model.Resumes;
 
@@ -123,7 +125,7 @@ public class EmployeeDao {
 		Employees employee = null;
 		try {
 			mapper = session.getMapper(EmployeeMapper.class);
-			System.out.println("구직자 SEQ: " + seq);
+			System.out.println("援ъ쭅�옄 SEQ: " + seq);
 			employee = mapper.getEmployee(seq);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -152,6 +154,45 @@ public class EmployeeDao {
 			e.printStackTrace();
 		}
 		return re;
+	}
+	
+	public int deleteEmployee(Employees employee) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re= -1;
+		
+		try {
+			
+			re = sqlSession.getMapper(EmployeeMapper.class).deleteEmployee(employee);
+			
+			if (re > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return re;
+	}
+	
+public Employees employeeLogIn(Employees employees) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		Employees employee = new Employees();
+		
+		try {
+			employee = sqlSession.getMapper(EmployeeMapper.class).employeeLogIn(employees);
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		return employee;
 	}
 
 }
