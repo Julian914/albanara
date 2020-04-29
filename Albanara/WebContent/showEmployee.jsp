@@ -62,6 +62,34 @@
 		</div>
 	</div>
 	
+	<h3>지원한 공고 목록</h3>
+	<div id="applyRecruitment">
+		<div class="accordion">
+			<c:forEach var="applyItem" items="${applyRecruitment}" varStatus="status">
+				<div id="apply_recruitment_accordion_title">
+					<ul class="recruitmentUp">
+						<li>마감된 날짜 : ${applyItem.closingDate}</li>
+						<li>공고 제목 : ${applyItem.recruitmentTitle}</li>
+					</ul>
+				</div>
+				<div id="apply_recruitment_accordion_contents">
+					<ul class="recruitmentDown">
+						<li>총 근무시간 : ${applyItem.totalWorkingTime} 시간</li>
+						<li>연령제한 : ${applyItem.minAge} 세 ~${applyItem.maxAge} 세</li>
+						<li>시급 : ${applyItem.wage} 원</li>
+						<li>근무지 주소 : ${applyItem.workingPlaceAddress}</li>
+						<li>근무일자 :<fmt:parseDate var="startdate"
+								value="${applyItem.startingWorkingDate}" pattern="yyyy-MM-dd" /> <fmt:formatDate
+								value="${startdate}" pattern="yyyy.MM.dd" /> ~<fmt:parseDate
+								var="enddate" value="${applyItem.endingWorkingDate}"
+								pattern="yyyy-MM-dd" /> <fmt:formatDate value="${enddate}"
+								pattern="yyyy.MM.dd" /></li>
+					</ul>
+				</div>
+			</c:forEach>
+		</div>
+	</div>
+			
 	<h3>완료한 일자리 목록</h3>
 	<div id="completeRecruitment">
 		<div class="accordion">
@@ -72,7 +100,7 @@
 						<li>공고 제목 : ${item.recruitmentTitle}</li>
 					</ul>
 				</div>
-				<div id="accordion-contents">
+				<div id="complete_recruitment_accordion_contents">
 					<ul class="recruitmentDown">
 						<li>총 근무시간 : ${item.totalWorkingTime} 시간</li>
 						<li>연령제한 : ${item.minAge} 세 ~${item.maxAge} 세</li>

@@ -3,7 +3,6 @@ package kosta.albanara.dao;
 import java.io.InputStream;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -318,7 +317,6 @@ public class RecruitmentDao {
 		return re;
 	}
 	
-	/*
 	public List<Recruitments> completeRecruitment(int employeeSeq){
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<Recruitments> list = null;
@@ -333,7 +331,21 @@ public class RecruitmentDao {
 		}
 		return list;
 	}
-	*/
+	
+	public List<Recruitments> applyRecruitment(int applySeq){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		List<Recruitments> applyList = null;
+		try {
+			applyList = sqlSession.getMapper(RecruitmentMapper.class).applyRecruitment(applySeq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if (sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		return applyList;
+	}
 	
 
 	public List<Employees> hiredEmployeeList(){

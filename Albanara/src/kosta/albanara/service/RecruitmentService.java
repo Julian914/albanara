@@ -212,11 +212,16 @@ public class RecruitmentService {
 	public int selectRecruitmentWomanCount(int seq) {
 		return recruitmentDao.selectRecruitmentWomanCount(seq);
 	}
-	
-	/*
-	public List<Recruitments> completeRecruitment(HttpServletRequest request){
-		int employeeSeq = Integer.parseInt(request.getParameter("employeeSeq"));
+
+
+	public List<Recruitments> completeRecruitmentService(int employeeSeq){
 		return recruitmentDao.completeRecruitment(employeeSeq);
 	}
-	*/
+
+
+	};
+	
+	public List<Recruitments> applyRecruitmentService(int applySeq){
+		return recruitmentDao.applyRecruitment(applySeq);
+	};
 }
