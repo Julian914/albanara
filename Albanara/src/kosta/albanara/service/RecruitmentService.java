@@ -179,7 +179,9 @@ public class RecruitmentService {
 		return recruitmentDao.totalApplicationList();
 	}
 	
-	
+	public List<Employees> hiredEmployeeListService(){
+		return recruitmentDao.hiredEmployeeList();
+	}
 	
 	
 	

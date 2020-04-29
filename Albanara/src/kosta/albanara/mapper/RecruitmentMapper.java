@@ -22,7 +22,7 @@ public interface RecruitmentMapper {
 	List<Recruitments> endRecruitmentList();
 	List<Applications> totalApplicationList();
 	List<NearRecruitments> showNearRecruitments();
-
+	List<Employees> hiredEmployeeList();
 
 
 

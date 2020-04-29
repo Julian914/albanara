@@ -23,31 +23,28 @@ public class RecruitmentListAction implements Action {
 		request.setCharacterEncoding("utf-8");
 
 		// 전체 공고목록 불러오기
-		List<Recruitments> recruitmentList = service.recruitmentListService(request);
-		request.setAttribute("recruitmentList", recruitmentList);
+		//List<Recruitments> recruitmentList = service.recruitmentListService(request);
+		//request.setAttribute("recruitmentList", recruitmentList);
 		// System.out.println("전체 공고목록 : " + recruitmentList.size());
 
 		
 		//진행중인 공고목록
-		//List<Recruitments> recruitmentList = service.nowRecruinmentListService();
-		//request.setAttribute("recruitmentList", recruitmentList);
+		//List<Recruitments> nowRecruinmentList = service.nowRecruinmentListService();
+		//request.setAttribute("nowRecruinmentList", nowRecruinmentList);
 		
 		
 		//마감된 공고목록
-		//List<Recruitments> recruitmentList = service.endRecruitmentListService();
-		//request.setAttribute("recruitmentList", recruitmentList);
+		List<Recruitments> endRecruitmentList = service.endRecruitmentListService();
+		request.setAttribute("endRecruitmentList", endRecruitmentList);
 	
 		
-		
-		//전체공고의 전체지원자 목록
-		
-		List<Applications> totalApplicationList = service.totalApplicationListService();
-		request.setAttribute("totalApplicationList", totalApplicationList);
-		System.out.println("totalApplicationList : "+totalApplicationList);
+		//전체공고의 전체지원자 목록(테스트용)
+		//List<Applications> totalApplicationList = service.totalApplicationListService();
+		//request.setAttribute("totalApplicationList", totalApplicationList);
+		//System.out.println("totalApplicationList : "+totalApplicationList);
 		
 		
-		
-		
+
 		
 		
 		
@@ -65,17 +62,34 @@ public class RecruitmentListAction implements Action {
 		
 		
 		// 해당 공고의 지원자목록 불러오기
-		List<ApplyedEmployeeListMap> mapList = new ArrayList<ApplyedEmployeeListMap>();
+		/*List<ApplyedEmployeeListMap> mapList1 = new ArrayList<ApplyedEmployeeListMap>();
 
 		for (int i = 0; i < recruitmentList.size(); i++) {
 			ApplyedEmployeeListMap mapClass = new ApplyedEmployeeListMap();
 			mapClass.setKey(i);
 			mapClass.setEmployeeList(service.employeeListService(recruitmentList.get(i).getRecruitmentSeq()));
-			mapList.add(mapClass);
+			mapList1.add(mapClass);
 		
+		}*/
+		
+		//지원자 불러오기
+		//request.setAttribute("employeeListMapList", mapList1);
+				
+		
+		
+		//마감 공고의 채용자 목록
+		List<ApplyedEmployeeListMap> mapList2 = new ArrayList<ApplyedEmployeeListMap>();
+
+		for (int i = 0; i < endRecruitmentList.size(); i++) {
+			ApplyedEmployeeListMap mapClass = new ApplyedEmployeeListMap();
+			mapClass.setKey(i);
+			mapClass.setEmployeeList(service.hiredEmployeeListService());
+			mapList2.add(mapClass);
 		}
-	
-		request.setAttribute("employeeListMapList", mapList);
+		
+		//채용했던 사람 불러오기
+		request.setAttribute("hiredEmployeeListMapList", mapList2);
+		
 		
 		actionforward.setRedirect(false);
 		actionforward.setPath("/recruitmentList.jsp");
