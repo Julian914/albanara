@@ -80,7 +80,7 @@
 						<li>근무지 주소 : ${item.workingPlaceAddress}</li>
 						<li>근무일자 :<fmt:parseDate var="startdate"
 								value="${item.startingWorkingDate}" pattern="yyyy-MM-dd" /> <fmt:formatDate
-								value="${item}" pattern="yyyy.MM.dd" /> ~<fmt:parseDate
+								value="${startdate}" pattern="yyyy.MM.dd" /> ~<fmt:parseDate
 								var="enddate" value="${item.endingWorkingDate}"
 								pattern="yyyy-MM-dd" /> <fmt:formatDate value="${enddate}"
 								pattern="yyyy.MM.dd" /></li>
