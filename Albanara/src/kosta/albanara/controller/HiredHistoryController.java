@@ -1,7 +1,6 @@
 package kosta.albanara.controller;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import kosta.albanara.action.Action;
 import kosta.albanara.action.ActionForward;
-import kosta.albanara.action.InsertHiredHistroyAction;
+import kosta.albanara.action.HiredHistoryAction;
+
 
 
 @WebServlet("/HiredHistoryController/*")
@@ -30,7 +30,7 @@ public class HiredHistoryController extends HttpServlet {
 		ActionForward forward = null;
 		Action action = null;
 		if (command.equals("insertHiredHistory.do")) {
-			action = new InsertHiredHistroyAction();
+			action = new HiredHistoryAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
