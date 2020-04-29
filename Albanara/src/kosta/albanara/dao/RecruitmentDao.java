@@ -287,7 +287,7 @@ public class RecruitmentDao {
 	/* 공고에 지원한 남자 수 */
 	public int selectRecruitmentManCount(int seq) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		int re = -1;
+		int re = 0;
 		try {
 			re = sqlSession.getMapper(RecruitmentMapper.class).selectRecruitmentManCount(seq);
 		} catch (Exception e) {
@@ -304,7 +304,7 @@ public class RecruitmentDao {
 	/* 공고에 지원한 여자 수 */
 	public int selectRecruitmentWomanCount(int seq) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		int re = -1;
+		int re = 0;
 		try {
 			re = sqlSession.getMapper(RecruitmentMapper.class).selectRecruitmentWomanCount(seq);
 		} catch (Exception e) {

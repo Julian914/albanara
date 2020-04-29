@@ -1,6 +1,8 @@
 package kosta.albanara.model;
 
-public class MarkerLocation {
+import java.io.Serializable;
+
+public class MarkerLocation implements Serializable{
 	private int markerLocationSeq;
 	private String roadAddress;
 	private String latitude;

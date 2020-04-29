@@ -22,6 +22,14 @@
 		<result column="employer_homepage" property="employerHomePage" />
 	</resultMap>
 	
+	
+	<resultMap type="MarkerLocation" id="MarkerLocation">
+		<result column="MARKER_LOCATION_SEQ" property="markerLocationSeq"/>
+		<result column="ROAD_ADDRESS" property="roadAddress"/>
+		<result column="LATITUDE" property="latitude"/>
+		<result column="LONGITUDE" property="longitude"/>
+	</resultMap>
+	
 	<insert id="insertEmployer" parameterType="Employers">
 		insert into employers(
 			employer_seq, employer_id, employer_pw, employer_name, employer_number,
@@ -58,4 +66,28 @@
 		select * from employers where employer_id = #{employerId}
 	</select>
 	
+	
+	<!-- 기업에 지원한 남자 수 -->
+	<select id="selectEmployerManCount" parameterType="int" resultType="int">
+		select count(*)
+		from hired_history hi, employees em1, employers em2, RECRUITMENTS re
+		where hi.EMPLOYEE_SEQ = em1.EMPLOYEE_SEQ and hi.RECRUITMENT_SEQ = re.RECRUITMENT_SEQ and re.EMPLOYER_SEQ = em2.EMPLOYER_SEQ 
+		and em1.employee_gender='man' and em2.EMPLOYER_SEQ = #{seq}
+	</select>
+	
+	<!-- 기업에 지원한 여자 수 -->
+	<select id="selectEmployerWomanCount" parameterType="int" resultType="int">
+		select count(*)
+		from hired_history hi, employees em1, employers em2, RECRUITMENTS re
+		where hi.EMPLOYEE_SEQ = em1.EMPLOYEE_SEQ and hi.RECRUITMENT_SEQ = re.RECRUITMENT_SEQ and re.EMPLOYER_SEQ = em2.EMPLOYER_SEQ 
+		and em1.employee_gender='woman' and em2.EMPLOYER_SEQ = #{seq}
+	</select>
+	
+	<!-- 채용자들 위치 구하기 -->
+	<select id="selectHireMap" parameterType="int" resultMap="MarkerLocation">
+		select *
+		from hired_history hi, employees em1, employers em2, RECRUITMENTS re, MARKER_LOCATION ma
+		where hi.EMPLOYEE_SEQ = em1.EMPLOYEE_SEQ and hi.RECRUITMENT_SEQ = re.RECRUITMENT_SEQ and re.EMPLOYER_SEQ = em2.EMPLOYER_SEQ and ma.ROAD_ADDRESS = em1.EMPLOYEE_ADDRESS
+		and em2.EMPLOYER_SEQ = #{seq}
+	</select>
 </mapper>

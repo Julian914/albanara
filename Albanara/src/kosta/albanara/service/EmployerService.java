@@ -1,6 +1,7 @@
 package kosta.albanara.service;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +12,7 @@ import kosta.albanara.action.ActionForward;
 import kosta.albanara.dao.EmployerDao;
 import kosta.albanara.model.Employees;
 import kosta.albanara.model.Employers;
+import kosta.albanara.model.MarkerLocation;
 
 public class EmployerService {
 	public static EmployerService instance;
@@ -58,7 +60,7 @@ public class EmployerService {
 	      login = employerDao.employerLogIn(employer);
 	      
 	      if(login==null) {
-	    	  System.out.println("·Î±×ÀÎ ½ÇÆĞ");
+	    	  System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 	    	  return null;
 //	    	  ActionForward forward = new ActionForward();
 //	    	    forward.setRedirect(false); 
@@ -67,7 +69,7 @@ public class EmployerService {
 	      }else if(login.getEmployerId().equals(employer.getEmployerId()) && login.getEmployerPw().equals(employer.getEmployerPw())) {
 	    	  System.out.println(login.getEmployerId()+employer.getEmployerId());
 	    	  System.out.println(login.getEmployerPw()+employer.getEmployerPw());
-	    	  System.out.println("·Î±×ÀÎ ¼º°ø");
+	    	  System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 	    	 
 	    	  
 	    	  HttpSession session = request.getSession();
@@ -95,8 +97,23 @@ public class EmployerService {
 	}
 	
 	public Employers detailEmployerService(String employerId) throws Exception{
-		System.out.println("¼­ºñ½º" + employerId);
+		System.out.println("ï¿½ï¿½ï¿½ï¿½" + employerId);
 		return employerDao.detailEmployers(employerId);
+	}
+	
+	/* ê¸°ì—…ì— ì§€ì›í•œ ë‚¨ì ìˆ˜ */
+	public int selectEmployerManCount(int seq) {
+		return employerDao.selectEmployerManCount(seq);
+	}
+	
+	/* ê¸°ì—…ì— ì§€ì›í•œ ì—¬ì ìˆ˜ */
+	public int selectEmployerWomanCount(int seq) {
+		return employerDao.selectEmployerWomanCount(seq);
+	}
+	
+	/* ì±„ìš©ìë“¤ ìœ„ì¹˜ êµ¬í•˜ê¸° */
+	public List<MarkerLocation> selectHireMap(int seq) {
+		return employerDao.selectHireMap(seq);
 	}
 	
 }

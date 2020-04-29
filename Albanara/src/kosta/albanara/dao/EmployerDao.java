@@ -1,6 +1,7 @@
 package kosta.albanara.dao;
 
 import java.io.InputStream;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -11,6 +12,7 @@ import kosta.albanara.mapper.EmployeeMapper;
 import kosta.albanara.mapper.EmployerMapper;
 import kosta.albanara.model.Employees;
 import kosta.albanara.model.Employers;
+import kosta.albanara.model.MarkerLocation;
 
 public class EmployerDao {
 	private static EmployerDao instance;
@@ -123,7 +125,7 @@ public Employers detailEmployers(String employerId) {
 	try {
 		employer = sqlSession.getMapper(EmployerMapper.class).detailEmployer(employerId);
 		
-		System.out.println("�ٿ�"+employer.getEmployerId());
+		System.out.println("�ٿ�"+employer.getEmployerId());
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -132,5 +134,56 @@ public Employers detailEmployers(String employerId) {
 			}
 		}
 		return employer;
+	}
+
+	/* 기업에 지원한 남자 수 */
+	public int selectEmployerManCount(int seq) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = 0;
+		try {
+			re = sqlSession.getMapper(EmployerMapper.class).selectEmployerManCount(seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		
+		return re;
+	}
+	
+	/* 기업에 지원한 여자 수 */
+	public int selectEmployerWomanCount(int seq) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = 0;
+		try {
+			re = sqlSession.getMapper(EmployerMapper.class).selectEmployerWomanCount(seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		
+		return re;
+	}
+	
+	/* 채용자들 위치 구하기 */
+	public List<MarkerLocation> selectHireMap(int seq) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		List<MarkerLocation> list = null;
+		try {
+			list = sqlSession.getMapper(EmployerMapper.class).selectHireMap(seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		
+		return list;
 	}
 }

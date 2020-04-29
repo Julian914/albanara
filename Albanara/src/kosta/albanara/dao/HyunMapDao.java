@@ -8,7 +8,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import kosta.albanara.mapper.EmployerMapper;
 import kosta.albanara.mapper.RecruitmentMapper;
+import kosta.albanara.model.MarkerLocation;
 import kosta.albanara.model.NearRecruitments;
 
 
@@ -50,4 +52,6 @@ public class HyunMapDao {
 
       return list;
    }
+   
+
 }
