@@ -2,13 +2,13 @@ package kosta.albanara.dao;
 
 import java.io.InputStream;
 
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kosta.albanara.mapper.HiredHistoryMapper;
-import kosta.albanara.mapper.HiredHistroyMapper;
 import kosta.albanara.model.HiredHistory;
 
 public class HiredHistoryDao {

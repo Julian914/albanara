@@ -1,7 +1,6 @@
 package kosta.albanara.service;
 
 import javax.servlet.http.HttpServletRequest;
-
 import kosta.albanara.dao.HiredHistoryDao;
 import kosta.albanara.model.HiredHistory;
 
