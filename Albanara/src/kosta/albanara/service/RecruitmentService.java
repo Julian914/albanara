@@ -217,11 +217,8 @@ public class RecruitmentService {
 	public List<Recruitments> completeRecruitmentService(int employeeSeq){
 		return recruitmentDao.completeRecruitment(employeeSeq);
 	}
-
-
-	};
 	
 	public List<Recruitments> applyRecruitmentService(int applySeq){
 		return recruitmentDao.applyRecruitment(applySeq);
-	};
+	}
 }
