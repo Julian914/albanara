@@ -1,6 +1,8 @@
 package kosta.albanara.model;
 
-public class HiredHistory {
+import java.io.Serializable;
+
+public class HiredHistory implements Serializable {
 	private int hiredHistorySeq;
 	private int employeeSeq;
 	private int recruitmentSeq;

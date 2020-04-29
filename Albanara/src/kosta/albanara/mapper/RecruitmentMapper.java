@@ -6,7 +6,9 @@ import org.apache.ibatis.annotations.Param;
 
 import kosta.albanara.model.Applications;
 import kosta.albanara.model.Employees;
+import kosta.albanara.model.HiredHistory;
 import kosta.albanara.model.NearRecruitments;
+import kosta.albanara.model.Proposals;
 import kosta.albanara.model.Recruitments;
 
 public interface RecruitmentMapper {
@@ -31,5 +33,6 @@ public interface RecruitmentMapper {
 	int selectRecruitmentWomanCount(int seq);
 	List<Recruitments> completeRecruitment(int employeeSeq);
 	List<Employees> hiredEmployeeList();
-
+    int insertProposal(Proposals proposals);
+    int insertHiredHistory(HiredHistory hiredHistory);
 }

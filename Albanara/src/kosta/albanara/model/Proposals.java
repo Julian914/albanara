@@ -1,14 +1,24 @@
 package kosta.albanara.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Proposals {
-	private int proposalSeq;   //제안seq
-	private int recruitmentSeq;	//공고seq
-	private int employeeSeq;	//구직자seq
-	private int isAccepted;  //수락여부
-	private Date proposalDate; //제안날짜
+public class Proposals implements Serializable{
 	
+	private int proposalSeq;  
+	private int recruitmentSeq;	
+	private int employeeSeq;	
+	private int isAccepted;  
+	private Date proposalDate; 
+	
+	public Proposals() {};
+	
+	public Proposals(int recruitmentSeq, int employeeSeq) {
+		super();
+		this.recruitmentSeq = recruitmentSeq;
+		this.employeeSeq = employeeSeq;
+	}
+
 	
 	public int getProposalSeq() {
 		return proposalSeq;
