@@ -54,7 +54,7 @@
 		delete from employers where employer_id = #{employerId}
 	</delete>
 	
-	<select id="detailEmployer" parameterType="String" resultType="Employers">
+	<select id="detailEmployer" parameterType="String" resultMap="Employers">
 		select * from employers where employer_id = #{employerId}
 	</select>
 	
