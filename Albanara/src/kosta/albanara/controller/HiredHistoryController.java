@@ -14,7 +14,7 @@ import kosta.albanara.action.HiredHistoryAction;
 
 
 
-@WebServlet("/HiredHistoryController/*")
+@WebServlet({"/HiredHistoryController/*"})
 public class HiredHistoryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -25,8 +25,17 @@ public class HiredHistoryController extends HttpServlet {
     protected void doProcess(HttpServletRequest request, HttpServletResponse response)
     		throws ServletException, IOException{
 		String requestURI = request.getRequestURI();
-		String contextPath = request.getContextPath();
-		String command = requestURI.substring(contextPath.length()+ 24);
+		String command = null;
+		
+		requestURI = request.getRequestURI();
+		int findIndex = 0;
+	       for (int i = 0; i < requestURI.length(); i++) {
+	          String find = requestURI.substring(i, i + 1);
+	          if (find.equals("/")) {
+	             findIndex = i+1;
+	          }
+	       }
+	    command = requestURI.substring(findIndex);
 		ActionForward forward = null;
 		Action action = null;
 		if (command.equals("insertHiredHistory.do")) {
