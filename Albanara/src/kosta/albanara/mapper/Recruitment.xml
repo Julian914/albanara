@@ -252,7 +252,7 @@
 		where recruitment_seq = #{seq} and employee_gender='woman'
 	</select>
 	
-	<select id="completeRecruitment" parameterType="int" resultType = "Recruitments">
+	<!-- <select id="completeRecruitment" parameterType="int" resultType = "Recruitments">
 		SELECT r.closing_date, r.recruitment_title, r.total_working_time,
        		   r.min_age, r.max_age, r.wage, r.working_place_address,
       		   r.starting_working_date, r.ending_working_date
@@ -284,5 +284,5 @@
 		   AND e.employee_seq = h.employee_seq 
 		   AND h.is_completed in(0,1) 
 		   AND e.employee_seq = #{employeeSeq}
-	</select>
+	</select> -->
 </mapper>

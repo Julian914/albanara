@@ -318,6 +318,7 @@ public class RecruitmentDao {
 		return re;
 	}
 	
+	/*
 	public List<Recruitments> completeRecruitment(int employeeSeq){
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<Recruitments> list = null;
@@ -332,6 +333,7 @@ public class RecruitmentDao {
 		}
 		return list;
 	}
+	*/
 	
 
 }

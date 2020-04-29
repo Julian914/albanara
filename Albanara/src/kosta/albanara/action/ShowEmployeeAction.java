@@ -21,12 +21,12 @@ public class ShowEmployeeAction implements Action {
 
 		Employees employee = EmployeeService.getInstance().getEmployee(seq);
 		List<Recruitments> recruitmentList = RecruitmentService.getInstance().showProposalRecruitments(seq);
-		List<Recruitments> completeRecruitment = service.completeRecruitment(request);
+		// List<Recruitments> completeRecruitment = service.completeRecruitment(request);
 
 		// Set value to HttpSession
 		request.setAttribute("employee", employee);
 		request.setAttribute("recruitmentList", recruitmentList);
-		request.setAttribute("completeRecruitment", completeRecruitment);
+		// request.setAttribute("completeRecruitment", completeRecruitment);
 
 		// Set ActionForward
 		ActionForward actionForward = new ActionForward();

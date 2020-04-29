@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kosta.albanara.action.AcceptProposalAction;
+import kosta.albanara.action.ProposalAcceptAction;
 import kosta.albanara.action.ActionForward;
 
 import kosta.albanara.action.DeleteRecruitmentAction;
 import kosta.albanara.action.InsertApplicationAction;
 import kosta.albanara.action.RecruitmentListAction;
-import kosta.albanara.action.RejectProposalAction;
+import kosta.albanara.action.ProposalRejectAction;
 import kosta.albanara.action.ShowRecruitmentAction;
 import kosta.albanara.action.UpdateRecruitmentAction;
 import kosta.albanara.action.UpdateRecruitmentForm;
@@ -99,14 +99,14 @@ public class RecruitmentController extends HttpServlet {
 			break;
 		case "acceptProposalAction.do" :
 			try {
-				actionForward = new AcceptProposalAction().execute(request, response);
+				actionForward = new ProposalAcceptAction().execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			break;
 		case "rejectProposalAction.do" :
 			try {
-				actionForward = new RejectProposalAction().execute(request, response);
+				actionForward = new ProposalRejectAction().execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
