@@ -53,8 +53,8 @@
 								pattern="yyyy-MM-dd" /> <fmt:formatDate value="${enddate}"
 								pattern="yyyy.MM.dd" /></li>
 						<li><input type="button" onclick="location.href='../recruitment/showRecruitmentAction.do?seq=${list.recruitmentSeq}'" value="상세 보기">
-						<input type="button" onclick="location.href='../recruitment/acceptProposalAction.do?recruitment=${list.recruitmentSeq}&employee=${employee.employeeSeq}'" value="수락하기">
-						<input type="button" onclick="location.href='../recruitment/rejectProposalAction.do?recruitment=${list.recruitmentSeq}&employee=${employee.employeeSeq}'" value="거절하기">
+						<input type="button" onclick="location.href='../recruitment/acceptProposalAction.do?recruitmentSeq=${list.recruitmentSeq}&employeeSeq=${employee.employeeSeq}'" value="수락하기">
+						<input type="button" onclick="location.href='../recruitment/rejectProposalAction.do?recruitmentSeq=${list.recruitmentSeq}&employeeSeq=${employee.employeeSeq}'" value="거절하기">
 						</li>
 					</ul>
 				</div>

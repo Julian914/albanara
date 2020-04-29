@@ -213,8 +213,10 @@ public class RecruitmentService {
 		return recruitmentDao.selectRecruitmentWomanCount(seq);
 	}
 	
+	/*
 	public List<Recruitments> completeRecruitment(HttpServletRequest request){
 		int employeeSeq = Integer.parseInt(request.getParameter("employeeSeq"));
 		return recruitmentDao.completeRecruitment(employeeSeq);
 	}
+	*/
 }

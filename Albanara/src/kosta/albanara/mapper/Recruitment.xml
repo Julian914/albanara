@@ -282,6 +282,7 @@
 		where recruitment_seq = #{seq} and employee_gender='woman'
 	</select>
 	
+
 	<select id="completeRecruitment" parameterType="int" resultMap = "Recruitments">
 		SELECT  r.recruitment_seq, 
 			    r.employer_seq,
@@ -306,11 +307,6 @@
 				r.working_place_address,
 				r.closing_date,
 				r.last_modify_date		   
-		  FROM recruitments r, employees e, hired_history h
-		 WHERE r.recruitment_seq = h.recruitment_seq
-		   AND e.employee_seq = h.employee_seq 
-		   AND h.is_completed in(0,1) 
-		   AND e.employee_seq = #{employeeSeq}
 	</select>
 
 

@@ -5,7 +5,7 @@ import kosta.albanara.dao.HiredHistoryDao;
 import kosta.albanara.model.HiredHistory;
 
 public class HiredHistoryService {
-	private static HiredHistoryService service;
+	private static HiredHistoryService service = new HiredHistoryService();
 	private static HiredHistoryDao dao;
 	
 	public static HiredHistoryService getInstance() {
@@ -18,7 +18,6 @@ public class HiredHistoryService {
 		HiredHistory hiredHistory = new HiredHistory();
 		hiredHistory.setEmployeeSeq(Integer.parseInt(request.getParameter("employeeSeq")));
 		hiredHistory.setRecruitmentSeq(Integer.parseInt(request.getParameter("recruitmentSeq")));
-		hiredHistory.setIsCompleted(Integer.parseInt(request.getParameter("isCompleted")));
 		return dao.insertHiredHistroy(hiredHistory);
 	}
 }
