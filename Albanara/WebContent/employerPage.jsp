@@ -10,6 +10,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	${employer.employerId} 
+	<h1>기업 마이페이지</h1>
+	기업명 : ${employer.employerName} <br>
+	기업주소 : ${employer.employerAddress } <br>
+	기업홈페이지 주소 : ${employer.employerHomePage} <br>
 </body>
 </html>

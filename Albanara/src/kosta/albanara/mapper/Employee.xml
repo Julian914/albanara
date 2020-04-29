@@ -75,4 +75,12 @@
 		select * from EMPLOYEES where EMPLOYEE_SEQ = #{seq}
 	</select>
 	
+	<delete id="deleteEmployee" parameterType="Employees">
+		delete from employees where employee_id = #{employeeId}
+	</delete>
+	
+	<select id="employeeLogIn" parameterType="Employees" resultMap="Employees">
+		select * from employees where employee_id= #{employeeId} AND employee_pw = #{employeePw}
+	</select>
+	
 </mapper>

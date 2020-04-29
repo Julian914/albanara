@@ -1,6 +1,7 @@
 package kosta.albanara.mapper;
 
 import kosta.albanara.model.Employees;
+import kosta.albanara.model.Employers;
 import kosta.albanara.model.Resumes;
 
 public interface EmployeeMapper {
@@ -11,5 +12,7 @@ public interface EmployeeMapper {
 	int updateResume(Resumes resume);	//�̷¼� ����(����)
 	int updateEmployee(Employees employee);
 	Employees getEmployee(int seq);
+	int deleteEmployee(Employees employee);
+	Employees employeeLogIn(Employees employees);
 	
 }
