@@ -311,7 +311,7 @@
 		 WHERE r.recruitment_seq = h.recruitment_seq
 		   AND e.employee_seq = h.employee_seq 
 		   AND h.is_completed in(0,1) 
-		   AND e.employee_seq = #{employeeSeq}
+		   AND e.employee_seq = #{seq}
 	</select>
 
 
@@ -349,7 +349,7 @@
 	   FROM applications a, recruitments r, employees e
 	  WHERE r.recruitment_seq = a.recruitment_seq
 	    AND e.employee_seq = a.employee_seq 
-	    AND e.employee_seq = #{applySeq}
+	    AND e.employee_seq = #{seq}
 	</select>
 
 </mapper>

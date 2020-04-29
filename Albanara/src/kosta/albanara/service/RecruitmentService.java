@@ -214,11 +214,11 @@ public class RecruitmentService {
 	}
 
 
-	public List<Recruitments> completeRecruitmentService(int employeeSeq){
-		return recruitmentDao.completeRecruitment(employeeSeq);
+	public List<Recruitments> completeRecruitmentService(int seq){
+		return recruitmentDao.completeRecruitment(seq);
 	}
 	
-	public List<Recruitments> applyRecruitmentService(int applySeq){
-		return recruitmentDao.applyRecruitment(applySeq);
-	}
+	public List<Recruitments> applyRecruitmentService(int seq){
+		return recruitmentDao.applyRecruitment(seq);
+	};
 }

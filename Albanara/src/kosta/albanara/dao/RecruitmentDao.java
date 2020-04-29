@@ -317,11 +317,11 @@ public class RecruitmentDao {
 		return re;
 	}
 	
-	public List<Recruitments> completeRecruitment(int employeeSeq){
+	public List<Recruitments> completeRecruitment(int seq){
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<Recruitments> list = null;
 		try {
-			list = sqlSession.getMapper(RecruitmentMapper.class).completeRecruitment(employeeSeq);
+			list = sqlSession.getMapper(RecruitmentMapper.class).completeRecruitment(seq);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -332,11 +332,11 @@ public class RecruitmentDao {
 		return list;
 	}
 	
-	public List<Recruitments> applyRecruitment(int applySeq){
+	public List<Recruitments> applyRecruitment(int seq){
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<Recruitments> applyList = null;
 		try {
-			applyList = sqlSession.getMapper(RecruitmentMapper.class).applyRecruitment(applySeq);
+			applyList = sqlSession.getMapper(RecruitmentMapper.class).applyRecruitment(seq);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

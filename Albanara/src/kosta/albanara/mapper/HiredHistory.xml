@@ -13,8 +13,8 @@
 	<insert id = "insertHiredHistory"  parameterType= "HiredHistory">
 		insert into hired_history values(
 			s_hired_history_seq.nextval,
-			#{employeeSeq},
 			#{recruitmentSeq},
+			#{employeeSeq},
 			2
 		)
 	</insert>
