@@ -225,7 +225,7 @@ public class RecruitmentDao {
 		return totalApplicationList;
 	};
 	
-	
+
 
 	/*제안 받은 공고 리스트 */
 	public List<Recruitments> showProposalRecruitments(int seq) {
@@ -333,5 +333,22 @@ public class RecruitmentDao {
 		return list;
 	}
 	
+
+	public List<Employees> hiredEmployeeList(){
+		List<Employees> hiredEmployeeList = null;
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			hiredEmployeeList = sqlSession.getMapper(RecruitmentMapper.class).hiredEmployeeList();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if (sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		return hiredEmployeeList;
+	};
 
 }

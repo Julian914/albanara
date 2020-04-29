@@ -198,6 +198,11 @@ public class RecruitmentService {
 	}
 	
 	
+	public List<Employees> hiredEmployeeListService(){
+		return recruitmentDao.hiredEmployeeList();
+	}
+	
+	
 	/*공고에 지원한 남자 수*/
 	public int selectRecruitmentManCount(int seq) {
 		return recruitmentDao.selectRecruitmentManCount(seq);

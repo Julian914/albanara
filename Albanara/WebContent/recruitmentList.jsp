@@ -41,7 +41,7 @@
 <body>
 
 	<h3>공고목록</h3>
-	<div id="wrap">
+	<div class="container">
 		<div class="accordion recruitmentList">
 			<c:forEach var="list" items="${recruitmentList}" varStatus="status">
 				<div id="accordion-title">
@@ -65,8 +65,7 @@
 								pattern="yyyy.MM.dd" /></li>
 					</ul>
 
-					<!-- 지원하기 modal -->
-
+					<!-- 지원하기 modal-->
 					<button class="btn btn-default"
 						data-target="#layerpop${status.index}" data-toggle="modal">지원하기</button>
 
@@ -108,13 +107,12 @@
 							</div>
 						</div>
 					</div>
-
-
-
+					
+					
 					<div class="accordion employeesList">
 						<!-- index: ${status.index} 공고의 인덱스 구하기-->
-
-						<c:forEach var="employeeListMap" items="${employeeListMapList}">
+				<!--진행중인 공고 지원자 목록  -->
+						<%-- <c:forEach var="employeeListMap" items="${employeeListMapList}">
 							<!--//for:${employeeListMap.key }, ${status.index } -->
 
 							<c:if test="${status.index eq employeeListMap.key}">
@@ -134,6 +132,30 @@
 											<li>성별 : ${employeeList.employeeGender}</li>
 											<li>주소 : ${employeeList.employeeAddress}</li>
 											<li>번호 : ${employeeList.employeePhone}</li>
+										</ul>
+									</div>
+								</c:forEach>
+							</c:if>
+						</c:forEach> --%>
+						
+						
+				<!--마감된 공고의 채용자 목록  -->
+						<c:forEach var="hiredEmployeeListMap" items="${hiredEmployeeListMapList}">
+							
+							<c:if test="${status.index eq hiredEmployeeListMap.key}">
+
+								<c:forEach var="hiredEmployee" items="${hiredEmployeeListMap.hiredEmployeeList}">
+									<div class="accordion-title2">
+										<ul class="recruitmentUp2">
+											<li>지원자 이름 : ${hiredEmployee.employeeName}</li>
+										</ul>
+									</div>
+									<div class="accordion-contents2 child">
+										<ul class="recruitmentDown2">
+											<li>생년월일 :${hiredEmployee.employeeBirthday}</li>
+											<li>성별 : ${hiredEmployee.employeeGender}</li>
+											<li>주소 : ${hiredEmployee.employeeAddress}</li>
+											<li>번호 : ${hiredEmployee.employeePhone}</li>
 										</ul>
 									</div>
 								</c:forEach>
