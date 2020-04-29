@@ -314,9 +314,24 @@ public class RecruitmentDao {
 			if(sqlSession != null) {
 				sqlSession.close();
 			}
-		}
-		
+		}	
 		return re;
 	}
+	
+	public List<Recruitments> completeRecruitment(int employeeSeq){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		List<Recruitments> list = null;
+		try {
+			list = sqlSession.getMapper(RecruitmentMapper.class).completeRecruitment(employeeSeq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if (sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		return list;
+	}
+	
 
 }

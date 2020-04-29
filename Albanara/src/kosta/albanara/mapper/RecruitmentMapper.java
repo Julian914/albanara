@@ -29,4 +29,5 @@ public interface RecruitmentMapper {
 	int acceptProposalRecruitments(@Param("employSeq") String employeeSeq, @Param("recruitmentSeq") String recruitmentSeq);
 	int selectRecruitmentManCount(int seq);
 	int selectRecruitmentWomanCount(int seq);
+	List<Recruitments> completeRecruitment(int employeeSeq);
 }

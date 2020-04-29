@@ -10,7 +10,7 @@ public class InsertHiredHistroyAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();
-		HiredHistroyService service = HiredHistroyService.getInstance();
+		HiredHistoryService service = HiredHistoryService.getInstance();
 		service.insertHiredHistroyService(request);
 		forward.setRedirect(true);
 		forward.setPath("/index.jsp");

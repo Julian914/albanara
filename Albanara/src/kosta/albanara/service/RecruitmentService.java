@@ -181,9 +181,6 @@ public class RecruitmentService {
 	}
 	
 	
-	
-
-	
 	/*제안 받은 공고 리스트*/
 	public List<Recruitments> showProposalRecruitments(int seq) throws Exception {
 		List<Recruitments> list = recruitmentDao.showProposalRecruitments(seq);
@@ -209,5 +206,10 @@ public class RecruitmentService {
 	/*공고에 지원한 여자 수*/
 	public int selectRecruitmentWomanCount(int seq) {
 		return recruitmentDao.selectRecruitmentWomanCount(seq);
+	}
+	
+	public List<Recruitments> completeRecruitment(HttpServletRequest request){
+		int employeeSeq = Integer.parseInt(request.getParameter("employeeSeq"));
+		return recruitmentDao.completeRecruitment(employeeSeq);
 	}
 }

@@ -251,4 +251,38 @@
 		from applications inner join employees using(employee_seq)
 		where recruitment_seq = #{seq} and employee_gender='woman'
 	</select>
+	
+	<select id="completeRecruitment" parameterType="int" resultType = "Recruitments">
+		SELECT r.closing_date, r.recruitment_title, r.total_working_time,
+       		   r.min_age, r.max_age, r.wage, r.working_place_address,
+      		   r.starting_working_date, r.ending_working_date
+      		   
+			r.RECRUITMENT_SEQ, r.EMPLOYER_SEQ = #{employerSeq},
+			RECRUITMENT_TITLE = #{recruitmentTitle},
+			RECRUITMENT_TYPE = #{recruitmentType},
+			RECRUITMENT_SIZE = #{recruitmentSize},
+			STARTING_WORKING_DATE = #{startingWorkingDate},
+			ENDING_WORKING_DATE = #{endingWorkingDate},
+			TOTAL_WORKING_DAY = #{totalWorkingDay},
+			STARTING_WORKING_TIME = #{startingWorkingTime},
+			ENDING_WORKING_TIME = #{endingWorkingTime},
+			TOTAL_WORKING_TIME = #{totalWorkingTime},
+			WAGE = #{wage},
+			WAGE_TYPE = #{wageType},
+			GENDER = #{gender},
+			MIN_AGE = #{minAge},
+			MAX_AGE = #{maxAge},
+			RECRUITMENT_CONTENTS = #{recruitmentContents},
+			REQUIREMENT_QUESTION1 = #{requirementQuestion1},
+			REQUIREMENT_QUESTION2 = #{requirementQuestion2},
+			REQUIREMENT_QUESTION3 = #{requirementQuestion3},
+			WORKING_PLACE_ADDRESS = #{workingPlaceAddress},
+			CLOSING_DATE = #{closingDate},
+			LAST_MODIFY_DATE = sysdate      		   
+		  FROM recruitments r, employees e, hired_history h
+		 WHERE r.recruitment_seq = h.recruitment_seq
+		   AND e.employee_seq = h.employee_seq 
+		   AND h.is_completed in(0,1) 
+		   AND e.employee_seq = #{employeeSeq}
+	</select>
 </mapper>

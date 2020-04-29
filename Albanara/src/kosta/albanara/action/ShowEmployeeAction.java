@@ -16,16 +16,17 @@ public class ShowEmployeeAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// Call Service
 		request.setCharacterEncoding("utf-8");
-		int seq = Integer.parseInt(request.getParameter("seq"));
-			
+		RecruitmentService service = RecruitmentService.getInstance(); 
+		int seq = Integer.parseInt(request.getParameter("seq"));	
 
 		Employees employee = EmployeeService.getInstance().getEmployee(seq);
 		List<Recruitments> recruitmentList = RecruitmentService.getInstance().showProposalRecruitments(seq);
-		
+		List<Recruitments> completeRecruitment = service.completeRecruitment(request);
 
 		// Set value to HttpSession
 		request.setAttribute("employee", employee);
 		request.setAttribute("recruitmentList", recruitmentList);
+		request.setAttribute("completeRecruitment", completeRecruitment);
 
 		// Set ActionForward
 		ActionForward actionForward = new ActionForward();
