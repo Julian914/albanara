@@ -17,6 +17,7 @@
 		<result column="EMPLOYEE_ADDRESS" property="employeeAddress" />
 		<result column="ATTRIBUTE_COUNT" property="attributeCount" />
 		<result column="NOSHOW_COUNT" property="noshowCount" />
+		<result column="LATE_COUNT" property="lateCount" />
 		<result column="WORKING_DAY_COUNT" property="workingDayCount" />
 		<result column="ACTIVITY_AVG" property="activityAvg" />
 		<result column="COLLABORATION_AVG" property="collaborationAvg" />
