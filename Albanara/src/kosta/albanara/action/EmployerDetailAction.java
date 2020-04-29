@@ -14,11 +14,16 @@ public class EmployerDetailAction implements Action {
 		ActionForward forward = new ActionForward();
 		EmployerService service = EmployerService.getInstance();
 		
-		String employerId = "aaaa"; 
-		Employers employer = service.detailEmployerService(employerId);
+
+		//String employerId = request.getParameter("employerId");
+		int employerSeq = Integer.parseInt(request.getParameter("seq"));
+		//String employerId = "aaaa"; //���Ƿ� �� ���̵�
+		
+		Employers employer = service.detailEmployerService(employerSeq);
+
 		request.setAttribute("employer", employer);
 		System.out.println("�׼�" + employer.toString());
-		
+
 		
 		forward.setRedirect(false);
 		forward.setPath("/employerPage.jsp");

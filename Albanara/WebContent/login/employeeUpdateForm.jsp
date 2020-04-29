@@ -22,7 +22,7 @@ function deleteBtn_onClick(employerId) {
 </head>
 <body>
 <div class="container">
-	<form action="updateEmployees.do" method="post" >
+	<form action="UpdateEmployees.do" method="post" >
 		<h1> 구직자 회원정보 수정 </h1>
 		<div>
 			<div class="employeeId" valign=top>* 아이디 </div>

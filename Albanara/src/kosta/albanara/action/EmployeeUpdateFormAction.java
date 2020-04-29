@@ -10,12 +10,14 @@ public class EmployeeUpdateFormAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		System.out.println(session.getAttribute("id"));
 		
+		System.out.println("테스트1");
 		forward.setRedirect(false); 
-		forward.setPath("/employeeUpdateForm.jsp");
+		forward.setPath("/login/employeeUpdateForm.jsp");
 		
 		return forward;
 	}
