@@ -6,12 +6,15 @@ import java.sql.Date;
 import java.text.ParseException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.annotations.Param;
 
 import kosta.albanara.dao.RecruitmentDao;
 import kosta.albanara.model.Applications;
 import kosta.albanara.model.Employees;
+import kosta.albanara.model.HiredHistory;
+import kosta.albanara.model.Proposals;
 import kosta.albanara.model.Recruitments;
 
 public class RecruitmentService {
@@ -181,6 +184,26 @@ public class RecruitmentService {
 	}
 	
 	
+	
+	//구직자에게 공고 제안하기
+	public int insertProposalService(HttpServletRequest request, HttpServletResponse response)throws Exception {
+		request.setCharacterEncoding("utf-8");
+		int re =-1;
+		
+		int recruitmentSeq = Integer.parseInt(request.getParameter("seq"));
+		int employeeSeq= Integer.parseInt(request.getParameter("seq2"));
+		//System.out.println("recruitmentSeq : "+recruitmentSeq);
+		//System.out.println("employeeSeq : "+employeeSeq);
+		
+		
+		Proposals proposals = new Proposals(recruitmentSeq, employeeSeq);
+		proposals.setEmployeeSeq(employeeSeq);
+		proposals.setRecruitmentSeq(recruitmentSeq);
+		
+		re = recruitmentDao.insertProposal(proposals);
+		return re;
+	}
+	
 	/*제안 받은 공고 리스트*/
 	public List<Recruitments> showProposalRecruitments(int seq) throws Exception {
 		List<Recruitments> list = recruitmentDao.showProposalRecruitments(seq);
@@ -198,7 +221,7 @@ public class RecruitmentService {
 	}
 	
 	
-	public List<Employees> hiredEmployeeListService(){
+	public List<Employees> hiredEmployeeListService()throws Exception{
 		return recruitmentDao.hiredEmployeeList();
 	}
 	
@@ -221,4 +244,27 @@ public class RecruitmentService {
 	public List<Recruitments> applyRecruitmentService(int seq){
 		return recruitmentDao.applyRecruitment(seq);
 	};
+	
+	public List<Recruitments> completeRecruitment(HttpServletRequest request){
+		int employeeSeq = Integer.parseInt(request.getParameter("employeeSeq"));
+		return recruitmentDao.completeRecruitment(employeeSeq);
+	}
+	
+	
+	
+	//지원자 채용하기
+	public int insertHiredHistoryService(HttpServletRequest request, HttpServletResponse response)throws Exception {
+		request.setCharacterEncoding("utf-8");
+		int hired = -1;
+		
+		HiredHistory hiredHistory = new HiredHistory();
+		
+		hiredHistory.setRecruitmentSeq(Integer.parseInt(request.getParameter("seq")));
+		hiredHistory.setEmployeeSeq(Integer.parseInt(request.getParameter("seq2")));
+		
+		hired = recruitmentDao.insertHiredHistory(hiredHistory);
+		System.out.println(hiredHistory);
+		return hired;
+	}
+	
 }

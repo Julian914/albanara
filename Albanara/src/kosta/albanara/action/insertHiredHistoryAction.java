@@ -5,21 +5,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import kosta.albanara.service.RecruitmentService;
 
-public class InsertApplicationAction implements Action {
+public class insertHiredHistoryAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward actionForward = new ActionForward();
 		RecruitmentService service = RecruitmentService.getInstance();
 		
-		service.insertApplicationService(request);
-
+		service.insertHiredHistoryService(request, response);
+		
 		
 		actionForward.setRedirect(true);
-		actionForward.setPath("/index.jsp");
+		actionForward.setPath("index.jspp");
 		
 		
 		return actionForward;
 	}
+
 
 }

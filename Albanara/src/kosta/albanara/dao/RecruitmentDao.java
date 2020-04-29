@@ -11,6 +11,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import kosta.albanara.mapper.RecruitmentMapper;
 import kosta.albanara.model.Applications;
 import kosta.albanara.model.Employees;
+import kosta.albanara.model.HiredHistory;
+import kosta.albanara.model.Proposals;
 import kosta.albanara.model.Recruitments;
 
 public class RecruitmentDao {
@@ -364,5 +366,48 @@ public class RecruitmentDao {
 		}
 		return hiredEmployeeList;
 	};
+	
+	
+	
+	//추천받은 구직자에게 제안하기 proposals
+	public int insertProposal(Proposals proposals) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = -1;
+		
+		try {
+			re = sqlSession.getMapper(RecruitmentMapper.class).insertProposal(proposals);		
+			if (re > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return re;
+	}
+
+	
+	public int insertHiredHistory(HiredHistory hiredHistory) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int hired = -1;
+		
+		try {
+			hired = sqlSession.getMapper(RecruitmentMapper.class).insertHiredHistory(hiredHistory);		
+			if (hired > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return hired;
+	};
 }

@@ -246,6 +246,15 @@
 		= m.ROAD_ADDRESS
 	</select>
 
+
+	<!-- 일자리 제안하기 -->
+	<insert id="insertProposal" parameterType="Proposals">
+	insert into proposals values(
+	s_proposal_seq.nextval, 
+	#{recruitmentSeq},#{employeeSeq}, 2, sysdate)
+	
+	</insert>
+
    
 	<!-- 제안 받은 공고 리스트 -->
 	<select id="showProposalRecruitments" resultMap="Recruitments" parameterType="int">
@@ -315,11 +324,25 @@
 	</select>
 
 
+
+	<resultMap type="HiredHistory" id="HiredHistory">
+		<result column="hired_History_Seq" property="hiredHistorySeq" />
+		<result column="employee_Seq" property="employeeSeq" />
+		<result column="recruitment_Seq" property="recruitmentSeq" />
+		<result column="is_Completed" property="isCompleted"/>
+	</resultMap>
+
+
+	<!-- 지원자 중에서 채용하기 -->
+	<insert id="insertHiredHistory" parameterType="HiredHistory">
+		insert into hired_history values(S_HIRED_HISTORY_SEQ.nextval,#{recruitmentSeq},#{employeeSeq},2);
+	</insert>
+	
+	
 	<!-- 마감된 공고의 채용자 목록 불러오기 -->
-	<select id= "hiredEmployeeList" resultMap="Employees">
-		select *from employees
-		where employee_Seq
-		in(select employee_Seq from hired_history where is_completed in(0,1));
+	<select id="hiredEmployeeList" resultMap="Employees">
+		select *from employees where employee_Seq in(select employee_Seq from hired_history where is_completed in(0,1))
+
 	</select>
 	
 	<select id= "applyRecruitment" parameterType="int" resultMap="Recruitments">
@@ -351,5 +374,7 @@
 	    AND e.employee_seq = a.employee_seq 
 	    AND e.employee_seq = #{seq}
 	</select>
+
+
 
 </mapper>
