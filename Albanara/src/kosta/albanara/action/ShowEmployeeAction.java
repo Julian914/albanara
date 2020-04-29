@@ -18,15 +18,20 @@ public class ShowEmployeeAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		RecruitmentService service = RecruitmentService.getInstance(); 
 		int seq = Integer.parseInt(request.getParameter("seq"));	
-
+		int employeeSeq = Integer.parseInt(request.getParameter("employeeSeq"));
+		int applySeq = Integer.parseInt(request.getParameter("applySeq"));
+		System.out.println(employeeSeq);
+		System.out.println(applySeq);
 		Employees employee = EmployeeService.getInstance().getEmployee(seq);
 		List<Recruitments> recruitmentList = RecruitmentService.getInstance().showProposalRecruitments(seq);
-		List<Recruitments> completeRecruitment = service.completeRecruitment(request);
-
+		List<Recruitments> completeRecruitment = service.completeRecruitmentService(employeeSeq);
+		List<Recruitments> applyRecruitment = service.applyRecruitmentService(applySeq);
+		System.out.println(applyRecruitment);
 		// Set value to HttpSession
 		request.setAttribute("employee", employee);
 		request.setAttribute("recruitmentList", recruitmentList);
 		request.setAttribute("completeRecruitment", completeRecruitment);
+		request.setAttribute("applyRecruitment", applyRecruitment);
 
 		// Set ActionForward
 		ActionForward actionForward = new ActionForward();

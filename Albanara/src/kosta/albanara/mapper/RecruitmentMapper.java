@@ -30,6 +30,8 @@ public interface RecruitmentMapper {
 	int selectRecruitmentManCount(int seq);
 	int selectRecruitmentWomanCount(int seq);
 	List<Recruitments> completeRecruitment(int employeeSeq);
+	List<Recruitments> applyRecruitment(int applySeq);
 	List<Employees> hiredEmployeeList();
+	
 
 }

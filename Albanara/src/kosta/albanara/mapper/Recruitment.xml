@@ -283,29 +283,29 @@
 	</select>
 	
 	<select id="completeRecruitment" parameterType="int" resultMap = "Recruitments">
-		SELECT  r.recruitment_seq, 
-			    r.employer_seq,
-				r.recruitment_title,
-				r.recruitment_type,
-				r.recruitment_size,
-				r.STARTING_WORKING_DATE,
-				r.ending_working_date,
-				r.total_working_day,
-				r.starting_working_time,
-				r.ending_working_time,
-				r.total_working_time,
-				r.wage,
-				r.wage_type,
-				r.gender,
-				r.min_age,
-				r.max_age,
-				r.recruitment_contents,
-				r.requirement_question1,
-				r.requirement_question2,
-				r.requirement_question3,
-				r.working_place_address,
-				r.closing_date,
-				r.last_modify_date		   
+	 	SELECT r.recruitment_seq, 
+		       r.employer_seq,
+			   r.recruitment_title,
+			   r.recruitment_type,
+			   r.recruitment_size,
+			   r.STARTING_WORKING_DATE,
+			   r.ending_working_date,
+			   r.total_working_day,
+			   r.starting_working_time,
+			   r.ending_working_time,
+			   r.total_working_time,
+			   r.wage,
+			   r.wage_type,
+			   r.gender,
+			   r.min_age,
+			   r.max_age,
+			   r.recruitment_contents,
+			   r.requirement_question1,
+			   r.requirement_question2,
+			   r.requirement_question3,
+			   r.working_place_address,
+			   r.closing_date,
+			   r.last_modify_date		   
 		  FROM recruitments r, employees e, hired_history h
 		 WHERE r.recruitment_seq = h.recruitment_seq
 		   AND e.employee_seq = h.employee_seq 
@@ -315,11 +315,40 @@
 
 
 	<!-- 마감된 공고의 채용자 목록 불러오기 -->
-	<select id="hiredEmployeeList" resultMap="Employees">
+	<select id= "hiredEmployeeList" resultMap="Employees">
 		select *from employees
 		where employee_Seq
 		in(select employee_Seq from hired_history where is_completed in(0,1));
 	</select>
-
+	
+	<select id= "applyRecruitment" parameterType="int" resultMap="Recruitments">
+	 SELECT r.recruitment_seq, 
+	        r.employer_seq,
+		    r.recruitment_title,
+		    r.recruitment_type,
+		    r.recruitment_size,
+		    r.STARTING_WORKING_DATE,
+		    r.ending_working_date,
+		    r.total_working_day,
+		    r.starting_working_time,
+		    r.ending_working_time,
+		    r.total_working_time,
+		    r.wage,
+		    r.wage_type,
+		    r.gender,
+		    r.min_age,
+		    r.max_age,
+		    r.recruitment_contents,
+		    r.requirement_question1,
+		    r.requirement_question2,
+		    r.requirement_question3,
+		    r.working_place_address,
+		    r.closing_date,
+		    r.last_modify_date		   
+	   FROM applications a, recruitments r, employees e
+	  WHERE r.recruitment_seq = a.recruitment_seq
+	    AND e.employee_seq = a.employee_seq 
+	    AND e.employee_seq = #{applySeq}
+	</select>
 
 </mapper>
