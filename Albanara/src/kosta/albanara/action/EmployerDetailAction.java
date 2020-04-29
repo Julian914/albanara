@@ -10,19 +10,15 @@ public class EmployerDetailAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-	request.setCharacterEncoding("utf-8");
-		
+		request.setCharacterEncoding("utf-8");
 		ActionForward forward = new ActionForward();
 		EmployerService service = EmployerService.getInstance();
 		
-		
-		
-		/* String employerId = request.getParameter("employerId"); */
-		String employerId = "aaaa"; //ÀÓÀÇ·Î ÁØ ¾ÆÀÌµð
-		
+		String employerId = "aaaa"; 
 		Employers employer = service.detailEmployerService(employerId);
 		request.setAttribute("employer", employer);
-		System.out.println("¾×¼Ç" + employer.toString());
+		System.out.println("ï¿½×¼ï¿½" + employer.toString());
+		
 		
 		forward.setRedirect(false);
 		forward.setPath("/employerPage.jsp");
