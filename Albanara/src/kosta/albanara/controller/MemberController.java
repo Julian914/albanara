@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import kosta.albanara.action.Action;
 import kosta.albanara.action.ActionForward;
+import kosta.albanara.action.EmployeeDeleteAction;
 import kosta.albanara.action.EmployeeFormAction;
+import kosta.albanara.action.EmployeeLogInAction;
+import kosta.albanara.action.EmployeeLogInFormAction;
 import kosta.albanara.action.EmployeeSignUpAction;
 import kosta.albanara.action.EmployeeUpdateAction;
 import kosta.albanara.action.EmployeeUpdateFormAction;
@@ -24,6 +27,7 @@ import kosta.albanara.action.SearchResumeAction;
 import kosta.albanara.action.ShowEmployeeAction;
 import kosta.albanara.action.UpdateResumeAction;
 import kosta.albanara.action.UpdateResumeFormAction;
+import kosta.albanara.action.logOutAction;
 import kosta.albanara.action.EmployerFormAction;
 import kosta.albanara.action.EmployerLogInAction;
 import kosta.albanara.action.EmployerSignUpAction;
@@ -118,7 +122,7 @@ public class MemberController extends HttpServlet {
 				e.printStackTrace();
 			}
     	}else if(command.equals("employeeLogInForm.do")){
-    		action = new EmployerLogInFormAction();
+    		action = new EmployeeLogInFormAction();
     		try {
 				actionForward = action.execute(request, response);
 				
@@ -212,6 +216,37 @@ public class MemberController extends HttpServlet {
 			}
     	}else if(command.equals("detailEmployers.do")) {
     		action = new EmployerDetailAction();
+    		try {
+				actionForward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}else if(command.equals("deleteEmployees.do")){
+    		
+    		
+    		action = new EmployeeDeleteAction();
+    		
+    		try {
+				actionForward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}else if(command.equals("employeeLogIn.do")){
+    		
+    		action = new EmployeeLogInAction();
+    		
+    		try {
+				actionForward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}else if(command.equals("logOut.do")){
+    		
+    		action = new logOutAction();
+    		
     		try {
 				actionForward = action.execute(request, response);
 				
