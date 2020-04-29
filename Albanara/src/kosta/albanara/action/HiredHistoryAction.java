@@ -3,9 +3,9 @@ package kosta.albanara.action;
 import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpServletResponse;
-import kosta.albanara.service.HiredHistroyService;
+import kosta.albanara.service.HiredHistoryService;
 
-public class InsertHiredHistroyAction implements Action {
+public class HiredHistoryAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
