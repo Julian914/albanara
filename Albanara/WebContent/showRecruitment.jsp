@@ -176,7 +176,7 @@
 	var myDoughnutChart = new Chart(applicationGender, {
 	    type: 'pie',
 	    data: {
-	        labels: ['Red', 'Blue'],
+	        labels: ['여자', '남자'],
 	        datasets: [{
 	            label: '지원자 성별 현황',
 	            data: [${woman}, ${man}],
