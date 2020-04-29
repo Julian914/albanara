@@ -58,19 +58,21 @@ public class EmployerService {
 	      login = employerDao.employerLogIn(employer);
 	      
 	      if(login==null) {
-	    	  System.out.println("∑Œ±◊¿Œ Ω«∆–");
+	    	  System.out.println("ÔøΩŒ±ÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ");
 	    	  return null;
 //	    	  ActionForward forward = new ActionForward();
 //	    	    forward.setRedirect(false); 
 //	  			forward.setPath("/employerLogInForm.jsp");
 	    	 
 	      }else if(login.getEmployerId().equals(employer.getEmployerId()) && login.getEmployerPw().equals(employer.getEmployerPw())) {
-	    	  System.out.println(login.getEmployerId()+employer.getEmployerId());
-	    	  System.out.println(login.getEmployerPw()+employer.getEmployerPw());
-	    	  System.out.println("∑Œ±◊¿Œ º∫∞¯");
-	    	 
-	    	  
+	    	 System.out.println("Î°úÍ∑∏Ïù∏ÏÑ±Í≥µ");
+	   
 	    	  HttpSession session = request.getSession();
+	    	  
+	    	  session.setAttribute("id",login.getEmployerId());
+	    	  session.setAttribute("seq", login.getEmployerSeq());
+	    	  
+	    	  System.out.println(session.getAttribute("id"));
 	    	  
 	    	  session.setAttribute("login",login);
 	    	  /*String employerId = (String)session.getAttribute("login");*/
@@ -94,9 +96,9 @@ public class EmployerService {
 		return employerDao.deleteEmployer(employer);
 	}
 	
-	public Employers detailEmployerService(String employerId) throws Exception{
-		System.out.println("º≠∫ÒΩ∫" + employerId);
-		return employerDao.detailEmployers(employerId);
+	public Employers detailEmployerService(int employerSeq) throws Exception{
+		System.out.println("ÔøΩÔøΩÔøΩÔøΩ" + employerSeq);
+		return employerDao.detailEmployers(employerSeq);
 	}
 	
 }

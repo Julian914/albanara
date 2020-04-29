@@ -17,12 +17,13 @@ public class EmployerDetailAction implements Action {
 		
 		
 		
-		/* String employerId = request.getParameter("employerId"); */
-		String employerId = "aaaa"; //ÀÓÀÇ·Î ÁØ ¾ÆÀÌµð
+		//String employerId = request.getParameter("employerId");
+		int employerSeq = Integer.parseInt(request.getParameter("seq"));
+		//String employerId = "aaaa"; //ï¿½ï¿½ï¿½Ç·ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
 		
-		Employers employer = service.detailEmployerService(employerId);
+		Employers employer = service.detailEmployerService(employerSeq);
 		request.setAttribute("employer", employer);
-		System.out.println("¾×¼Ç" + employer.toString());
+		System.out.println("ï¿½×¼ï¿½" + employer.toString());
 		
 		forward.setRedirect(false);
 		forward.setPath("/employerPage.jsp");

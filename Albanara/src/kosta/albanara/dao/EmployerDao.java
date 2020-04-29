@@ -117,13 +117,13 @@ public int deleteEmployer(Employers employer) {
 		return re;
 	}
 
-public Employers detailEmployers(String employerId) {
+public Employers detailEmployers(int employerSeq) {
 	SqlSession sqlSession = getSqlSessionFactory().openSession();
 	Employers employer = null;
 	try {
-		employer = sqlSession.getMapper(EmployerMapper.class).detailEmployer(employerId);
+		employer = sqlSession.getMapper(EmployerMapper.class).detailEmployer(employerSeq);
 		
-		System.out.println("´Ù¿À"+employer.getEmployerId());
+		System.out.println("ï¿½Ù¿ï¿½"+employer.getEmployerId());
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {

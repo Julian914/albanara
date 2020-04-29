@@ -47,10 +47,13 @@ public class LoginFilter implements Filter {
 		HttpSession httpSession = httpRequest.getSession();
 		// to do what you want
 		if (httpSession.getAttribute("id") == null) {
-			httpResponse.sendRedirect("employeeLogInForm.jsp");
-		}
+			
+			httpResponse.sendRedirect("/Albanara/employeeLogInForm.jsp");
+			
+		}else {
 		// pass the request along the filter chain
-		chain.doFilter(request, response);
+			chain.doFilter(request, response);
+		}
 
 		// 여기서부터 페이지 사후 작업. 페이지 로딩이 완료되고 난 후 실행됨.
 	}

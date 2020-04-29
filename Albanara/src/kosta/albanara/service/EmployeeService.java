@@ -180,6 +180,8 @@ public void logOut(HttpServletRequest request) throws Exception{
 	
 	HttpSession session = request.getSession();
 	session.invalidate();
+	System.out.println("로그아웃");
+		
 	}
 
 }

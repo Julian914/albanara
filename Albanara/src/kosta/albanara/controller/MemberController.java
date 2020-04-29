@@ -147,46 +147,6 @@ public class MemberController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-    	}else if(command.equals("UpdateEmployeesForm.do")){
-    		
-    		action = new EmployeeUpdateFormAction();
-    		
-    		try {
-				actionForward = action.execute(request, response);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-    	}else if(command.equals("UpdateEmployees.do")){
-    		
-    		action = new EmployeeUpdateAction();
-    		
-    		try {
-				actionForward = action.execute(request, response);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-    	}else if(command.equals("UpdateEmployersForm.do")){
-    		
-    		action = new EmployerUpdateFormAction();
-    		
-    		try {
-				actionForward = action.execute(request, response);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-    	}else if(command.equals("UpdateEmployers.do")){
-    		
-    		action = new EmployerUpdateAction();
-    		
-    		try {
-				actionForward = action.execute(request, response);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
     	}else if(command.equals("deleteEmployers.do")){
     		
     		

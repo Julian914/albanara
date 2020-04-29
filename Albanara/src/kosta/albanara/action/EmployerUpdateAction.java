@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kosta.albanara.model.Employees;
 import kosta.albanara.model.Employers;
@@ -20,6 +21,8 @@ public class EmployerUpdateAction implements Action {
 		EmployerService service = EmployerService.getInstance(); 
 		
 		Employers employer = new Employers();
+		HttpSession session = request.getSession();
+		System.out.println("dd"+session.getAttribute("id"));
 		
 		employer.setEmployerId(request.getParameter("employerId"));
 		employer.setEmployerPw(request.getParameter("employerPw"));
@@ -34,12 +37,12 @@ public class EmployerUpdateAction implements Action {
 		
 		
 		if(service.updateEmployerService(employer) == 1) {
-			System.out.println("¼º°ø");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½");
 			forward.setRedirect(true); 
 			forward.setPath("UpdateEmployersForm.do");
 			return forward;
 		}else {
-			System.out.println("½ÇÆÐ");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½");
 			forward.setRedirect(true); 
 			forward.setPath("UpdateEmployersForm.do");
 			return forward;
