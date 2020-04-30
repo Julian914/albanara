@@ -198,7 +198,7 @@ public Employers detailEmployers(int employerSeq) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<Recruitments> list = null;
 		try {
-			list = sqlSession.getMapper(EmployerMapper.class).totalRecruitmentList(employerSeq);
+			list = sqlSession.getMapper(RecruitmentMapper.class).totalRecruitmentList(employerSeq);
 			//System.out.println("dao : "+list);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -217,7 +217,7 @@ public Employers detailEmployers(int employerSeq) {
 		List<Recruitments> nowRecruinmentList= null;
 		
 		try {
-			nowRecruinmentList = sqlSession.getMapper(EmployerMapper.class).nowRecruinmentList(employerSeq);
+			nowRecruinmentList = sqlSession.getMapper(RecruitmentMapper.class).nowRecruinmentList(employerSeq);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -235,7 +235,7 @@ public Employers detailEmployers(int employerSeq) {
 		List<Recruitments> endRecruitmentList = null;
 		
 		try {
-			endRecruitmentList= sqlSession.getMapper(EmployerMapper.class).endRecruitmentList(employerSeq);
+			endRecruitmentList= sqlSession.getMapper(RecruitmentMapper.class).endRecruitmentList(employerSeq);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
