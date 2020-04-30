@@ -116,7 +116,21 @@ public class EmployeeDao {
 		return re;
 	}
 	
-	
+	public Employees basicInformation(int employeeSeq) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		Employees employee = null;
+		
+		try {
+			employee = sqlSession.getMapper(EmployeeMapper.class).basicInformation(employeeSeq);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		
+		return employee;
+	}
 	
 	
 	

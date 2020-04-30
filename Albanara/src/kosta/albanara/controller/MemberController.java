@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kosta.albanara.action.Action;
 import kosta.albanara.action.ActionForward;
+import kosta.albanara.action.BasicInformationAction;
 import kosta.albanara.action.EmployeeFormAction;
 import kosta.albanara.action.EmployeeSignUpAction;
 import kosta.albanara.action.InsertResumeAction;
@@ -131,6 +132,13 @@ public class MemberController extends HttpServlet {
     		try {
 				actionForward = action.execute(request, response);
 				System.out.println("1234");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}else if(command.equals("basicInformation.do")) {
+    		action = new BasicInformationAction();
+    		try {
+				actionForward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

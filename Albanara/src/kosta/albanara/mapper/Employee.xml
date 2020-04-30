@@ -64,6 +64,13 @@
 		update resumes set picture_filename = #{pictureFilename}, resume_title = #{resumeTitle}, resume_contents = #{resumeContents}, desired_working_area = #{desiredWorkingArea}, favorite_field = #{favoriteField}, last_modify_date = sysdate where s_resume_seq = 1
 	</update>
 	
+	<!-- 기본정보 보여주기  (동현)-->
+	<select id="basicInformation" parameterType="int" resultMap="Employees">
+		<!-- select * from employees where employee_seq = #{employeeSeq} -->
+		select * from employees where employee_seq = 3
+	</select>
+	
+	
 	
 	
 	

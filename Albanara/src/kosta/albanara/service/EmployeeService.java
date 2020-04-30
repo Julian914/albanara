@@ -123,6 +123,10 @@ public class EmployeeService {
 		return employeeDao.updateResume(resume);
 	}
 	
+	public Employees basicInformationService(int employeeSeq) {
+		return employeeDao.basicInformation(employeeSeq);
+	}
+	
 	
 	
 	
