@@ -48,7 +48,9 @@ public class RecruitmentService {
 		return employeeList;
 	}
 
-	public int insertRecruitment(HttpServletRequest request) throws ParseException {
+	public int insertRecruitment(HttpServletRequest request) throws Exception {
+		request.setCharacterEncoding("UTF-8");
+		
 		int resultCount = -1;
 		// int employerSeq = Integer.parseInt(request.getParameter("employerSeq"));
 		int employerSeq = 1;
@@ -64,8 +66,8 @@ public class RecruitmentService {
 		int wage = Integer.parseInt(request.getParameter("wage"));
 		String wageType = request.getParameter("wageType");
 		String gender = request.getParameter("gender");
-		int minAge = 0, maxAge = 0;
-		if (request.getParameter("age") == "age") {
+		int minAge = 0, maxAge = 100;
+		if (request.getParameter("age").equals("age")) {
 			minAge = Integer.parseInt(request.getParameter("minAge"));
 			maxAge = Integer.parseInt(request.getParameter("maxAge"));
 		}
@@ -90,7 +92,9 @@ public class RecruitmentService {
 		return recruitmentDao.getRecruitment(seq);
 	}
 
-	public int updateRecruitment(HttpServletRequest request) {
+	public int updateRecruitment(HttpServletRequest request) throws Exception {
+		request.setCharacterEncoding("UTF-8");
+		
 		int resultCount = -1;
 
 		int recruitmentSeq = Integer.parseInt(request.getParameter("recruitmentSeq"));

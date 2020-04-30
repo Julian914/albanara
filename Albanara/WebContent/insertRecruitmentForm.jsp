@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style type="text/css">
-</style>
+
 <link rel="stylesheet" href="/Albanara/css/jquery-ui.css">
 <link rel="stylesheet" href="/Albanara/css/bootstrap.css">
 <link rel="stylesheet" href="/Albanara/css/bootstrap-theme.css">
@@ -17,78 +16,186 @@
 <script
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=814861f68a4b2c5498535e608555d96a&libraries=services"></script>
 <title>공고 등록</title>
-</head>
-<body>
-	<div class="container">
-		<h1>모집 공고</h1>
-		<form action="insertRecruitmentAction.do" method="post">
-			<div>모집 공고</div>
-			<div>
-				<input type="text" name="recruitmentTitle">
-			</div>
-			<div>분류</div>
-			<input type="radio" id="strength" name="recruitmentType"
-				value="strength"> <label for="strength">힘</label> <input
-				type="radio" id="intelligence" name="recruitmentType"
-				value="intelligence"> <label for="intelligence">지능</label> <input
-				type="radio" id="kindness" name="recruitmentType" value="kindness">
-			<label for="kindness">친절</label> <input type="radio" id="patience"
-				name="recruitmentType" value="patience"> <label
-				for="patience">끈기</label>
-			<div>모집 인원</div>
-			<div>
-				<input type="number" name="recruitmentSize">
-			</div>
-			<div>근무 시작일</div>
-			<input type="date" name="startingWorkingDate">
-			<div>근무 종료일</div>
-			<input type="date" name="endingWorkingDate">
-			<div>총 근무일수</div>
-			<input type="number" name="totalWorkingDay">
-			<div>근무 시간</div>
-			<div>시작 시간</div>
-			<input type="number" name="startingWorkingTime">
-			<div>종료 시간</div>
-			<input type="number" name="endingWorkingTime">
-			<div>총 시간</div>
-			<input type="number" name="totalWorkingTime">
-			<div>급여</div>
-			<select id="wageType" name="wageType">
-				<option value="hourlyWage" selected>시급</option>
-				<option value="dailyWage">일급</option>
-			</select> <input type="number" name="wage">
-			<div>성별</div>
-			<input type="radio" id="other" name="gender" value="other"> <label
-				for="other">성별무관</label> <input type="radio" id="male" name="gender"
-				value="male"> <label for="male">남자</label> <input
-				type="radio" id="female" name="gender" value="female"> <label
-				for="female">여자</label>
-			<div>연령</div>
-			<input type="radio" id="other" name="age" value="other"> <label
-				for="other">연령무관</label> <input type="radio" id="age" name="age"
-				value="age"> <label for="age">연령제한 있음</label> <input
-				type="number" name="minAge">세 이상 <input type="number"
-				name="maxAge">세 이하
-			<div>우대 조건</div>
-			<input type="text" name="requirementQuestion1"> <input
-				type="text" name="requirementQuestion2"> <input type="text"
-				name="requirementQuestion3">
-			<div>모집 종료일</div>
-			<input type="date" name="closingDate">
-			<div>상세 정보</div>
-			<textarea name="recruitmentContents" rows="4" cols="50">
-		</textarea>
-			<div>근무지 주소</div>
-			<input type="text" id="sample5_address" placeholder="주소" name = "workingPlaceAddress">
-			<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
-			<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
-			<input type="hidden" id="latitude" placeholder="위도" name="latitude">
-			<input type="hidden" id="longitude" placeholder="경도" name="longitude">
-			<input type="button" onclick="addrInsertClick()" value="주소 등록"><br>
-			<input type="reset" value="초기화">
-			<input type="submit" value="등록">
+<style type="text/css">
+.container {
+	max-width: 960px;
+}
 
-		</form>
+.bg-light {
+	background-color: #f8f9fa !important;
+}
+
+.radioStyle {
+	margin: 0px 10px;
+}
+</style>
+</head>
+<body class="bg-light">
+	<div class="container">
+		<div class="py-5 text-center">
+			<h1>모집 공고</h1>
+			<p class="lead">모집 공고 내용을 입력 후, "등록" 버튼을 눌러주세요.</p>
+		</div>
+		<div class="row">
+			<form action="insertRecruitmentAction.do" method="post">
+				<div class="form-group col-md-12">
+					<h3>분류</h3>
+					<span class="radioStyle"> <input type="radio" id="strength"
+						name="recruitmentType" value="strength"> <label
+						for="strength">힘</label>
+					</span> <span class="radioStyle"> <input type="radio"
+						id="intelligence" name="recruitmentType" value="intelligence">
+						<label for="intelligence">지능</label>
+					</span> <span class="radioStyle"> <input type="radio" id="kindness"
+						name="recruitmentType" value="kindness"> <label
+						for="kindness">친절</label>
+					</span> <span class="radioStyle"> <input type="radio" id="patience"
+						name="recruitmentType" value="patience"> <label
+						for="patience">끈기</label>
+					</span>
+				</div>
+				<div class="form-group col-md-12">
+					<h3>제목</h3>
+					<input type="text" class="form-control" name="recruitmentTitle">
+				</div>
+				<div class="form-group">
+					<div class="col-md-4">
+						<h3>근무 시작일</h3>
+						<input type="date" class="form-control" name="startingWorkingDate">
+					</div>
+					<div class="col-md-4">
+						<h3>근무 종료일</h3>
+						<input type="date" class="form-control" name="endingWorkingDate">
+					</div>
+					<div class="col-md-4">
+						<h3>총 근무일수</h3>
+						<input type="number" class="form-control" name="totalWorkingDay">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-md-4">
+						<h3>근무 시작 시간</h3>
+						<input type="number" class="form-control"
+							name="startingWorkingTime">
+					</div>
+					<div class="col-md-4">
+						<h3>근무 종료 시간</h3>
+						<input type="number" class="form-control" name="endingWorkingTime">
+					</div>
+					<div class="col-md-4">
+						<h3>총 근무 시간</h3>
+						<input type="number" class="form-control" name="totalWorkingTime">
+					</div>
+					<div class="col-md-4">
+						<h3>모집 인원</h3>
+						<input type="number" class="form-control" name="recruitmentSize">
+					</div>
+					<div class="col-md-4">
+						<h3>모집 종료일</h3>
+						<input type="date" class="form-control" name="closingDate">
+					</div>
+					<div class="col-md-4">
+						<h3>급여</h3>
+						<div class="col-md-6">
+							<select id="wageType" class="form-control" name="wageType">
+								<option value="hourlyWage" selected>시급</option>
+								<option value="dailyWage">일급</option>
+							</select>
+						</div>
+						<div class="col-md-6">
+							<input type="number" class="form-control" name="wage">
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-md-6">
+						<h3>연령</h3>
+						<div>
+							<div>
+								<input type="radio" id="other" name="age" value="other">
+								<label for="other">연령무관</label>
+							</div>
+							<div>
+								<input type="radio" id="age" name="age" value="age"> <label
+									for="age">연령제한 있음</label>
+							</div>
+							<div class="col-md-12">
+								<div class="col-md-5">
+									<input type="number" class="form-control" name="minAge">
+									<small class="text-muted">세 이상</small>
+								</div>
+								<div class="col-md-1">~</div>
+								<div class="col-md-5">
+									<input type="number" class="form-control" name="maxAge">
+									<small class="text-muted">세 이하</small>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<h3>성별</h3>
+						<div>
+							<div>
+								<input type="radio" id="other" name="gender" value="other">
+								<label for="other">성별무관</label>
+							</div>
+							<div>
+								<input type="radio" id="male" name="gender" value="male">
+								<label for="male">남자</label>
+							</div>
+							<div>
+								<input type="radio" id="female" name="gender" value="female">
+								<label for="female">여자</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-12">
+					<h3>요구 조건</h3>
+					<input type="text" class="form-control" name="requirementQuestion1"
+						placeholder="요구조건 첫 번째 항목을 입력해주세요."> <input type="text"
+						class="form-control" name="requirementQuestion2"
+						placeholder="요구조건 두 번째 항목을 입력해주세요."> <input type="text"
+						class="form-control" name="requirementQuestion3"
+						placeholder="요구조건 세 번째 항목을 입력해주세요.">
+				</div>
+				<div class="form-group col-md-12">
+					<h3>상세 정보</h3>
+					<textarea class="form-control" name="recruitmentContents" rows="6">
+				</textarea>
+				</div>
+				<div class="form-group col-md-12">
+					<h3>근무지 주소</h3>
+					<div class="col-md-10">
+						<input type="text" class="form-control" id="sample5_address"
+							placeholder="주소" name="workingPlaceAddress">
+					</div>
+					<div class="col-md-2">
+						<input type="button" onclick="sample5_execDaumPostcode()"
+							class="btn btn-default btn-block" value="주소 검색">
+					</div>
+				</div>
+				<div class="col-md-12" id="map"
+					style="width: 300px; height: 300px; margin: 10px 0px 0px 30px; display: none;"></div>
+				<div class="col-md-12" style="height: 20px;"></div>	
+				<div class="col-md-12">
+					<div class="col-md-6">
+						<input type="reset" class="btn btn-default btn-lg btn-block"
+							value="초기화">
+					</div>
+					<div class="col-md-6">
+						<input type="submit" class="btn btn-primary btn-lg btn-block"
+							value="등록">
+					</div>
+				</div>
+				<input type="hidden" id="latitude" placeholder="위도" name="latitude">
+				<input type="hidden" id="longitude" placeholder="경도"
+					name="longitude"> <input type="hidden"
+					onclick="addrInsertClick()" value="주소 등록">
+			</form>
+		</div>
 	</div>
 </body>
 
@@ -152,7 +259,7 @@
 				console.log(data);
 				data = JSON.parse(data);
 				var latitude = data.documents[0].x;
-	            var longitude = data.documents[0].y;
+				var longitude = data.documents[0].y;
 				document.getElementById("latitude").value = latitude;
 				document.getElementById("longitude").value = longitude;
 			},
