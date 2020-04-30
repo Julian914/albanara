@@ -11,7 +11,8 @@ public class UpdateRecruitmentForm implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// Call Service
-		Recruitments recruitment = RecruitmentService.getInstance().getRecruitment(request);
+		int seq = Integer.parseInt(request.getParameter("seq"));
+		Recruitments recruitment = RecruitmentService.getInstance().getRecruitment(seq);
 
 		// Set value to HttpSession
 		request.setAttribute("recruitment", recruitment);

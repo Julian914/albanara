@@ -39,32 +39,43 @@
 	<update id="updateRecruitment" parameterType="Recruitments">
 		update RECRUITMENTS
 		set
-			RECRUITMENT_SEQ = #{recruitmentSeq},
-			EMPLOYER_SEQ = #{employerSeq},
-			RECRUITMENT_TITLE = #{recruitmentTitle},
-			RECRUITMENT_TYPE = #{recruitmentType},
-			RECRUITMENT_SIZE = #{recruitmentSize},
-			STARTING_WORKING_DATE = #{startingWorkingDate},
-			ENDING_WORKING_DATE = #{endingWorkingDate},
-			TOTAL_WORKING_DAY = #{totalWorkingDay},
-			STARTING_WORKING_TIME = #{startingWorkingTime},
-			ENDING_WORKING_TIME = #{endingWorkingTime},
-			TOTAL_WORKING_TIME = #{totalWorkingTime},
-			WAGE = #{wage},
-			WAGE_TYPE = #{wageType},
-			GENDER = #{gender},
-			MIN_AGE = #{minAge},
-			MAX_AGE = #{maxAge},
-			RECRUITMENT_CONTENTS = #{recruitmentContents},
-			REQUIREMENT_QUESTION1 = #{requirementQuestion1},
-			REQUIREMENT_QUESTION2 = #{requirementQuestion2},
-			REQUIREMENT_QUESTION3 = #{requirementQuestion3},
-			WORKING_PLACE_ADDRESS = #{workingPlaceAddress},
-			CLOSING_DATE = #{closingDate},
-			LAST_MODIFY_DATE = sysdate
+		RECRUITMENT_SEQ = #{recruitmentSeq},
+		EMPLOYER_SEQ = #{employerSeq},
+		RECRUITMENT_TITLE = #{recruitmentTitle},
+		RECRUITMENT_TYPE =
+		#{recruitmentType},
+		RECRUITMENT_SIZE = #{recruitmentSize},
+		STARTING_WORKING_DATE = #{startingWorkingDate},
+		ENDING_WORKING_DATE =
+		#{endingWorkingDate},
+		TOTAL_WORKING_DAY = #{totalWorkingDay},
+		STARTING_WORKING_TIME = #{startingWorkingTime},
+		ENDING_WORKING_TIME =
+		#{endingWorkingTime},
+		TOTAL_WORKING_TIME = #{totalWorkingTime},
+		WAGE =
+		#{wage},
+		WAGE_TYPE = #{wageType},
+		GENDER = #{gender},
+		MIN_AGE =
+		#{minAge},
+		MAX_AGE = #{maxAge},
+		RECRUITMENT_CONTENTS =
+		#{recruitmentContents},
+		REQUIREMENT_QUESTION1 =
+		#{requirementQuestion1},
+		REQUIREMENT_QUESTION2 =
+		#{requirementQuestion2},
+		REQUIREMENT_QUESTION3 =
+		#{requirementQuestion3},
+		WORKING_PLACE_ADDRESS =
+		#{workingPlaceAddress},
+		CLOSING_DATE = #{closingDate},
+		LAST_MODIFY_DATE
+		= sysdate
 		where RECRUITMENT_SEQ = #{recruitmentSeq}
 	</update>
-	
+
 
 	<resultMap id="Recruitments" type="Recruitments">
 		<result column="recruitment_seq" property="recruitmentSeq" />
@@ -114,18 +125,18 @@
 			property="requirementAnswer3" />
 	</resultMap>
 
+
 	<select id="getRecruitment" parameterType="int"
 		resultMap="Recruitments">
 		select * from RECRUITMENTS where RECRUITMENT_SEQ = #{seq}
 	</select>
 
-	
+
 	<delete id="deleteRecruitment" parameterType="int">
-		delete from RECRUITMENTS		
-		where RECRUITMENT_SEQ = #{seq}		
-	</delete>	
-
-
+		delete from
+		RECRUITMENTS
+		where RECRUITMENT_SEQ = #{seq}
+	</delete>
 	<cache />
 
 	<resultMap id="Employees" type="Employees">
@@ -157,62 +168,213 @@
 
 
 
-
+	<!--전체 공고 목록 -->
 	<select id="totalRecruitmentList" resultMap="Recruitments">
-		SELECT * FROM Recruitments
+		SELECT * FROM
+		Recruitments
+	</select>
+
+	<!--현재 진행중인 공고목록 -->
+	<select id="nowRecruinmentList" resultMap="Recruitments">
+		select *from
+		recruitments where closing_date > sysdate
 	</select>
 
 
-	<!-- 해당 공고의 지원자 목록 불러오기-->
-	<select id="employeeList" parameterType="int" resultMap="Employees">
-		select * from employees where employee_Seq in(select employee_Seq from applications where recruitment_Seq=#{recruitment_Seq})
-	</select> 
-
-
-
-	<select id="totalEmployeeList" resultMap="Employees">
-		select *from Employees
+	<!--마감된 공고목록 -->
+	<select id="endRecruitmentList" resultMap="Recruitments">
+		select *from
+		recruitments where sysdate > closing_date
 	</select>
-	
-	
+
+
+	<!-- 해당 공고의 지원자 목록 불러오기 -->
+	<select id="employeeList" parameterType="int"
+		resultMap="Employees">
+		select * from employees where employee_Seq in(select
+		employee_Seq from applications where
+		recruitment_Seq=#{recruitment_Seq})
+	</select>
+
+
+	<!-- 모든 지원 정보 -->
 	<select id="totalApplicationList" resultMap="Applications">
-		select*from Applications
+		select *from
+		Applications
 	</select>
-	
+
 	<insert id="insertApplication" parameterType="Applications">
-		insert into applications 
-		values (
-		s_application_seq.nextval,
-		#{recruitmentSeq},
-		#{employeeSeq},
-		sysdate,
-		#{requirementAnswer1},
-		#{requirementAnswer2},
+		insert into
+		applications
+		values(
+		s_application_seq.nextval, #{recruitmentSeq},
+		#{employeeSeq}, sysdate,
+		#{requirementAnswer1}, #{requirementAnswer2},
 		#{requirementAnswer3}
 		)
-	
 	</insert>
-	
 
-   <resultMap type="NearRecruitments" id="NearRecruitments">
-      <result column="recruitment_Seq" property="recruitmentSeq" />
-      <result column="recruitment_Title" property="recruitmentTitle" />
-      <result column="recruitment_Type" property="recruitmentType" />
-      <result column="starting_Working_Date" property="startingWorkingDate" />         
-      <result column="ending_working_Date" property="endingWorkingDate" />      
-      <result column="starting_Working_Time" property="startingWorkingTime" />
-      <result column="ending_Working_Time" property="endingWorkingTime" />
-      <result column="wage" property="wage" />
-      <result column="wage_Type" property="wageType" />
-      <result column="latitude" property="latitude" />
-      <result column="longitude" property="longitude" />
-   </resultMap>
+
+
+
+	<resultMap type="NearRecruitments" id="NearRecruitments">
+		<result column="recruitment_Seq" property="recruitmentSeq" />
+		<result column="recruitment_Title" property="recruitmentTitle" />
+		<result column="recruitment_Type" property="recruitmentType" />
+		<result column="starting_Working_Date"
+			property="startingWorkingDate" />
+		<result column="ending_working_Date"
+			property="endingWorkingDate" />
+		<result column="starting_Working_Time"
+			property="startingWorkingTime" />
+		<result column="ending_Working_Time"
+			property="endingWorkingTime" />
+		<result column="wage" property="wage" />
+		<result column="wage_Type" property="wageType" />
+		<result column="latitude" property="latitude" />
+		<result column="longitude" property="longitude" />
+	</resultMap>
 
 	<select id="showNearRecruitments" resultMap="NearRecruitments">
-		select RECRUITMENT_SEQ, recruitment_Title, recruitment_Type,
+		select
+		RECRUITMENT_SEQ, recruitment_Title, recruitment_Type,
 		starting_Working_Date, ending_Working_Date,
-		starting_Working_Time, ending_Working_Time, wage, wage_Type, latitude, longitude
-		from recruitments r inner join marker_location m on	r.WORKING_PLACE_ADDRESS	= m.ROAD_ADDRESS
+		starting_Working_Time,
+		ending_Working_Time, wage, wage_Type, latitude, longitude
+		from
+		recruitments r inner join marker_location m on r.WORKING_PLACE_ADDRESS
+		= m.ROAD_ADDRESS
 	</select>
+
+
+	<!-- 일자리 제안하기 -->
+	<insert id="insertProposal" parameterType="Proposals">
+	insert into proposals values(
+	s_proposal_seq.nextval, 
+	#{recruitmentSeq},#{employeeSeq}, 2, sysdate)
+	
+	</insert>
+
+   
+	<!-- 제안 받은 공고 리스트 -->
+	<select id="showProposalRecruitments" resultMap="Recruitments" parameterType="int">
+   		select recruitment_seq, employer_seq, recruitment_title, recruitment_type, recruitment_size, starting_Working_Date, ending_Working_Date, total_Working_Day, starting_Working_Time, ending_Working_Time, total_Working_Time, wage, wage_Type, gender, min_Age, max_Age, recruitment_Contents, requirement_Question1, requirement_Question2, requirement_Question3, working_Place_Address, closing_Date, last_Modify_Date 
+		from RECRUITMENTS inner join proposals using(RECRUITMENT_seq)
+		where employee_seq = #{seq} and IS_ACCEPTED = 2
+	</select>
+	
+   	<!-- 제안 받은 공고 수락 -->
+   	<update id="acceptProposalRecruitments" parameterType="String">
+   		update proposals
+   		set IS_ACCEPTED=1
+		where employee_seq = #{employSeq} and recruitment_seq = #{recruitmentSeq}
+   	</update>
+   	
+	<!-- 제안 받은 공고 거절 -->
+	<update id="rejectProposalRecruitments" parameterType="String">
+		update proposals
+		set IS_ACCEPTED=0
+		where employee_seq = #{employSeq} and recruitment_seq = #{recruitmentSeq}
+	</update>
+
+	<!-- 공고에 지원한 남자 수 -->
+	<select id="selectRecruitmentManCount" parameterType="int" resultType="int">
+		select count(*)
+		from applications inner join employees using(employee_seq)
+		where recruitment_seq = #{seq} and employee_gender='man'
+	</select>
+	
+	<!-- 공고에 지원한 여자 수 -->
+	<select id="selectRecruitmentWomanCount" parameterType="int" resultType="int">
+		select count(*)
+		from applications inner join employees using(employee_seq)
+		where recruitment_seq = #{seq} and employee_gender='woman'
+	</select>
+	
+
+	<select id="completeRecruitment" parameterType="int" resultMap = "Recruitments">
+		SELECT  r.recruitment_seq, 
+			    r.employer_seq,
+				r.recruitment_title,
+				r.recruitment_type,
+				r.recruitment_size,
+				r.STARTING_WORKING_DATE,
+				r.ending_working_date,
+				r.total_working_day,
+				r.starting_working_time,
+				r.ending_working_time,
+				r.total_working_time,
+				r.wage,
+				r.wage_type,
+				r.gender,
+				r.min_age,
+				r.max_age,
+				r.recruitment_contents,
+				r.requirement_question1,
+				r.requirement_question2,
+				r.requirement_question3,
+				r.working_place_address,
+				r.closing_date,
+				r.last_modify_date		   		   
+		  FROM recruitments r, employees e, hired_history h
+		 WHERE r.recruitment_seq = h.recruitment_seq
+		   AND e.employee_seq = h.employee_seq 
+		   AND h.is_completed in(0,1) 
+		   AND e.employee_seq = #{seq}
+	</select>
+
+
+
+	<resultMap type="HiredHistory" id="HiredHistory">
+		<result column="hired_History_Seq" property="hiredHistorySeq" />
+		<result column="employee_Seq" property="employeeSeq" />
+		<result column="recruitment_Seq" property="recruitmentSeq" />
+		<result column="is_Completed" property="isCompleted"/>
+	</resultMap>
+
+
+	<!-- 지원자 중에서 채용하기 -->
+	<insert id="insertHiredHistory" parameterType="HiredHistory">
+		insert into hired_history values(S_HIRED_HISTORY_SEQ.nextval,#{recruitmentSeq},#{employeeSeq},2);
+	</insert>
+	
+	
+	<!-- 마감된 공고의 채용자 목록 불러오기 -->
+	<select id="hiredEmployeeList" resultMap="Employees">
+		select *from employees where employee_Seq in(select employee_Seq from hired_history where is_completed in(0,1))
+
+	</select>
+	
+	<select id= "applyRecruitment" parameterType="int" resultMap="Recruitments">
+	 SELECT r.recruitment_seq, 
+	        r.employer_seq,
+		    r.recruitment_title,
+		    r.recruitment_type,
+		    r.recruitment_size,
+		    r.STARTING_WORKING_DATE,
+		    r.ending_working_date,
+		    r.total_working_day,
+		    r.starting_working_time,
+		    r.ending_working_time,
+		    r.total_working_time,
+		    r.wage,
+		    r.wage_type,
+		    r.gender,
+		    r.min_age,
+		    r.max_age,
+		    r.recruitment_contents,
+		    r.requirement_question1,
+		    r.requirement_question2,
+		    r.requirement_question3,
+		    r.working_place_address,
+		    r.closing_date,
+		    r.last_modify_date		   
+	   FROM applications a, recruitments r, employees e
+	  WHERE r.recruitment_seq = a.recruitment_seq
+	    AND e.employee_seq = a.employee_seq 
+	    AND e.employee_seq = #{seq}
+	</select>
+
+
 
 </mapper>

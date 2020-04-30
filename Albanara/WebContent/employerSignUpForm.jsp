@@ -68,6 +68,7 @@
 			<input type="hidden" id="latitude" placeholder="위도" name="latitude">
 			<input type="hidden" id="longitude" placeholder="경도" name="longitude">
 			<input type="button" onclick="addrInsertClick()" value="주소 등록"><br>
+			<input type="button" onclick="test()" value="ㅎㅎ"><br>
 		</div>
 		<div>
 			<div class="employerField" valign=top>* 사업장 분야</div>
@@ -102,6 +103,8 @@
 			</div>
 		</div>
 <script>
+	var latitude = '';
+	var longitude = '';
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
             center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
@@ -117,8 +120,31 @@
         position: new daum.maps.LatLng(37.537187, 127.005476),
         map: map
     });
-
-
+	function test(){
+    	function calcDistance(lat1, lon1, lat2, lon2){
+			var EARTH_R, Rad, radLat1, radLat2, radDist; 
+            var distance, ret;
+	            EARTH_R = 6371000.0;
+	            Rad = Math.PI/180;
+	            radLat1 = Rad * parseFloat(lat1);
+	            radLat2 = Rad * parseFloat(lat2);
+	            radDist = Rad * (parseFloat(lon1) - parseFloat(lon2));            
+	            distance = Math.sin(radLat1) * Math.sin(radLat2);
+	            distance = distance + Math.cos(radLat1) * Math.cos(radLat2) * Math.cos(radDist);
+	            ret = EARTH_R * Math.acos(distance);						
+            var rtn = Math.round(Math.round(ret) / 1000);
+           	if(rtn <= 0){
+           		rtn = Math.round(ret) + " m";
+           	}else{
+           		rtn = rtn + " km";
+           	}
+            return  rtn;
+        } 
+        //document.getElementById("latitude").value
+        //document.getElementById("longitude").value
+		console.log("거리 : "+ calcDistance(127.005476, 37.537187, latitude, longitude));
+	}
+    
     function sample5_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -148,28 +174,28 @@
         }).open();
     };
 
-    function addrInsertClick() {
+    function addrInsertClick() {   	
     		var location = document.getElementById('sample5_address').value;
-    	   $.ajax({
-    	      url : 'map/kakaoMap.go',
-    	      type : 'get',
-    	      dataType:'text',
-    	      data: {
-    	         "location" : location, 
-    	      },
-    	      success: function(data){
-    	         data = JSON.parse(data);
-    	         var latitude = data.documents[0].x;
-    	         var longitude = data.documents[0].y;
-     			document.getElementById("latitude").value = latitude;
-    			document.getElementById("longitude").value = longitude;
-    	      },
-    	      error : function(xhr, status, error){
-    	         console.log('실패?')
-    	         console.log(xhr);
-    	         console.log(error);
-    	      }      
-    	   });   
+	    	   $.ajax({
+	    	      url : 'map/kakaoMap.go',
+	    	      type : 'get',
+	    	      dataType:'text',
+	    	      data: {
+	    	         "location" : location, 
+	    	      },
+	    	      success: function(data){
+	    	         data = JSON.parse(data);
+	    	         latitude = data.documents[0].x;
+	    	         longitude = data.documents[0].y;
+	     			document.getElementById("latitude").value = latitude;
+	    			document.getElementById("longitude").value = longitude;
+	    	      },
+	    	      error : function(xhr, status, error){
+	    	         console.log('실패?')
+	    	         console.log(xhr);
+	    	         console.log(error);
+	    	      }      
+	    	   });   
     	}
 </script>		
 		<br><input type="submit" value="회원가입"/>

@@ -8,7 +8,11 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kosta.albanara.mapper.EmployeeMapper;
+import kosta.albanara.mapper.EmployerMapper;
+import kosta.albanara.mapper.RecruitmentMapper;
 import kosta.albanara.model.Employees;
+import kosta.albanara.model.Employers;
+import kosta.albanara.model.Recruitments;
 import kosta.albanara.model.Resumes;
 
 
@@ -95,7 +99,6 @@ public class EmployeeDao {
 		return resume;
 	}
 	
-	
 	public int updateResume(Resumes resume) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = -1;
@@ -115,35 +118,81 @@ public class EmployeeDao {
 		
 		return re;
 	}
-	
-	public Employees basicInformation(int employeeSeq) {
-		SqlSession sqlSession = getSqlSessionFactory().openSession();
+
+	public Employees getEmployee(int seq) {
+		SqlSession session = getSqlSessionFactory().openSession();
+		EmployeeMapper mapper = null;
 		Employees employee = null;
+		try {
+			mapper = session.getMapper(EmployeeMapper.class);
+			System.out.println("?´?Šì­…ï¿½ì˜„ SEQ: " + seq);
+			employee = mapper.getEmployee(seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		return employee;
+	}
+
+	public int updateEmployee(Employees employee) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re= -1;
 		
 		try {
-			employee = sqlSession.getMapper(EmployeeMapper.class).basicInformation(employeeSeq);
+			
+			re = sqlSession.getMapper(EmployeeMapper.class).updateEmployee(employee);
+			
+			if (re > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			sqlSession.close();
 		}
-		
-		return employee;
+		return re;
 	}
 	
+	public int deleteEmployee(Employees employee) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re= -1;
+		
+		try {
+			
+			re = sqlSession.getMapper(EmployeeMapper.class).deleteEmployee(employee);
+			
+			if (re > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return re;
+	}
 	
+public Employees employeeLogIn(Employees employees) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		Employees employee = new Employees();
+		
+		try {
+			employee = sqlSession.getMapper(EmployeeMapper.class).employeeLogIn(employees);
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		return employee;
+	}
+
 }

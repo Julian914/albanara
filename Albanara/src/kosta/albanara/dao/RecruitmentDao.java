@@ -11,6 +11,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import kosta.albanara.mapper.RecruitmentMapper;
 import kosta.albanara.model.Applications;
 import kosta.albanara.model.Employees;
+import kosta.albanara.model.HiredHistory;
+import kosta.albanara.model.Proposals;
 import kosta.albanara.model.Recruitments;
 
 public class RecruitmentDao {
@@ -40,7 +42,7 @@ public class RecruitmentDao {
 		List<Recruitments> list = null;
 		try {
 			list = sqlSession.getMapper(RecruitmentMapper.class).totalRecruitmentList();
-			System.out.println(list);
+			//System.out.println("dao : "+list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -59,7 +61,7 @@ public class RecruitmentDao {
 
 		try {
 			employeeList = sqlSession.getMapper(RecruitmentMapper.class).employeeList(recruitmentSeq);
-			System.out.println("dao: " + employeeList);
+			//System.out.println("dao: " + employeeList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -153,37 +155,48 @@ public class RecruitmentDao {
 	}
 
 
-	public List<Employees> totalEmployeeList() {
+	public List<Recruitments> nowRecruinmentList() {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<Employees> employeeList = null;
-
+		List<Recruitments> nowRecruinmentList= null;
+		
 		try {
-			employeeList = sqlSession.getMapper(RecruitmentMapper.class).totalEmployeeList();
-
+			nowRecruinmentList = sqlSession.getMapper(RecruitmentMapper.class).nowRecruinmentList();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			if (sqlSession != null) {
+				sqlSession.close();
+			}
 		}
-		return employeeList;
+		return nowRecruinmentList;
 	};
-
-	public List<Applications> totalApplicationList() {
+	
+	
+	public List<Recruitments> endRecruitmentList() {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<Applications> applicationList = null;
-
+		List<Recruitments> endRecruitmentList = null;
+		
 		try {
-			applicationList = sqlSession.getMapper(RecruitmentMapper.class).totalApplicationList();
-
+			endRecruitmentList= sqlSession.getMapper(RecruitmentMapper.class).endRecruitmentList();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		return applicationList;
+		}finally {
+			if (sqlSession != null) {
+				sqlSession.close();
+			}
+		}	
+		return endRecruitmentList;
 	};
-
+	
+	
+	
+	
 	public int insertApplication(Applications application) {
 		int result = -1;
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		try {
-			result = sqlSession.getMapper(RecruitmentMapper.class).insertApplication(application);
+			result = sqlSession.getMapper(RecruitmentMapper.class).insertApplication(application);			
 			if (result > 0) {
 				sqlSession.commit();
 			} else {
@@ -198,4 +211,203 @@ public class RecruitmentDao {
 		return result;
 	}
 
+	
+	public List<Applications> totalApplicationList(){
+		List<Applications> totalApplicationList = null;
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		try {
+			totalApplicationList = sqlSession.getMapper(RecruitmentMapper.class).totalApplicationList();			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return totalApplicationList;
+	};
+	
+
+
+	/*제안 받은 공고 리스트 */
+	public List<Recruitments> showProposalRecruitments(int seq) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		List<Recruitments> list = null;
+		
+		try {
+			list = sqlSession.getMapper(RecruitmentMapper.class).showProposalRecruitments(seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		
+		return list;
+	}
+	
+	/*제안 받은 공고 수락*/
+	public void acceptProposalRecruitments(String employeeSeq, String recruitmentSeq) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = -1;
+		try {
+			re = sqlSession.getMapper(RecruitmentMapper.class).acceptProposalRecruitments(employeeSeq, recruitmentSeq);
+			if(re > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+	}
+	
+	/*제안 받은 공고 거절*/
+	public void rejectProposalRecruitments(String employeeSeq, String recruitmentSeq) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = -1;
+		try {
+			re = sqlSession.getMapper(RecruitmentMapper.class).rejectProposalRecruitments(employeeSeq, recruitmentSeq);
+			if(re > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+	}
+	
+	/* 공고에 지원한 남자 수 */
+	public int selectRecruitmentManCount(int seq) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = 0;
+		try {
+			re = sqlSession.getMapper(RecruitmentMapper.class).selectRecruitmentManCount(seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		
+		return re;
+	}
+	
+	/* 공고에 지원한 여자 수 */
+	public int selectRecruitmentWomanCount(int seq) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = 0;
+		try {
+			re = sqlSession.getMapper(RecruitmentMapper.class).selectRecruitmentWomanCount(seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}	
+		return re;
+	}
+	
+	public List<Recruitments> completeRecruitment(int seq){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		List<Recruitments> list = null;
+		try {
+			list = sqlSession.getMapper(RecruitmentMapper.class).completeRecruitment(seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if (sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		return list;
+	}
+	
+	public List<Recruitments> applyRecruitment(int seq){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		List<Recruitments> applyList = null;
+		try {
+			applyList = sqlSession.getMapper(RecruitmentMapper.class).applyRecruitment(seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if (sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		return applyList;
+	}
+	
+
+	public List<Employees> hiredEmployeeList(){
+		List<Employees> hiredEmployeeList = null;
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			hiredEmployeeList = sqlSession.getMapper(RecruitmentMapper.class).hiredEmployeeList();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if (sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		return hiredEmployeeList;
+	};
+	
+	
+	
+	//추천받은 구직자에게 제안하기 proposals
+	public int insertProposal(Proposals proposals) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = -1;
+		
+		try {
+			re = sqlSession.getMapper(RecruitmentMapper.class).insertProposal(proposals);		
+			if (re > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return re;
+	}
+
+	
+	public int insertHiredHistory(HiredHistory hiredHistory) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int hired = -1;
+		
+		try {
+			hired = sqlSession.getMapper(RecruitmentMapper.class).insertHiredHistory(hiredHistory);		
+			if (hired > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return hired;
+	};
 }

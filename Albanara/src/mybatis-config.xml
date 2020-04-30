@@ -14,6 +14,8 @@
 		<typeAlias type="kosta.albanara.model.Applications" alias="Applications"/>
 		<typeAlias type="kosta.albanara.model.MarkerLocation" alias="MarkerLocation"/>
 		<typeAlias type="kosta.albanara.model.NearRecruitments" alias="NearRecruitments"/>
+		<typeAlias type="kosta.albanara.model.HiredHistory" alias="HiredHistory"/>
+		<typeAlias type="kosta.albanara.model.Proposals" alias="Proposals"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -33,6 +35,7 @@
 		<mapper resource="kosta/albanara/mapper/Recruitment.xml"/>
 		<mapper resource="kosta/albanara/mapper/HyunMap.xml"/>
 		<mapper resource="kosta/albanara/mapper/MarkerLocation.xml"/>
+		<mapper resource="kosta/albanara/mapper/HiredHistory.xml"/>
 	</mappers>
 	
 </configuration>

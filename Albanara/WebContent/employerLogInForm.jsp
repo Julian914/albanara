@@ -14,6 +14,7 @@
         <input id="employerLogInId" name="employerLogInId" type="text" maxlength="16" required="required"><br>
         <label>PW: </label>
         <input id="employerLogInPw" name="employerLogInPw" type="password" maxlength="16" required="required"><br>
+
         <input type="submit" value="로그인">
 	</form>
 </div>

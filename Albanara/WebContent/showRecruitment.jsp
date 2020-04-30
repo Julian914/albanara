@@ -10,9 +10,12 @@
 <link rel="stylesheet" href="Albanara/css/jquery-ui.css">
 <link rel="stylesheet" href="Albanara/css/bootstrap.css">
 <link rel="stylesheet" href="Albanara/css/bootstrap-theme.css">
-<script src="Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
-<script src="Albanara/js/jquery-ui.js" type="text/javascript"></script>
-<script src="Albanara/js/bootstrap.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/Albanara/css/Chart.css">
+<script src="/Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
+<script src="/Albanara/js/jquery-ui.js" type="text/javascript"></script>
+<script src="/Albanara/js/bootstrap.js" type="text/javascript"></script>
+<script src="/Albanara/js/Chart.js" type="text/javascript"></script>
+<script src="/Albanara/js/Chart.bundle.js" type="text/javascript"></script>
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script
@@ -22,77 +25,103 @@
 <body>
 	<div class="container">
 		<h1>모집 공고</h1>
-			<div>모집 공고</div>
-			<input type="hidden" name="recruitmentSeq"
-				value="${recruitment.recruitmentSeq }">
-			<input type="hidden" name="employerSeq"
-				value="${recruitment.employerSeq }">
-			<div>
-				<input type="text" name="recruitmentTitle"
-					value="${recruitment.recruitmentTitle }">
-			</div>
-			<div>분류</div>			
-			<input type="radio" id="strength" name="recruitmentType"
-				value="strength" <c:if test="${recruitment.recruitmentType == 'strength' }">checked</c:if>> <label for="strength">힘</label> <input
-				type="radio" id="intelligence" name="recruitmentType"
-				value="intelligence" <c:if test="${recruitment.recruitmentType == 'intelligence' }">checked</c:if>> <label for="intelligence">지능</label> <input
-				type="radio" id="kindness" name="recruitmentType" value="kindness" <c:if test="${recruitment.recruitmentType == 'kindness' }">checked</c:if>>
-			<label for="kindness">친절</label> <input type="radio" id="patience"
-				name="recruitmentType" value="patience" <c:if test="${recruitment.recruitmentType == 'patience' }">checked</c:if>> <label
-				for="patience">끈기</label>			
-				
-			<div>모집 인원</div>
-			<div>
-				<input type="number" name="recruitmentSize" value="${recruitment.recruitmentSize }">
-			</div>
-			<div>근무 시작일</div>
-			<input type="date" name="startingWorkingDate" value="${recruitment.startingWorkingDate }">
-			<div>근무 종료일</div>
-			<input type="date" name="endingWorkingDate" value="${recruitment.endingWorkingDate }">
-			<div>총 근무일수</div>
-			<input type="number" name="totalWorkingDay" value="${recruitment.totalWorkingDay }">
-			<div>근무 시간</div>
-			<div>시작 시간</div>
-			<input type="number" name="startingWorkingTime" value="${recruitment.startingWorkingTime }">
-			<div>종료 시간</div>
-			<input type="number" name="endingWorkingTime" value="${recruitment.endingWorkingTime }">
-			<div>총 시간</div>
-			<input type="number" name="totalWorkingTime" value="${recruitment.totalWorkingTime }">
-			<div>급여</div>
-			<select id="wageType" name="wageType">
-				<option value="hourlyWage" <c:if test="${recruitment.wageType == 'hourlyWage' }">selected</c:if>>시급</option>
-				<option value="dailyWage" <c:if test="${recruitment.wageType == 'dailyWage' }">selected</c:if>>일급</option>
-			</select> <input type="number" name="wage" value="${recruitment.wage }">
-			<div>성별</div>
-			<input type="radio" id="other" name="gender" value="other"> <label
-				for="other">성별무관</label> <input type="radio" id="male" name="gender"
-				value="male" <c:if test="${recruitment.gender == 'male' }">checked</c:if>> <label for="male">남자</label> <input
-				type="radio" id="female" name="gender" value="female" <c:if test="${recruitment.gender == 'female' }">checked</c:if>> <label
-				for="female">여자</label>
-			<div>연령</div>
-			<input type="radio" id="other" name="age" value="other"> <label
-				for="other">연령무관</label> <input type="radio" id="age" name="age"
-				value="age"> <label for="age">연령제한 있음</label> <input
-				type="number" name="minAge" value="${recruitment.minAge }">세 이상 <input type="number"
-				name="maxAge" value="${recruitment.maxAge }">세 이하
-			<div>우대 조건</div>
-			<input type="text" name="requirementQuestion1" value="${recruitment.requirementQuestion1 }"> <input
-				type="text" name="requirementQuestion2" value="${recruitment.requirementQuestion2 }"> <input type="text"
-				name="requirementQuestion3" value="${recruitment.requirementQuestion3 }">
-			<div>모집 종료일</div>
-			<input type="date" name="closingDate" value="${recruitment.closingDate }">
-			<div>상세 정보</div>
-			<textarea name="recruitmentContents" rows="4" cols="50">
+		<div>모집 공고</div>
+		<input type="hidden" name="recruitmentSeq"
+			value="${recruitment.recruitmentSeq }"> <input type="hidden"
+			name="employerSeq" value="${recruitment.employerSeq }">
+		<div>
+			<input type="text" name="recruitmentTitle"
+				value="${recruitment.recruitmentTitle }">
+		</div>
+		<div>분류</div>
+		<input type="radio" id="strength" name="recruitmentType"
+			value="strength"
+			<c:if test="${recruitment.recruitmentType == 'strength' }">checked</c:if>>
+		<label for="strength">힘</label> <input type="radio" id="intelligence"
+			name="recruitmentType" value="intelligence"
+			<c:if test="${recruitment.recruitmentType == 'intelligence' }">checked</c:if>>
+		<label for="intelligence">지능</label> <input type="radio" id="kindness"
+			name="recruitmentType" value="kindness"
+			<c:if test="${recruitment.recruitmentType == 'kindness' }">checked</c:if>>
+		<label for="kindness">친절</label> <input type="radio" id="patience"
+			name="recruitmentType" value="patience"
+			<c:if test="${recruitment.recruitmentType == 'patience' }">checked</c:if>>
+		<label for="patience">끈기</label>
+
+		<div>모집 인원</div>
+		<div>
+			<input type="number" name="recruitmentSize"
+				value="${recruitment.recruitmentSize }">
+		</div>
+		<div>근무 시작일</div>
+		<input type="date" name="startingWorkingDate"
+			value="${recruitment.startingWorkingDate }">
+		<div>근무 종료일</div>
+		<input type="date" name="endingWorkingDate"
+			value="${recruitment.endingWorkingDate }">
+		<div>총 근무일수</div>
+		<input type="number" name="totalWorkingDay"
+			value="${recruitment.totalWorkingDay }">
+		<div>근무 시간</div>
+		<div>시작 시간</div>
+		<input type="number" name="startingWorkingTime"
+			value="${recruitment.startingWorkingTime }">
+		<div>종료 시간</div>
+		<input type="number" name="endingWorkingTime"
+			value="${recruitment.endingWorkingTime }">
+		<div>총 시간</div>
+		<input type="number" name="totalWorkingTime"
+			value="${recruitment.totalWorkingTime }">
+		<div>급여</div>
+		<select id="wageType" name="wageType">
+			<option value="hourlyWage"
+				<c:if test="${recruitment.wageType == 'hourlyWage' }">selected</c:if>>시급</option>
+			<option value="dailyWage"
+				<c:if test="${recruitment.wageType == 'dailyWage' }">selected</c:if>>일급</option>
+		</select> <input type="number" name="wage" value="${recruitment.wage }">
+		<div>성별</div>
+		<input type="radio" id="other" name="gender" value="other"> <label
+			for="other">성별무관</label> <input type="radio" id="male" name="gender"
+			value="male"
+			<c:if test="${recruitment.gender == 'male' }">checked</c:if>>
+		<label for="male">남자</label> <input type="radio" id="female"
+			name="gender" value="female"
+			<c:if test="${recruitment.gender == 'female' }">checked</c:if>>
+		<label for="female">여자</label>
+		<div>연령</div>
+		<input type="radio" id="other" name="age" value="other"> <label
+			for="other">연령무관</label> <input type="radio" id="age" name="age"
+			value="age"> <label for="age">연령제한 있음</label> <input
+			type="number" name="minAge" value="${recruitment.minAge }">세
+		이상 <input type="number" name="maxAge" value="${recruitment.maxAge }">세
+		이하
+		<div>우대 조건</div>
+		<input type="text" name="requirementQuestion1"
+			value="${recruitment.requirementQuestion1 }"> <input
+			type="text" name="requirementQuestion2"
+			value="${recruitment.requirementQuestion2 }"> <input
+			type="text" name="requirementQuestion3"
+			value="${recruitment.requirementQuestion3 }">
+		<div>모집 종료일</div>
+		<input type="date" name="closingDate"
+			value="${recruitment.closingDate }">
+		<div>상세 정보</div>
+		<textarea name="recruitmentContents" rows="4" cols="50">
 			${recruitment.recruitmentContents }
 			</textarea>
-			<div>근무지 주소</div>
+		<div>근무지 주소</div>
 
-			<input type="text" id="sample5_address" placeholder="주소"
-				name="workingPlaceAddress" value="${recruitment.workingPlaceAddress }"> <input type="button"
-				onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
-			<div id="map"
-				style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
-			<br>
+		<input type="text" id="sample5_address" placeholder="주소"
+			name="workingPlaceAddress"
+			value="${recruitment.workingPlaceAddress }"> <input
+			type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+		<div id="map"
+			style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
+		<br>
+
+		<canvas id="applicationGender" width="800"></canvas>
+		<canvas id="myChart8" width="800">
+	
 	</div>
 </body>
 
@@ -142,5 +171,52 @@
 			}
 		}).open();
 	}
+	
+	var applicationGender = $('#applicationGender');
+	var myDoughnutChart = new Chart(applicationGender, {
+	    type: 'pie',
+	    data: {
+	        labels: ['여자', '남자'],
+	        datasets: [{
+	            label: '지원자 성별 현황',
+	            data: [${woman}, ${man}],
+	            backgroundColor: [
+	            	'rgba(255, 99, 132, 0.2)',
+	            	'rgba(54, 162, 235, 0.2)'
+	            ],
+	            borderColor: [
+	                'rgba(255, 99, 132, 1)',
+	                'rgba(54, 162, 235, 1)'
+	            ],
+	            borderWidth: 1
+	        }]
+	    },
+	    options: {}
+	});
+	
+	var ctx8 = $('#myChart8');
+	var myLineChart8 = new Chart(ctx8, {
+				type : 'line',
+				data : {
+					labels : [ 'Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange' ],
+					datasets : [ {
+						label : '# of Votes',						
+						label : 'stepped',
+						steppedLine : true,
+						data : [ 12, 19, 3, 5, 2, 3 ],
+						backgroundColor : [ 'rgba(255, 159, 64, 0.2)',
+								'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)',
+								'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)',
+								'rgba(255, 159, 64, 0.2)' ],
+						borderColor : [ 'rgba(255, 159, 64, 1)',
+								'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)',
+								'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)',
+								'rgba(153, 102, 255, 1)' ],
+						borderWidth : 1
+					} ]
+				},
+				options : {}
+			});
+
 </script>
 </html>

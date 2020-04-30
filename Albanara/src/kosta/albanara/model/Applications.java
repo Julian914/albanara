@@ -9,15 +9,15 @@ public class Applications implements Serializable {
 	private int recruitmentSeq;		//�����ȣ
 	private int employeeSeq;		//�����ڹ�ȣ
 	private Date applicationDate;		//������¥
-	private String requirementAnswer1;	//������Ǵ亯1
-	private String requirementAnswer2;	//������Ǵ亯2
-	private String requirementAnswer3;	//������Ǵ亯3
+	private int requirementAnswer1;	//������Ǵ亯1
+	private int requirementAnswer2;	//������Ǵ亯2
+	private int requirementAnswer3;	//������Ǵ亯3
 	
 	public Applications() {}
 	
 	
-	public Applications(int recruitmentSeq, int employeeSeq, String requirementAnswer1,
-			String requirementAnswer2, String requirementAnswer3) {
+	public Applications(int recruitmentSeq, int employeeSeq, int requirementAnswer1,
+			int requirementAnswer2, int requirementAnswer3) {
 		super();
 		this.recruitmentSeq = recruitmentSeq;
 		this.employeeSeq = employeeSeq;
@@ -53,22 +53,22 @@ public class Applications implements Serializable {
 	public void setApplicationDate(Date applicationDate) {
 		this.applicationDate = applicationDate;
 	}
-	public String getRequirementAnswer1() {
+	public int getRequirementAnswer1() {
 		return requirementAnswer1;
 	}
-	public void setRequirementAnswer1(String requirementAnswer1) {
+	public void setRequirementAnswer1(int requirementAnswer1) {
 		this.requirementAnswer1 = requirementAnswer1;
 	}
-	public String getRequirementAnswer2() {
+	public int getRequirementAnswer2() {
 		return requirementAnswer2;
 	}
-	public void setRequirementAnswer2(String requirementAnswer2) {
+	public void setRequirementAnswer2(int requirementAnswer2) {
 		this.requirementAnswer2 = requirementAnswer2;
 	}
-	public String getRequirementAnswer3() {
+	public int getRequirementAnswer3() {
 		return requirementAnswer3;
 	}
-	public void setRequirementAnswer3(String requirementAnswer3) {
+	public void setRequirementAnswer3(int requirementAnswer3) {
 		this.requirementAnswer3 = requirementAnswer3;
 	}
 	

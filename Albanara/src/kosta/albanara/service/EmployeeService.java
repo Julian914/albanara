@@ -5,12 +5,15 @@ package kosta.albanara.service;
 import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import kosta.albanara.dao.EmployeeDao;
 import kosta.albanara.model.Employees;
+import kosta.albanara.model.Employers;
 import kosta.albanara.model.Resumes;
+import sun.rmi.transport.proxy.HttpReceiveSocket;
 
 public class EmployeeService {
 	public static EmployeeService instance;
@@ -27,6 +30,8 @@ public class EmployeeService {
 	public int insertEmployeeService(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
 
+	
+	
 		String employeeId = request.getParameter("employeeId");
 		String employeePw = request.getParameter("employeePw");
 		String employeeName = request.getParameter("employeeName");
@@ -45,27 +50,26 @@ public class EmployeeService {
 
 		/*
 		 * String employeeId = "ID"; String employeePw = "Password"; String employeeName
-		 * = "ï¿½Ì¸ï¿½"; Date employeeBirthday = Date.valueOf("1992-05-11"); String
+		 * = "? ?‹±ëªŒì˜™"; Date employeeBirthday = Date.valueOf("1992-05-11"); String
 		 * employeeEmail = "employeeEmailInput1"+"employeeEmailInput2"; String
-		 * employeeGender = "ï¿½ï¿½ï¿½ï¿½"; String employeePhone = "010"+"2785"+"1111"; String
-		 * employeeAddress ="ï¿½ï¿½ï¿½ï¿½";
+		 * employeeGender = "? ?™?˜™? ?™?˜™"; String employeePhone = "010"+"2785"+"1111"; String
+		 * employeeAddress ="? ?™?˜™? ?™?˜™";
 		 */
 
-		Employees employees = new Employees(employeeId, employeePw, employeeName, employeeBirthday, employeeEmail,
+		Employees employee = new Employees(employeeId, employeePw, employeeName, employeeBirthday, employeeEmail,
 				employeeGender, employeePhone, employeeAddress);
 
-		return employeeDao.insertEmployee(employees);
-
+		return employeeDao.insertEmployee(employee);
 	}
 	
 	public int insertResumeService(HttpServletRequest request)throws Exception{
 		request.setCharacterEncoding("utf-8");
 		
-		//ÆÄÀÏ¾÷·Îµå(°æ·Î, ÆÄÀÏÅ©±â, ÀÎÄÚµù, ÆÄÀÏÀÌ¸§ÁßÃ¸ Á¤Ã¥)
+		//? ?™?˜™? ?‹¹?–µ?˜™? ?‹¸?“¸?˜™(? ?™?˜™? ï¿?, ? ?™?˜™? ?™?˜™?¬? ?™?˜™, ? ?™?˜™? ?Œ˜?“¸?˜™, ? ?™?˜™? ?™?˜™? ?‹±ëªŒì˜™? ?™?˜™ì²? ? ?™?˜™ì±?)
 		String uploadPath = request.getRealPath("upload/resumePicture");
 		int size = 20 * 1024 * 1024;		//20MB
 		
-		//ÆÄÀÏ¾÷·Îµå ¸®Äù½ºÆ®¸¦ Ã³¸®ÇØÁÖ´Â API(¿ì¸®°¡ tomcat¿¡ ³ÖÀº cos.jar¿¡ ÀÖ´Ù). ÀÌ °´Ã¼¿¡ request °´Ã¼µµ °°ÀÌ ³Ö¾îÁØ´Ù. ±×·¡¼­ request´ë½Å multi·Î ³Ö¾îÁØ´Ù.
+		//? ?™?˜™? ?‹¹?–µ?˜™? ?‹¸?“¸?˜™ ? ?™?˜™? ?™?˜™? ?™?˜™?Š¸? ?™?˜™ ì²˜å ?™?˜™? ?™?˜™? ?Œ?Œ?˜™ API(? ?Œë¦¬å ?™?˜™ tomcat? ?™?˜™ ? ?™?˜™? ?™?˜™ cos.jar? ?™?˜™ ? ?Œ?Œ?˜™). ? ?™?˜™ ? ?™?˜™ì²´å ?™?˜™ request ? ?™?˜™ì²´å ?™?˜™ ? ?™?˜™? ?™?˜™ ? ?Œ?–µ?˜™? ?Œ”?Œ?˜™. ? ?Œ“ë¤„ì˜™? ?™?˜™ request? ?™?˜™? ï¿? multi? ?™?˜™ ? ?Œ?–µ?˜™? ?Œ”?Œ?˜™.
 		MultipartRequest multi =		
 				new MultipartRequest(request, uploadPath, size, "utf-8", new DefaultFileRenamePolicy());
 		
@@ -80,8 +84,8 @@ public class EmployeeService {
 		
 		
 		/*
-		//ÆÄÀÏ¾÷·Îµå ½Ã DB¿¡ ÆÄÀÏÀÌ¸§ ÀúÀåÇÏ´Â ¹ı
-				if(multi.getFilesystemName("pictureFilename") != null) {		//ÇØ¼® : ÆÄÀÏÀ» ¾÷·Îµå ÇßÀ» ¶§
+		//? ?™?˜™? ?‹¹?–µ?˜™? ?‹¸?“¸?˜™ ? ?™?˜™ DB? ?™?˜™ ? ?™?˜™? ?™?˜™? ?‹±ëªŒì˜™ ? ?™?˜™? ?™?˜™? ?‹¹?Œ?˜™ ? ?™?˜™
+				if(multi.getFilesystemName("pictureFilename") != null) {		//? ?Œ”?‡½?˜™ : ? ?™?˜™? ?™?˜™? ?™?˜™ ? ?™?˜™? ?‹¸?“¸?˜™ ? ?™?˜™? ?™?˜™ ? ?™?˜™
 				String pictureFilename = (String)multi.getFilesystemName("pictureFilename");
 				
 
@@ -98,7 +102,7 @@ public class EmployeeService {
 	System.out.println(employeeSeq);
 		return employeeDao.searchResume(employeeSeq);
 	}
-	
+
 	
 	public int updateResumeService(HttpServletRequest request)throws Exception{
 		request.setCharacterEncoding("utf-8");
@@ -122,13 +126,62 @@ public class EmployeeService {
 		
 		return employeeDao.updateResume(resume);
 	}
-	
-	public Employees basicInformationService(int employeeSeq) {
-		return employeeDao.basicInformation(employeeSeq);
+
+	public Employees getEmployee(int seq) {
+		return employeeDao.getEmployee(seq);
 	}
 	
+
+	public int updateEmployeeService(Employees employee) throws Exception{
+		
+		return employeeDao.updateEmployee(employee);
+	}
 	
+	public int deleteEmployeeService(Employees employee) throws Exception{
+		
+		
+		return employeeDao.deleteEmployee(employee);
+	}
 	
+public Employees employeeLogInService(HttpServletRequest request) throws Exception {
+		
+		request.setCharacterEncoding("utf-8");
+		
+		Employees employee = new Employees();
+		Employees login = new Employees();
+	      
+		employee.setEmployeeId(request.getParameter("employeeLogInId"));
+		employee.setEmployeePw(request.getParameter("employeeLogInPw"));
+		
+	      login = employeeDao.employeeLogIn(employee);
+	      
+	      if(login==null) {
+	    	  System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+	    	  return null;
+//	    	  ActionForward forward = new ActionForward();
+//	    	    forward.setRedirect(false); 
+//	  			forward.setPath("/employerLogInForm.jsp");
+	    	 
+	      }else if(login.getEmployeeId().equals(employee.getEmployeeId()) && login.getEmployeePw().equals(employee.getEmployeePw())) {
+	    	  
+	    	  System.out.println("ë¡œê·¸?¸?„±ê³?");
+	    	  HttpSession session = request.getSession();
+	    	  
+	    	  session.setAttribute("id",login.getEmployeeId());
+	    	  session.setAttribute("seq", login.getEmployeeSeq());
+	    	  
+	    	  System.out.println(session.getAttribute("id"));
+	    	  /*String employerId = (String)session.getAttribute("login");*/
+	    	
+	      }
+		return login;
+	}
+public void logOut(HttpServletRequest request) throws Exception{
 	
+	HttpSession session = request.getSession();
+	session.invalidate();
+	System.out.println("ë¡œê·¸?•„?›ƒ");
+		
+	}
 
 }

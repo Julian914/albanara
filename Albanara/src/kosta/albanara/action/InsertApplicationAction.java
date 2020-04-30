@@ -13,10 +13,10 @@ public class InsertApplicationAction implements Action {
 		RecruitmentService service = RecruitmentService.getInstance();
 		
 		service.insertApplicationService(request);
-		
+
 		
 		actionForward.setRedirect(true);
-		actionForward.setPath("/recruitmentList.jsp");
+		actionForward.setPath("/index.jsp");
 		
 		
 		return actionForward;

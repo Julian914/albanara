@@ -8,14 +8,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kosta.albanara.action.ProposalAcceptAction;
 import kosta.albanara.action.ActionForward;
 
 import kosta.albanara.action.DeleteRecruitmentAction;
 import kosta.albanara.action.InsertApplicationAction;
 import kosta.albanara.action.RecruitmentListAction;
+import kosta.albanara.action.ProposalRejectAction;
 import kosta.albanara.action.ShowRecruitmentAction;
 import kosta.albanara.action.UpdateRecruitmentAction;
 import kosta.albanara.action.UpdateRecruitmentForm;
+import kosta.albanara.action.insertHiredHistoryAction;
+import kosta.albanara.action.insertProposalAction;
 import kosta.albanara.action.InsertRecruitmentAction;
 import kosta.albanara.action.InsertRecruitmentForm;
 
@@ -95,7 +99,34 @@ public class RecruitmentController extends HttpServlet {
 				e.printStackTrace();
 			}
 			break;
-			
+		case "acceptProposalAction.do" :
+			try {
+				actionForward = new ProposalAcceptAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case "rejectProposalAction.do" :
+			try {
+				actionForward = new ProposalRejectAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case "insertProposal.do" :
+			try {
+				actionForward = new insertProposalAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case "insertHiredHistory.do" :
+			try {
+				actionForward = new insertHiredHistoryAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
 		}
 
 		// forward using redirect or dispatch

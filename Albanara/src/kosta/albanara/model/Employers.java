@@ -1,20 +1,22 @@
 package kosta.albanara.model;
 
-public class Employers {
-	private int employerSeq;	//±â¾÷¹øÈ£
-	private String employerId;	//±â¾÷¾ÆÀÌµð
-	private String employerPw;	//±â¾÷ºñ¹Ð¹øÈ£
-	private String employerName;	//±â¾÷ÀÌ¸§
-	private String employerNumber;		//»ç¾÷ÀÚ¹øÈ£
-	private String employerAddress;		//»ç¾÷ÀåÁÖ¼Ò
-	private String employerHomePage;	//±â¾÷È¨ÆäÀÌÁöÁÖ¼Ò
-	private String employerField;	//»ç¾÷ÀåºÐ¾ß
-	private String ownerName;	//´ëÇ¥ÀÚÀÌ¸§
-	private String ownerPhone;	//´ëÇ¥ÀÚÀüÈ­¹øÈ£
-	private int reportCount;	//Áö±Þ´©¶ôÈ½¼ö
-	private int likeCount;	//ÁÁ¾Æ¿ä ¹ÞÀº È½¼ö
-	private int unlikeCount; //º°·Î¿¡¿ä ¹ÞÀº È½¼ö
-	private int favoriteEmployerCount;	//°ü½É±â¾÷ ¹ÞÀº È½¼ö
+import java.io.Serializable;
+
+public class Employers implements Serializable{
+	private int employerSeq;	//ï¿½ï¿½ï¿½ï¿½ï¿½È£
+	private String employerId;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½
+	private String employerPw;	//ï¿½ï¿½ï¿½ï¿½ï¿½Ð¹ï¿½È£
+	private String employerName;	//ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
+	private String employerNumber;		//ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½È£
+	private String employerAddress;		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½
+	private String employerHomePage;	//ï¿½ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½
+	private String employerField;	//ï¿½ï¿½ï¿½ï¿½ï¿½Ð¾ï¿½
+	private String ownerName;	//ï¿½ï¿½Ç¥ï¿½ï¿½ï¿½Ì¸ï¿½
+	private String ownerPhone;	//ï¿½ï¿½Ç¥ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½È£
+	private int reportCount;	//ï¿½ï¿½ï¿½Þ´ï¿½ï¿½ï¿½È½ï¿½ï¿½
+	private int likeCount;	//ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ È½ï¿½ï¿½
+	private int unlikeCount; //ï¿½ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È½ï¿½ï¿½
+	private int favoriteEmployerCount;	//ï¿½ï¿½ï¿½É±ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È½ï¿½ï¿½
 	
 	public Employers() {}
 	
@@ -113,5 +115,13 @@ public class Employers {
 	public void setFavoriteEmployerCount(int favoriteEmployerCount) {
 		this.favoriteEmployerCount = favoriteEmployerCount;
 	}
-	
+	public int getEmployerSeq() {
+		return employerSeq;
+	}
+	public void setEmployerSeq(int employerSeq) {
+		this.employerSeq = employerSeq;
+	}
+	public void setEmployerHomePage(String employerHomePage) {
+		this.employerHomePage = employerHomePage;
+	}
 }

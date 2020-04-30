@@ -1,6 +1,7 @@
 package kosta.albanara.dao;
 
 import java.io.InputStream;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -11,6 +12,7 @@ import kosta.albanara.mapper.EmployeeMapper;
 import kosta.albanara.mapper.EmployerMapper;
 import kosta.albanara.model.Employees;
 import kosta.albanara.model.Employers;
+import kosta.albanara.model.MarkerLocation;
 
 public class EmployerDao {
 	private static EmployerDao instance;
@@ -57,18 +59,14 @@ public class EmployerDao {
 		return re;
 	}
 	
-	public int employerLogIn(Employers employers) {
+	public Employers employerLogIn(Employers employers) {
+		
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		int re = -1;
-
+		Employers employer = new Employers();
+		
 		try {
-			re = sqlSession.getMapper(EmployerMapper.class).employerLogIn(employers);
+			employer = sqlSession.getMapper(EmployerMapper.class).employerLogIn(employers);
 	
-			if(re > 0) {
-				sqlSession.commit();		
-			}else {
-				sqlSession.rollback();		
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -76,8 +74,116 @@ public class EmployerDao {
 				sqlSession.close();
 			}
 		}
+		return employer;
+	}
+	
+	public int updateEmployer(Employers employer) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re= -1;
+		
+		try {
+			
+			re = sqlSession.getMapper(EmployerMapper.class).updateEmployer(employer);
+			
+			if (re > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return re;
 	}
-		
 	
+public int deleteEmployer(Employers employer) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re= -1;
+		
+		try {
+			
+			re = sqlSession.getMapper(EmployerMapper.class).deleteEmployer(employer);
+			
+			if (re > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return re;
+	}
+
+public Employers detailEmployers(int employerSeq) {
+	SqlSession sqlSession = getSqlSessionFactory().openSession();
+	Employers employer = null;
+	try {
+		employer = sqlSession.getMapper(EmployerMapper.class).detailEmployer(employerSeq);
+		
+		System.out.println("�ٿ�"+employer.getEmployerId());
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		return employer;
+	}
+
+	/* 기업에 지원한 남자 수 */
+	public int selectEmployerManCount(int seq) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = 0;
+		try {
+			re = sqlSession.getMapper(EmployerMapper.class).selectEmployerManCount(seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		
+		return re;
+	}
+	
+	/* 기업에 지원한 여자 수 */
+	public int selectEmployerWomanCount(int seq) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = 0;
+		try {
+			re = sqlSession.getMapper(EmployerMapper.class).selectEmployerWomanCount(seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		
+		return re;
+	}
+	
+	/* 채용자들 위치 구하기 */
+	public List<MarkerLocation> selectHireMap(int seq) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		List<MarkerLocation> list = null;
+		try {
+			list = sqlSession.getMapper(EmployerMapper.class).selectHireMap(seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		
+		return list;
+	}
 }

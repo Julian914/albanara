@@ -17,6 +17,7 @@
 		<result column="EMPLOYEE_ADDRESS" property="employeeAddress" />
 		<result column="ATTRIBUTE_COUNT" property="attributeCount" />
 		<result column="NOSHOW_COUNT" property="noshowCount" />
+		<result column="LATE_COUNT" property="lateCount" />
 		<result column="WORKING_DAY_COUNT" property="workingDayCount" />
 		<result column="ACTIVITY_AVG" property="activityAvg" />
 		<result column="COLLABORATION_AVG" property="collaborationAvg" />
@@ -63,6 +64,12 @@
 	<update id="updateResume" parameterType="Resumes">
 		update resumes set picture_filename = #{pictureFilename}, resume_title = #{resumeTitle}, resume_contents = #{resumeContents}, desired_working_area = #{desiredWorkingArea}, favorite_field = #{favoriteField}, last_modify_date = sysdate where s_resume_seq = 1
 	</update>
+
+	<update id="updateEmployee" parameterType="Employees">
+		update employees set employee_pw = #{employeePw}, employee_email = #{employeeEmail}, 
+			employee_address = #{employeeAddress}, employee_phone = #{employeePhone} where employee_id = #{employeeId}
+	</update> 
+
 	
 	<!-- 기본정보 보여주기  (동현)-->
 	<select id="basicInformation" parameterType="int" resultMap="Employees">
@@ -72,6 +79,12 @@
 	
 	
 	
+	<delete id="deleteEmployee" parameterType="Employees">
+		delete from employees where employee_id = #{employeeId}
+	</delete>
 	
+	<select id="employeeLogIn" parameterType="Employees" resultMap="Employees">
+		select * from employees where employee_id= #{employeeId} AND employee_pw = #{employeePw}
+	</select>
 	
 </mapper>

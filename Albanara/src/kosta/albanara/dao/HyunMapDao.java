@@ -8,45 +8,50 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import kosta.albanara.mapper.EmployerMapper;
+import kosta.albanara.mapper.RecruitmentMapper;
+import kosta.albanara.model.MarkerLocation;
 import kosta.albanara.model.NearRecruitments;
 
 
 public class HyunMapDao {
-	private static HyunMapDao instance;
+   private static HyunMapDao instance;
 
-	public static HyunMapDao getInstance() {
-		if (instance == null)
-			instance = new HyunMapDao();
-		return instance;
-	}
+   public static HyunMapDao getInstance() {
+      if (instance == null)
+         instance = new HyunMapDao();
+      return instance;
+   }
 
-	public SqlSessionFactory getSqlSessionFactory() {
-		String resource = "mybatis-config.xml";
-		InputStream in = null;
+   public SqlSessionFactory getSqlSessionFactory() {
+      String resource = "mybatis-config.xml";
+      InputStream in = null;
 
-		try {
-			in = Resources.getResourceAsStream(resource);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+      try {
+         in = Resources.getResourceAsStream(resource);
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
 
-		return new SqlSessionFactoryBuilder().build(in);
-	}
+      return new SqlSessionFactoryBuilder().build(in);
+   }
 
-	public List<NearRecruitments> nearRecruitment() {
-		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<NearRecruitments> list = null;
-		try {
-			list = sqlSession.selectList("kosta.albanara.mapper.RecruitmentMapper.showNearRecruitments");
-			System.out.println(list);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (sqlSession != null) {
-				sqlSession.close();
-			}
-		}
+   public List<NearRecruitments> nearRecruitment() {
+      SqlSession sqlSession = getSqlSessionFactory().openSession();
+      List<NearRecruitments> list = null;
+      try {
+    	 list = sqlSession.getMapper(RecruitmentMapper.class).showNearRecruitments();
+         System.out.println(list);
+      } catch (Exception e) {
+         e.printStackTrace();
+      } finally {
+         if (sqlSession != null) {
+            sqlSession.close();
+         }
+      }
 
-		return list;
-	}
+      return list;
+   }
+   
+
 }

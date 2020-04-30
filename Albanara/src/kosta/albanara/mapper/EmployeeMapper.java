@@ -1,13 +1,18 @@
 package kosta.albanara.mapper;
 
 import kosta.albanara.model.Employees;
+import kosta.albanara.model.Employers;
 import kosta.albanara.model.Resumes;
 
 public interface EmployeeMapper {
 	int insertEmployee(Employees employees);
 	
-	int insertResume(Resumes resume);	//ÀÌ·Â¼­ µî·Ï(µ¿Çö)
-	Resumes searchResume(int employeeSeq);	//ÀÌ·Â¼­ Á¶È¸¹öÆ°À» Å¬¸¯ÇÏ¸é resume_seq·Î °¡Á®¿À±â(µ¿Çö)
-	int updateResume(Resumes resume);	//ÀÌ·Â¼­ ¼öÁ¤(µ¿Çö)
-	Employees basicInformation(int employeeSeq);	//±âº»Á¤º¸ º¸¿©ÁÖ±â
+	int insertResume(Resumes resume);	//ï¿½Ì·Â¼ï¿½ ï¿½ï¿½ï¿?(ï¿½ï¿½ï¿½ï¿½)
+	Resumes searchResume(int employeeSeq);	//ï¿½Ì·Â¼ï¿½ ï¿½ï¿½È¸ï¿½ï¿½Æ°ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½Ï¸ï¿½ resume_seqï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)
+	int updateResume(Resumes resume);	//ï¿½Ì·Â¼ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)
+	int updateEmployee(Employees employee);
+	Employees getEmployee(int seq);
+	int deleteEmployee(Employees employee);
+	Employees employeeLogIn(Employees employees);
+	
 }
