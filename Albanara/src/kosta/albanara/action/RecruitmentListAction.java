@@ -20,7 +20,7 @@ public class RecruitmentListAction implements Action {
 		RecruitmentService service = RecruitmentService.getInstance();
 		request.setCharacterEncoding("utf-8");
 
-		/*
+		/* 
 		 * // 전체 공고목록 불러오기 List<Recruitments> recruitmentList =
 		 * service.recruitmentListService(request);
 		 * request.setAttribute("recruitmentList", recruitmentList); //

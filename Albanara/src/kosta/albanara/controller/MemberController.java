@@ -35,7 +35,7 @@ import kosta.albanara.action.EmployerLogInAction;
 import kosta.albanara.action.EmployerSignUpAction;
 import kosta.albanara.action.EmployerUpdateAction;
 import kosta.albanara.action.EmployerUpdateFormAction;
-
+ 
 @WebServlet("/member/*")
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

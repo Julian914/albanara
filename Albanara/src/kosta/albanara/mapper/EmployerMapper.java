@@ -2,6 +2,7 @@ package kosta.albanara.mapper;
 
 import java.util.List;
 
+
 import kosta.albanara.model.Employees;
 import kosta.albanara.model.Employers;
 import kosta.albanara.model.MarkerLocation;
@@ -16,5 +17,12 @@ public interface EmployerMapper {
 	int selectEmployerManCount(int seq);
 	int selectEmployerWomanCount(int seq);
 	List<MarkerLocation> selectHireMap(int seq);
-
+	
+	List<Recruitments> totalRecruitmentList(int employerSeq);
+	List<Employees> employeeList(int recruitmentSeq);
+	List<Recruitments> nowRecruinmentList(int employerSeq);
+	List<Recruitments> endRecruitmentList(int employerSeq); 
+	List<Employees> hiredEmployeeList();
+	
+	
 }

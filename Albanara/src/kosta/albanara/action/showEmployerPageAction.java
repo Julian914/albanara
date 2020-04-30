@@ -19,8 +19,8 @@ public class showEmployerPageAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		ActionForward forward = new ActionForward();
 		EmployerService service = EmployerService.getInstance();
-
-		/* 기업 정보 가져오기 */
+ 
+		/* 기업 정보 가져오기 */ 
 		// String employerId = request.getParameter("employerId");
 		int employerSeq = Integer.parseInt(request.getParameter("seq"));
 		//int employeeSeq =1;

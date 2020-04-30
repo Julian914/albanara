@@ -8,10 +8,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import kosta.albanara.mapper.EmployeeMapper;
 import kosta.albanara.mapper.EmployerMapper;
+
 import kosta.albanara.mapper.RecruitmentMapper;
 import kosta.albanara.model.Employees;
+
 import kosta.albanara.model.Employers;
 import kosta.albanara.model.HiredHistory;
 import kosta.albanara.model.MarkerLocation;
@@ -197,7 +198,7 @@ public Employers detailEmployers(int employerSeq) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<Recruitments> list = null;
 		try {
-			list = sqlSession.getMapper(RecruitmentMapper.class).totalRecruitmentList(employerSeq);
+			list = sqlSession.getMapper(EmployerMapper.class).totalRecruitmentList(employerSeq);
 			//System.out.println("dao : "+list);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -216,7 +217,7 @@ public Employers detailEmployers(int employerSeq) {
 		List<Recruitments> nowRecruinmentList= null;
 		
 		try {
-			nowRecruinmentList = sqlSession.getMapper(RecruitmentMapper.class).nowRecruinmentList(employerSeq);
+			nowRecruinmentList = sqlSession.getMapper(EmployerMapper.class).nowRecruinmentList(employerSeq);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -234,7 +235,7 @@ public Employers detailEmployers(int employerSeq) {
 		List<Recruitments> endRecruitmentList = null;
 		
 		try {
-			endRecruitmentList= sqlSession.getMapper(RecruitmentMapper.class).endRecruitmentList(employerSeq);
+			endRecruitmentList= sqlSession.getMapper(EmployerMapper.class).endRecruitmentList(employerSeq);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

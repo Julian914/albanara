@@ -26,7 +26,7 @@ public class RecruitmentService {
 			recruitmentDao = RecruitmentDao.getInstance();
 			instance = new RecruitmentService();
 		}
-		return instance;
+		return instance; 
 	}
 
 	public List<Recruitments> recruitmentListService(HttpServletRequest request) throws Exception {
