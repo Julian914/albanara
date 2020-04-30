@@ -251,20 +251,6 @@ public class RecruitmentService {
 	}
 	
 	
-	
-	//지원자 채용하기
-	public int insertHiredHistoryService(HttpServletRequest request, HttpServletResponse response)throws Exception {
-		request.setCharacterEncoding("utf-8");
-		int hired = -1;
-		
-		HiredHistory hiredHistory = new HiredHistory();
-		
-		hiredHistory.setRecruitmentSeq(Integer.parseInt(request.getParameter("seq")));
-		hiredHistory.setEmployeeSeq(Integer.parseInt(request.getParameter("seq2")));
-		
-		hired = recruitmentDao.insertHiredHistory(hiredHistory);
-		System.out.println(hiredHistory);
-		return hired;
-	}
+
 	
 }

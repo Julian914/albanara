@@ -15,9 +15,15 @@ public class HiredHistoryService {
 	
 	public int insertHiredHistroyService(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
+		
 		HiredHistory hiredHistory = new HiredHistory();
-		hiredHistory.setEmployeeSeq(Integer.parseInt(request.getParameter("employeeSeq")));
-		hiredHistory.setRecruitmentSeq(Integer.parseInt(request.getParameter("recruitmentSeq")));
+		
+		hiredHistory.setEmployeeSeq(Integer.parseInt(request.getParameter("seq2")));
+		hiredHistory.setRecruitmentSeq(Integer.parseInt(request.getParameter("seq")));
+	
+		//System.out.println(hiredHistory.getEmployeeSeq());
+		//System.out.println(hiredHistory.getRecruitmentSeq());
+		
 		return dao.insertHiredHistroy(hiredHistory);
 	}
 }

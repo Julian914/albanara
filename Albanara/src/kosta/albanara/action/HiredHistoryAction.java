@@ -11,10 +11,13 @@ public class HiredHistoryAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();
 		HiredHistoryService service = HiredHistoryService.getInstance();
+		
 		service.insertHiredHistroyService(request);
+		
+		System.out.println("채용완료");
+		
 		forward.setRedirect(true);
-		forward.setPath("/index.jsp");
+		forward.setPath("/Albanara/index.jsp");
 		return forward;
 	}
-
 }

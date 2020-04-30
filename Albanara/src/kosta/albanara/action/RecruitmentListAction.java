@@ -6,8 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
 import kosta.albanara.model.Applications;
 import kosta.albanara.model.ApplyedEmployeeListMap;
 
@@ -27,26 +25,60 @@ public class RecruitmentListAction implements Action {
 		request.setAttribute("recruitmentList", recruitmentList);
 		// System.out.println("전체 공고목록 : " + recruitmentList.size());
 
-		
-		//진행중인 공고목록
-		List<Recruitments> nowRecruinmentList = service.nowRecruinmentListService();
-		request.setAttribute("nowRecruinmentList", nowRecruinmentList);
-		
-		
-		//마감된 공고목록
-		List<Recruitments> endRecruitmentList = service.endRecruitmentListService();
-		request.setAttribute("endRecruitmentList", endRecruitmentList);
-		//System.out.println("endRecruitmentList : "+endRecruitmentList);
-	
-		
-		//전체공고의 전체지원자 목록(테스트용)
-		List<Applications> totalApplicationList = service.totalApplicationListService();
-		request.setAttribute("totalApplicationList", totalApplicationList);
-		//System.out.println("totalApplicationList : "+totalApplicationList);
+		// 해당 공고의 지원자목록 불러오기
+		List<ApplyedEmployeeListMap> mapList1 = new ArrayList<ApplyedEmployeeListMap>();
+
+		for (int i = 0; i < recruitmentList.size(); i++) {
+			ApplyedEmployeeListMap mapClass = new ApplyedEmployeeListMap();
+			mapClass.setKey(i);
+			mapClass.setEmployeeList(service.employeeListService(recruitmentList.get(i).getRecruitmentSeq()));
+			mapList1.add(mapClass);
+		}
+		request.setAttribute("employeeListMapList", mapList1);
 		
 		
 
+		// 진행중인 공고목록
+		List<Recruitments> nowRecruinmentList = service.nowRecruinmentListService();
+		request.setAttribute("nowRecruinmentList", nowRecruinmentList);
+
+		// 해당 공고의 지원자목록 불러오기
+		List<ApplyedEmployeeListMap> mapList2 = new ArrayList<ApplyedEmployeeListMap>();
+
+		for (int i = 0; i < nowRecruinmentList.size(); i++) {
+			ApplyedEmployeeListMap mapClass = new ApplyedEmployeeListMap();
+			mapClass.setKey(i);
+			mapClass.setEmployeeList(service.employeeListService(recruitmentList.get(i).getRecruitmentSeq()));
+			mapList2.add(mapClass);
+		}
+		request.setAttribute("nowRecruinmentListMapList", mapList2);
 		
+		
+
+		// 마감된 공고목록
+		List<Recruitments> endRecruitmentList = service.endRecruitmentListService();
+		request.setAttribute("endRecruitmentList", endRecruitmentList);
+		// System.out.println("endRecruitmentList : "+endRecruitmentList);
+
+		// 채용자 목록
+		List<ApplyedEmployeeListMap> mapList3 = new ArrayList<ApplyedEmployeeListMap>();
+
+		for (int i = 0; i < endRecruitmentList.size(); i++) {
+			ApplyedEmployeeListMap mapClass = new ApplyedEmployeeListMap();
+			mapClass.setKey(i);
+			mapClass.setEmployeeList(service.hiredEmployeeListService());
+			mapList3.add(mapClass);
+		}
+		request.setAttribute("hiredEmployeeListMapList", mapList3);
+
+		
+		
+		
+		// 전체공고의 전체지원자 목록(테스트용)
+		//List<Applications> totalApplicationList = service.totalApplicationListService();
+		//request.setAttribute("totalApplicationList", totalApplicationList);
+		// System.out.println("totalApplicationList : "+totalApplicationList);
+
 		
 		
 		
@@ -62,36 +94,9 @@ public class RecruitmentListAction implements Action {
 
 		
 		
-		// 해당 공고의 지원자목록 불러오기
-		List<ApplyedEmployeeListMap> mapList1 = new ArrayList<ApplyedEmployeeListMap>();
+		
+		
 
-		for (int i = 0; i < recruitmentList.size(); i++) {
-			ApplyedEmployeeListMap mapClass = new ApplyedEmployeeListMap();
-			mapClass.setKey(i);
-			mapClass.setEmployeeList(service.employeeListService(recruitmentList.get(i).getRecruitmentSeq()));
-			mapList1.add(mapClass);
-		}
-		
-		//지원자 불러오기
-		request.setAttribute("employeeListMapList", mapList1);
-				
-		
-		
-		// 채용자 목록
-		List<ApplyedEmployeeListMap> mapList2 = new ArrayList<ApplyedEmployeeListMap>();
-
-		for (int i = 0; i < endRecruitmentList.size(); i++) {
-			ApplyedEmployeeListMap mapClass = new ApplyedEmployeeListMap();
-			mapClass.setKey(i);
-			mapClass.setEmployeeList(service.hiredEmployeeListService());
-			mapList2.add(mapClass);
-		}
-		
-		//채용자 목록 불러오기
-		request.setAttribute("hiredEmployeeListMapList", mapList2);
-		
-		
-		
 		actionforward.setRedirect(false);
 		actionforward.setPath("/recruitmentList.jsp");
 
