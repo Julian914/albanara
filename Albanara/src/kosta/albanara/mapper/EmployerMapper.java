@@ -5,6 +5,7 @@ import java.util.List;
 import kosta.albanara.model.Employees;
 import kosta.albanara.model.Employers;
 import kosta.albanara.model.MarkerLocation;
+import kosta.albanara.model.Recruitments;
 
 public interface EmployerMapper {
 	int insertEmployer(Employers employers);

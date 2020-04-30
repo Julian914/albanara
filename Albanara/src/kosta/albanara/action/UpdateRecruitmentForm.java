@@ -17,6 +17,7 @@ public class UpdateRecruitmentForm implements Action {
 		// Set value to HttpSession
 		request.setAttribute("recruitment", recruitment);
 
+		System.out.println("공고수정 action");
 		// Set ActionForward
 		ActionForward actionForward = new ActionForward();
 		actionForward.setRedirect(false);

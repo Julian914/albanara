@@ -12,7 +12,7 @@ import kosta.albanara.model.MarkerLocation;
 import kosta.albanara.model.Recruitments;
 import kosta.albanara.service.EmployerService;
 
-public class EmployerDetailAction implements Action {
+public class showEmployerPageAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -22,8 +22,8 @@ public class EmployerDetailAction implements Action {
 
 		/* 기업 정보 가져오기 */
 		// String employerId = request.getParameter("employerId");
-		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
-		int employerSeq =1;
+		int employerSeq = Integer.parseInt(request.getParameter("seq"));
+		//int employeeSeq =1;
 		// String employerId = "aaaa"; //���Ƿ� �� ���̵�
 
 		Employers employer = service.detailEmployerService(employerSeq);
@@ -80,14 +80,14 @@ public class EmployerDetailAction implements Action {
 			mapClass.setEmployeeList(service.employeeListService(recruitmentList.get(i).getRecruitmentSeq()));
 			mapList2.add(mapClass);
 		}
-		request.setAttribute("마감공고목록 : ", mapList2);
+		request.setAttribute("nowRecruinmentListMapList", mapList2);
 	
 		
 		
 		// 마감된 공고목록
 		List<Recruitments> endRecruitmentList = service.endRecruitmentListService(request);
 		request.setAttribute("endRecruitmentList", endRecruitmentList);
-		System.out.println("endRecruitmentList : "+endRecruitmentList.size());
+		System.out.println("마감공고목록 : "+endRecruitmentList.size());
 
 		// 채용자 목록
 		List<ApplyedEmployeeListMap> mapList3 = new ArrayList<ApplyedEmployeeListMap>();
@@ -101,10 +101,11 @@ public class EmployerDetailAction implements Action {
 		request.setAttribute("hiredEmployeeListMapList", mapList3);
 
 		forward.setRedirect(false);
-		forward.setPath("/employerPage.jsp");
+		forward.setPath("/employerPageEmployeeView.jsp");
 
+
+		
 		return forward;
-
 	}
 
 }

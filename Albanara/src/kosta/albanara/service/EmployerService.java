@@ -13,6 +13,7 @@ import kosta.albanara.dao.EmployerDao;
 import kosta.albanara.model.Employees;
 import kosta.albanara.model.Employers;
 import kosta.albanara.model.MarkerLocation;
+import kosta.albanara.model.Recruitments;
 
 public class EmployerService {
 	public static EmployerService instance;
@@ -100,7 +101,7 @@ public class EmployerService {
 	}
 	
 	public Employers detailEmployerService(int employerSeq) throws Exception{
-		System.out.println("����" + employerSeq);
+		System.out.println("기업seq : " + employerSeq);
 		return employerDao.detailEmployers(employerSeq);
 
 	}
@@ -119,5 +120,51 @@ public class EmployerService {
 	public List<MarkerLocation> selectHireMap(int seq) {
 		return employerDao.selectHireMap(seq);
 	}
+	
+	
+	
+	
+	//기업의 전체 공고목록
+	public List<Recruitments> recruitmentListService(HttpServletRequest request) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
+		int employerSeq =1;
+		
+		List<Recruitments> list = employerDao.totalRecruitmentList(employerSeq);
+		return list;
+	}
+	// 기업의 진행중인 공고목록
+	public List<Recruitments> nowRecruinmentListService(HttpServletRequest request) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
+		int employerSeq =1;
+		List<Recruitments> list =  employerDao.nowRecruinmentList(employerSeq);
+		return list;
+	}
+
+		//기업의 마감된 공고목록
+	public List<Recruitments> endRecruitmentListService(HttpServletRequest request) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
+		int employerSeq =1;
+		List<Recruitments> list =  employerDao.nowRecruinmentList(employerSeq);
+		return list;
+	}
+	
+	
+	// 한 공고에 해당하는 지원자목록	
+	public List<Employees> employeeListService(int recruitmentSeq) throws Exception {
+		List<Employees> employeeList = employerDao.employeeList(recruitmentSeq);
+		return employeeList;
+	}
+
+	//공고에 채용된 지원자 목록
+	public List<Employees> hiredEmployeeListService()throws Exception{
+		return employerDao.hiredEmployeeList();
+	}
+	
+
+	
+	
 	
 }

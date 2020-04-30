@@ -31,16 +31,27 @@ public class RecruitmentService {
 
 	public List<Recruitments> recruitmentListService(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		List<Recruitments> list = recruitmentDao.totalRecruitmentList();
+		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
+		int employerSeq =1;
+		
+		List<Recruitments> list = recruitmentDao.totalRecruitmentList(employerSeq);
 		return list;
 	}
 
-	public List<Recruitments> nowRecruinmentListService() throws Exception {
-		return recruitmentDao.nowRecruinmentList();
+	public List<Recruitments> nowRecruinmentListService(HttpServletRequest request) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
+		int employerSeq =1;
+		List<Recruitments> list =  recruitmentDao.nowRecruinmentList(employerSeq);
+		return list;
 	}
 
-	public List<Recruitments> endRecruitmentListService() throws Exception {
-		return recruitmentDao.endRecruitmentList();
+	public List<Recruitments> endRecruitmentListService(HttpServletRequest request) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
+		int employerSeq =1;
+		List<Recruitments> list =  recruitmentDao.nowRecruinmentList(employerSeq);
+		return list;
 	}
 
 	public List<Employees> employeeListService(int recruitmentSeq) throws Exception {
@@ -148,7 +159,7 @@ public class RecruitmentService {
 		request.setCharacterEncoding("utf-8");
 		int result = -1;
 
-		int recruitmentSeq = Integer.parseInt(request.getParameter("seq"));
+		int recruitmentSeq = Integer.parseInt(request.getParameter("recruitmentSeq"));
 		System.out.println("공고번호 : "+recruitmentSeq);
 
 		// int employeeSeq = Integer.parseInt(request.getParameter("employeeSeq"));
@@ -194,8 +205,8 @@ public class RecruitmentService {
 		request.setCharacterEncoding("utf-8");
 		int re =-1;
 		
-		int recruitmentSeq = Integer.parseInt(request.getParameter("seq"));
-		int employeeSeq= Integer.parseInt(request.getParameter("seq2"));
+		int recruitmentSeq = Integer.parseInt(request.getParameter("recruitmentSeq"));
+		int employeeSeq= Integer.parseInt(request.getParameter("employeeSeq"));
 		//System.out.println("recruitmentSeq : "+recruitmentSeq);
 		//System.out.println("employeeSeq : "+employeeSeq);
 		
