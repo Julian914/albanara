@@ -26,7 +26,7 @@
 		<br>
 		<div>희망 근무 지역</div>
 		<input type="text" name="desiredWorkingArea" placeholder="희망 근무 지역"><br>
-		<div>관심직종
+		<div>관심직종<br>
 			<input type="radio" name="favoriteField" value="힘">힘<br>
 			<input type="radio" name="favoriteField" value="지능">지능<br>
 			<input type="radio" name="favoriteField" value="끈기">끈기<br>
