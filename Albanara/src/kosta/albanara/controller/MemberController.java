@@ -28,13 +28,14 @@ import kosta.albanara.action.SearchResumeAction;
 import kosta.albanara.action.ShowEmployeeAction;
 import kosta.albanara.action.UpdateResumeAction;
 import kosta.albanara.action.UpdateResumeFormAction;
+import kosta.albanara.action.showEmployerPageAction;
 import kosta.albanara.action.logOutAction;
 import kosta.albanara.action.EmployerFormAction;
 import kosta.albanara.action.EmployerLogInAction;
 import kosta.albanara.action.EmployerSignUpAction;
 import kosta.albanara.action.EmployerUpdateAction;
 import kosta.albanara.action.EmployerUpdateFormAction;
-
+ 
 @WebServlet("/member/*")
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -338,12 +339,19 @@ public class MemberController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+    	}else if(command.equals("showEmployers.do")){
+    		
+    		action = new showEmployerPageAction();
+    		
+    		try {
+    			actionForward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			
+			}
+		
     	}
-		
-		
-		
-		
-		
 
 		if (actionForward != null){
 			if (actionForward.isRedirect()) {

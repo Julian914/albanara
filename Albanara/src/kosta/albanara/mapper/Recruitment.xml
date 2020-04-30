@@ -168,23 +168,39 @@
 
 
 
-	<!--전체 공고 목록 -->
-	<select id="totalRecruitmentList" resultMap="Recruitments">
-		SELECT * FROM
-		Recruitments
+	<!-- 전체 공고 목록 -->
+	<!-- <select id="totalRecruitmentList" resultMap="Recruitments">
+		SELECT * FROM Recruitments 
 	</select>
 
-	<!--현재 진행중인 공고목록 -->
+	현재 진행중인 공고목록
 	<select id="nowRecruinmentList" resultMap="Recruitments">
 		select *from
 		recruitments where closing_date > sysdate
 	</select>
 
 
-	<!--마감된 공고목록 -->
+	마감된 공고목록
 	<select id="endRecruitmentList" resultMap="Recruitments">
 		select *from
 		recruitments where sysdate > closing_date
+	</select> -->
+
+
+	<!--한 기업의 전체 공고 목록 -->
+	<select id="totalRecruitmentList" resultMap="Recruitments">
+		SELECT * FROM Recruitments where employer_seq=#{employer_seq} order by starting_working_date
+	</select>
+
+	<!--한 기업의 현재 진행중인 공고목록 -->
+	<select id="nowRecruinmentList" resultMap="Recruitments">
+		select *from recruitments where closing_date > sysdate and employer_seq=#{employer_seq}
+	</select>
+
+
+	<!--한 기업의 마감된 공고목록 -->
+	<select id="endRecruitmentList" resultMap="Recruitments">
+		select *from recruitments where sysdate > closing_date and employer_seq=#{employer_seq}
 	</select>
 
 
@@ -251,7 +267,7 @@
 	<insert id="insertProposal" parameterType="Proposals">
 	insert into proposals values(
 	s_proposal_seq.nextval, 
-	#{recruitmentSeq},#{employeeSeq}, 2, sysdate)
+	#{recruitmentSeq},#{employeeSeq}, 2, sysdate) 
 	
 	</insert>
 

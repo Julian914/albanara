@@ -15,48 +15,25 @@
 <link rel="stylesheet" href="/Albanara/css/bootstrap-theme.css">
 <link rel="stylesheet" href="/Albanara/css/Chart.css">
 <link rel="stylesheet" href="/Albanara/css/employerPage.css">
-<script src="/Albanara/js/employerPage.js" type="text/javascript"></script>
 <script src="/Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
 <script src="/Albanara/js/jquery-ui.js" type="text/javascript"></script>
 <script src="/Albanara/js/bootstrap.js" type="text/javascript"></script>
 <script src="/Albanara/js/Chart.js" type="text/javascript"></script>
 <script src="/Albanara/js/Chart.bundle.js" type="text/javascript"></script>
-
-
+<script src="/Albanara/js/employerPage.js" type="text/javascript"></script>
 
 
 <script type="text/javascript">
-	//공고목록에 아코디언 적용
-	(function($) {
-		$(function() {
-			$('.accordion').accordion();
-		});
-	})(jQuery);
 
-
-
-
-jQuery(document).ready(function ($) { 
-	$(".accordion-title").click(function(){
-		$("accordion-contents").addClass
-	})
+//공고목록에 아코디언 적용
+(function($) {
+	$(function(){
+		$('.accordion').accordion();
 	});
-
-
+})(jQuery);
 
 
 </script>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -71,18 +48,15 @@ jQuery(document).ready(function ($) {
 </style>
 
 
-
-
-
- 
-
-
 </head>
 <body>
-	<div class="container">
 
 
-		<h1>기업 마이페이지(기업관점)</h1>
+
+<div class="container">
+
+
+		<h1>기업 마이페이지(구직자관점)</h1>
 		기업명 : ${employer.employerName} <br> 기업주소
 		:${employer.employerAddress } <br> 기업홈페이지 주소
 		:${employer.employerHomePage} <br>
@@ -94,7 +68,7 @@ jQuery(document).ready(function ($) {
 		<h3>현재 진행중인 공고목록</h3>
 		<div id="wrap">
 			<div class="accordion recruitmentList">
-			
+				<!-- 전체공고목록 -->
 				<c:forEach var="list" items="${nowRecruinmentList}"
 					varStatus="status">
 
@@ -103,8 +77,6 @@ jQuery(document).ready(function ($) {
 							<li>접수마감 : ${list.closingDate}</li>
 							<li>공고제목 : ${list.recruitmentTitle}</li>
 						</ul>
-						<input type="button" onclick="location.href='../recruitment/updateRecruitmentForm.do?seq=${list.recruitmentSeq}'" value="수정">
-						<input type="button" onclick="location.href='../recruitment/deleteRecruitmentAction.do?seq=${list.recruitmentSeq}'" value="삭제">
 					</div>
 					<div id="accordion-contents">
 						<ul class="recruitmentDown">
@@ -121,41 +93,50 @@ jQuery(document).ready(function ($) {
 									<li><input type="button" onclick="location.href='../recruitment/showRecruitmentAction.do?seq=${list.recruitmentSeq}'" value="상세 보기">
 						</ul>
 
-				
-						<div class="accordion employeesList">
-							<!-- index: ${status.index} 공고의 인덱스 구하기-->
+						<!-- 지원하기 modal-->
+						<button class="btn btn-default"
+							data-target="#layerpop${status.index}" data-toggle="modal">지원하기</button>
 
-							<!--진행중인 공고 지원자 목록  -->
-							<c:forEach var="employeeListMap" items="${employeeListMapList}">
-								<!--//for:${employeeListMap.key }, ${status.index } -->
-								<c:if test="${status.index eq employeeListMap.key}">
-									<!--if : ${employeeListMap.employeeList}-->
-									<c:forEach var="employeeList"
-										items="${employeeListMap.employeeList}">
+						<br />
+						<div class="modal fade" id="layerpop${status.index}">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">X</button>
+										<h4 class="modal-title">이 공고에 지원하겠습니다!</h4>
+									</div>
+									<form action="insertApplication.do?seq=${list.recruitmentSeq}"
+										method="post">
+										<div class="modal-body">
+											사장님의 질문
+											<div id="requirementQuestion">
+												<ul>
+													<li>질문 1 : ${list.requirementQuestion1}</li>
+													<li><input type="radio" name="answer1" value="1">Yes
+														<input type="radio" name="answer1" value="0">No</li>
+												</ul>
+												<ul>
+													<li>질문 2 : ${list.requirementQuestion2}</li>
+													<li><input type="radio" name="answer2" value="1">Yes
+														<input type="radio" name="answer2" value="0">No</li>
+												</ul>
+												<ul>
+													<li>질문 3 : ${list.requirementQuestion3}</li>
+													<li><input type="radio" name="answer3" value="1">Yes
+														<input type="radio" name="answer3" value="0">No</li>
+												</ul>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<input type="submit" value="지원하기">
 
-										<div class="accordion-title2">
-											<ul class="recruitmentUp2">
-												<li>지원자 ${employeeList.employeeSeq}</li>
-											</ul>
 										</div>
-										<div class="accordion-contents2 child">
-											<ul class="recruitmentDown2">
-												<li>이름 : ${employeeList.employeeName}</li>
-												<li>생년월일 :${employeeList.employeeBirthday}</li>
-												<li>성별 : ${employeeList.employeeGender}</li>
-												<li>주소 : ${employeeList.employeeAddress}</li>
-												<li>번호 : ${employeeList.employeePhone}</li>
-											</ul>
-											<input type="button"
-												onclick="location.href='../recruitment/insertProposal.do?recruitmentSeq=${list.recruitmentSeq}&employeeSeq=${employeeList.employeeSeq}'"
-												value="일자리 제안하기"> <input type="button"
-												onclick="location.href='../recruitment/insertHiredHistory.do?recruitmentSeq=${list.recruitmentSeq}&employeeSeq=${employeeList.employeeSeq}'"
-												value="채용하기">
-										</div>
-									</c:forEach>
-								</c:if>
-							</c:forEach>
+									</form>
+								</div>
+							</div>
 						</div>
+
+						
 					</div>
 				</c:forEach>
 			</div>
@@ -177,7 +158,6 @@ jQuery(document).ready(function ($) {
 							<li>접수마감 : ${list.closingDate}</li>
 							<li>공고제목 : ${list.recruitmentTitle}</li>
 						</ul>
-						<input type="button" onclick="location.href='../recruitment/deleteRecruitmentAction.do?seq=${list.recruitmentSeq}'" value="삭제">
 					</div>
 					<div id="accordion-contents">
 						<ul class="recruitmentDown">
@@ -194,39 +174,7 @@ jQuery(document).ready(function ($) {
 									<li><input type="button" onclick="location.href='../recruitment/showRecruitmentAction.do?seq=${list.recruitmentSeq}'" value="상세 보기">
 						</ul>
 
-					
-
-						<div class="accordion employeesList">
-							<!--마감된 공고의 채용자 목록  -->
-							<c:forEach var="hiredEmployeeListMap"
-								items="${hiredEmployeeListMapList}">
-								<c:if test="${status.index eq hiredEmployeeListMap.key}">
-									<c:forEach var="hiredEmployeeList"
-										items="${hiredEmployeeListMap.employeeList}">
-
-										<div class="accordion-title2">
-											<ul class="recruitmentUp2">
-												<li>지원자 ${hiredEmployeeList.employeeSeq}</li>
-											</ul>
-										</div>
-										<div class="accordion-contents2 child">
-											<ul class="recruitmentDown2">
-												<li>이름 : ${hiredEmployeeList.employeeName}</li>
-												<li>생년월일 :${hiredEmployeeList.employeeBirthday}</li>
-												<li>성별 : ${hiredEmployeeList.employeeGender}</li>
-												<li>주소 : ${hiredEmployeeList.employeeAddress}</li>
-												<li>번호 : ${hiredEmployeeList.employeePhone}</li>
-											</ul>
-											<input type="button"
-												onclick="location.href='insertProposal.do?seq=${list.recruitmentSeq}&seq2=${employeeList.employeeSeq}'"
-												value="일자리 제안하기"> <input type="button"
-												onclick="location.href='insertHiredHistory.do?seq=${list.recruitmentSeq}&seq2=${employeeList.employeeSeq}'"
-												value="채용하기">
-										</div>
-									</c:forEach>
-								</c:if>
-							</c:forEach>
-						</div>
+						
 					</div>
 				</c:forEach>
 			</div>
@@ -238,6 +186,7 @@ jQuery(document).ready(function ($) {
 
 <div id="map" style="width: 300px; height: 300px; margin-top: 10px;"></div>
 <canvas id="employerGender" width="800"></canvas>
+
 
 
 <script

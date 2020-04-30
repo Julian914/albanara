@@ -15,7 +15,7 @@ public class insertProposalAction implements Action {
 		service.insertProposalService(request, response);
 		
 		forward.setRedirect(true);
-		forward.setPath("recruitmentList.do");
+		forward.setPath("../member/detailEmployers.do");
 		return forward;
 	}
 

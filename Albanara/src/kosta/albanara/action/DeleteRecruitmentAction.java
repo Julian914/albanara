@@ -20,7 +20,7 @@ public class DeleteRecruitmentAction implements Action {
 
 		if (resultCount == 1) {
 			System.out.println("Success to delete the recruitment. ");
-			actionForward.setPath("insertRecruitmentForm.do");
+			actionForward.setPath("../member/detailEmployers.do");
 		} else {
 			System.err.println("Fail to delete the recruitment. ");
 			actionForward.setPath("insertRecruitmentForm.do");
