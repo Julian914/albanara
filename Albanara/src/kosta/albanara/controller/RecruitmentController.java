@@ -12,13 +12,13 @@ import kosta.albanara.action.ProposalAcceptAction;
 import kosta.albanara.action.ActionForward;
 
 import kosta.albanara.action.DeleteRecruitmentAction;
+import kosta.albanara.action.HiredHistoryAction;
 import kosta.albanara.action.InsertApplicationAction;
 import kosta.albanara.action.RecruitmentListAction;
 import kosta.albanara.action.ProposalRejectAction;
 import kosta.albanara.action.ShowRecruitmentAction;
 import kosta.albanara.action.UpdateRecruitmentAction;
 import kosta.albanara.action.UpdateRecruitmentForm;
-import kosta.albanara.action.insertHiredHistoryAction;
 import kosta.albanara.action.insertProposalAction;
 import kosta.albanara.action.InsertRecruitmentAction;
 import kosta.albanara.action.InsertRecruitmentForm;
@@ -122,13 +122,17 @@ public class RecruitmentController extends HttpServlet {
 			break;
 		case "insertHiredHistory.do" :
 			try {
-				actionForward = new insertHiredHistoryAction().execute(request, response);
+				actionForward = new HiredHistoryAction().execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			break;
+		
 		}
-
+		
+		
+		
+		
 		// forward using redirect or dispatch
 
 		if (actionForward != null)

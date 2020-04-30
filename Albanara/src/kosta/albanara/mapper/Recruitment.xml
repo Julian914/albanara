@@ -324,20 +324,6 @@
 	</select>
 
 
-
-	<resultMap type="HiredHistory" id="HiredHistory">
-		<result column="hired_History_Seq" property="hiredHistorySeq" />
-		<result column="employee_Seq" property="employeeSeq" />
-		<result column="recruitment_Seq" property="recruitmentSeq" />
-		<result column="is_Completed" property="isCompleted"/>
-	</resultMap>
-
-
-	<!-- 지원자 중에서 채용하기 -->
-	<insert id="insertHiredHistory" parameterType="HiredHistory">
-		insert into hired_history values(S_HIRED_HISTORY_SEQ.nextval,#{recruitmentSeq},#{employeeSeq},2);
-	</insert>
-	
 	
 	<!-- 마감된 공고의 채용자 목록 불러오기 -->
 	<select id="hiredEmployeeList" resultMap="Employees">
