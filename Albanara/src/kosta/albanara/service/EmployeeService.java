@@ -143,6 +143,16 @@ public class EmployeeService {
 		return employeeDao.deleteEmployee(employee);
 	}
 	
+	public Employees basicInformationService(int employeeSeq) {
+		return employeeDao.basicInformation(employeeSeq);
+	}
+	
+	
+	
+	
+	
+	
+	
 public Employees employeeLogInService(HttpServletRequest request) throws Exception {
 		
 		request.setCharacterEncoding("utf-8");

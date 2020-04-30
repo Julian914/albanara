@@ -11,6 +11,7 @@ public interface EmployeeMapper {
 	Resumes searchResume(int employeeSeq);	//�̷¼� ��ȸ��ư�� Ŭ���ϸ� resume_seq�� ��������(����)
 	int updateResume(Resumes resume);	//�̷¼� ����(����)
 	int updateEmployee(Employees employee);
+	Employees basicInformation(int employeeSeq);
 	Employees getEmployee(int seq);
 	int deleteEmployee(Employees employee);
 	Employees employeeLogIn(Employees employees);
