@@ -8,9 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import kosta.albanara.mapper.EmployeeMapper;
 import kosta.albanara.mapper.EmployerMapper;
-import kosta.albanara.model.Employees;
 import kosta.albanara.model.Employers;
 import kosta.albanara.model.MarkerLocation;
 
