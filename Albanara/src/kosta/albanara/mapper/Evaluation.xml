@@ -4,5 +4,38 @@
 
 <mapper namespace="kosta.albanara.mapper.EvaluationMapper">
 	<cache />
-
+	
+	<!-- 기업 평점 구하기 -->
+	<!-- 채용자들 WORKING_SPACE_ENVIROMENT 평점 평균 -->
+	<select id="selectAvgWorkingSpaceEnviroment" parameterType="int" resultType="double">
+		select avg(sum(WORKING_SPACE_ENVIROMENT))
+		from employer_eval
+		where employer_seq = #{seq}
+		group by employer_eval_seq
+	</select>
+	
+	<!-- 채용자들 OWNER_PERSONNALITY 평점 평균 -->
+	<select id="selectAvgOwnerPersonnality" parameterType="int" resultType="double">
+		select avg(sum(OWNER_PERSONNALITY))
+		from employer_eval
+		where employer_seq = #{seq}
+		group by employer_eval_seq
+	</select>
+	
+	<!-- 채용자들 COWORKER_PERSONALITY 평점 평균 -->
+	<select id="selectAvgCoworkerPersonality" parameterType="int" resultType="double">
+		select avg(sum(COWORKER_PERSONALITY))
+		from employer_eval
+		where employer_seq = #{seq}
+		group by employer_eval_seq
+	</select>
+	
+	<!-- 채용자들 WAGE_CONTENTMENT 평점 평균 -->
+	<select id="selectAvgWageContentment" parameterType="int" resultType="double">
+		select avg(sum(WAGE_CONTENTMENT))
+		from employer_eval
+		where employer_seq = #{seq}
+		group by employer_eval_seq
+	</select>
+	
 </mapper>

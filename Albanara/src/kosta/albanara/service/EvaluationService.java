@@ -13,4 +13,13 @@ public class EvaluationService {
 		}
 		return instance;
 	}
+	
+	public int selectAvgEvaluation(int seq) {
+		double avg = evaluationDao.selectAvgCoworkerPersonality(seq) + evaluationDao.selectAvgOwnerPersonnality(seq)
+		+ evaluationDao.selectAvgWageContentment(seq) + evaluationDao.selectAvgWorkingSpaceEnviroment(seq);
+		
+		int avgTotal = (int)(avg * 5);
+		
+		return avgTotal;
+	}
 }
