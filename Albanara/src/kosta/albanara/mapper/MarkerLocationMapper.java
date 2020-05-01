@@ -6,5 +6,5 @@ import kosta.albanara.model.MarkerLocation;
 public interface MarkerLocationMapper {
 	int insertMarkerLocation(MarkerLocation markerLocation);
 	int existMarkerLocation(String road_address);
-	MarkerLocation sessionAddress(Employees employees);	
+	MarkerLocation sessionAddress(String address);	
 }

@@ -68,11 +68,11 @@ public class MarkerLocationDao {
 		return re;
 	}
 
-	public MarkerLocation sessionAddress(Employees employees) {
+	public MarkerLocation sessionAddress(String address) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		MarkerLocation markerLocation = new MarkerLocation();
 		try {
-			markerLocation = sqlSession.getMapper(MarkerLocationMapper.class).sessionAddress(employees);
+			markerLocation = sqlSession.getMapper(MarkerLocationMapper.class).sessionAddress(address);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

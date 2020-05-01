@@ -154,37 +154,32 @@ public class EmployeeService {
 	
 public Employees employeeLogInService(HttpServletRequest request) throws Exception {
 		
-		request.setCharacterEncoding("utf-8");
-		
-		Employees employee = new Employees();
-		Employees login = new Employees();
+	request.setCharacterEncoding("utf-8");
+	
+	Employees employee = new Employees();
+	Employees login = new Employees();
+	
+	employee.setEmployeeId(request.getParameter("employeeLogInId"));
+	employee.setEmployeePw(request.getParameter("employeeLogInPw"));
+	
+	login = employeeDao.employeeLogIn(employee);
 
-		employee.setEmployeeId(request.getParameter("employeeLogInId"));
-		employee.setEmployeePw(request.getParameter("employeeLogInPw"));
-		
-	      login = employeeDao.employeeLogIn(employee);
-
-	      if(login==null) {
-	    	  System.out.println("�α��� ����");
-	    	  return null;
+    if(login==null) {
+    	System.out.println("로그인 실패");
+    	return null;
 //	    	  ActionForward forward = new ActionForward();
 //	    	    forward.setRedirect(false); 
 //	  			forward.setPath("/employerLogInForm.jsp");
-	    	 
-	      }else if(login.getEmployeeId().equals(employee.getEmployeeId()) && login.getEmployeePw().equals(employee.getEmployeePw())) {
-	    	  
-	    	  System.out.println("로그?��?���?");
-	    	  HttpSession session = request.getSession();
-	    	  
-	    	  session.setAttribute("id",login.getEmployeeId());
-	    	  session.setAttribute("seq", login.getEmployeeSeq());
-	    	  
-	    	  System.out.println(session.getAttribute("id"));
-	    	  /*String employerId = (String)session.getAttribute("login");*/
-	    	
-	      }
-		return login;
-	}
+    	 
+    }else if(login.getEmployeeId().equals(employee.getEmployeeId()) && login.getEmployeePw().equals(employee.getEmployeePw())) {
+    	  
+    	System.out.println("로그인 성공");
+    	
+    	  /*String employerId = (String)session.getAttribute("login");*/
+    	
+    }
+	return login;
+}
 
 
 public void logOut(HttpServletRequest request) throws Exception{

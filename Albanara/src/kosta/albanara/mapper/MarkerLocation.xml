@@ -10,7 +10,7 @@
 		<result column="marker_location_seq" property="markerLocationSeq"/>
 		<result column="road_address " property="roadAddress" />
 		<result column="latitude" property="latitude"/>
-		<result column="longitude" property="longitude "/>
+		<result column="LONGITUDE" property="longitude"/>
 	</resultMap>
 	
 	<insert id="insertMarkerLocation" parameterType="MarkerLocation">
@@ -24,9 +24,10 @@
 		where ROAD_ADDRESS = #{road_address}
 	</select>	
 	
-	<select id = "sessionAddress" parameterType = "Employees" resultMap = "MarkerLocation">
-		SELECT * FROM
-		WHERE road_address = #{employeeAddress}
+	<select id = "sessionAddress" parameterType = "String" resultMap = "MarkerLocation">
+		SELECT * 
+		FROM marker_location
+		WHERE road_address = #{address}
 	</select>		
 
 </mapper>
