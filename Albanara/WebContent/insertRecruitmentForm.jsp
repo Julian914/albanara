@@ -28,6 +28,12 @@
 .radioStyle {
 	margin: 0px 10px;
 }
+
+.typeIcon {
+	width: 20px;
+	height: 20px;
+	margin: 0px 6px 6px 0px;
+}
 </style>
 </head>
 <body class="bg-light">
@@ -39,24 +45,28 @@
 		<div class="row">
 			<form action="insertRecruitmentAction.do" method="post">
 				<div class="form-group col-md-12">
+					<h3>제목</h3>
+					<input type="text" class="form-control" name="recruitmentTitle">
+				</div>
+				<div class="form-group col-md-12">
 					<h3>분류</h3>
 					<span class="radioStyle"> <input type="radio" id="strength"
 						name="recruitmentType" value="strength"> <label
-						for="strength">힘</label>
+						for="strength"><img class="typeIcon"
+							src="/Albanara/images/icons/strength.png" alt="힘">힘</label>
 					</span> <span class="radioStyle"> <input type="radio"
 						id="intelligence" name="recruitmentType" value="intelligence">
-						<label for="intelligence">지능</label>
+						<label for="intelligence"><img class="typeIcon"
+							src="/Albanara/images/icons/intelligence.png" alt="지능">지능</label>
 					</span> <span class="radioStyle"> <input type="radio" id="kindness"
 						name="recruitmentType" value="kindness"> <label
-						for="kindness">친절</label>
+						for="kindness"><img class="typeIcon"
+							src="/Albanara/images/icons/kindness.png" alt="친절">친절</label>
 					</span> <span class="radioStyle"> <input type="radio" id="patience"
 						name="recruitmentType" value="patience"> <label
-						for="patience">끈기</label>
+						for="patience"><img class="typeIcon"
+							src="/Albanara/images/icons/patience.png" alt="끈기">끈기</label>
 					</span>
-				</div>
-				<div class="form-group col-md-12">
-					<h3>제목</h3>
-					<input type="text" class="form-control" name="recruitmentTitle">
 				</div>
 				<div class="form-group">
 					<div class="col-md-4">
@@ -113,23 +123,15 @@
 					<div class="col-md-6">
 						<h3>연령</h3>
 						<div>
-							<div>
-								<input type="radio" id="other" name="age" value="other">
-								<label for="other">연령무관</label>
-							</div>
-							<div>
-								<input type="radio" id="age" name="age" value="age"> <label
-									for="age">연령제한 있음</label>
-							</div>
 							<div class="col-md-12">
 								<div class="col-md-5">
-									<input type="number" class="form-control" name="minAge">
+									<input type="number" class="form-control" name="minAge" value=0>
 									<small class="text-muted">세 이상</small>
 								</div>
 								<div class="col-md-1">~</div>
 								<div class="col-md-5">
-									<input type="number" class="form-control" name="maxAge">
-									<small class="text-muted">세 이하</small>
+									<input type="number" class="form-control" name="maxAge"
+										value=100> <small class="text-muted">세 이하</small>
 								</div>
 							</div>
 						</div>
@@ -179,7 +181,7 @@
 				</div>
 				<div class="col-md-12" id="map"
 					style="width: 300px; height: 300px; margin: 10px 0px 0px 30px; display: none;"></div>
-				<div class="col-md-12" style="height: 20px;"></div>	
+				<div class="col-md-12" style="height: 20px;"></div>
 				<div class="col-md-12">
 					<div class="col-md-6">
 						<input type="reset" class="btn btn-default btn-lg btn-block"
