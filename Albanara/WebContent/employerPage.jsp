@@ -231,13 +231,19 @@ jQuery(document).ready(function ($) {
 				</c:forEach>
 			</div>
 		</div>
+		
+		<div id="map" style="width: 300px; height: 300px; margin-top: 10px;"></div>
+		<canvas id="employerGrade" width="800"></canvas>
+		<canvas id="employerGender" width="800"></canvas>
+		
+
 	</div>
+
+
 </body>
 
 
 
-<div id="map" style="width: 300px; height: 300px; margin-top: 10px;"></div>
-<canvas id="employerGender" width="800"></canvas>
 
 
 <script
@@ -274,6 +280,37 @@ var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니
 
 //아래 코드는 지도 위의 마커를 제거하는 코드입니다
 //marker.setMap(null);    
+
+var employerGrade = $('#employerGrade');
+var myChart = new Chart(employerGrade, {
+    type: 'doughnut',
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple"],
+        datasets: [{
+            label: '# of Votes',
+            data: [30, 20, 20, 20, 10],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        rotation: 1 * Math.PI,
+        circumference: 1 * Math.PI
+    }
+});
 
 
 var employerGender = $('#employerGender');
