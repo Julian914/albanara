@@ -12,6 +12,7 @@ import kosta.albanara.mapper.EmployerMapper;
 import kosta.albanara.mapper.RecruitmentMapper;
 import kosta.albanara.model.Employees;
 import kosta.albanara.model.Employers;
+import kosta.albanara.model.MarkerLocation;
 import kosta.albanara.model.Recruitments;
 import kosta.albanara.model.Resumes;
 
@@ -145,7 +146,7 @@ public class EmployeeDao {
 		Employees employee = null;
 		try {
 			mapper = session.getMapper(EmployeeMapper.class);
-			System.out.println("?´?Šì­…ï¿½ì˜„ SEQ: " + seq);
+			System.out.println("?ï¿½ï¿½?ï¿½ì­…ï¿½ì˜„ SEQ: " + seq);
 			employee = mapper.getEmployee(seq);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -214,5 +215,7 @@ public Employees employeeLogIn(Employees employees) {
 		}
 		return employee;
 	}
+
+
 
 }

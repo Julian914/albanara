@@ -9,16 +9,15 @@ import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import kosta.albanara.dao.EmployeeDao;
 import kosta.albanara.model.Employees;
-import kosta.albanara.model.Employers;
 import kosta.albanara.model.Resumes;
-import sun.rmi.transport.proxy.HttpReceiveSocket;
 
 public class EmployeeService {
 	public static EmployeeService instance;
 	public static EmployeeDao employeeDao;
-
+	
 	public static EmployeeService getInstance() {
 		if (instance == null) {
 			employeeDao = EmployeeDao.getInstance();
@@ -50,10 +49,10 @@ public class EmployeeService {
 
 		/*
 		 * String employeeId = "ID"; String employeePw = "Password"; String employeeName
-		 * = "? ?‹±ëªŒì˜™"; Date employeeBirthday = Date.valueOf("1992-05-11"); String
+		 * = "?ï¿½ï¿½?ï¿½ï¿½ëªŒì˜™"; Date employeeBirthday = Date.valueOf("1992-05-11"); String
 		 * employeeEmail = "employeeEmailInput1"+"employeeEmailInput2"; String
-		 * employeeGender = "? ?™?˜™? ?™?˜™"; String employeePhone = "010"+"2785"+"1111"; String
-		 * employeeAddress ="? ?™?˜™? ?™?˜™";
+		 * employeeGender = "?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½"; String employeePhone = "010"+"2785"+"1111"; String
+		 * employeeAddress ="?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½";
 		 */
 
 		Employees employee = new Employees(employeeId, employeePw, employeeName, employeeBirthday, employeeEmail,
@@ -65,11 +64,11 @@ public class EmployeeService {
 	public int insertResumeService(HttpServletRequest request)throws Exception{
 		request.setCharacterEncoding("utf-8");
 		
-		//? ?™?˜™? ?‹¹?–µ?˜™? ?‹¸?“¸?˜™(? ?™?˜™? ï¿?, ? ?™?˜™? ?™?˜™?¬? ?™?˜™, ? ?™?˜™? ?Œ˜?“¸?˜™, ? ?™?˜™? ?™?˜™? ?‹±ëªŒì˜™? ?™?˜™ì²? ? ?™?˜™ì±?)
+		//?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½(?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½?, ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½, ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½, ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ëªŒì˜™?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½?)
 		String uploadPath = request.getRealPath("upload/resumePicture");
 		int size = 20 * 1024 * 1024;		//20MB
 		
-		//? ?™?˜™? ?‹¹?–µ?˜™? ?‹¸?“¸?˜™ ? ?™?˜™? ?™?˜™? ?™?˜™?Š¸? ?™?˜™ ì²˜å ?™?˜™? ?™?˜™? ?Œ?Œ?˜™ API(? ?Œë¦¬å ?™?˜™ tomcat? ?™?˜™ ? ?™?˜™? ?™?˜™ cos.jar? ?™?˜™ ? ?Œ?Œ?˜™). ? ?™?˜™ ? ?™?˜™ì²´å ?™?˜™ request ? ?™?˜™ì²´å ?™?˜™ ? ?™?˜™? ?™?˜™ ? ?Œ?–µ?˜™? ?Œ”?Œ?˜™. ? ?Œ“ë¤„ì˜™? ?™?˜™ request? ?™?˜™? ï¿? multi? ?™?˜™ ? ?Œ?–µ?˜™? ?Œ”?Œ?˜™.
+		//?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ì²˜å ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ API(?ï¿½ï¿½?ï¿½ï¿½ë¦¬å ?ï¿½ï¿½?ï¿½ï¿½ tomcat?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ cos.jar?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½). ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ì²´å ?ï¿½ï¿½?ï¿½ï¿½ request ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ì²´å ?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½. ?ï¿½ï¿½?ï¿½ï¿½ë¤„ì˜™?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ request?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½? multi?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½.
 		MultipartRequest multi =		
 				new MultipartRequest(request, uploadPath, size, "utf-8", new DefaultFileRenamePolicy());
 		
@@ -84,8 +83,8 @@ public class EmployeeService {
 		
 		
 		/*
-		//? ?™?˜™? ?‹¹?–µ?˜™? ?‹¸?“¸?˜™ ? ?™?˜™ DB? ?™?˜™ ? ?™?˜™? ?™?˜™? ?‹±ëªŒì˜™ ? ?™?˜™? ?™?˜™? ?‹¹?Œ?˜™ ? ?™?˜™
-				if(multi.getFilesystemName("pictureFilename") != null) {		//? ?Œ”?‡½?˜™ : ? ?™?˜™? ?™?˜™? ?™?˜™ ? ?™?˜™? ?‹¸?“¸?˜™ ? ?™?˜™? ?™?˜™ ? ?™?˜™
+		//?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ DB?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ëªŒì˜™ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½
+				if(multi.getFilesystemName("pictureFilename") != null) {		//?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ : ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½
 				String pictureFilename = (String)multi.getFilesystemName("pictureFilename");
 				
 
@@ -159,12 +158,12 @@ public Employees employeeLogInService(HttpServletRequest request) throws Excepti
 		
 		Employees employee = new Employees();
 		Employees login = new Employees();
-	      
+
 		employee.setEmployeeId(request.getParameter("employeeLogInId"));
 		employee.setEmployeePw(request.getParameter("employeeLogInPw"));
 		
 	      login = employeeDao.employeeLogIn(employee);
-	      
+
 	      if(login==null) {
 	    	  System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 	    	  return null;
@@ -174,7 +173,7 @@ public Employees employeeLogInService(HttpServletRequest request) throws Excepti
 	    	 
 	      }else if(login.getEmployeeId().equals(employee.getEmployeeId()) && login.getEmployeePw().equals(employee.getEmployeePw())) {
 	    	  
-	    	  System.out.println("ë¡œê·¸?¸?„±ê³?");
+	    	  System.out.println("ë¡œê·¸?ï¿½ï¿½?ï¿½ï¿½ï¿½?");
 	    	  HttpSession session = request.getSession();
 	    	  
 	    	  session.setAttribute("id",login.getEmployeeId());
@@ -186,11 +185,13 @@ public Employees employeeLogInService(HttpServletRequest request) throws Excepti
 	      }
 		return login;
 	}
+
+
 public void logOut(HttpServletRequest request) throws Exception{
 	
 	HttpSession session = request.getSession();
 	session.invalidate();
-	System.out.println("ë¡œê·¸?•„?›ƒ");
+	System.out.println("ë¡œê·¸?ï¿½ï¿½?ï¿½ï¿½");
 		
 	}
 
