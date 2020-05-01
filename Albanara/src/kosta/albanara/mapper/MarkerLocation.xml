@@ -22,6 +22,11 @@
 		select count(*)
 		from marker_location
 		where ROAD_ADDRESS = #{road_address}
+	</select>	
+	
+	<select id = "sessionAddress" parameterType = "Employees" resultMap = "MarkerLocation">
+		SELECT * FROM
+		WHERE road_address = #{employeeAddress}
 	</select>		
 
 </mapper>
