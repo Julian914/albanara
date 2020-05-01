@@ -1,14 +1,9 @@
 package kosta.albanara.service;
 
-import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.websocket.SendResult;
 
-import kosta.albanara.action.ActionForward;
 import kosta.albanara.dao.EmployerDao;
 import kosta.albanara.model.Employees;
 import kosta.albanara.model.Employers;
@@ -54,34 +49,22 @@ public class EmployerService {
 		
 		Employers employer = new Employers();
 		Employers login = new Employers();
-	      
+		
 		employer.setEmployerId(request.getParameter("employerLogInId"));
 		employer.setEmployerPw(request.getParameter("employerLogInPw"));
 		
-	      login = employerDao.employerLogIn(employer);
-	      
-	      if(login==null) {
-	    	  System.out.println("�α��� ����");
-	    	  return null;
-//	    	  ActionForward forward = new ActionForward();
-//	    	    forward.setRedirect(false); 
-//	  			forward.setPath("/employerLogInForm.jsp");
-	    	 
-	      }else if(login.getEmployerId().equals(employer.getEmployerId()) && login.getEmployerPw().equals(employer.getEmployerPw())) {
+		login = employerDao.employerLogIn(employer);
 
-	    	 System.out.println("로그인성공");
-	   
-	    	  HttpSession session = request.getSession();
+	    if(login==null) {
+	    	System.out.println("로그인 실패");
+	    	return null;
+
+	    	 
+	    }else if(login.getEmployerId().equals(employer.getEmployerId()) && login.getEmployerPw().equals(employer.getEmployerPw())) {
 	    	  
-	    	  session.setAttribute("id",login.getEmployerId());
-	    	  session.setAttribute("seq", login.getEmployerSeq());
-	    	  
-	    	  System.out.println(session.getAttribute("id"));
-	    	  
-	    	  session.setAttribute("login",login);
-	    	  /*String employerId = (String)session.getAttribute("login");*/
+	    	System.out.println("로그인 성공");
 	    	
-	      }
+	    }
 		return login;
 	}
 	

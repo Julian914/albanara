@@ -1,17 +1,12 @@
 package kosta.albanara.service;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import kosta.albanara.dao.EmployeeDao;
 import kosta.albanara.dao.MarkerLocationDao;
-import kosta.albanara.model.Employees;
 import kosta.albanara.model.MarkerLocation;
 
 public class MarkerLocationService {
 	private static MarkerLocationService instance;
 	private static MarkerLocationDao markerLocationDao;
-	private static EmployeeDao employeeDao;
 	
 	public static MarkerLocationService getInstance() {
 		if (instance == null) {
@@ -36,7 +31,6 @@ public class MarkerLocationService {
 		
 	}
 	public MarkerLocation sessionAddressService(String address) throws Exception {
-		
 	    MarkerLocation sessionAddress = new MarkerLocation();
 	    sessionAddress = markerLocationDao.sessionAddress(address);
 		return sessionAddress;

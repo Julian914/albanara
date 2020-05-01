@@ -5,10 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kosta.albanara.model.Employees;
-import kosta.albanara.model.Employers;
 import kosta.albanara.model.MarkerLocation;
 import kosta.albanara.service.EmployeeService;
-import kosta.albanara.service.EmployerService;
 import kosta.albanara.service.MarkerLocationService;
 
 public class EmployeeLogInAction implements Action {
