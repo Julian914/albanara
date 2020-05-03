@@ -17,8 +17,7 @@
 <link rel="stylesheet" type="text/css" href="/Albanara/css/header.css">
 <link rel="stylesheet" type="text/css" href="/Albanara/css/nav.css">
 <link rel="stylesheet" type="text/css" href="/Albanara/css/footer.css">
-<link rel="stylesheet" type="text/css"
-	href="/Albanara/css/employerPage.css">
+<link rel="stylesheet" type="text/css" href="/Albanara/css/employerPage.css">
 
 <script src="/Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
 <script src="/Albanara/js/jquery-ui.js" type="text/javascript"></script>
@@ -28,6 +27,16 @@
 <script src="/Albanara/js/employerPage.js" type="text/javascript"></script>
 
 
+
+
+<jsp:include page="header.html"></jsp:include>
+<jsp:include page="nav.html"></jsp:include>
+
+<script type="text/javascript">
+$(function() {
+	$('.accordion').accordion();
+});
+</script>
 
 </head>
 <body>
@@ -351,14 +360,14 @@ Chart.pluginService.register({
 	
 	
 
-var employerGender = $('#employerGender');
-var employerGender = new Chart(employerGender, {
+var employeeGender = $('#hiredEmployeeList.employeeGender');
+var employeeGender = new Chart(employeeGender, {
     type: 'pie',
     data: {
         labels: ['여자', '남자'],
         datasets: [{
             label: '채용자 성별 현황',
-            data: [${woman}, ${man}],
+            data: [${employeeGender.woman}, ${employeeGender.man}],
             backgroundColor: [
             	'rgba(255, 99, 132, 0.2)',
             	'rgba(54, 162, 235, 0.2)'
@@ -380,5 +389,5 @@ var employerGender = new Chart(employerGender, {
 
 
 </script>
-
+<jsp:include page="footer.html"></jsp:include>
 </html>
