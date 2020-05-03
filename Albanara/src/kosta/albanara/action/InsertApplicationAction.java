@@ -3,7 +3,6 @@ package kosta.albanara.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import javafx.scene.control.Alert;
 import kosta.albanara.service.RecruitmentService;
 
 public class InsertApplicationAction implements Action {
@@ -17,7 +16,7 @@ public class InsertApplicationAction implements Action {
 
 		
 		actionForward.setRedirect(true);
-		actionForward.setPath("../member/showEmployersPage.do");
+		actionForward.setPath("/index.jsp");
 		
 		
 		return actionForward;
