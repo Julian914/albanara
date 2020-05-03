@@ -27,16 +27,10 @@
 <script src="/Albanara/js/employerPage.js" type="text/javascript"></script>
 
 
-
-
 <jsp:include page="header.html"></jsp:include>
 <jsp:include page="nav.html"></jsp:include>
 
-<script type="text/javascript">
-$(function() {
-	$('.accordion').accordion();
-});
-</script>
+
 
 </head>
 <body>
@@ -360,14 +354,14 @@ Chart.pluginService.register({
 	
 	
 
-var employeeGender = $('#hiredEmployeeList.employeeGender');
+var employeeGender = $('employeeGender');
 var employeeGender = new Chart(employeeGender, {
     type: 'pie',
     data: {
         labels: ['여자', '남자'],
         datasets: [{
             label: '채용자 성별 현황',
-            data: [${employeeGender.woman}, ${employeeGender.man}],
+            data: [${woman}, ${man}],
             backgroundColor: [
             	'rgba(255, 99, 132, 0.2)',
             	'rgba(54, 162, 235, 0.2)'

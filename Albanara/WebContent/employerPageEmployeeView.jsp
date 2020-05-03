@@ -17,8 +17,7 @@
 <link rel="stylesheet" type="text/css" href="/Albanara/css/header.css">
 <link rel="stylesheet" type="text/css" href="/Albanara/css/nav.css">
 <link rel="stylesheet" type="text/css" href="/Albanara/css/footer.css">
-<link rel="stylesheet" type="text/css"
-	href="/Albanara/css/employerPage.css">
+<link rel="stylesheet" type="text/css"	href="/Albanara/css/employerPage.css">
 <script src="/Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
 <script src="/Albanara/js/jquery-ui.js" type="text/javascript"></script>
 <script src="/Albanara/js/bootstrap.js" type="text/javascript"></script>
@@ -27,6 +26,10 @@
 <script src="/Albanara/js/employerPage.js" type="text/javascript"></script>
 
 
+
+
+<jsp:include page="header.html"></jsp:include>
+<jsp:include page="nav.html"></jsp:include>
 
 
 
@@ -262,4 +265,5 @@ var myDoughnutChart = new Chart(employerGender, {
 
 
 </script>
+<jsp:include page="footer.html"></jsp:include>
 </html>
