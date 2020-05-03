@@ -341,7 +341,7 @@ public class MemberController extends HttpServlet {
 			}
     	}else if(command.equals("showEmployersPage.do")){
     		
-    		action = new ShowEmployerPageAction();
+    		action = new ShowEmployerPageAction(); 
     		
     		try {
     			actionForward = action.execute(request, response);
