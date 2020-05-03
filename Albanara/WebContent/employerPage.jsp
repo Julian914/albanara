@@ -78,6 +78,9 @@ jQuery(document).ready(function ($) {
 
 
 </head>
+
+<header></header>
+
 <body>
 	<div class="container">
 
