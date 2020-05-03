@@ -28,7 +28,7 @@ import kosta.albanara.action.SearchResumeAction;
 import kosta.albanara.action.ShowEmployeeAction;
 import kosta.albanara.action.UpdateResumeAction;
 import kosta.albanara.action.UpdateResumeFormAction;
-import kosta.albanara.action.showEmployerPageAction;
+import kosta.albanara.action.ShowEmployerPageAction;
 import kosta.albanara.action.logOutAction;
 import kosta.albanara.action.EmployerFormAction;
 import kosta.albanara.action.EmployerLogInAction;
@@ -339,9 +339,9 @@ public class MemberController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-    	}else if(command.equals("showEmployers.do")){
+    	}else if(command.equals("showEmployersPage.do")){
     		
-    		action = new showEmployerPageAction();
+    		action = new ShowEmployerPageAction();
     		
     		try {
     			actionForward = action.execute(request, response);

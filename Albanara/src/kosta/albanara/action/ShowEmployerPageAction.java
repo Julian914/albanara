@@ -13,7 +13,7 @@ import kosta.albanara.model.Recruitments;
 import kosta.albanara.service.EmployerService;
 import kosta.albanara.service.EvaluationService;
 
-public class showEmployerPageAction implements Action {
+public class ShowEmployerPageAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -23,8 +23,8 @@ public class showEmployerPageAction implements Action {
  
 		/* 기업 정보 가져오기 */ 
 		// String employerId = request.getParameter("employerId");
-		int employerSeq = Integer.parseInt(request.getParameter("seq"));
-		//int employeeSeq =1;
+		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
+		int employerSeq =1;
 		// String employerId = "aaaa"; //���Ƿ� �� ���̵�
 
 		Employers employer = service.detailEmployerService(employerSeq);

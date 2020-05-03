@@ -1,1 +1,74 @@
 @charset "UTF-8";
+/*
+#385880
+#BDDBFF
+#71B2FF <포인트 색>
+#5E6D80
+#5A8DCC*/
+
+ *{
+	box-sizing: border-box;
+     
+}
+
+.application {
+	color: black;
+}
+
+.accordion .child {
+	height: 165px;
+}
+
+div#wrap{
+	float: both;
+}
+ 
+.employerInfo{
+	width: 300px;
+	font-size: 20px;
+}
+
+
+.updatebutton{
+	height: 45px;
+	width: 300px;
+	float: both;
+}
+
+.evalIcon{
+	width: 20px;
+	height: 20px;
+}
+
+.employerFile{
+	width: 200px;
+	height: 200px;
+}
+
+
+input.btn.btn-secondar{
+	background-color: #5E6D80;
+}
+
+ul li{
+	display: block;
+}
+
+li.question{
+	font-weight: bold;
+}
+
+li.answer input{
+	margin: 10px;
+}
+
+div.modal-body ul{
+	font-size: 17px;
+}
+
+
+.recruitmentUp{
+	font-size: 17px;
+	font-weight: bold;
+	padding: 0px;
+}

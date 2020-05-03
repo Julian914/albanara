@@ -14,7 +14,11 @@
 <link rel="stylesheet" href="/Albanara/css/bootstrap.css">
 <link rel="stylesheet" href="/Albanara/css/bootstrap-theme.css">
 <link rel="stylesheet" href="/Albanara/css/Chart.css">
-<link rel="stylesheet" href="/Albanara/css/employerPage.css">
+<link rel="stylesheet" type="text/css" href="/Albanara/css/header.css">
+<link rel="stylesheet" type="text/css" href="/Albanara/css/nav.css">
+<link rel="stylesheet" type="text/css" href="/Albanara/css/footer.css">
+<link rel="stylesheet" type="text/css"
+	href="/Albanara/css/employerPage.css">
 <script src="/Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
 <script src="/Albanara/js/jquery-ui.js" type="text/javascript"></script>
 <script src="/Albanara/js/bootstrap.js" type="text/javascript"></script>
@@ -23,47 +27,47 @@
 <script src="/Albanara/js/employerPage.js" type="text/javascript"></script>
 
 
-<script type="text/javascript">
 
-//공고목록에 아코디언 적용
-(function($) {
-	$(function(){
-		$('.accordion').accordion();
-	});
-})(jQuery);
-
-
-</script>
-
-
-
-<style type="text/css">
-.application {
-	color: black;
-}
-
-.accordion .child {
-	height: 155px;
-}
-</style>
 
 
 </head>
 <body>
 
+	<header></header>
+	<nav></nav>
 
-
-<div class="container">
+	<div class="container">
 
 
 		<h1>기업 마이페이지(구직자관점)</h1>
-		기업명 : ${employer.employerName} <br> 기업주소
-		:${employer.employerAddress } <br> 기업홈페이지 주소
-		:${employer.employerHomePage} <br>
-
-
-
-
+		<br>
+		<div class="row">
+			<div class="col-md-4">
+				<img class="employerFile" width="200px" height="200px"><br>
+				기업이미지 <br>
+			</div>
+			<br>
+			<div class="col-md-4">
+				<div class="employerInfo">
+				<ul>
+					<li>기업명 : ${employer.employerName}</li>
+					<li>기업주소:${employer.employerAddress }</li>
+					<li>홈페이지 주소 :<button type="button" class="btn btn-link">${employer.employerHomePage}</button></li>
+					<li>전화번호:${employer.employerNumber}</li>
+					<li>분야	:${employer.employerField} </li>
+					<li><b><img	class="evalIcon" onclick="insertEmployerEval.do?seq=${employer.employerSeq}"
+						src="/Albanara/images/employerEval/like.png" name="좋아요" value="like">좋아요 ${employer.likeCount}
+					<img class="evalIcon" onclick="insertEmployerEval.do?seq=${employer.employerSeq}"
+							src="/Albanara/images/employerEval/unlike.png" name="별로예요"	value="unlike">별로예요 ${employer.unlikeCount}</b></li>
+				</ul>
+				</div>
+			</div>
+			<div class="col-md-4">
+				기업지도
+				<div id="map" style="width: 300px; height: 300px; margin-top: 10px;"></div>
+			</div>
+		</div>
+		<br> <br>
 
 		<h3>현재 진행중인 공고목록</h3>
 		<div id="wrap">
@@ -74,8 +78,9 @@
 
 					<div id="accordion-title">
 						<ul class="recruitmentUp">
-							<li>접수마감 : ${list.closingDate}</li>
 							<li>공고제목 : ${list.recruitmentTitle}</li>
+							<li>접수마감 : ${list.closingDate}</li>
+							
 						</ul>
 					</div>
 					<div id="accordion-contents">
@@ -90,11 +95,13 @@
 									var="enddate" value="${list.endingWorkingDate}"
 									pattern="yyyy-MM-dd" /> <fmt:formatDate value="${enddate}"
 									pattern="yyyy.MM.dd" /></li>
-									<li><input type="button" onclick="location.href='../recruitment/showRecruitmentAction.do?seq=${list.recruitmentSeq}'" value="상세 보기">
 						</ul>
+						<input type="button" class="btn btn-light"
+								onclick="location.href='../recruitment/showRecruitmentAction.do?seq=${list.recruitmentSeq}'"
+								value="상세 보기">
 
 						<!-- 지원하기 modal-->
-						<button class="btn btn-default"
+						<button class="btn btn-primary"
 							data-target="#layerpop${status.index}" data-toggle="modal">지원하기</button>
 
 						<br />
@@ -105,30 +112,33 @@
 										<button type="button" class="close" data-dismiss="modal">X</button>
 										<h4 class="modal-title">이 공고에 지원하겠습니다!</h4>
 									</div>
-									<form action="insertApplication.do?seq=${list.recruitmentSeq}"
+									<form
+										action="../recruitment/insertApplication.do?recruitmentSeq=${list.recruitmentSeq}&employerSeq=${list.employerSeq}"
 										method="post">
 										<div class="modal-body">
-											사장님의 질문
+											<h4>사장님의 질문</h4>
 											<div id="requirementQuestion">
 												<ul>
-													<li>질문 1 : ${list.requirementQuestion1}</li>
-													<li><input type="radio" name="answer1" value="1">Yes
+													<li class="question">질문 1 : ${list.requirementQuestion1}</li>
+													<li class="answer"><input type="radio" name="answer1" value="1">Yes
 														<input type="radio" name="answer1" value="0">No</li>
 												</ul>
+												<br>
 												<ul>
-													<li>질문 2 : ${list.requirementQuestion2}</li>
-													<li><input type="radio" name="answer2" value="1">Yes
+													<li class="question">질문 2 : ${list.requirementQuestion2}</li>
+													<li class="answer"><input type="radio" name="answer2" value="1">Yes
 														<input type="radio" name="answer2" value="0">No</li>
 												</ul>
+												<br>
 												<ul>
-													<li>질문 3 : ${list.requirementQuestion3}</li>
-													<li><input type="radio" name="answer3" value="1">Yes
+													<li class="question">질문 3 : ${list.requirementQuestion3}</li>
+													<li class="answer"><input type="radio" name="answer3" value="1">Yes
 														<input type="radio" name="answer3" value="0">No</li>
 												</ul>
 											</div>
 										</div>
 										<div class="modal-footer">
-											<input type="submit" value="지원하기">
+											<input type="submit" class="btn btn-primary" value="지원하기">
 
 										</div>
 									</form>
@@ -136,7 +146,7 @@
 							</div>
 						</div>
 
-						
+
 					</div>
 				</c:forEach>
 			</div>
@@ -144,7 +154,7 @@
 
 
 
-
+		<br> <br>
 
 		<h3>마감된 공고목록</h3>
 		<div id="wrap">
@@ -155,8 +165,8 @@
 					varStatus="status">
 					<div id="accordion-title">
 						<ul class="recruitmentUp">
-							<li>접수마감 : ${list.closingDate}</li>
 							<li>공고제목 : ${list.recruitmentTitle}</li>
+							<li>접수마감 : ${list.closingDate}</li>
 						</ul>
 					</div>
 					<div id="accordion-contents">
@@ -171,22 +181,25 @@
 									var="enddate" value="${list.endingWorkingDate}"
 									pattern="yyyy-MM-dd" /> <fmt:formatDate value="${enddate}"
 									pattern="yyyy.MM.dd" /></li>
-									<li><input type="button" onclick="location.href='../recruitment/showRecruitmentAction.do?seq=${list.recruitmentSeq}'" value="상세 보기">
+							<li><input type="button" class="btn btn-light"
+								onclick="location.href='../recruitment/showRecruitmentAction.do?seq=${list.recruitmentSeq}'"
+								value="상세 보기">
 						</ul>
 
-						
+
 					</div>
 				</c:forEach>
 			</div>
 		</div>
 	</div>
-</body>
-
-
 
 <div id="map" style="width: 300px; height: 300px; margin-top: 10px;"></div>
 <canvas id="employerGender" width="800"></canvas>
 
+
+
+	<footer></footer>
+</body>
 
 
 <script
@@ -246,5 +259,7 @@ var myDoughnutChart = new Chart(employerGender, {
     },
     options: {}
 });
+
+
 </script>
 </html>

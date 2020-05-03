@@ -48,9 +48,9 @@ public class RecruitmentService {
 
 	public List<Recruitments> endRecruitmentListService(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
-		int employerSeq =1;
-		List<Recruitments> list =  recruitmentDao.nowRecruinmentList(employerSeq);
+		int employerSeq = Integer.parseInt(request.getParameter("seq"));
+		//int employerSeq =1;
+		List<Recruitments> list =  recruitmentDao.endRecruitmentList(employerSeq);
 		return list;
 	}
 
@@ -170,7 +170,7 @@ public class RecruitmentService {
 		int requirementAnswer2 = -2;
 		int requirementAnswer3 = -2;
 		
-		System.out.println("test1: " + request.getParameter("answer1"));
+		
 		if(request.getParameter("answer1").equals("1")||request.getParameter("answer1").equals("0")){
 			requirementAnswer1 = Integer.parseInt(request.getParameter("answer1"));
 			System.out.println("답변 1 :" +requirementAnswer1);
