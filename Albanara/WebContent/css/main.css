@@ -1,0 +1,59 @@
+@charset "UTF-8";
+/*
+#385880
+#BDDBFF
+#71B2FF <포인트 색>
+#5E6D80
+#5A8DCC*/
+
+
+.container {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+}
+.loginIdPassSumbmit {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.btn-group {
+	
+	margin-bottom: 10px;
+}
+
+.radio_btn {
+	background-color: grey;
+	color: white;
+	width: 144px;
+}
+
+.radio_btn:focus {
+	color: white;
+}
+
+#login_form .active {
+	background-color: #385880;
+	font-weight: bold;
+}
+
+
+#login_form input[type="text"], #login_form input[type="password"]{
+    width: 190px;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+}
+
+#login_form input[type="submit"] {
+    margin-left: 8px;
+    width: 90px;
+    height: 90px;
+    padding: 8px 20px;
+    background-color: #385880;
+    color: white;
+    border : none;
+    font-weight: bold;
+}
+
+#login_form input[type="submit"]:hover {
+    cursor: pointer;
+}

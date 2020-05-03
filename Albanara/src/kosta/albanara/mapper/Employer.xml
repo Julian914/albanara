@@ -90,4 +90,6 @@
 		where hi.EMPLOYEE_SEQ = em1.EMPLOYEE_SEQ and hi.RECRUITMENT_SEQ = re.RECRUITMENT_SEQ and re.EMPLOYER_SEQ = em2.EMPLOYER_SEQ and ma.ROAD_ADDRESS = em1.EMPLOYEE_ADDRESS
 		and em2.EMPLOYER_SEQ = #{seq}
 	</select>
+	
+	
 </mapper>

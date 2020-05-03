@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kosta.albanara.model.Recruitments;
+import kosta.albanara.service.EvaluationService;
 import kosta.albanara.service.RecruitmentService;
 
 public class ShowRecruitmentAction implements Action {
@@ -16,6 +17,11 @@ public class ShowRecruitmentAction implements Action {
 		
 		int man = RecruitmentService.getInstance().selectRecruitmentManCount(seq);
 		int woman = RecruitmentService.getInstance().selectRecruitmentWomanCount(seq);
+		
+		/* 기업 평점 구하기 */
+		int avgTotal = EvaluationService.getInstance().selectAvgEvaluation(seq);
+		request.setAttribute("avgTotal", avgTotal);
+		
 
 		// Set value to HttpSession
 		request.setAttribute("recruitment", recruitment);

@@ -1,9 +1,7 @@
 package kosta.albanara.service;
 
 import javax.servlet.http.HttpServletRequest;
-
 import kosta.albanara.dao.MarkerLocationDao;
-import kosta.albanara.dao.MessengerDao;
 import kosta.albanara.model.MarkerLocation;
 
 public class MarkerLocationService {
@@ -32,4 +30,9 @@ public class MarkerLocationService {
 		}
 		
 	}
+	public MarkerLocation sessionAddressService(String address) throws Exception {
+	    MarkerLocation sessionAddress = new MarkerLocation();
+	    sessionAddress = markerLocationDao.sessionAddress(address);
+		return sessionAddress;
+	}	
 }

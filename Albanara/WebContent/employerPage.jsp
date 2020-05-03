@@ -234,13 +234,19 @@ jQuery(document).ready(function ($) {
 				</c:forEach>
 			</div>
 		</div>
+		
+		<div id="map" style="width: 300px; height: 300px; margin-top: 10px;"></div>
+		<canvas id="employerGrade" width="800"></canvas>
+		<canvas id="employerGender" width="800"></canvas>
+		
+
 	</div>
+
+
 </body>
 
 
 
-<div id="map" style="width: 300px; height: 300px; margin-top: 10px;"></div>
-<canvas id="employerGender" width="800"></canvas>
 
 
 <script
@@ -278,9 +284,93 @@ var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니
 //아래 코드는 지도 위의 마커를 제거하는 코드입니다
 //marker.setMap(null);    
 
+var employerGrade = $('#employerGrade');
+var employerGrade = new Chart(employerGrade, {
+    type: 'doughnut',
+    data: {
+        labels: ["매우 불량", "불량", "평균", "우수", "최우수"],
+        datasets: [{
+            label: '기업 등급',
+            data: [30, 20, 20, 20, 10],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        rotation: 1 * Math.PI,
+        circumference: 1 * Math.PI,
+        plugins: {
+        	textPie : true,
+        	datalabels: {
+                color: '#111',
+                textAlign: 'center',
+                font: {
+                    lineHeight: 1.6
+                },
+                formatter: function(value, ctx) {
+                    return ctx.chart.data.labels[employerGrade.dataIndex] + 'n' + value + '%';
+                }
+            }
+        },
+        tooltips: {
+            enabled: false
+   		}
+    }
+});
+
+var employerScore = ${avgTotal};
+var employerScoreGrade = '';
+if (employerScore >= 90) {
+	employerScoreGrade = '최우수';
+} else if(employerScore >= 70) {
+	employerScoreGrade = '우수';
+}  else if(employerScore >= 50) {
+	employerScoreGrade = '양호';
+}  else if(employerScore >= 30) {
+	employerScoreGrade = '불량';
+}  else {
+	employerScoreGrade = '매우 불량';
+} 
+
+Chart.pluginService.register({
+	id: 'textPie',
+	beforeDraw: function(chart) {
+		var width = chart.chart.width,
+		height = chart.chart.height,
+		ctx = chart.chart.ctx;
+		
+		ctx.restore();
+		var fontSize = 30;
+		ctx.font = fontSize + "px sans-serif";
+		ctx.textBaseline = "middle";
+		ctx.fontWeight = "bold";
+		
+		var text = employerScoreGrade + " " + employerScore + "점",
+		    textX = Math.round((width - ctx.measureText(text).width) / 2),
+		    textY = height - 80;
+		
+		ctx.fillText(text, textX, textY);
+		ctx.save();
+	}
+});
+	
+	
 
 var employerGender = $('#employerGender');
-var myDoughnutChart = new Chart(employerGender, {
+var employerGender = new Chart(employerGender, {
     type: 'pie',
     data: {
         labels: ['여자', '남자'],
@@ -298,7 +388,12 @@ var myDoughnutChart = new Chart(employerGender, {
             borderWidth: 1
         }]
     },
-    options: {}
+    options: {
+    	plugins: {
+ 	   		textPie : false
+ 	 	}
+    }
+   
 });
 </script>
 </html>

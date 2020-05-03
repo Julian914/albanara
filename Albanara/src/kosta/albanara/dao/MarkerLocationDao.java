@@ -7,7 +7,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import kosta.albanara.mapper.EmployeeMapper;
 import kosta.albanara.mapper.MarkerLocationMapper;
+import kosta.albanara.model.Employees;
 import kosta.albanara.model.MarkerLocation;
 
 public class MarkerLocationDao {
@@ -65,5 +67,19 @@ public class MarkerLocationDao {
 		
 		return re;
 	}
-	
+
+	public MarkerLocation sessionAddress(String address) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		MarkerLocation markerLocation = new MarkerLocation();
+		try {
+			markerLocation = sqlSession.getMapper(MarkerLocationMapper.class).sessionAddress(address);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if (sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		return markerLocation;
+	}
 }

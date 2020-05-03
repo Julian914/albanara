@@ -2,7 +2,6 @@ package kosta.albanara.mapper;
 
 import java.util.List;
 
-
 import kosta.albanara.model.Employers;
 import kosta.albanara.model.MarkerLocation;
 

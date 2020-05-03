@@ -11,6 +11,7 @@ import kosta.albanara.model.Employers;
 import kosta.albanara.model.MarkerLocation;
 import kosta.albanara.model.Recruitments;
 import kosta.albanara.service.EmployerService;
+import kosta.albanara.service.EvaluationService;
 
 public class EmployerDetailAction implements Action {
 
@@ -43,8 +44,9 @@ public class EmployerDetailAction implements Action {
 
 		request.setAttribute("mapList", mapList);
 
-		
-		
+		/* 기업 평점 구하기 */
+		int avgTotal = EvaluationService.getInstance().selectAvgEvaluation(employerSeq);
+		request.setAttribute("avgTotal", avgTotal);
 		
 		// 한 기업의 전체 공고목록 불러오기
 		List<Recruitments> recruitmentList = service.recruitmentListService(request);
@@ -99,6 +101,8 @@ public class EmployerDetailAction implements Action {
 			mapList3.add(mapClass);
 		}
 		request.setAttribute("hiredEmployeeListMapList", mapList3);
+		
+		
 
 		forward.setRedirect(false);
 		forward.setPath("/employerPage.jsp");
