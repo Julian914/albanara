@@ -170,23 +170,30 @@ public Employees employeeLogInService(HttpServletRequest request) throws Excepti
 //	    	  ActionForward forward = new ActionForward();
 //	    	    forward.setRedirect(false); 
 //	  			forward.setPath("/employerLogInForm.jsp");
-    	 
+    	
     }else if(login.getEmployeeId().equals(employee.getEmployeeId()) && login.getEmployeePw().equals(employee.getEmployeePw())) {
-    	  
-    	System.out.println("로그인 성공");
-    	
-    	  /*String employerId = (String)session.getAttribute("login");*/
-    	
+  	  
+  	  System.out.println("로그인성공");
+  	  HttpSession session = request.getSession();
+  	  
+  	  session.setAttribute("id",login.getEmployeeId());
+  	  session.setAttribute("seq", login.getEmployeeSeq());
+  	  session.setAttribute("login", login);
+  	  
+  	  System.out.println(session.getAttribute("id"));
+  	  /*String employerId = (String)session.getAttribute("login");*/
+  	
     }
 	return login;
 }
+
 
 
 public void logOut(HttpServletRequest request) throws Exception{
 	
 	HttpSession session = request.getSession();
 	session.invalidate();
-	System.out.println("로그?��?��");
+	System.out.println("로그아웃");
 		
 	}
 

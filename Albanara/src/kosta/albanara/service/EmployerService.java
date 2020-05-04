@@ -3,6 +3,7 @@ package kosta.albanara.service;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import kosta.albanara.dao.EmployerDao;
 import kosta.albanara.model.Employees;
@@ -53,6 +54,7 @@ public class EmployerService {
 		employer.setEmployerId(request.getParameter("employerLogInId"));
 		employer.setEmployerPw(request.getParameter("employerLogInPw"));
 		
+
 		login = employerDao.employerLogIn(employer);
 
 	    if(login==null) {
@@ -62,7 +64,18 @@ public class EmployerService {
 	    	 
 	    }else if(login.getEmployerId().equals(employer.getEmployerId()) && login.getEmployerPw().equals(employer.getEmployerPw())) {
 	    	  
+
 	    	System.out.println("로그인 성공");
+	    	HttpSession session = request.getSession();
+	    	session.setAttribute("id",login.getEmployerId());
+	    	session.setAttribute("seq", login.getEmployerSeq());
+	    	session.setAttribute("login", login);
+	    	  
+	    	System.out.println(session.getAttribute("id"));
+	    	  
+	    	session.setAttribute("login",login);
+	    	/*String employerId = (String)session.getAttribute("login");*/
+
 	    	
 	    }
 		return login;
@@ -71,8 +84,6 @@ public class EmployerService {
 	public int updateEmployerService(Employers employer) throws Exception{
 		
 		System.out.println(employer.getEmployerId());
-		System.out.println(employer.getEmployerName());
-		
 		
 		return employerDao.updateEmployer(employer);
 	}

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kosta.albanara.model.ApplyedEmployeeListMap;
 import kosta.albanara.model.Employers;
@@ -24,14 +25,15 @@ public class EmployerDetailAction implements Action {
 		/* 기업 정보 가져오기 */
 		// String employerId = request.getParameter("employerId");
 		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
-		int employerSeq =1;
+		HttpSession session = request.getSession();
+		int employerSeq = Integer.parseInt(session.getAttribute("seq").toString());
 		// String employerId = "aaaa"; //���Ƿ� �� ���̵�
 
 		Employers employer = service.detailEmployerService(employerSeq);
 
 		request.setAttribute("employer", employer);
-		// System.out.println("�׼�" + employer.toString());
-
+		
+		
 		/* 채용자들 성별 구하기 */
 		int man = service.selectEmployerManCount(employerSeq);
 		int woman = service.selectEmployerWomanCount(employerSeq);
@@ -101,6 +103,8 @@ public class EmployerDetailAction implements Action {
 			mapList3.add(mapClass);
 		}
 		request.setAttribute("hiredEmployeeListMapList", mapList3);
+		
+		
 		
 		
 
