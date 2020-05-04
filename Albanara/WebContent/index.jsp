@@ -28,8 +28,8 @@
 <a href="member/employeeLogInForm.do">구직자 로그인 페이지 이동</a><br>
 <a href="session/UpdateEmployeesForm.do">구직자 수정페이지 이동</a><br>
 <a href="session/UpdateEmployersForm.do">기업 수정페이지 이동</a><br>
-<a href="member/detailEmployers.do">기업 상세페이지 이동(기업)</a><br>
-<a href="member/showEmployersPage.do">기업 상세페이지 이동(구직자)</a><br>
+<a href="member/detailEmployers.do?seq=1">기업 상세페이지 이동(기업)</a><br>
+<a href="member/showEmployersPage.do?seq=1">기업 상세페이지 이동(구직자)</a><br>
 <a href="session/logOut.do">로그아웃</a><br>
 <b><%=id%></b>님 반갑습니다.
 
