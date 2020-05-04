@@ -5,9 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./css/jquery-ui.css">
-<link rel="stylesheet" href="./css/bootstrap.css">
-<link rel="stylesheet" href="./css/bootstrap-theme.css">
+<link rel="stylesheet" href="/Albanara/css/jquery-ui.css">
+<link rel="stylesheet" href="/Albanara/css/bootstrap.css">
+<link rel="stylesheet" href="/Albanara/css/bootstrap-theme.css">
+<link rel="stylesheet" href="/Albanara/css/employeeSignUp.css" type="text/css" />
 <script src="/Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
 <script src="/Albanara/js/jquery-ui.js" type="text/javascript"></script>
 <script src="/Albanara/js/bootstrap.js" type="text/javascript"></script>
@@ -19,28 +20,31 @@
 <div class="container">
 	<form action="insertEmployees.do" id="employeeSignUp" method="post">
 		<h1> 구직자 회원가입 </h1>
+		<div class="employeeJoin">
 		<div>
 			<div class="employeeId" valign=top>* 아이디 </div>
 			<div><input id="employeeIdInput" name="employeeId" type="text" maxlength="16"
 				required="required" placeholder="&nbsp;&nbsp;&nbsp;아이디를 입력해주세요." />
 						
-				<p class="employeeIdGuide">6자 이상의 영문 혹은 영문과 숫자를 조합</p>
-				<p class="employeeIdCheck">이미 있는 아이디 입니다.</p></div>
+				<!-- <p class="employeeIdGuide">6자 이상의 영문 혹은 영문과 숫자를 조합</p>
+				<p class="employeeIdCheck">이미 있는 아이디 입니다.</p> -->
+			</div>
 		</div>
 		<div>
 			<div class="employeePw" valign=top>* 비밀번호 </div>
 			<div><input id="employeePassInput" name="employeePw" type="password"
 				maxlength="16" required="required"
 				placeholder="&nbsp;&nbsp;&nbsp;비밀번호를 입력해주세요." />
-				<p class="employeePwGuide1">10자 이상 입력</p>
-				<p class="employeePwGuide2">영문/숫자/특수문자 조합으로 입력</p></div>
+				<!-- <p class="employeePwGuide1">10자 이상 입력</p>
+				<p class="employeePwGuide2">영문/숫자/특수문자 조합으로 입력</p> -->
+			</div>
 		</div>
 		<div>
 			<div class="employeePwCheck" valign=top>* 비밀번호 확인</div>
 			<div><input id="employeePwCheckInput" type="password" maxlength="16"
 				required="required"
 				placeholder="&nbsp;&nbsp;&nbsp;비밀번호를 한번 더 입력해주세요." />
-				<p class="employeePwCheckGuide">동일한 비밀번호를 입력해주세요.</p></div>
+				<!-- <p class="employeePwCheckGuide">동일한 비밀번호를 입력해주세요.</p> --></div>
 		</div>
 		<div>
 			<div class="employeeName" valign=top>* 이름 </div>
@@ -48,10 +52,9 @@
 				required="required"
 				placeholder="&nbsp;&nbsp;&nbsp;이름을 입력해주세요." /></div>
 		</div>
-		<div class="employee_birth_div">
+		<div class="employeeBirthDiv">
 			<div class="employeeBirth" valign=top>* 생년월일</div>
-			<div valign=top>
-				<div class="employeeBirthDiv" name="employeeBirth">
+				<div class="employeeBirth11" name="employeeBirth">
 					<input id="employeeBirthYear" name = "employeeBirthYear" type="text" size="4" maxlength="4" 
 						placeholder="YYYY" pattern="[0-9]*" /> 
 					<span>/</span> 								
@@ -61,43 +64,43 @@
 					<input id="employeeBirthDay" name = "employeeBirthDay" type="text" size="2" maxlength="2"
 						placeholder="DD" pattern="[0-9]*" />
 				</div>
-			</div>
 		</div>
 		<div>
 			<div class="employeeEmail" valign=top>* 이메일 </div>
 			<div>
 				<input type="text" id="employeeEmailInput" name ="employeeEmailInput1">
 					 @
-				<select name = "employeeEmailInput2">
+				<select id="employeeEmailOption"name = "employeeEmailInput2">
 					<option value="@naver.com">naver.com</option>
 					<option value="@gmail.com">gmail.com</option>
 					<option value="@hanmail.net">hanmail.net</option>
 					<option value="@nate.com">nate.com</option>
 				</select>
 			</div>
+		</div>
 			
 		<div class="employeeGenderClass">
 			<div class="employeeGender" name="employeeGender" valign=top>* 성별</div>
-			<div valign=top><input type="radio" name="employeeGender" value="man" />남자&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="radio" name="employeeGender" value="woman" />여자&nbsp;&nbsp;&nbsp;&nbsp;
+			<div class="employeeGenderAll" valign=top>
+				<input type="radio" name="employeeGender" value="man" />남자&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="employeeGender" value="woman" />여자
 			</div>
 		</div>
 		<div class="employeePhoneClass">
 			<div class="employeePhone" valign=top>* 핸드폰 번호</div>
-			<div valign=top>
-				<div class="employeePhoneNo" name="employeePhone">
-					<input id="employee_phone_010" type="text" size="4" value="010" name ="employeePhone1" readonly/>&nbsp;-
-					<input id="employee_phone_first" type="text" size="4" maxlength="4" pattern="[0-9]*" name ="employeePhone2"/>
+			<div class="employeePhoneNo" name="employeePhone">
+					<input id="employeePhone010" type="text" size="4" value="010" name ="employeePhone1" readonly/>
+					<span> - </span>
+					<input id="employeePhoneFirst" type="text" size="4" maxlength="4" pattern="[0-9]*" name ="employeePhone2"/>
 					<span> - </span> 	
-					<input id="employee_phone_second" type="text" size="4" maxlength="4" pattern="[0-9]*" name ="employeePhone3"/>
-				</div>
+					<input id="employeePhoneSecond" type="text" size="4" maxlength="4" pattern="[0-9]*" name ="employeePhone3"/>
 			</div>
 		</div>
 		<div class="employeeAddressClass">
 			<div class="employeeAddress" valign=top>* 주소 </div>
 		</div>
 		<input type="text" id="sample5_address" placeholder="주소" name = "employeeAddress">
-		<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+		<input id="addressButton" type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 		<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
 		<input type="hidden" id="latitude" placeholder="위도" name="latitude">
 		<input type="hidden" id="longitude"
@@ -179,8 +182,10 @@
     
 </script>
 
-		<br> <input id="joinbutton" type="submit" value="회원가입" />	
+		<br> <input id="joinbutton" type="submit" value="회원가입" />
+		</div>
 	</form>
 </div>
+
 </body>
 </html>

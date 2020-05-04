@@ -26,11 +26,8 @@ function deleteBtn_onClick(employerId) {
 		<h1> 구직자 회원정보 수정 </h1>
 		<div>
 			<div class="employeeId" valign=top>* 아이디 </div>
-			<div><input id="employeeIdInput" name="employeeId" type="text" maxlength="16" value="${employees.employeeId }"
-				 placeholder="&nbsp;&nbsp;&nbsp;아이디를 입력해주세요." />
-						
-				<p class="employeeIdGuide">6자 이상의 영문 혹은 영문과 숫자를 조합</p>
-				<p class="employeeIdCheck">이미 있는 아이디 입니다.</p></div>
+			<div><input id="employeeIdInput" name="employeeId" type="text" maxlength="16" value="${login.employeeId }"
+				 readonly/>
 		</div>
 		<div>
 			<div class="employeePw" valign=top>* 새 비밀번호 </div>
@@ -50,22 +47,12 @@ function deleteBtn_onClick(employerId) {
 		<div>
 			<div class="employeeName" valign=top>* 이름 </div>
 			<div><input id="employeeNameInput" name="employeeName" type="text" maxlength="10"
-				readonly placeholder="&nbsp;&nbsp;&nbsp;이름을 입력해주세요." /></div>
+				readonly placeholder="&nbsp;&nbsp;&nbsp;이름을 입력해주세요." value="${login.employeeName}" /></div>
 		</div>
 		<div class="employee_birth_div">
 			<div class="employeeBirth" valign=top>* 생년월일</div>
-			<div valign=top>
-				<div class="employeeBirthDiv" name="employeeBirth">
-					<input id="employeeBirthYear" name = "employeeBirthYear" type="text" size="4" maxlength="4" 
-						placeholder="YYYY" pattern="[0-9]*"  /> 
-					<span>/</span> 								
-					<input id="employeeBirthMonth" name = "employeeBirthMonth" type="text" size="2" maxlength="2"
-						placeholder="MM" pattern="[0-9]*" />
-					<span>/</span> 
-					<input id="employeeBirthDay" name = "employeeBirthDay" type="text" size="2" maxlength="2"
-						placeholder="DD" pattern="[0-9]*"  />
-				</div>
-			</div>
+			<div><input id="employeeBirthInput" name="employeeBirth" type="text" maxlength="16" value="${login.employeeBirthday }"
+				 readonly />
 		</div>
 		<div>
 			<div class="employeeEmail" valign=top>* 변경할 이메일 </div>
@@ -82,8 +69,7 @@ function deleteBtn_onClick(employerId) {
 			
 		<div class="employeeGenderClass">
 			<div class="employeeGender" name="employeeGender" valign=top>* 성별</div>
-			<div valign=top><input type="radio" name="employeeGender" value="man" />남자&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="radio" name="employeeGender" value="woman" />여자&nbsp;&nbsp;&nbsp;&nbsp;
+			<div valign=top><input type="text" name="employeeGender" value="여자" readonly/>
 			</div>
 		</div>
 		<div class="employeePhoneClass">
@@ -128,7 +114,7 @@ function deleteBtn_onClick(employerId) {
     function sample5_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
-                var addr = data.address; // 최종 주소 변수
+                var addr = data.address; // 최종 주소 변수               
 
                 // 주소 정보를 해당 필드에 넣는다.
                 document.getElementById("sample5_address").value = addr;
@@ -148,7 +134,7 @@ function deleteBtn_onClick(employerId) {
                         map.setCenter(coords);
                         // 마커를 결과값으로 받은 위치로 옮긴다.
                         marker.setPosition(coords)
-                    }
+                    } 
                 });
             }
         }).open();

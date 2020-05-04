@@ -169,6 +169,7 @@ public Employees employeeLogInService(HttpServletRequest request) throws Excepti
 	    	  
 	    	  session.setAttribute("id",login.getEmployeeId());
 	    	  session.setAttribute("seq", login.getEmployeeSeq());
+	    	  session.setAttribute("login", login);
 	    	  
 	    	  System.out.println(session.getAttribute("id"));
 	    	  /*String employerId = (String)session.getAttribute("login");*/

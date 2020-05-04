@@ -26,10 +26,7 @@
 		<div>
 			<div class="employerId" valign=top>* 아이디 </div>
 			<div><input id="employerIdInput" name="employerId" type="text" maxlength="16"
-				required="required" placeholder="&nbsp;&nbsp;&nbsp;아이디를 입력해주세요." />
-						
-				<p class="employerIdGuide">6자 이상의 영문 혹은 영문과 숫자를 조합</p>
-				<p class="employerIdCheck">이미 있는 아이디 입니다.</p></div>
+				required="required" readonly value="${login.employerId }" />
 		</div>
 		<div>
 			<div class="employerPw" valign=top>* 새 비밀번호 </div>
@@ -48,17 +45,13 @@
 		<div>
 			<div class="employerName" valign=top>* 기업명 </div>
 			<div><input id="employerNameInput" name="employerName" type="text" maxlength="10"
-				readonly placeholder="&nbsp;&nbsp;&nbsp;기업명을 입력해주세요." /></div>
+				readonly value="${login.employerName }"  /></div>
 		</div>
 		<div>
 			<div class="employerNumber" valign=top>*사업자 번호</div>
 			<div valign=top>
 				<div class="employerNo">
-					<input id="employerNoFirst" type="text" size="4" maxlength="4" pattern="[0-9]*" name="employerNo1" />
-					<span> - </span> 	
-					<input id="employerNoSecond" type="text" size="4" maxlength="4" pattern="[0-9]*" name="employerNo2"/>
-					<span> - </span> 	
-					<input id="employerNothird" type="text" size="4" maxlength="4" pattern="[0-9]*" name="employerNo3"/>
+					<input id="employerNoInput" type="text" name="employerNumber" value="${login.employerNumber }" readonly/>
 				</div>
 			</div>
 		</div>
@@ -122,23 +115,16 @@
 		<div>
 			<div class="employerField" valign=top>* 사업장 분야</div>
 			<div>
-			 	<select id="fields" name="employerField">
-					<option value="매장관리">매장관리</option>
-					<option value="IT 디자인">IT 디자인</option>
-					<option value="서비스">서비스</option>
-					<option value="생산/기능.운전">생산/기능.운전</option>
-					<option value="고객상담/리서치">고객상담/리서치</option>
-					<option value="서빙.주방">서빙.주방</option>
-				</select><br><br>
+			 	<input id="fields" name="employerField" readonly value="${login.employerField }">
 			</div>
 		</div>
 		<div>
 			<div class="employerHomePage" valign=top>* 홈페이지</div>
-			<div><input id="employerHomePageInput" type="text" name="employerHomePage"/></div>
+			<div><input id="employerHomePageInput" type="text" name="employerHomePage" value="${login.employerHomePage}"/></div>
 		</div>
 		<div>
 			<div class="ownerName" valign=top>* 대표자 이름</div>
-			<div><input id="ownerNameInput" type="text" name="ownerName"/></div>
+			<div><input id="ownerNameInput" type="text" name="ownerName" value="${login.ownerName }"/></div>
 		</div>
 		<div class="ownerPhoneClass">
 			<div class="ownerPhone" valign=top>* 핸드폰번호</div>

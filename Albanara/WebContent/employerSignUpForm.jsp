@@ -5,9 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./css/jquery-ui.css">
-<link rel="stylesheet" href="./css/bootstrap.css">
-<link rel="stylesheet" href="./css/bootstrap-theme.css">
+<link rel="stylesheet" href="/Albanara/css/jquery-ui.css">
+<link rel="stylesheet" href="/Albanara/css/bootstrap.css">
+<link rel="stylesheet" href="/Albanara/css/bootstrap-theme.css">
+<link rel="stylesheet" href="/Albanara/css/employerSignUp.css" type="text/css" />
 <script src="/Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
 <script src="/Albanara/js/jquery-ui.js" type="text/javascript"></script>
 <script src="/Albanara/js/bootstrap.js" type="text/javascript"></script>
@@ -18,27 +19,34 @@
 <div class="container">
 	<form action="insertEmployers.do" id="employerSignUp" method="post">
 		<h1>기업 회원가입 </h1>
+		<div class="employerJoin">
 		<div>
 			<div class="employerId" valign=top>* 아이디 </div>
-			<div><input id="employerIdInput" name="employerId" type="text" maxlength="16"
+			<div>
+				<input id="employerIdInput" name="employerId" type="text" maxlength="16"
 				required="required" placeholder="&nbsp;&nbsp;&nbsp;아이디를 입력해주세요." />
 						
-				<p class="employerIdGuide">6자 이상의 영문 혹은 영문과 숫자를 조합</p>
-				<p class="employerIdCheck">이미 있는 아이디 입니다.</p></div>
+				<!-- <p class="employerIdGuide">6자 이상의 영문 혹은 영문과 숫자를 조합</p>
+				<p class="employerIdCheck">이미 있는 아이디 입니다.</p> -->
+			</div>
 		</div>
 		<div>
 			<div class="employerPw" valign=top>* 비밀번호 </div>
-			<div><input id="employerPassInput" name="employerPw" type="password"
-				maxlength="16" required="required"
-				placeholder="&nbsp;&nbsp;&nbsp;비밀번호를 입력해주세요." />
-				<p class="employerPwGuide1">10자 이상 입력</p>
-				<p class="employerPwGuide2">영문/숫자/특수문자 조합으로 입력</p></div>
+			<div>
+				<input id="employerPassInput" name="employerPw" type="password"
+					maxlength="16" required="required"
+					placeholder="&nbsp;&nbsp;&nbsp;비밀번호를 입력해주세요." />
+				<!-- <p class="employerPwGuide1">10자 이상 입력</p>
+				<p class="employerPwGuide2">영문/숫자/특수문자 조합으로 입력</p> -->
+			</div>
 		</div>
 		<div>
 			<div class="employerPwCheck" valign=top>* 비밀번호 확인 </div>
-			<div><input id="employerPwCheckInput" type="password" maxlength="16" name="employerPw2"
-				required="required" placeholder="&nbsp;&nbsp;&nbsp;비밀번호를 한번 더 입력해주세요." />
-				<p class="employerPwCheckGuide">동일한 비밀번호를 입력해주세요.</p></div>
+			<div>
+				<input id="employerPwCheckInput" type="password" maxlength="16" name="employerPw2"
+					required="required" placeholder="&nbsp;&nbsp;&nbsp;비밀번호를 한번 더 입력해주세요." />
+				<!-- <p class="employerPwCheckGuide">동일한 비밀번호를 입력해주세요.</p> -->
+			</div>
 		</div>
 		<div>
 			<div class="employerName" valign=top>* 기업명 </div>
@@ -58,17 +66,16 @@
 				</div>
 			</div>
 		</div>
-		<div class="employeeAddressClass">
-			<div class="employeeAddress" valign=top>* 사업장 주소 </div>
+		<div class="employerAddressClass">
+			<div class="employerAddress" valign=top>* 사업장 주소 </div>
 		</div>
 		<div>
 			<input type="text" id="sample5_address" placeholder="주소" name = "employeeAddress">
-			<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+			<input id="addressButton"type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 			<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
 			<input type="hidden" id="latitude" placeholder="위도" name="latitude">
 			<input type="hidden" id="longitude" placeholder="경도" name="longitude">
 			<input type="button" onclick="addrInsertClick()" value="주소 등록"><br>
-			<input type="button" onclick="test()" value="ㅎㅎ"><br>
 		</div>
 		<div>
 			<div class="employerField" valign=top>* 사업장 분야</div>
@@ -92,13 +99,13 @@
 			<div><input id="ownerNameInput" type="text" name="ownerName"/></div>
 		</div>
 		<div class="ownerPhoneClass">
-			<div class="ownerPhone" valign=top>* 핸드폰번호</div>
+			<div class="ownerPhone" valign=top>* 대표자번호</div>
 			<div valign=top>
 				<div class="ownerPhoneNo">
-					<input id="owner_phone_010" type="text" size="4" value="010" name ="ownerPhoneNo1" readonly/>&nbsp;-	
-					<input id="owner_phone_first" type="text" size="4" maxlength="4" pattern="[0-9]*" name="ownerPhoneNo2"/>
+					<input id="ownerPhone010" type="text" size="4" value="010" name ="ownerPhoneNo1" readonly/>&nbsp;-	
+					<input id="ownerPhoneFirst" type="text" size="4" maxlength="4" pattern="[0-9]*" name="ownerPhoneNo2"/>
 					<span> - </span> 	
-					<input id="owner_phone_second" type="text" size="4" maxlength="4" pattern="[0-9]*" name="ownerPhoneNo3"/>
+					<input id="ownerPhoneSecond" type="text" size="4" maxlength="4" pattern="[0-9]*" name="ownerPhoneNo3"/>
 				</div>
 			</div>
 		</div>
@@ -198,8 +205,10 @@
 	    	   });   
     	}
 </script>		
-		<br><input type="submit" value="회원가입"/>
+		<br><input id="joinbutton" type="submit" value="회원가입"/>
+		</div>
 	</form>
+	
 </div>
 
 </body>

@@ -45,9 +45,9 @@
 	</select>
 	
 	<update id="updateEmployer" parameterType="Employers">
-		update employers set employer_pw = #{employerPw}, employer_number = #{employerNumber}, employer_address = #{employerAddress},
-			employer_field = #{employerField}, owner_name = #{ownerName}, owner_phone = #{ownerPhone},
-			employer_homepage = #{employerHomePage} where employer_id = #{employerId}
+		update employers set employer_pw = #{employerPw}, employer_address = #{employerAddress},
+			owner_name = #{ownerName}, owner_phone = #{ownerPhone},	employer_homepage = #{employerHomePage} 
+			where employer_id = #{employerId}
 	</update> 
 	
 	<delete id="deleteEmployer" parameterType="Employers">

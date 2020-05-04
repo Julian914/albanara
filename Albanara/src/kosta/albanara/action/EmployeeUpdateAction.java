@@ -26,8 +26,6 @@ public class EmployeeUpdateAction implements Action {
 		employee.setEmployeeId(request.getParameter("employeeId"));
 		employee.setEmployeePw(request.getParameter("employeePw"));
 		employee.setEmployeeName(request.getParameter("employeeName"));
-		employee.setEmployeeBirthday(Date.valueOf(request.getParameter("employeeBirthYear") + "-"
-				+ request.getParameter("employeeBirthMonth") + "-" + request.getParameter("employeeBirthDay")));
 		employee.setEmployeeEmail(request.getParameter("employeeEmailInput1")
 				+ request.getParameter("employeeEmailInput2"));
 		employee.setEmployeeGender(request.getParameter("employeeGender"));

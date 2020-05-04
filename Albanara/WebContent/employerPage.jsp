@@ -25,6 +25,9 @@
 	기업주소 : ${employer.employerAddress } <br>
 	기업홈페이지 주소 : ${employer.employerHomePage} <br>
 	
+	<c:if test="${employer.employerId==login.employerId }">
+	<input type="button" value="정보수정" onclick="location.href='session/UpdateEmployersForm.do?id=${login.employerId}'"/>
+	</c:if>
 	<canvas id="employerGender" width="800"></canvas>
 <script>
 var employerGender = $('#employerGender');

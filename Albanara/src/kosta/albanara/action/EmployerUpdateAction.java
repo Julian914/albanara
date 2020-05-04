@@ -26,23 +26,19 @@ public class EmployerUpdateAction implements Action {
 		
 		employer.setEmployerId(request.getParameter("employerId"));
 		employer.setEmployerPw(request.getParameter("employerPw"));
-		employer.setEmployerName(request.getParameter("employerName"));
-		employer.setEmployerNumber(request.getParameter("employerNo1") + "-" + request.getParameter("employerNo2") + "-"
-				+ request.getParameter("employerNo3"));
 		employer.setEmployerAddress(request.getParameter("employerAddress"));
 		employer.setEmployerHomepage(request.getParameter("employerHomePage"));
-		employer.setEmployerField(request.getParameter("employerField"));
 		employer.setOwnerName(request.getParameter("ownerName"));
 		employer.setOwnerPhone(request.getParameter("ownerPhoneNo1")+request.getParameter("ownerPhoneNo2")+request.getParameter("ownerPhoneNo3"));
 		
 		
 		if(service.updateEmployerService(employer) == 1) {
-			System.out.println("����");
+			System.out.println("오잉");
 			forward.setRedirect(true); 
 			forward.setPath("UpdateEmployersForm.do");
 			return forward;
 		}else {
-			System.out.println("����");
+			System.out.println("오잉");
 			forward.setRedirect(true); 
 			forward.setPath("UpdateEmployersForm.do");
 			return forward;

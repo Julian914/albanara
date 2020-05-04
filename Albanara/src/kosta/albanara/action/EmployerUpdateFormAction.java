@@ -11,7 +11,6 @@ public class EmployerUpdateFormAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		HttpSession session = request.getSession();
-		System.out.println("폼액션"+session.getAttribute("id"));
 		
 		forward.setRedirect(false); 
 		forward.setPath("/login/employerUpdateForm.jsp");

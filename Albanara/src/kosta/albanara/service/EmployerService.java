@@ -58,7 +58,7 @@ public class EmployerService {
 	      login = employerDao.employerLogIn(employer);
 	      
 	      if(login==null) {
-	    	  System.out.println("�α��� ����");
+	    	  System.out.println("로그인실패");
 	    	  return null;
 //	    	  ActionForward forward = new ActionForward();
 //	    	    forward.setRedirect(false); 
@@ -71,6 +71,7 @@ public class EmployerService {
 	    	  
 	    	  session.setAttribute("id",login.getEmployerId());
 	    	  session.setAttribute("seq", login.getEmployerSeq());
+	    	  session.setAttribute("login", login);
 	    	  
 	    	  System.out.println(session.getAttribute("id"));
 	    	  
@@ -84,8 +85,6 @@ public class EmployerService {
 	public int updateEmployerService(Employers employer) throws Exception{
 		
 		System.out.println(employer.getEmployerId());
-		System.out.println(employer.getEmployerName());
-		
 		
 		return employerDao.updateEmployer(employer);
 	}

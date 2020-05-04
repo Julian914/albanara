@@ -1,0 +1,424 @@
+
+
+
+.employeeJoin{
+	width: 100%;
+	padding-left: 100px;
+	padding-top: 70px;
+	padding-bottom: 70px;
+	border-radius: 30px;
+	background-color: #EEEE;
+	border: 0;
+	outline: 0;
+} 
+
+
+#employeeSignUp{
+	width: 800px;
+	margin: 0 auto;
+	padding-left: 50px;
+	padding-bottom: 60px;
+    padding-top: 70px;
+}
+
+#employeeSignUp h1{
+    text-align: center;
+	font-size: 40px;
+	width: 300px;
+	margin : 0 auto;
+	margin-bottom: 60px;
+	color: #385880;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: bolder;
+	
+}
+
+#employeeSignUp .employeeIdGuide{
+	font-size: 12px;
+	color: #000000;
+	margin-bottom: 0px;
+}
+
+#employeeSignUp .employeeIdCheck{
+	font-size: 12px;
+	color: #000000;
+	margin-bottom: 10px;
+}
+
+#employeeSignUp .employeePwGuide1{
+	font-size: 12px;
+	color: #000000;
+	margin-bottom: 0px;
+}
+
+#employeeSignUp .employeePwGuide2{
+	font-size: 12px;
+	color: #000000;
+	margin-bottom: 10px;
+}
+
+#employeeSignUp .employeePwCheckGuide{
+	font-size: 12px;
+	color: #000000;
+	margin-bottom: 10px;
+}
+
+#employeeSignUp .employeeEmailGuide{
+	font-size: 12px;
+	color: #000000;
+	margin-bottom: 30px;
+}
+
+/* #joinPage .idcheckbox{
+	width: 100px;
+	height: 40px;
+	background-color: #000000;
+	color: white;
+	font-family: Monospace;
+	font-weight: bolder;
+	margin-bottom: 5px;
+	border-radius: 10px;
+	border: 0;
+	outline: 0;
+	
+	
+} 
+
+#joinPage .member_id{
+	width: 150px;
+	padding-right: 80px;
+	font-size: 15px;
+	font-weight: bolder;
+	font-family: "����";
+	
+}
+*/
+
+#employeeSignUp #employeeIdInput{
+	width: 300px;
+	height: 40px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+	padding-left: 10px;
+	display: inline-block;
+	
+	
+}
+
+input:focus { outline: none; }
+
+
+
+#employeeSignUp #employeePassInput{
+	width: 300px;
+	height: 40px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+	padding-left: 10px;
+	display: inline-block;
+	margin-top: 30px;
+}
+
+#employeeSignUp #employeePwCheckInput{
+	width: 300px;
+	height: 40px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+	padding-left: 10px;
+	display: inline-block;
+	margin-top: 30px;
+}
+#employeeSignUp #employeeNameInput{
+	width: 300px;
+	height: 40px;
+	margin-bottom: 40px;
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+	padding-left: 10px;
+	display: inline-block;
+	margin-top: 30px;
+}
+
+#employeeSignUp #employeeEmailInput{
+	width: 300px;
+	height: 40px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+	padding-left: 10px;
+	margin-top: 0px;
+}
+
+#employeeSignUp #sample5_address{
+	width: 300px;
+	height: 40px;
+	margin-bottom: 30px;
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+	padding-left: 10px;
+	display: inline-block;
+	margin-top: 30px;
+}
+
+
+#employeeSignUp .employeeBirthDiv{
+	height: 80px;
+}
+
+#employeeSignUp .employeeGender{
+	margin-top: 30px;
+}
+
+
+
+
+#employeeSignUp #joinbutton{
+	width: 550px;
+	height: 50px;
+	margin-top: 20px;
+	margin-left: 0px;
+	background-color: #385880;
+	color: white;
+	font-weight: bold;
+	border-radius: 10px;
+	border: 0;
+	outline: 0;
+	
+}
+
+#employeeSignUp #addressButton{
+	width: 100px;
+	height: 30px;
+	margin-left: 0px;
+	background-color: #385880;
+	color: white;
+	font-weight: bold;
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+	
+}
+
+#employeeSignUp .employeeId{
+	font-size: 15px;
+	font-weight: bolder;
+	margin-right: 80px;
+	float: left;
+}
+
+#employeeSignUp .employeePw{
+	font-size: 15px;
+	font-weight: bolder;
+	margin-right: 65px;
+	float: left;
+	margin-top: 30px;
+}
+
+#employeeSignUp .employeePwCheck{
+	font-size: 15px;
+	font-weight: bolder;
+	margin-right: 30px;
+	float: left;
+	margin-top: 30px;
+}
+
+#employeeSignUp .employeeName{
+	font-size: 15px;
+	font-weight: bolder;
+	margin-right: 95px;
+	float: left;
+	margin-top: 30px;
+}
+
+#employeeSignUp .employeeEmail{
+	font-size: 15px;
+	font-weight: bolder;
+	margin-right: 80px;
+	float: left;
+	margin-top: 5px;
+	
+}
+
+#employeeSignUp .employeeAddress{
+	font-size: 15px;
+	font-weight: bolder;
+	margin-right: 90px;
+	float: left;
+	margin-top: 30px;
+}
+
+#employeeSignUp .employeeGender{
+	font-size: 15px;
+	font-weight: bolder;
+	margin-right: 100px;
+	float: left;
+	margin-top: -5px;
+}
+
+#employeeSignUp .employeeGenderAll{
+	padding-top: -5px;
+}
+
+#employeeSignUp .employeeBirth{
+	font-size: 15px;
+	font-weight: bolder;
+	display: inline-block;
+	margin-right: 60px;
+}
+
+#employeeSignUp .employeePhone{
+	font-size: 15px;
+	font-weight: bolder;
+	margin-right: 40px;
+	display: inline-block;
+	margin-top: 50px;
+}
+
+/* #employeeSignUp .employeeAddress{
+	font-size: 15px;
+	font-weight: bolder;
+} */
+
+
+#employeeSignUp .employeeBirth11{
+	display: inline-block;
+	background-color: white;
+	width: 300px;
+	height: 40px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+	padding-left: 10px;
+}
+
+#employeeSignUp #employeeBirthYear{
+	background-color: white;
+	width: 40px;
+	height: 35px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+	padding-left: 10px;
+	margin-right: 0px;
+	margin-left: 10px;
+	
+}
+
+#employeeSignUp #employeeBirthMonth{
+	background-color: white;
+	width: 40px;
+	height: 35px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+	padding-left: 10px;
+	margin-right: 0px;
+	margin-left: 10px;
+	
+}
+
+#employeeSignUp #employeeBirthDay{
+	background-color: white;
+	width: 40px;
+	height: 35px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+	padding-left: 10px;
+	margin-right: 10px;
+	margin-left: 20px;
+	
+}
+
+#employeeSignUp .employeePhoneNo{
+	display: inline-block;
+	background-color: white;
+	width: 300px;
+	height: 40px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+	padding-left: 10px;
+}
+
+#employeeSignUp .employeePhone span{
+	background-color: white;
+	width: 50px;
+	height: 30px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+	padding-left: 10px;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+#employeeSignUp #employeePhone010{
+	background-color: white;
+	width: 30px;
+	height: 35px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+	padding-left: 0px;
+	margin-right: 10px;
+	margin-left: 20px;
+	
+}
+
+#employeeSignUp #employeePhoneFirst{
+	background-color: white;
+	width: 30px;
+	height: 35px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+	padding-left: 0px;
+	margin-right: 10px;
+	margin-left: 20px;
+	
+}
+
+#employeeSignUp #employeePhoneSecond{
+	background-color: white;
+	width: 30px;
+	height: 35px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	border: 0;
+	outline: 0;
+	padding-left: 0px;
+	margin-right: 10px;
+	margin-left: 20px;
+	
+}
+
+
+#employeeSignUp #employeeEmailOption{
+	margin-top: 10px;
+	height: 30px;
+	margin-bottom: 50px;
+	border-radius: 5px;
+	outline: 0;
+}
+
+
+
+ 
