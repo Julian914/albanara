@@ -26,6 +26,9 @@
 <script src="/Albanara/js/Chart.bundle.js" type="text/javascript"></script>
 <script src="/Albanara/js/employerPage.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+$(".accordion").accordion();
+</script>
 
 <jsp:include page="header.html"></jsp:include>
 <jsp:include page="nav.html"></jsp:include>
@@ -319,7 +322,7 @@ var employerGrade = new Chart(employerGrade, {
     }
 });
 
-var employerScore = ${avgTotal};
+var employerScore = 66;
 var employerScoreGrade = '';
 if (employerScore >= 90) {
 	employerScoreGrade = '최우수';
@@ -364,7 +367,7 @@ var employeeGender = new Chart(employeeGender, {
         labels: ['여자', '남자'],
         datasets: [{
             label: '채용자 성별 현황',
-            data: [1,2]//[${woman}, ${man}],
+            data: [1,2],//[${woman}, ${man}],
             backgroundColor: [
             	'rgba(255, 99, 132, 0.2)',
             	'rgba(54, 162, 235, 0.2)'
