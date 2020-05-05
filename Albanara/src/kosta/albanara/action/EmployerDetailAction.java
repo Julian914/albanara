@@ -27,7 +27,7 @@ public class EmployerDetailAction implements Action {
 		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
 		HttpSession session = request.getSession();
 		//int employerSeq = Integer.parseInt(session.getAttribute("seq").toString());
-		int employerSeq = 1;
+		int employerSeq = 24;
 		// String employerId = "aaaa"; //���Ƿ� �� ���̵�
 
 		Employers employer = service.detailEmployerService(employerSeq);

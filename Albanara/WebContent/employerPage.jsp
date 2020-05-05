@@ -48,18 +48,23 @@ $(".accordion").accordion();
 		
 		<div class="row">
 			<div class="col-md-4">
-				<img class="employerFile" style="width: 300px; height: 300px; margin-top: 10px;"><br>
-				<br>기업이미지
+				<img class="employerFile" src="/Albanara/images/employerPage/noImage.png" style="width: 300px; height: 300px; margin-top: 10px;"><br>
+				<br>
 			</div>
 			<br>
 			<div class="col-md-4">
 				<div class="employerInfo">
 				<ul>
-					<li>기업명 : ${employer.employerName}</li> 
-					<li>주소:	${employer.employerAddress }</li> 
-					<li>전화번호 :	${employer.employerNumber} </li> 
-					<li>홈페이지:	<button type="button" class="btn btn-link">${employer.employerHomePage}</button></li>
-					<li> 분야 : ${employer.employerField}</li>
+					<li>기업명 :</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> ${employer.employerName}</b></li> 
+					<li>주소:	</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>${employer.employerAddress }</b></li> 
+					<li>전화번호 :	</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>${employer.employerNumber}</b> </li> 
+					<li>홈페이지:</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="homepageAddress" href="employer.employerHomePage">${employer.employerHomePage}</a></li>
+					<li>분야 :</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>${employer.employerField}</b></li>
 				</ul>
 				<br>
 				<br>
@@ -72,7 +77,7 @@ $(".accordion").accordion();
 				</div>
 			</div>
 			<div class="col-md-4">
-				<div id="map" style="width: 300px; height: 300px; margin-top: 10px;">기업지도</div>
+				<div id="map" style="width: 300px; height: 300px; margin-top: 10px;"></div>
 			</div>
 		</div>
 	</div>
