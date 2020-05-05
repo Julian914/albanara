@@ -47,8 +47,8 @@
 		<br>
 		<div class="row">
 			<div class="col-md-4">
-				<img class="employerFile" src="/Albanara/images/employerPage/coupang.png" style="width:300px; height:300px; margin-top:10px;"><br>
-			 <br>
+				<img class="employerFile" style="width:300px; height:300px; margin-top:10px;"><br>
+				기업이미지 <br>
 			</div>
 			<br>
 			<div class="col-md-4">
@@ -61,9 +61,9 @@
 					<li>분야	:${employer.employerField} </li>
 					<br>
 					<li><b><img	class="evalIcon" onclick="insertEmployerEval.do?seq=${employer.employerSeq}"
-						src="/Albanara/images/employerPage/like.png" name="좋아요" value="like">좋아요 ${employer.likeCount}
+						src="/Albanara/images/employerEval/like.png" name="좋아요" value="like">좋아요 ${employer.likeCount}
 					<img class="evalIcon" onclick="insertEmployerEval.do?seq=${employer.employerSeq}"
-							src="/Albanara/images/employerPage/unlike.png" name="별로예요"	value="unlike">별로예요 ${employer.unlikeCount}</b></li>
+							src="/Albanara/images/employerEval/unlike.png" name="별로예요"	value="unlike">별로예요 ${employer.unlikeCount}</b></li>
 				</ul>
 				</div>
 			</div>

@@ -11,7 +11,9 @@
      
 }
 
-
+ .application {
+	color: black;
+} 
 
 .accordion .child {
 	height: 165px;
@@ -22,10 +24,12 @@ div#wrap{
 }
  
 .employerInfo{
-	font-size: 17px;
+	width: 350px;
+	font-size: 20px;
 	justify-content: space-between;
 	margin-top: 30px;
 }
+
 
 .updatebutton{
 	height: 45px;
@@ -38,6 +42,10 @@ div#wrap{
 	height: 20px;
 }
 
+.employerFile{
+	width: 200px;
+	height: 200px;
+}
 
 
 input.btn.btn-secondar{
