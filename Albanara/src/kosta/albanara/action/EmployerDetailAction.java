@@ -21,44 +21,41 @@ public class EmployerDetailAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		ActionForward forward = new ActionForward();
 		EmployerService service = EmployerService.getInstance();
+		
+		int seq = Integer.parseInt(request.getParameter("seq"));
 
 		/* 기업 정보 가져오기 */
-		// String employerId = request.getParameter("employerId");
-		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
+		
 		HttpSession session = request.getSession();
-		//int employerSeq = Integer.parseInt(session.getAttribute("seq").toString());
-		int employerSeq = 24;
-		// String employerId = "aaaa"; //���Ƿ� �� ���̵�
-
-		Employers employer = service.detailEmployerService(employerSeq);
+		Employers employer = service.detailEmployerService(seq);
 
 		request.setAttribute("employer", employer);
 		
-		
+
 		/* 채용자들 성별 구하기 */
-		int man = service.selectEmployerManCount(employerSeq);
-		int woman = service.selectEmployerWomanCount(employerSeq);
+		int man = service.selectEmployerManCount(seq);
+		int woman = service.selectEmployerWomanCount(seq);
 
 		request.setAttribute("man", man);
 		request.setAttribute("woman", woman);
 
 		/* 채용자들 위치 구하기 */
-		List<MarkerLocation> mapList = service.selectHireMap(employerSeq);
+		List<MarkerLocation> mapList = service.selectHireMap(seq);
 
 		request.setAttribute("mapList", mapList);
 
 		/* 기업 평점 구하기 */
-		int avgTotal = EvaluationService.getInstance().selectAvgEvaluation(employerSeq);
+		int avgTotal = EvaluationService.getInstance().selectAvgEvaluation(seq);
 		request.setAttribute("avgTotal", avgTotal);
 		
 		// 한 기업의 전체 공고목록 불러오기
-		List<Recruitments> recruitmentList = service.recruitmentListService(request);
+		List<Recruitments> recruitmentList = service.recruitmentListService(seq);
 		request.setAttribute("recruitmentList", recruitmentList);
 		System.out.println("전체 공고목록 : " + recruitmentList.size());
 
 		// 전체 공고의 지원자목록 불러오기
 		List<ApplyedEmployeeListMap> mapList1 = new ArrayList<ApplyedEmployeeListMap>();
-
+		
 		for (int i = 0; i < recruitmentList.size(); i++) {
 			ApplyedEmployeeListMap mapClass = new ApplyedEmployeeListMap();
 			mapClass.setKey(i);
@@ -72,7 +69,7 @@ public class EmployerDetailAction implements Action {
 		
 		
 		// 진행중인 공고목록
-		List<Recruitments> nowRecruinmentList = service.nowRecruinmentListService(request);
+		List<Recruitments> nowRecruinmentList = service.nowRecruinmentListService(seq);
 		request.setAttribute("nowRecruinmentList", nowRecruinmentList);
 		System.out.println("진행중 공고목록 : " + nowRecruinmentList.size());
 
@@ -90,7 +87,7 @@ public class EmployerDetailAction implements Action {
 		
 		
 		// 마감된 공고목록
-		List<Recruitments> endRecruitmentList = service.endRecruitmentListService(request);
+		List<Recruitments> endRecruitmentList = service.endRecruitmentListService(seq);
 		request.setAttribute("endRecruitmentList", endRecruitmentList);
 		System.out.println("endRecruitmentList : "+endRecruitmentList.size());
 

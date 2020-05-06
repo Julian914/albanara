@@ -10,7 +10,7 @@ import kosta.albanara.model.MarkerLocation;
 import kosta.albanara.model.Recruitments;
 import kosta.albanara.model.Resumes;
 import kosta.albanara.service.EmployeeService;
-import kosta.albanara.service.HyunMapService;
+import kosta.albanara.service.MapService;
 import kosta.albanara.service.MarkerLocationService;
 import kosta.albanara.service.RecruitmentService;
 
@@ -24,7 +24,8 @@ public class RecommendEmployeeFormAction implements Action {
 		MarkerLocationService markerService = MarkerLocationService.getInstance();
 		RecruitmentService recruitmentService = RecruitmentService.getInstance();
 		HttpSession session = request.getSession();
-//		String employerId = (String)session.getAttribute("id");
+		
+		
 		int employerSeq = (Integer)session.getAttribute("seq");
 		double employerLatitude =  Double.parseDouble((String)session.getAttribute("latitude"));
 		System.out.println(employerLatitude);
@@ -42,7 +43,7 @@ public class RecommendEmployeeFormAction implements Action {
 			MarkerLocation markerLocation = markerService.sessionAddressService(address);
 			double lat2 = Double.parseDouble(markerLocation.getLatitude());
 			double lon2 = Double.parseDouble(markerLocation.getLongitude());
-			double distance = HyunMapService.distance(employerLatitude, employerLongitude, lat2, lon2);
+			double distance = MapService.distance(employerLatitude, employerLongitude, lat2, lon2);
 			if (distance > 3 || !recruitmentType.equals(favoriteField) || !gender.equals(employeeGender)) {
 				allEmployeeList.remove(i);
 			}

@@ -31,7 +31,6 @@ import kosta.albanara.action.UpdateResumeAction;
 import kosta.albanara.action.UpdateResumeFormAction;
 import kosta.albanara.action.ShowEmployerPageAction;
 import kosta.albanara.action.logOutAction;
-import kosta.albanara.action.recommendEmployeeFormAction;
 import kosta.albanara.action.EmployerFormAction;
 import kosta.albanara.action.EmployerLogInAction;
 import kosta.albanara.action.EmployerSignUpAction;

@@ -26,8 +26,12 @@
 <script src="/Albanara/js/Chart.bundle.js" type="text/javascript"></script>
 <script src="/Albanara/js/employerPage.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-$(".accordion").accordion();
+<script>
+   $(function() {
+      $(".accordion").accordion({
+         heightStyle : "content"
+      });
+   });
 </script>
 
 <jsp:include page="header.html"></jsp:include>
@@ -251,9 +255,7 @@ $(".accordion").accordion();
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=814861f68a4b2c5498535e608555d96a&libraries=services"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=814861f68a4b2c5498535e608555d96a&libraries=services,clusterer,drawing"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"
-	integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-	crossorigin="anonymous"></script>
+
 <script>
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  

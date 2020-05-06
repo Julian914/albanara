@@ -7,10 +7,6 @@
 #5A8DCC*/
 
 
-.container {
-    display: grid;
-    grid-template-columns: 5fr 1fr;
-}
 .loginIdPassSumbmit {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -56,4 +52,14 @@
 
 #login_form input[type="submit"]:hover {
     cursor: pointer;
+}
+
+.sign_btn{
+	width: 141px;
+}
+
+.sign_btn:hover {
+	background-color: #71B2FF;
+	font-weight: bold;
+	color: white;
 }

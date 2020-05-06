@@ -42,6 +42,7 @@ public class MapDao {
       try {
     	 list = sqlSession.getMapper(RecruitmentMapper.class).showNearRecruitments();
          System.out.println(list);
+         System.out.println("Mapdao 안");
       } catch (Exception e) {
          e.printStackTrace();
       } finally {

@@ -33,6 +33,7 @@ public class MapService {
 	
 
 	public List<NearRecruitments> nearRecruitment() {
+		System.out.println("MapService 안");
 		return mapDao.nearRecruitment();
 	}
 	

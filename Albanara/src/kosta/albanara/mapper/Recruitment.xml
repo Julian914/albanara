@@ -200,7 +200,7 @@
 
 	<!--한 기업의 마감된 공고목록 -->
 	<select id="endRecruitmentList" resultMap="Recruitments">
-		select *from recruitments where sysdate > closing_date and employer_seq=#{employerSeq}
+		select * from recruitments where sysdate > closing_date and employer_seq=#{employerSeq}
 	</select>
 
 

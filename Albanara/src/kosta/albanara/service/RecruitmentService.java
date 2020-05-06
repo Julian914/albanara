@@ -30,12 +30,8 @@ public class RecruitmentService {
 		return instance; 
 	}
 
-	public List<Recruitments> recruitmentListService(HttpServletRequest request) throws Exception {
-		request.setCharacterEncoding("utf-8");
-		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
-		int employerSeq =1;
-		
-		List<Recruitments> list = recruitmentDao.totalRecruitmentList(employerSeq);
+	public List<Recruitments> recruitmentListService(int seq) throws Exception {
+		List<Recruitments> list = recruitmentDao.totalRecruitmentList(seq);
 		return list;
 	}
 
@@ -45,11 +41,8 @@ public class RecruitmentService {
 		return list;
 	}
 
-	public List<Recruitments> endRecruitmentListService(HttpServletRequest request) throws Exception {
-		request.setCharacterEncoding("utf-8");
-		int employerSeq = Integer.parseInt(request.getParameter("seq"));
-		//int employerSeq =1;
-		List<Recruitments> list =  recruitmentDao.endRecruitmentList(employerSeq);
+	public List<Recruitments> endRecruitmentListService(int seq) throws Exception {
+		List<Recruitments> list =  recruitmentDao.endRecruitmentList(seq);
 		return list;
 	}
 

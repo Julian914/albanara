@@ -119,29 +119,19 @@ public class EmployerService {
 	
 	
 	//기업의 전체 공고목록
-	public List<Recruitments> recruitmentListService(HttpServletRequest request) throws Exception {
-		request.setCharacterEncoding("utf-8");
-		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
-		int employerSeq =1;
-		
-		List<Recruitments> list = employerDao.totalRecruitmentList(employerSeq);
+	public List<Recruitments> recruitmentListService(int seq) throws Exception {
+		List<Recruitments> list = employerDao.totalRecruitmentList(seq);
 		return list;
 	}
 	// 기업의 진행중인 공고목록
-	public List<Recruitments> nowRecruinmentListService(HttpServletRequest request) throws Exception {
-		request.setCharacterEncoding("utf-8");
-		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
-		int employerSeq =1;
-		List<Recruitments> list =  employerDao.nowRecruinmentList(employerSeq);
+	public List<Recruitments> nowRecruinmentListService(int seq) throws Exception {
+		List<Recruitments> list =  employerDao.nowRecruinmentList(seq);
 		return list;
 	}
 
 		//기업의 마감된 공고목록
-	public List<Recruitments> endRecruitmentListService(HttpServletRequest request) throws Exception {
-		request.setCharacterEncoding("utf-8");
-		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
-		int employerSeq =1;
-		List<Recruitments> list =  employerDao.nowRecruinmentList(employerSeq);
+	public List<Recruitments> endRecruitmentListService(int seq) throws Exception {
+		List<Recruitments> list =  employerDao.endRecruitmentList(seq);
 		return list;
 	}
 	
