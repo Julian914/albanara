@@ -235,24 +235,24 @@ $(function() {
 				</c:forEach>
 			</div>
 		</div>
+	<br>
+<br>
+		<div id="chart">
+			<div class="row2">
+				<div class="col-md-6">
+				<h3>기업 등급</h3>
+					<canvas id="employerGrade" width="500px"></canvas>	
+				</div>
+				<div class="col-md-6">	
+				<h3>채용자 성별 현황</h3>
+					<canvas id="employerGender" width="500px"></canvas>
+				</div>
+			</div>
+		</div>
 	</div>
-
-	<div id="map" style="width: 300px; height: 300px; margin-top: 10px;"></div>
-	<canvas id="employerGender" width="800"></canvas>
-
-
-
 	<footer></footer>
-
-	<script>
-$(document).ready(function() {
-    $("header").load("header.html")
-    $("nav").load("nav.html")
-    $("footer").load("footer.html")
- });
-</script>
-<jsp:include page="footer.html" ></jsp:include>
 </body>
+
 
 
 <script
@@ -261,57 +261,137 @@ $(document).ready(function() {
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=814861f68a4b2c5498535e608555d96a&libraries=services"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=814861f68a4b2c5498535e608555d96a&libraries=services,clusterer,drawing"></script>
-
 <script>
-
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
-mapOption = { 
-    center: new kakao.maps.LatLng(37.4849665053325, 127.034757121285), // 지도의 중심좌표
-    level: 3 // 지도의 확대 레벨 
-};
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-
-<c:forEach items="${mapList}" var="item">
-	console.log('${item}')
-	//마커를 생성합니다
-	var marker = new kakao.maps.Marker({
-	 position: new kakao.maps.LatLng(parseFloat("${item.longitude}"), parseFloat("${item.latitude}")) //마커가 표시될 위치입니다 
-	});
-	
-	//마커가 지도 위에 표시되도록 설정합니다
-	marker.setMap(map);
-</c:forEach>
-
-
-
-//아래 코드는 지도 위의 마커를 제거하는 코드입니다
-//marker.setMap(null);    
-
-
 var employerGender = $('#employerGender');
-var myDoughnutChart = new Chart(employerGender, {
+var employerGender = new Chart(employerGender, {
     type: 'pie',
     data: {
         labels: ['여자', '남자'],
         datasets: [{
             label: '채용자 성별 현황',
             data: [${woman}, ${man}],
-            backgroundColor: [
-            	'rgba(255, 99, 132, 0.2)',
-            	'rgba(54, 162, 235, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)'
-            ],
-            borderWidth: 1
+            backgroundColor : [ 'rgba(255, 99, 132, 0.2)',
+				'rgba(54, 162, 235, 0.2)' ],
+		borderColor : [ 'rgba(255, 99, 132, 1)',
+				'rgba(54, 162, 235, 1)' ],
+		borderWidth : 1
         }]
     },
-    options: {}
+    options : {
+		plugins : {
+			textPie : false
+		}
+	}
 });
 
 
-</script>
 
+var employerGrade = $('#employerGrade');
+var employerGrade = new Chart(
+		employerGrade,
+		{
+			type : 'doughnut',
+			data : {
+				labels : [ "매우 불량", "불량", "평균", "우수", "최우수" ],
+				datasets : [ {
+					label : '기업 등급',
+					data : [ 30, 20, 20, 20, 10 ],
+					backgroundColor : [ 'rgba(255, 99, 132, 0.2)',
+							'rgba(54, 162, 235, 0.2)',
+							'rgba(255, 206, 86, 0.2)',
+							'rgba(75, 192, 192, 0.2)',
+							'rgba(153, 102, 255, 0.2)' ],
+					borderColor : [ 'rgba(255,99,132,1)',
+							'rgba(54, 162, 235, 1)',
+							'rgba(255, 206, 86, 1)',
+							'rgba(75, 192, 192, 1)',
+							'rgba(153, 102, 255, 1)' ],
+					borderWidth : 1
+				} ]
+			},
+			options : {
+				rotation : 1 * Math.PI,
+				circumference : 1 * Math.PI,
+				plugins : {
+					textPie : true,
+					datalabels : {
+						color : '#111',
+						textAlign : 'center',
+						font : {
+							lineHeight : 1.6
+						},
+						formatter : function(value, ctx) {
+							return ctx.chart.data.labels[employerGrade.dataIndex]
+									+ 'n' + value + '%';
+						}
+					}
+				},
+				tooltips : {
+					enabled : false
+				}
+			}
+		});
+
+var employerScore = 66;
+var employerScoreGrade = '';
+if (employerScore >= 90) {
+	employerScoreGrade = '최우수';
+} else if (employerScore >= 70) {
+	employerScoreGrade = '우수';
+} else if (employerScore >= 50) {
+	employerScoreGrade = '양호';
+} else if (employerScore >= 30) {
+	employerScoreGrade = '불량';
+} else {
+	employerScoreGrade = '매우 불량';
+}
+
+Chart.pluginService
+		.register({
+			id : 'textPie',
+			beforeDraw : function(chart) {
+				var width = chart.chart.width, height = chart.chart.height, ctx = chart.chart.ctx;
+
+				ctx.restore();
+				var fontSize = 30;
+				ctx.font = fontSize + "px sans-serif";
+				ctx.textBaseline = "middle";
+				ctx.fontWeight = "bold";
+
+				var text = employerScoreGrade + " " + employerScore + "점", textX = Math
+						.round((width - ctx.measureText(text).width) / 2), textY = height - 80;
+
+				ctx.fillText(text, textX, textY);
+				ctx.save();
+			}
+		});
+
+
+
+
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+	mapOption = {
+		center : new kakao.maps.LatLng(37.4849665053325, 127.034757121285), // 지도의 중심좌표
+		level : 3
+	// 지도의 확대 레벨 
+	};
+	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+	<c:forEach items="${mapList}" var="item">
+	console.log('${item}')
+	//마커를 생성합니다
+	var marker = new kakao.maps.Marker({
+		position : new kakao.maps.LatLng(parseFloat("${item.longitude}"),
+				parseFloat("${item.latitude}"))
+	//마커가 표시될 위치입니다 
+	});
+
+	//마커가 지도 위에 표시되도록 설정합니다
+	marker.setMap(map);
+	</c:forEach>
+
+	//아래 코드는 지도 위의 마커를 제거하는 코드입니다
+	//marker.setMap(null);    
+
+</script>
 </html>
