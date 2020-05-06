@@ -31,6 +31,9 @@
 <a href="member/detailEmployers.do?seq=1">기업 상세페이지 이동(기업)</a><br>
 <a href="member/showEmployersPage.do?seq=1">기업 상세페이지 이동(구직자)</a><br>
 <a href="session/logOut.do">로그아웃</a><br>
+<a href="member/insertResumeForm.do">이력서 등록</a><br>
+<a href="member/searchResume.do">이력서 조회</a><br>
+<a href="member/updateResume.do">이력서 수정</a><br>
 <b><%=id%></b>님 반갑습니다.
 
 
