@@ -1,0 +1,158 @@
+@charset "UTF-8";
+/*
+#385880
+#BDDBFF
+#71B2FF <포인트 색>
+#5E6D80
+#5A8DCC*/
+
+/* header css */
+
+body {
+    margin: 0;
+}
+
+.header_top ul {
+    list-style-type: none;
+    padding-right: 8px;
+    text-align: right;
+    font-size: 12px;
+}
+
+.header_top li {
+    display: inline-block;
+    position: relative;
+    margin: 0 8px
+}
+
+.header_top a:not(:last-child)::after {
+    font-size: 10px;
+    color: lightgray;
+    font-weight: bold;
+    content: "|";
+    position: absolute;
+    margin: 0px;
+    margin-top: 1px;
+}
+
+.header_top a {
+    color: black;
+}
+.header_main {
+    padding: 30px 80px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.header_main img {
+    width: 180px;
+}
+
+.header_search {
+    display: inline-block;
+    padding-left: 130px;
+    padding-top: 20px;
+    
+}
+
+.header_search input[type="text"] {
+    width: 300px;
+    font-size: 15px;
+    border: none;
+    padding: 10px;
+    border: 2px solid #71B2FF;
+    position: relative;
+}
+
+
+.header_search input[type="submit"] {
+    display: inline-block;
+    font-size: 15px;
+    border: none;
+    background-color: #71B2FF;
+    color: white;
+    padding: 12px 15px;
+    position: absolute;
+}
+
+.header_search input[type="submit"]:hover {
+    cursor: pointer;
+}
+
+/* nav css */
+.nav_bar {
+    border-top: 1px solid lightgrey;
+    border-bottom: 3px solid #71B2FF;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    list-style-type: none;
+    padding-left: 66px;
+    margin-bottom: 40px;
+}
+
+
+.nav_bar li {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.nav_bar a {
+    color: black;
+    padding: 17.5px;
+}
+
+.nav_bar a:hover {
+    border-bottom: 3px solid #5E6D80;
+    color: #5E6D80;
+}
+
+
+/* footer css */
+.footer {
+    border-top: 1px solid lightgrey;
+    background-color: #f2f2f2;
+    padding: 30px 70px;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+    font-size: 14px;
+    grid-gap: 20px;
+}
+
+.footer_img {
+    padding-left: 200px;
+}
+.footer_img img {
+    width: 130px;
+}
+
+.footer_bar {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.footer_bar a {
+    display: inline-block;
+    color: black;
+    margin-right: 20px;
+}
+
+.footer_bar li {
+    display: inline-block;
+}
+
+.footer_bar a:first-child {
+    color: #5A8DCC;
+    font-weight: bold;
+}
+
+.footer_right {
+    color: darkgrey;
+    margin-top: 20px;
+}
+
+.footer_bottom, .footer_right{
+    font-size: 12px;
+}

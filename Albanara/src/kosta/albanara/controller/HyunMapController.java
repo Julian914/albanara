@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import kosta.albanara.action.ActionForward;
 import kosta.albanara.action.HyunMapAction;
 
-@WebServlet("/Main/*")
+@WebServlet("/main/*")
 public class HyunMapController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -36,6 +36,13 @@ public class HyunMapController extends HttpServlet {
 		
 		switch (command) {
 		case "hyunMapAction.do":
+			try {
+				actionForward = new HyunMapAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case "mainAction.do":
 			try {
 				actionForward = new HyunMapAction().execute(request, response);
 			} catch (Exception e) {
