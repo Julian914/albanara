@@ -89,9 +89,5 @@ div.modal-body ul{
 .typeIcon {
 	width: 30px;
 	height: 30px;
-	margin-bottom: 6px;
-}
-
-#chart{
-	width: 1000px;
+	margin-bottom: 6px; 
 }

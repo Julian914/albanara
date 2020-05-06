@@ -269,7 +269,7 @@
 					<canvas id="employerGrade" width="500px"></canvas>	
 				</div>
 				<div class="col-md-6">	
-				<h3>성별 현황</h3>
+				<h3>채용자 성별 현황</h3>
 					<canvas id="employerGender" width="500px"></canvas>
 				</div>
 			</div>

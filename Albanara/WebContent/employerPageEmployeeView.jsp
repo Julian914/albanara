@@ -24,18 +24,16 @@
 <script src="/Albanara/js/Chart.js" type="text/javascript"></script>
 <script src="/Albanara/js/Chart.bundle.js" type="text/javascript"></script>
 
+<jsp:include page="header.html" ></jsp:include>
+<jsp:include page="nav.html" ></jsp:include>
+
+
 <script>
 $(function() {
 	$(".accordion").accordion({
 		heightStyle : "content"
 	});
 });
-
-$(document).ready(function() {
-    $("header").load("/Albanara/header.html")
-    $("nav").load("/Albanara/nav.html")
-    $("footer").load("/Albanara/footer.html")
- });
 </script>
 
 
@@ -53,8 +51,7 @@ $(document).ready(function() {
 			<br> <br>
 			<div class="row">
 				<div class="col-md-4">
-					<img class="employerFile"
-						src="/Albanara/images/employerPage/noImage.png"
+					<img class="employerFile" src="/Albanara/images/employerPage/noImage.png"
 						style="width: 300px; height: 300px; margin-top: 10px;"><br>
 					<br>
 				</div>
@@ -63,33 +60,33 @@ $(document).ready(function() {
 					<div class="employerInfo">
 						<ul>
 							<li>기업명 :</li>
-							<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>
-									${employer.employerName}</b></li>
+							<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> ${employer.employerName}</b></li>
 							<li>기업주소:</li>
 							<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>${employer.employerAddress }</b></li>
-							<li>홈페이지 :
-							<li>
+							<li>홈페이지 :<li>
 							<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
-								class="homepageAddress" href="employer.employerHomePage">홈페이지
-									바로가기</a></li>
+								class="homepageAddress" href="employer.employerHomePage">홈페이지 바로가기</a></li>
 							<li>전화번호:</li>
 							<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>${employer.employerNumber}</b></li>
 							<li>분야 :</li>
 							<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>
-									${employer.employerField} <c:if
-										test="${employer.employerField == 'strength' }">
-										<img class="typeIcon"
-											src="/Albanara/images/icons/strength.png" alt="힘">
-									</c:if> <c:if test="${employer.employerField == 'intelligence' }">
-										<img class="typeIcon"
-											src="/Albanara/images/icons/intelligence.png" alt="지능">
-									</c:if> <c:if test="${employer.employerField == 'kindness' }">
-										<img class="typeIcon"
-											src="/Albanara/images/icons/kindness.png" alt="친절">
-									</c:if> <c:if test="${employer.employerField == 'patience' }">
-										<img class="typeIcon"
-											src="/Albanara/images/icons/patience.png" alt="끈기">
-									</c:if>
+							${employer.employerField}
+							<c:if test="${employer.employerField == 'strength' }">
+								<img class="typeIcon" src="/Albanara/images/icons/strength.png"
+									alt="힘">
+							</c:if>
+							<c:if test="${employer.employerField == 'intelligence' }">
+								<img class="typeIcon"
+									src="/Albanara/images/icons/intelligence.png" alt="지능">
+							</c:if>
+							<c:if test="${employer.employerField == 'kindness' }">
+								<img class="typeIcon" src="/Albanara/images/icons/kindness.png"
+									alt="친절">
+							</c:if>
+							<c:if test="${employer.employerField == 'patience' }">
+								<img class="typeIcon" src="/Albanara/images/icons/patience.png"
+									alt="끈기">
+							</c:if>
 							</b></li>
 							<br>
 							<li><b><img class="evalIcon"
@@ -238,13 +235,17 @@ $(document).ready(function() {
 				</c:forEach>
 			</div>
 		</div>
+	<br>
+<br>
 		<div id="chart">
-			<div class="row">
+			<div class="row2">
 				<div class="col-md-6">
-					<canvas id="employerGrade" width="800"></canvas>
+				<h3>기업 등급</h3>
+					<canvas id="employerGrade" width="500px"></canvas>	
 				</div>
-				<div class="col-md-6">
-					<canvas id="employerGender" width="800"></canvas>
+				<div class="col-md-6">	
+				<h3>채용자 성별 현황</h3>
+					<canvas id="employerGender" width="500px"></canvas>
 				</div>
 			</div>
 		</div>
@@ -393,5 +394,4 @@ Chart.pluginService
 	//marker.setMap(null);    
 
 </script>
-
 </html>
