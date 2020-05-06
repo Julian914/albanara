@@ -113,6 +113,9 @@
 		employee_pw = #{employeePw}
 	</select>
 
+	<select id ="allEmployeeList" resultMap = "Employees">
+		select * from employees
+	</select>
 
 
 </mapper>
