@@ -243,29 +243,29 @@
 			
 	        <div class="col-md-4 login_container">
 	        	<form id="login_form">
-	        		<div class="btn-group btn-group-toggle" data-toggle="buttons">
-						<label class="btn radio_btn">
+	        		<div class="btn-group btn-group-toggle col-md-12" data-toggle="buttons">
+						<label class="col-md-6 btn radio_btn ">
 							<input type="radio" name="login" id="employee" required="required"> 개인회원
 						</label>
-						<label class="btn radio_btn">
+						<label class="col-md-6 btn radio_btn" style="margin-top: 10px;">
 							<input type="radio" name="login" id="employer" required="required"> 기업회원
 						</label>
 						
 					</div>
 					<br>
-					<div class="loginIdPassSumbmit">
-						<div class="idPass">
+					<div class="loginIdPassSumbmit ">
+						<div class="idPass col-md-8">
 		                    <input id="logInId" name="logInId" type="text" maxlength="16" placeholder="아이디" required="required"><br>
 		                    <input id="logInPw" name="logInPw" type="password" maxlength="16" placeholder="비밀번호" required="required"><br>
 		                </div>
-		                <div class="submitBtn">
+		                <div class="submitBtn col-md-4">
 		                    <input type="submit" value="로그인">
 		                </div>
 	                </div>
 	                
-	                <div class="">
-	                	<input class="btn sign_btn" type="button" value="개인회원가입" onClick="location.href='/Albanara/member/employeeSignUpForm.do'">
-	                	<input class="btn sign_btn" type="button" value="기업회원가입" onClick="location.href='/Albanara/member/employerSignUpForm.do'">
+	                <div class="row col-md-12">
+	                	<input class="btn sign_btn col-md-6" type="button" value="개인회원가입" onClick="location.href='/Albanara/member/employeeSignUpForm.do'">
+	                	<input class="btn sign_btn col-md-6" type="button" value="기업회원가입" onClick="location.href='/Albanara/member/employerSignUpForm.do'">
 	                </div>
 	        	</form>
 	        </div>
