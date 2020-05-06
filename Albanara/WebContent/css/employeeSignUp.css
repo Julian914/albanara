@@ -147,7 +147,7 @@ input:focus { outline: none; }
 }
 
 #employeeSignUp #employeeEmailInput{
-	width: 300px;
+	width: 150px;
 	height: 40px;
 	margin-bottom: 10px;
 	border-radius: 5px;
@@ -303,7 +303,7 @@ input:focus { outline: none; }
 
 #employeeSignUp #employeeBirthYear{
 	background-color: white;
-	width: 40px;
+	width: 70px;
 	height: 35px;
 	margin-bottom: 5px;
 	border-radius: 5px;
@@ -317,13 +317,13 @@ input:focus { outline: none; }
 
 #employeeSignUp #employeeBirthMonth{
 	background-color: white;
-	width: 40px;
+	width: 70px;
 	height: 35px;
 	margin-bottom: 5px;
 	border-radius: 5px;
 	border: 0;
 	outline: 0;
-	padding-left: 10px;
+	padding-left: 20px;
 	margin-right: 0px;
 	margin-left: 10px;
 	
@@ -331,7 +331,7 @@ input:focus { outline: none; }
 
 #employeeSignUp #employeeBirthDay{
 	background-color: white;
-	width: 40px;
+	width: 70px;
 	height: 35px;
 	margin-bottom: 5px;
 	border-radius: 5px;
@@ -370,7 +370,7 @@ input:focus { outline: none; }
 
 #employeeSignUp #employeePhone010{
 	background-color: white;
-	width: 30px;
+	width: 50px;
 	height: 35px;
 	margin-bottom: 5px;
 	border-radius: 5px;
@@ -384,7 +384,7 @@ input:focus { outline: none; }
 
 #employeeSignUp #employeePhoneFirst{
 	background-color: white;
-	width: 30px;
+	width: 50px;
 	height: 35px;
 	margin-bottom: 5px;
 	border-radius: 5px;
@@ -398,7 +398,7 @@ input:focus { outline: none; }
 
 #employeeSignUp #employeePhoneSecond{
 	background-color: white;
-	width: 30px;
+	width: 50px;
 	height: 35px;
 	margin-bottom: 5px;
 	border-radius: 5px;
@@ -413,6 +413,7 @@ input:focus { outline: none; }
 
 #employeeSignUp #employeeEmailOption{
 	margin-top: 10px;
+	width: 130px;
 	height: 30px;
 	margin-bottom: 50px;
 	border-radius: 5px;

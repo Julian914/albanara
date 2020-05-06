@@ -8,14 +8,31 @@
 <link rel="stylesheet" href="/Albanara/css/jquery-ui.css">
 <link rel="stylesheet" href="/Albanara/css/bootstrap.css">
 <link rel="stylesheet" href="/Albanara/css/bootstrap-theme.css">
+<link rel="stylesheet" type="text/css" href="/Albanara/css/style.css">
 <link rel="stylesheet" href="/Albanara/css/employerSignUp.css" type="text/css" />
 <script src="/Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
 <script src="/Albanara/js/jquery-ui.js" type="text/javascript"></script>
 <script src="/Albanara/js/bootstrap.js" type="text/javascript"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=814861f68a4b2c5498535e608555d96a&libraries=services"></script>
+
+<jsp:include page="header.html"></jsp:include>
+<jsp:include page="nav.html"></jsp:include>
+
+<script>
+$(document).ready(function() {
+    $("header").load("header.html")
+    $("nav").load("nav.html")
+    $("footer").load("footer.html")
+ });
+</script>
+
 </head>
 <body>
+
+	<header></header>
+	<nav></nav>
+	
 <div class="container">
 	<form action="insertEmployers.do" id="employerSignUp" method="post">
 		<h1>기업 회원가입 </h1>
@@ -210,6 +227,7 @@
 	</form>
 	
 </div>
-
+<footer></footer>
 </body>
+<jsp:include page="footer.html"></jsp:include>
 </html>
