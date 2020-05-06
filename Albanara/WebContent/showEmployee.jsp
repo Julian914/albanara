@@ -9,20 +9,21 @@
 .container {
 	max-width: 960px;
 }
-#employeeDetail li{
-	font-weight: bolder4;
-	font-size : 15px;
-	
-}
+
 h3{
-	background-color: #5A8DCC;
-	margin-top: 30px;
-	display: inline;
+	color: #5A8DCC;
+	margin-top: 40px;
+	display: inline-block;
 	font-style: D2coding;
-	font-weight: bold;
-	
+	font-weight: bold;	
 }
 
+
+
+.row span, .row h4{
+	display : inline-block;
+	font-size: 20px;
+}
 </style>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/Albanara/css/jquery-ui.css">
@@ -51,17 +52,34 @@ $(document).ready(function() {
 <body>
 <header></header>
 <nav></nav>
+
 <div class = "container">
 	<div id = "employeeDetail">
 		<h1>구직자 마이페이지</h1>
-			<ul>	
-				<li>이름: ${employee.employeeName }</li>
-				<li>생년월일: ${employee.employeeBirthday }</li>
-				<li>성별: ${employee.employeeGender }</li>
-				<li>주소: ${employee.employeeAddress }</li>
-				<li>연락처: ${employee.employeePhone }</li>
-				<li>이메일: ${employee.employeeEmail }</li>
-			</ul>
+		<div class = "row">
+			<h4 class = "col-md-6">이름 : </h4>
+			<span class = "col-md-6">${employee.employeeName }</span>
+		</div>
+		<div class = "row">
+			<h4 class = "col-md-6">생년월일 :</h4>
+			<span class = "col-md-6">${employee.employeeBirthday}</span>
+		</div>
+		<div class = "row">
+			<h4 class = "col-md-6">성별 : </h4>
+			<span class = "col-md-6">${employee.employeeGender}</span>
+		</div>	
+		<div class = "row">
+			<h4 class = "col-md-6">주소 : </h4>
+			<span class = "col-md-6">${employee.employeeAddress}</span>
+		</div>	
+		<div class = "row">
+			<h4 class = "col-md-6">연락처 : </h4>
+			<span class = "col-md-6">${employee.employeePhone}</span>
+		</div>	
+		<div class = "row">
+			<h4 class = "col-md-6">이메일 : </h4>
+			<span class = "col-md-6">${employee.employeeEmail}</span>
+		</div>																				
 	</div>
 	<h3>제안 받은 공고</h3>
 	
@@ -87,9 +105,10 @@ $(document).ready(function() {
 								var="enddate" value="${list.endingWorkingDate}"
 								pattern="yyyy-MM-dd" /> <fmt:formatDate value="${enddate}"
 								pattern="yyyy.MM.dd" /></li>
-						<li><input type="button" onclick="location.href='../recruitment/showRecruitmentAction.do?seq=${list.recruitmentSeq}'" value="상세 보기">
-						<input type="button" onclick="location.href='../recruitment/acceptProposalAction.do?recruitmentSeq=${list.recruitmentSeq}&employeeSeq=${employee.employeeSeq}'" value="수락하기">
-						<input type="button" onclick="location.href='../recruitment/rejectProposalAction.do?recruitmentSeq=${list.recruitmentSeq}&employeeSeq=${employee.employeeSeq}'" value="거절하기">
+						<li>
+							<input type="button" onclick="location.href='../recruitment/showRecruitmentAction.do?seq=${list.recruitmentSeq}'" value="상세 보기">
+							<input type="button" onclick="location.href='../recruitment/acceptProposalAction.do?recruitmentSeq=${list.recruitmentSeq}&employeeSeq=${employee.employeeSeq}'" value="수락하기">
+							<input type="button" onclick="location.href='../recruitment/rejectProposalAction.do?recruitmentSeq=${list.recruitmentSeq}&employeeSeq=${employee.employeeSeq}'" value="거절하기">
 						</li>
 					</ul>
 				</div>
