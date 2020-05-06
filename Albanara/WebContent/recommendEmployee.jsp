@@ -22,7 +22,7 @@
 				</div>
 				<div>
 					<input type="button" 
-					onclick="location.href='../member/searchResume.do?employerSeq=${recommendEmployeeList.employerSeq}'" 
+					onclick="location.href='../member/searchResume.do?employerSeq=${recommendEmployeeList.employeeSeq}'" 
 					value="이력서보기">			
 				</div>	
 			</c:forEach>
