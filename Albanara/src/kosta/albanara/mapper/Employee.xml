@@ -70,7 +70,7 @@
 			favorite_field from resumes where resume_seq = (select resume_seq from employees 
 			where employee_seq = #{employeeSeq}) -->
 		select * from resumes where resume_seq = (select resume_seq from
-		employees where employee_seq = #{employeeSeq})
+		employees where employee_seq = 1)
 	</select>
 
 	<!-- 이력서 수정 (동현) -->
@@ -79,7 +79,7 @@
 		picture_filename = #{pictureFilename}, resume_title = #{resumeTitle},
 		resume_contents = #{resumeContents}, desired_working_area =
 		#{desiredWorkingArea}, favorite_field = #{favoriteField},
-		last_modify_date = sysdate where s_resume_seq = 1
+		last_modify_date = sysdate where resume_seq = 1
 	</update>
 
 	<update id="updateEmployee" parameterType="Employees">
