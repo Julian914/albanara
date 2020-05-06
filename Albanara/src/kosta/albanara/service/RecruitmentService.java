@@ -29,7 +29,15 @@ public class RecruitmentService {
 		return instance; 
 	}
 
-	public List<Recruitments> recruitmentListService(HttpServletRequest request) throws Exception {
+	//진행중인 전체 공고목록
+	public List<Recruitments> recruitmentList()throws Exception {
+		List<Recruitments> list = recruitmentDao.recruitmentList();
+		return list;
+	}
+	
+	
+	
+	public List<Recruitments> totalRecruitmentListService(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
 		int employerSeq =1;
@@ -48,16 +56,12 @@ public class RecruitmentService {
 
 	public List<Recruitments> endRecruitmentListService(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		int employerSeq = Integer.parseInt(request.getParameter("seq"));
-		//int employerSeq =1;
+		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
+		int employerSeq =1;
 		List<Recruitments> list =  recruitmentDao.endRecruitmentList(employerSeq);
 		return list;
 	}
 
-	public List<Employees> employeeListService(int recruitmentSeq) throws Exception {
-		List<Employees> employeeList = recruitmentDao.employeeList(recruitmentSeq);
-		return employeeList;
-	}
 
 	public int insertRecruitment(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("UTF-8");
@@ -235,12 +239,7 @@ public class RecruitmentService {
 		recruitmentDao.rejectProposalRecruitments(employeeSeq, recruitmentSeq);
 	}
 	
-	
-	public List<Employees> hiredEmployeeListService()throws Exception{
-		return recruitmentDao.hiredEmployeeList();
-	}
-	
-	
+
 	/*공고에 지원한 남자 수*/
 	public int selectRecruitmentManCount(int seq) {
 		return recruitmentDao.selectRecruitmentManCount(seq);

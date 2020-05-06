@@ -17,6 +17,7 @@ import kosta.albanara.action.InsertApplicationAction;
 import kosta.albanara.action.RecruitmentListAction;
 import kosta.albanara.action.ProposalRejectAction;
 import kosta.albanara.action.ShowRecruitmentAction;
+import kosta.albanara.action.TotalRecruitmentsAction;
 import kosta.albanara.action.UpdateRecruitmentAction;
 import kosta.albanara.action.UpdateRecruitmentForm;
 import kosta.albanara.action.insertProposalAction;
@@ -85,9 +86,16 @@ public class RecruitmentController extends HttpServlet {
 				e.printStackTrace();
 			}
 			break;	
-		case "recruitmentList.do":  //진행중인 공고목록 불러오기
+		case "recruitmentList.do":  //한 기업의 공고목록 불러오기
 			try {
 				actionForward = new RecruitmentListAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case "totalRecruitmentList.do":  //전체 공고목록 불러오기
+			try {
+				actionForward = new TotalRecruitmentsAction().execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -18,9 +18,8 @@ public interface RecruitmentMapper {
 	int updateRecruitment(Recruitments recruitment);
 	List<Recruitments> totalRecruitmentList(int employerSeq);
 	Recruitments getRecruitment(int seq);
-	List<Employees> applicantList(int recruitmentSeq); 
 	int deleteRecruitment(int seq);
-	List<Employees> employeeList(int recruitmentSeq);
+	//List<Employees> employeeList(int recruitmentSeq);
 	int insertApplication(Applications applications);
 	List<Recruitments> nowRecruinmentList(int employerSeq);
 	List<Recruitments> endRecruitmentList(int employerSeq); 
@@ -33,7 +32,7 @@ public interface RecruitmentMapper {
 	int selectRecruitmentWomanCount(int seq);
 	List<Recruitments> completeRecruitment(int employeeSeq);
 	List<Recruitments> applyRecruitment(int applySeq);
-	List<Employees> hiredEmployeeList();
+	//List<Employees> hiredEmployeeList();
     int insertProposal(Proposals proposals);
     int insertHiredHistory(HiredHistory hiredHistory);
 }

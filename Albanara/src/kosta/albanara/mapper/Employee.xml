@@ -114,5 +114,17 @@
 	</select>
 
 
+<!-- 해당 공고의 지원자 목록 불러오기 -->
+	<select id="employeeList" parameterType="int"
+		resultMap="Employees">
+		select * from employees where employee_Seq in(select
+		employee_Seq from applications where
+		recruitment_Seq=#{recruitmentSeq})
+	</select>
 
+<!-- 마감된 공고의 채용자 목록 불러오기 -->
+	<select id="hiredEmployeeList" resultMap="Employees">
+		select *from employees where employee_Seq in(select employee_Seq from hired_history where is_completed in(0,1))
+
+	</select>
 </mapper>

@@ -139,32 +139,10 @@
 	</delete>
 	<cache />
 
-	<resultMap id="Employees" type="Employees">
-		<result column="employee_Seq" property="employeeSeq" />
-		<result column="resume_Seq" property="resumeSeq" />
-		<result column="employee_Id" property="employeeId" />
-		<result column="employee_Pw" property="employeePw" />
-		<result column="employee_Name" property="employeeName" />
-		<result column="employee_Birthday" property="employeeBirthday" />
-		<result column="employee_Email" property="employeeEmail" />
-		<result column="employee_Gender" property="employeeGender" />
-		<result column="employee_Phone" property="employeePhone" />
-		<result column="employee_Address" property="employeeAddress" />
-		<result column="attribute_Count" property="attributeCount" />
-		<result column="noshow_Count" property="noshowCount" />
-		<result column="workingDay_Count" property="workingDayCount" />
-		<result column="activity_Avg" property="activityAvg" />
-		<result column="collaboration_Avg" property="collaborationAvg" />
-		<result column="diligency_Avg" property="diligencyAvg" />
-		<result column="leadership_Avg" property="leadershipAvg" />
-		<result column="comprehension_Avg" property="comprehensionAvg" />
-		<result column="contentment_Avg" property="contentmentAvg" />
-		<result column="strength_count" property="strengthcount" />
-		<result column="intelligence_Count"
-			property="intelligenceCount" />
-		<result column="kindness_Count" property="kindnessCount" />
-		<result column="patience_Count" property="patienceCount" />
-	</resultMap>
+
+	<select id="recruitmentList" resultMap="Recruitments">
+		SELECT * FROM Recruitments where closing_date > sysdate
+	</select> 
 
 
 	<!--한 기업의 전체 공고 목록 -->
@@ -183,14 +161,6 @@
 		select *from recruitments where sysdate > closing_date and employer_seq=#{employerSeq}
 	</select>
 
-
-	<!-- 해당 공고의 지원자 목록 불러오기 -->
-	<select id="employeeList" parameterType="int"
-		resultMap="Employees">
-		select * from employees where employee_Seq in(select
-		employee_Seq from applications where
-		recruitment_Seq=#{recruitmentSeq})
-	</select>
 
 
 	<!-- 모든 지원 정보 -->
@@ -321,11 +291,7 @@
 
 
 	
-	<!-- 마감된 공고의 채용자 목록 불러오기 -->
-	<select id="hiredEmployeeList" resultMap="Employees">
-		select *from employees where employee_Seq in(select employee_Seq from hired_history where is_completed in(0,1))
-
-	</select>
+	
 	
 	<select id= "applyRecruitment" parameterType="int" resultMap="Recruitments">
 	 SELECT r.recruitment_seq, 

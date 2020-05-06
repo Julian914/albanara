@@ -1,6 +1,7 @@
 package kosta.albanara.dao;
 
 import java.io.InputStream;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -215,6 +216,46 @@ public Employees employeeLogIn(Employees employees) {
 		}
 		return employee;
 	}
+
+
+
+//한 공고에 해당하는 지원자목록
+	public List<Employees> employeeList(int recruitmentSeq) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		List<Employees> employeeList = null;
+
+		try {
+			employeeList = sqlSession.getMapper(EmployeeMapper.class).employeeList(recruitmentSeq);
+			//System.out.println("dao: " + employeeList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		return employeeList;
+	}
+	
+	//채용된 구직자 목록
+	public List<Employees> hiredEmployeeList(){
+		List<Employees> hiredEmployeeList = null;
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			hiredEmployeeList = sqlSession.getMapper(EmployeeMapper.class).hiredEmployeeList();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if (sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		return hiredEmployeeList;
+	};
+	
+	
 
 
 
