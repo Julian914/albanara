@@ -256,8 +256,8 @@
                 </div>
                 
                 <div class="">
-                	<input type="button" value="기업회원가입">
-                	<input type="button" value="">
+                	<input class="btn" type="button" value="개인회원가입" onClick="location.href='/Albanara/member/employeeSignUpForm.do'">
+                	<input class="btn" type="button" value="기업회원가입" onClick="location.href='/Albanara/member/employerSignUpForm.do'">
                 </div>
         	</form>
         </div>
@@ -265,9 +265,9 @@
 	<footer></footer>
 <script>
 $(document).ready(function() {
-    $("header").load("header.html")
-    $("nav").load("nav.html")
-    $("footer").load("footer.html")
+    $("header").load("/Albanara/header.html")
+    $("nav").load("/Albanara/nav.html")
+    $("footer").load("/Albanara/footer.html")
  });
 </script>
 </body>

@@ -2,15 +2,15 @@ package kosta.albanara.service;
 
 import java.util.List;
 
-import kosta.albanara.dao.HyunMapDao;
+import kosta.albanara.dao.MapDao;
 import kosta.albanara.model.MarkerLocation;
 import kosta.albanara.model.NearRecruitments;
 
 
-public class HyunMapService {
+public class MapService {
 	
-	public static HyunMapService instance;
-	public static HyunMapDao mapDao;
+	public static MapService instance;
+	public static MapDao mapDao;
 	public static final double R = 6372.8; // In kilometers
     public static double distance(double lat1, double lon1, double lat2, double lon2) {
         double dLat = Math.toRadians(lat2 - lat1);
@@ -22,10 +22,10 @@ public class HyunMapService {
         double c = 2 * Math.asin(Math.sqrt(a));
         return R * c;
     }	
-	public static HyunMapService getInstance() {
+	public static MapService getInstance() {
 		if (instance == null) {
-			mapDao = HyunMapDao.getInstance(); 
-			instance = new HyunMapService();
+			mapDao = MapDao.getInstance(); 
+			instance = new MapService();
 		}
 		return instance;
 	}

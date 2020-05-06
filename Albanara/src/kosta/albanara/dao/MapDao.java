@@ -14,12 +14,12 @@ import kosta.albanara.model.MarkerLocation;
 import kosta.albanara.model.NearRecruitments;
 
 
-public class HyunMapDao {
-   private static HyunMapDao instance;
+public class MapDao {
+   private static MapDao instance;
 
-   public static HyunMapDao getInstance() {
+   public static MapDao getInstance() {
       if (instance == null)
-         instance = new HyunMapDao();
+         instance = new MapDao();
       return instance;
    }
 
