@@ -37,13 +37,6 @@ $(function() {
 </script>
 
 
-<style>
-.typeIcon {
-	width: 30px;
-	height: 30px;
-	margin-bottom: 6px;
-}
-</style>
 
 </head>
 <body>
