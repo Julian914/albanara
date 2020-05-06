@@ -321,7 +321,7 @@ input:focus { outline: none; }
 
 #employerSignUp #ownerPhone010{
 	background-color: white;
-	width: 30px;
+	width: 50px;
 	height: 35px;
 	margin-bottom: 5px;
 	border-radius: 5px;
@@ -349,7 +349,7 @@ input:focus { outline: none; }
 
 #employerSignUp #ownerPhoneSecond{
 	background-color: white;
-	width: 30px;
+	width: 40px;
 	height: 35px;
 	margin-bottom: 5px;
 	border-radius: 5px;
