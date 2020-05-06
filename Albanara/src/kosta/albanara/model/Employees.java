@@ -24,7 +24,7 @@ public class Employees implements Serializable {
 	private int leadershipAvg;
 	private int comprehensionAvg;
 	private int contentmentAvg;
-	private int strengthcount;
+	private int strengthCount;
 	private int intelligenceCount;
 	private int kindnessCount;
 	private int patienceCount;
@@ -205,12 +205,12 @@ public class Employees implements Serializable {
 		this.contentmentAvg = contentmentAvg;
 	}
 
-	public int getStrengthcount() {
-		return strengthcount;
+	public int getStrengthCount() {
+		return strengthCount;
 	}
 
-	public void setStrengthcount(int strengthcount) {
-		this.strengthcount = strengthcount;
+	public void setStrengthCount(int strengthCount) {
+		this.strengthCount = strengthCount;
 	}
 
 	public int getIntelligenceCount() {
@@ -241,7 +241,7 @@ public class Employees implements Serializable {
 			Date employeeBirthday, String employeeEmail, String employeeGender, String employeePhone,
 			String employeeAddress, int attributeCount, int noshowCount, int lateCount, int workingDayCount, int activityAvg,
 			int collaborationAvg, int diligencyAvg, int leadershipAvg, int comprehensionAvg, int contentmentAvg,
-			int strengthcount, int intelligenceCount, int kindnessCount, int patienceCount) {
+			int strengthCount, int intelligenceCount, int kindnessCount, int patienceCount) {
 		super();
 		this.employeeSeq = employeeSeq;
 		this.resumeSeq = resumeSeq;
@@ -263,7 +263,7 @@ public class Employees implements Serializable {
 		this.leadershipAvg = leadershipAvg;
 		this.comprehensionAvg = comprehensionAvg;
 		this.contentmentAvg = contentmentAvg;
-		this.strengthcount = strengthcount;
+		this.strengthCount = strengthCount;
 		this.intelligenceCount = intelligenceCount;
 		this.kindnessCount = kindnessCount;
 		this.patienceCount = patienceCount;
@@ -278,7 +278,7 @@ public class Employees implements Serializable {
 				+ attributeCount + ", noshowCount=" + noshowCount + ", lateCount=" + lateCount + ", workingDayCount=" + workingDayCount
 				+ ", activityAvg=" + activityAvg + ", collaborationAvg=" + collaborationAvg + ", diligencyAvg="
 				+ diligencyAvg + ", leadershipAvg=" + leadershipAvg + ", comprehensionAvg=" + comprehensionAvg
-				+ ", contentmentAvg=" + contentmentAvg + ", strengthcount=" + strengthcount + ", intelligenceCount="
+				+ ", contentmentAvg=" + contentmentAvg + ", strengthCount=" + strengthCount + ", intelligenceCount="
 				+ intelligenceCount + ", kindnessCount=" + kindnessCount + ", patienceCount=" + patienceCount + "]";
 	}
 

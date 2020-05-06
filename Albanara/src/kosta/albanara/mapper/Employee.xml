@@ -25,68 +25,94 @@
 		<result column="LEADERSHIP_AVG" property="leadershipAvg" />
 		<result column="COMPREHENSION_AVG" property="comprehensionAvg" />
 		<result column="CONTENTMENT_AVG" property="contentmentAvg" />
-		<result column="STRENGTH_COUNT" property="strengthcount" />
-		<result column="INTELLIGENCE_COUNT" property="intelligenceCount" />
+		<result column="STRENGTH_COUNT" property="strengthCount" />
+		<result column="INTELLIGENCE_COUNT"
+			property="intelligenceCount" />
 		<result column="KINDNESS_COUNT" property="kindnessCount" />
 		<result column="PATIENCE_COUNT" property="patienceCount" />
 	</resultMap>
-	
+
 	<resultMap type="Resumes" id="Resumes">
-		<result column="RESUME_SEQ" property="resumeSeq"/>
-		<result column="PICTURE_FILENAME" property="pictureFilename"/>
-		<result column="RESUME_TITLE" property="resumeTitle"/>
-		<result column="RESUME_CONTENTS" property="resumeContents"/>
-		<result column="DESIRED_WORKING_AREA" property="desiredWorkingArea"/>
-		<result column="FAVORITE_FIELD" property="favoriteField"/>
-		<result column="LAST_MODIFY_DATE" property="lastModifyDate"/>
+		<result column="RESUME_SEQ" property="resumeSeq" />
+		<result column="PICTURE_FILENAME" property="pictureFilename" />
+		<result column="RESUME_TITLE" property="resumeTitle" />
+		<result column="RESUME_CONTENTS" property="resumeContents" />
+		<result column="DESIRED_WORKING_AREA"
+			property="desiredWorkingArea" />
+		<result column="FAVORITE_FIELD" property="favoriteField" />
+		<result column="LAST_MODIFY_DATE" property="lastModifyDate" />
 	</resultMap>
-	
-	
+
+
 	<insert id="insertEmployee" parameterType="Employees">
 		insert into employees(
-			employee_seq, employee_id, employee_pw, employee_name, employee_birthday, employee_email, employee_gender, employee_phone, employee_address) 
-			values(s_employee_seq.nextval, #{employeeId, jdbcType=VARCHAR}, #{employeePw, jdbcType=VARCHAR}, #{employeeName, jdbcType=VARCHAR}, #{employeeBirthday, jdbcType=DATE}, #{employeeEmail, jdbcType=VARCHAR}, 
-			#{employeeGender, jdbcType=VARCHAR}, #{employeePhone, jdbcType=VARCHAR}, #{employeeAddress, jdbcType=VARCHAR})
+		employee_seq, employee_id, employee_pw, employee_name,
+		employee_birthday, employee_email, employee_gender, employee_phone,
+		employee_address)
+		values(s_employee_seq.nextval, #{employeeId, jdbcType=VARCHAR}, #{employeePw, jdbcType=VARCHAR},
+		#{employeeName, jdbcType=VARCHAR}, #{employeeBirthday, jdbcType=DATE},
+		#{employeeEmail, jdbcType=VARCHAR},
+		#{employeeGender, jdbcType=VARCHAR}, #{employeePhone, jdbcType=VARCHAR},
+		#{employeeAddress, jdbcType=VARCHAR})
 	</insert>
-	
-	<!-- 이력서 등록 (동현)-->
+
+	<!-- 이력서 등록 (동현) -->
 	<insert id="insertResume" parameterType="Resumes">
-		insert into resumes values(s_resume_seq.nextval, #{pictureFilename}, #{resumeTitle}, #{resumeContents}, #{desiredWorkingArea}, #{favoriteField}, sysdate)
+		insert into resumes
+		values(s_resume_seq.nextval, #{pictureFilename}, #{resumeTitle},
+		#{resumeContents}, #{desiredWorkingArea}, #{favoriteField}, sysdate)
 	</insert>
-	
-	<!-- 이력서 조회  (동현)-->
-	<select id="searchResume" parameterType="int" resultMap="Resumes">
-		<!-- select picture_filename, resume_title, resume_contents, desired_working_area, favorite_field from resumes where resume_seq = (select resume_seq from employees where employee_seq = #{employeeSeq}) -->
-		select * from resumes where resume_seq = (select resume_seq from employees where employee_seq = #{employeeSeq})
+
+	<!-- 이력서 조회 (동현) -->
+	<select id="searchResume" parameterType="int"
+		resultMap="Resumes">
+		<!-- select picture_filename, resume_title, resume_contents, desired_working_area, 
+			favorite_field from resumes where resume_seq = (select resume_seq from employees 
+			where employee_seq = #{employeeSeq}) -->
+		select * from resumes where resume_seq = (select resume_seq from
+		employees where employee_seq = #{employeeSeq})
 	</select>
-	
+
 	<!-- 이력서 수정 (동현) -->
 	<update id="updateResume" parameterType="Resumes">
-		update resumes set picture_filename = #{pictureFilename}, resume_title = #{resumeTitle}, resume_contents = #{resumeContents}, desired_working_area = #{desiredWorkingArea}, favorite_field = #{favoriteField}, last_modify_date = sysdate where s_resume_seq = 1
+		update resumes set
+		picture_filename = #{pictureFilename}, resume_title = #{resumeTitle},
+		resume_contents = #{resumeContents}, desired_working_area =
+		#{desiredWorkingArea}, favorite_field = #{favoriteField},
+		last_modify_date = sysdate where s_resume_seq = 1
 	</update>
 
 	<update id="updateEmployee" parameterType="Employees">
-		update employees set employee_pw = #{employeePw}, employee_email = #{employeeEmail}, 
-			employee_address = #{employeeAddress}, employee_phone = #{employeePhone} where employee_id = #{employeeId}
-	</update> 
+		update employees set
+		employee_pw = #{employeePw}, employee_email = #{employeeEmail},
+		employee_address = #{employeeAddress}, employee_phone =
+		#{employeePhone} where employee_id = #{employeeId}
+	</update>
 
-	
-	<!-- 기본정보 보여주기  (동현)-->
-	<select id="basicInformation" parameterType="int" resultMap="Employees">
+
+	<!-- 기본정보 보여주기 (동현) -->
+	<select id="basicInformation" parameterType="int"
+		resultMap="Employees">
 		<!-- select * from employees where employee_seq = #{employeeSeq} -->
 		select * from employees where employee_seq = 3
 	</select>
-	
-	
-	
-	<delete id="deleteEmployee" parameterType="Employees">
-		delete from employees where employee_id = #{employeeId}
-	</delete>
-	
-	<select id="employeeLogIn" parameterType="Employees" resultMap="Employees">
-		select * from employees where employee_id= #{employeeId} AND employee_pw = #{employeePw}
-	</select>
-	
 
-	
+	<select id="getEmployee" parameterType="int"
+		resultMap="Employees">
+		select * from EMPLOYEES where EMPLOYEE_SEQ = #{seq}
+	</select>
+
+	<delete id="deleteEmployee" parameterType="Employees">
+		delete from employees
+		where employee_id = #{employeeId}
+	</delete>
+
+	<select id="employeeLogIn" parameterType="Employees"
+		resultMap="Employees">
+		select * from employees where employee_id= #{employeeId} AND
+		employee_pw = #{employeePw}
+	</select>
+
+
+
 </mapper>

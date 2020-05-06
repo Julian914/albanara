@@ -17,6 +17,9 @@ public class EmployeeLogInAction implements Action {
 		EmployeeService employeeService = EmployeeService.getInstance();
 		
 		Employees employees = employeeService.employeeLogInService(request);
+		
+		request.setAttribute("employee", employees);
+		
 		if(employees != null) {
 			MarkerLocationService markerService = MarkerLocationService.getInstance();
 			MarkerLocation markerLocation = markerService.sessionAddressService(employees.getEmployeeAddress());

@@ -169,18 +169,18 @@
 
 	<!--한 기업의 전체 공고 목록 -->
 	<select id="totalRecruitmentList" parameterType="int" resultMap="Recruitments">
-		SELECT * FROM Recruitments where employer_seq=#{employer_seq} order by starting_working_date
+		SELECT * FROM Recruitments where employer_seq=#{employerSeq} order by starting_working_date
 	</select> 
 
 	<!--한 기업의 현재 진행중인 공고목록 -->
 	<select id="nowRecruinmentList" parameterType="int" resultMap="Recruitments">
-		select *from recruitments where closing_date > sysdate and employer_seq=#{employer_seq}
+		select *from recruitments where closing_date > sysdate and employer_seq=#{employerSeq}
 	</select>
 
 
 	<!--한 기업의 마감된 공고목록 -->
 	<select id="endRecruitmentList" parameterType="int" resultMap="Recruitments">
-		select *from recruitments where sysdate > closing_date and employer_seq=#{employer_seq}
+		select *from recruitments where sysdate > closing_date and employer_seq=#{employerSeq}
 	</select>
 
 
@@ -189,7 +189,7 @@
 		resultMap="Employees">
 		select * from employees where employee_Seq in(select
 		employee_Seq from applications where
-		recruitment_Seq=#{recruitment_Seq})
+		recruitment_Seq=#{recruitmentSeq})
 	</select>
 
 

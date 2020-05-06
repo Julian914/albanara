@@ -11,9 +11,9 @@
      
 }
 
-.application {
+ .application {
 	color: black;
-}
+} 
 
 .accordion .child {
 	height: 165px;
@@ -24,8 +24,10 @@ div#wrap{
 }
  
 .employerInfo{
-	width: 300px;
+	width: 350px;
 	font-size: 20px;
+	justify-content: space-between;
+	margin-top: 30px;
 }
 
 
@@ -71,4 +73,15 @@ div.modal-body ul{
 	font-size: 17px;
 	font-weight: bold;
 	padding: 0px;
+}
+
+.modal-body{
+	background-color: #f8f9fa;
+}
+
+.row{
+	padding:20px;
+	border-bottom:2px solid;
+	border-color: #BDDBFF;
+	margin: 0px;
 }
