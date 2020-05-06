@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="/Albanara/css/jquery-ui.css">
 <link rel="stylesheet" href="/Albanara/css/bootstrap.css">
 <link rel="stylesheet" href="/Albanara/css/bootstrap-theme.css">
+<link rel="stylesheet" type="text/css" href="/Albanara/css/style.css">
 <script src="/Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
 <script src="/Albanara/js/jquery-ui.js" type="text/javascript"></script>
 <script src="/Albanara/js/bootstrap.js" type="text/javascript"></script>
@@ -15,6 +16,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<header></header>
+	<nav></nav>
+	
+
 	<div class="container">
 		<div class="page-header text-center">
 			<h1>이력서</h1>
@@ -57,16 +62,21 @@
 				<div class="form-group">
 					<input type="submit" value="등록">
 				</div>
-				
-				<div class="form-group">
-					
-				</div>
 
 			</form>
 		</div>
 		
 	</div>
 
+	<footer></footer>
+
+<script>
+$(document).ready(function() {
+    $("header").load("header.html")
+    $("nav").load("nav.html")
+    $("footer").load("footer.html")
+ });
+</script>
 
 
 	<!-- 
