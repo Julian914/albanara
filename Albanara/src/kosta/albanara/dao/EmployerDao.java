@@ -190,6 +190,8 @@ public Employers detailEmployers(int employerSeq) {
 		return list;
 	}
 	
+
+	
 	
 	//한 기업의 전체 공고 목록
 	public List<Recruitments> totalRecruitmentList(int employerSeq) {
@@ -244,42 +246,6 @@ public Employers detailEmployers(int employerSeq) {
 		return endRecruitmentList;
 	};
 	
-	
-	// 한 공고에 해당하는 지원자목록
-	public List<Employees> employeeList(int recruitmentSeq) {
-		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<Employees> employeeList = null;
-
-		try {
-			employeeList = sqlSession.getMapper(RecruitmentMapper.class).employeeList(recruitmentSeq);
-			//System.out.println("dao: " + employeeList);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (sqlSession != null) {
-				sqlSession.close();
-			}
-		}
-		return employeeList;
-	}
-	
-	//채용된 구직자 목록
-	public List<Employees> hiredEmployeeList(){
-		List<Employees> hiredEmployeeList = null;
-		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		
-		try {
-			hiredEmployeeList = sqlSession.getMapper(RecruitmentMapper.class).hiredEmployeeList();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			if (sqlSession != null) {
-				sqlSession.close();
-			}
-		}
-		return hiredEmployeeList;
-	};
 	
 	
 	

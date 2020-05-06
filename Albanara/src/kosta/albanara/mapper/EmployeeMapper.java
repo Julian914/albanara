@@ -16,5 +16,10 @@ public interface EmployeeMapper {
 	Employees getEmployee(int seq);
 	int deleteEmployee(Employees employee);
 	Employees employeeLogIn(Employees employees);
+
 	List<Employees> allEmployeeList();
+
+	List<Employees> employeeList(int recruitmentSeq);
+	List<Employees> hiredEmployeeList();
+
 }

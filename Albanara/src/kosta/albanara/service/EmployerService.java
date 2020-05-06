@@ -133,22 +133,6 @@ public class EmployerService {
 	public List<Recruitments> endRecruitmentListService(int seq) throws Exception {
 		List<Recruitments> list =  employerDao.endRecruitmentList(seq);
 		return list;
-	}
-	
-	
-	// 한 공고에 해당하는 지원자목록	
-	public List<Employees> employeeListService(int recruitmentSeq) throws Exception {
-		List<Employees> employeeList = employerDao.employeeList(recruitmentSeq);
-		return employeeList;
-	}
-
-	//공고에 채용된 지원자 목록
-	public List<Employees> hiredEmployeeListService()throws Exception{
-		return employerDao.hiredEmployeeList();
-	}
-	
-
-	
-	
+	}	
 	
 }

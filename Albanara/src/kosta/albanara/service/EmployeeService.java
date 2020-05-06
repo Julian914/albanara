@@ -198,10 +198,23 @@ public void logOut(HttpServletRequest request) throws Exception{
 		
 	}
 
+
 public List<Employees> allEmployeeListService(HttpServletRequest request)throws Exception{
 	request.setCharacterEncoding("utf-8");
 	List<Employees> list = employeeDao.allEmployeeList();
 	return list;
 }
+
+
+public List<Employees> employeeListService(int recruitmentSeq) throws Exception {
+	List<Employees> employeeList = employeeDao.employeeList(recruitmentSeq);
+	return employeeList;
+}
+
+
+public List<Employees> hiredEmployeeListService()throws Exception{
+	return employeeDao.hiredEmployeeList();
+}
+
 
 }
