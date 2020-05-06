@@ -32,12 +32,13 @@
 		<div class="row">
 		
 			<div class="col-md-8 mapRecommendation ">
-				<div id="map" style="width:300px;height:300px;margin-top:10px;"></div>
+				<div id="map" style="width:700px;height:300px;margin-top:10px;"></div>
 				
-				<input type = "checkbox" name = "ablityCategory" value = "strength" >힘
-				<input type = "checkbox" name = "ablityCategory" value = "patience">끈기
-				<input type = "checkbox" name = "ablityCategory" value = "kindness">친절
-				<input type = "checkbox" name = "ablityCategory" value = "intelligency">지능
+			
+				<input type = "checkbox" class="ablityCategoryCheck" name = "ablityCategory" value = "strength" >힘
+				<input type = "checkbox" class="ablityCategoryCheck" name = "ablityCategory" value = "patience">끈기
+				<input type = "checkbox" class="ablityCategoryCheck" name = "ablityCategory" value = "kindness">친절
+				<input type = "checkbox" class="ablityCategoryCheck" name = "ablityCategory" value = "intelligency">지능
 				
 					
 				<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -48,7 +49,7 @@
 				
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 				mapOption = { 
-				    center: new kakao.maps.LatLng(37.4849665053325, 127.034757121285), // 지도의 중심좌표
+				    center: new kakao.maps.LatLng(${centricLongitude}, ${centricLatitude}), // 지도의 중심좌표
 				    level: 3 // 지도의 확대 레벨 
 				};
 				
@@ -280,7 +281,12 @@ $(document).ready(function() {
     $("header").load("/Albanara/header.html")
     $("nav").load("/Albanara/nav.html")
     $("footer").load("/Albanara/footer.html")
+    
+    $('.ablityCategoryCheck').trigger('click');
+    
+    
  });
+ 
 </script>
 </body>
 </html>
