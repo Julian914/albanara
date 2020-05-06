@@ -13,8 +13,6 @@ import org.apache.ibatis.annotations.Param;
 
 import kosta.albanara.dao.RecruitmentDao;
 import kosta.albanara.model.Applications;
-import kosta.albanara.model.Employees;
-import kosta.albanara.model.HiredHistory;
 import kosta.albanara.model.Proposals;
 import kosta.albanara.model.Recruitments;
 
@@ -30,12 +28,15 @@ public class RecruitmentService {
 		return instance; 
 	}
 
-	public List<Recruitments> recruitmentListService(HttpServletRequest request) throws Exception {
-		request.setCharacterEncoding("utf-8");
-		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
-		int employerSeq =1;
-		
-		List<Recruitments> list = recruitmentDao.totalRecruitmentList(employerSeq);
+	public List<Recruitments> recruitmentListService() throws Exception {
+		List<Recruitments> list = recruitmentDao.recruitmentList();
+		return list;
+	}
+	
+
+	
+	public List<Recruitments> totalRecruitmentListService(int seq) throws Exception {
+		List<Recruitments> list = recruitmentDao.totalRecruitmentList(seq);
 		return list;
 	}
 
@@ -45,18 +46,12 @@ public class RecruitmentService {
 		return list;
 	}
 
-	public List<Recruitments> endRecruitmentListService(HttpServletRequest request) throws Exception {
-		request.setCharacterEncoding("utf-8");
-		int employerSeq = Integer.parseInt(request.getParameter("seq"));
-		//int employerSeq =1;
-		List<Recruitments> list =  recruitmentDao.endRecruitmentList(employerSeq);
+
+	public List<Recruitments> endRecruitmentListService(int seq) throws Exception {
+		List<Recruitments> list =  recruitmentDao.endRecruitmentList(seq);
 		return list;
 	}
 
-	public List<Employees> employeeListService(int recruitmentSeq) throws Exception {
-		List<Employees> employeeList = recruitmentDao.employeeList(recruitmentSeq);
-		return employeeList;
-	}
 
 	public int insertRecruitment(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("UTF-8");
@@ -234,12 +229,7 @@ public class RecruitmentService {
 		recruitmentDao.rejectProposalRecruitments(employeeSeq, recruitmentSeq);
 	}
 	
-	
-	public List<Employees> hiredEmployeeListService()throws Exception{
-		return recruitmentDao.hiredEmployeeList();
-	}
-	
-	
+
 	/*공고에 지원한 남자 수*/
 	public int selectRecruitmentManCount(int seq) {
 		return recruitmentDao.selectRecruitmentManCount(seq);

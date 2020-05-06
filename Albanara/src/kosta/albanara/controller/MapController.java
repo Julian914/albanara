@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kosta.albanara.action.ActionForward;
-import kosta.albanara.action.HyunMapAction;
+import kosta.albanara.action.MapAction;
 
 @WebServlet("/main/*")
-public class HyunMapController extends HttpServlet {
+public class MapController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
@@ -37,14 +37,14 @@ public class HyunMapController extends HttpServlet {
 		switch (command) {
 		case "hyunMapAction.do":
 			try {
-				actionForward = new HyunMapAction().execute(request, response);
+				actionForward = new MapAction().execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			break;
 		case "mainAction.do":
 			try {
-				actionForward = new HyunMapAction().execute(request, response);
+				actionForward = new MapAction().execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

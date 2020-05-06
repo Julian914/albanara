@@ -14,24 +14,36 @@
 <link rel="stylesheet" href="/Albanara/css/bootstrap.css">
 <link rel="stylesheet" href="/Albanara/css/bootstrap-theme.css">
 <link rel="stylesheet" href="/Albanara/css/Chart.css">
-<link rel="stylesheet" type="text/css" href="/Albanara/css/header.css">
-<link rel="stylesheet" type="text/css" href="/Albanara/css/nav.css">
-<link rel="stylesheet" type="text/css" href="/Albanara/css/footer.css">
-<link rel="stylesheet" type="text/css"	href="/Albanara/css/employerPage.css">
+<link rel="stylesheet" type="text/css" href="/Albanara/css/style.css">
+<link rel="stylesheet" type="text/css"
+	href="/Albanara/css/employerPage.css">
+
 <script src="/Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
 <script src="/Albanara/js/jquery-ui.js" type="text/javascript"></script>
 <script src="/Albanara/js/bootstrap.js" type="text/javascript"></script>
 <script src="/Albanara/js/Chart.js" type="text/javascript"></script>
 <script src="/Albanara/js/Chart.bundle.js" type="text/javascript"></script>
-<script src="/Albanara/js/employerPage.js" type="text/javascript"></script>
+
+<jsp:include page="header.html" ></jsp:include>
+<jsp:include page="nav.html" ></jsp:include>
 
 
+<script>
+$(function() {
+	$(".accordion").accordion({
+		heightStyle : "content"
+	});
+});
+</script>
 
 
-<jsp:include page="header.html"></jsp:include>
-<jsp:include page="nav.html"></jsp:include>
-
-
+<style>
+.typeIcon {
+	width: 30px;
+	height: 30px;
+	margin-bottom: 6px;
+}
+</style>
 
 </head>
 <body>
@@ -41,39 +53,67 @@
 
 	<div class="container">
 
-
-		<h1>기업 마이페이지(구직자관점)</h1>
-		<br>
-		<br>
-		<div class="row">
-			<div class="col-md-4">
-				<img class="employerFile" style="width:300px; height:300px; margin-top:10px;"><br>
-				기업이미지 <br>
-			</div>
-			<br>
-			<div class="col-md-4">
-				<div class="employerInfo">
-				<ul>
-					<li>기업명 : ${employer.employerName}</li>
-					<li>기업주소:${employer.employerAddress }</li>
-					<li>홈페이지 주소 :<button type="button" class="btn btn-link">${employer.employerHomePage}</button></li>
-					<li>전화번호:${employer.employerNumber}</li>
-					<li>분야	:${employer.employerField} </li>
+		<div class="employer">
+			<h1>기업 마이페이지(구직자관점)</h1>
+			<br> <br>
+			<div class="row">
+				<div class="col-md-4">
+					<img class="employerFile" src="/Albanara/images/employerPage/noImage.png"
+						style="width: 300px; height: 300px; margin-top: 10px;"><br>
 					<br>
-					<li><b><img	class="evalIcon" onclick="insertEmployerEval.do?seq=${employer.employerSeq}"
-						src="/Albanara/images/employerEval/like.png" name="좋아요" value="like">좋아요 ${employer.likeCount}
-					<img class="evalIcon" onclick="insertEmployerEval.do?seq=${employer.employerSeq}"
-							src="/Albanara/images/employerEval/unlike.png" name="별로예요"	value="unlike">별로예요 ${employer.unlikeCount}</b></li>
-				</ul>
+				</div>
+				<br>
+				<div class="col-md-4">
+					<div class="employerInfo">
+						<ul>
+							<li>기업명 :</li>
+							<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> ${employer.employerName}</b></li>
+							<li>기업주소:</li>
+							<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>${employer.employerAddress }</b></li>
+							<li>홈페이지 :<li>
+							<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+								class="homepageAddress" href="employer.employerHomePage">홈페이지 바로가기</a></li>
+							<li>전화번호:</li>
+							<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>${employer.employerNumber}</b></li>
+							<li>분야 :</li>
+							<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>
+							${employer.employerField}
+							<c:if test="${employer.employerField == 'strength' }">
+								<img class="typeIcon" src="/Albanara/images/icons/strength.png"
+									alt="힘">
+							</c:if>
+							<c:if test="${employer.employerField == 'intelligence' }">
+								<img class="typeIcon"
+									src="/Albanara/images/icons/intelligence.png" alt="지능">
+							</c:if>
+							<c:if test="${employer.employerField == 'kindness' }">
+								<img class="typeIcon" src="/Albanara/images/icons/kindness.png"
+									alt="친절">
+							</c:if>
+							<c:if test="${employer.employerField == 'patience' }">
+								<img class="typeIcon" src="/Albanara/images/icons/patience.png"
+									alt="끈기">
+							</c:if>
+							</b></li>
+							<br>
+							<li><b><img class="evalIcon"
+									onclick="insertEmployerPage.do?seq=${employer.employerSeq}"
+									src="/Albanara/images/employerPage/like.png" name="좋아요"
+									value="like">좋아요 ${employer.likeCount} <img
+									class="evalIcon"
+									onclick="insertEmployerPage.do?seq=${employer.employerSeq}"
+									src="/Albanara/images/employerPage/unlike.png" name="별로예요"
+									value="unlike">별로예요 ${employer.unlikeCount}</b></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div id="map"
+						style="width: 300px; height: 300px; margin-top: 10px;"></div>
 				</div>
 			</div>
-			<div class="col-md-4">
-				기업지도
-				<div id="map" style="width: 300px; height: 300px; margin-top: 10px;"></div>
-			</div>
+			<br> <br>
 		</div>
-		<br> <br>
-
 		<h3>현재 진행중인 공고목록</h3>
 		<div id="wrap">
 			<div class="accordion recruitmentList">
@@ -85,7 +125,7 @@
 						<ul class="recruitmentUp">
 							<li>공고제목 : ${list.recruitmentTitle}</li>
 							<li>접수마감 : ${list.closingDate}</li>
-							
+
 						</ul>
 					</div>
 					<div id="accordion-contents">
@@ -102,8 +142,8 @@
 									pattern="yyyy.MM.dd" /></li>
 						</ul>
 						<input type="button" class="btn btn-light"
-								onclick="location.href='../recruitment/showRecruitmentAction.do?seq=${list.recruitmentSeq}'"
-								value="상세 보기">
+							onclick="location.href='../recruitment/showRecruitmentAction.do?seq=${list.recruitmentSeq}'"
+							value="상세 보기">
 
 						<!-- 지원하기 modal-->
 						<button class="btn btn-primary"
@@ -124,21 +164,27 @@
 											<h4>사장님의 질문</h4>
 											<div id="requirementQuestion">
 												<ul>
-													<li class="question">질문 1 : ${list.requirementQuestion1}</li>
-													<li class="answer"><input type="radio" name="answer1" value="1">Yes
-														<input type="radio" name="answer1" value="0">No</li>
+													<li class="question">질문 1 :
+														${list.requirementQuestion1}</li>
+													<li class="answer"><input type="radio" name="answer1"
+														value="1">Yes <input type="radio" name="answer1"
+														value="0">No</li>
 												</ul>
 												<br>
 												<ul>
-													<li class="question">질문 2 : ${list.requirementQuestion2}</li>
-													<li class="answer"><input type="radio" name="answer2" value="1">Yes
-														<input type="radio" name="answer2" value="0">No</li>
+													<li class="question">질문 2 :
+														${list.requirementQuestion2}</li>
+													<li class="answer"><input type="radio" name="answer2"
+														value="1">Yes <input type="radio" name="answer2"
+														value="0">No</li>
 												</ul>
 												<br>
 												<ul>
-													<li class="question">질문 3 : ${list.requirementQuestion3}</li>
-													<li class="answer"><input type="radio" name="answer3" value="1">Yes
-														<input type="radio" name="answer3" value="0">No</li>
+													<li class="question">질문 3 :
+														${list.requirementQuestion3}</li>
+													<li class="answer"><input type="radio" name="answer3"
+														value="1">Yes <input type="radio" name="answer3"
+														value="0">No</li>
 												</ul>
 											</div>
 										</div>
@@ -198,12 +244,21 @@
 		</div>
 	</div>
 
-<div id="map" style="width: 300px; height: 300px; margin-top: 10px;"></div>
-<canvas id="employerGender" width="800"></canvas>
+	<div id="map" style="width: 300px; height: 300px; margin-top: 10px;"></div>
+	<canvas id="employerGender" width="800"></canvas>
 
 
 
 	<footer></footer>
+
+	<script>
+$(document).ready(function() {
+    $("header").load("header.html")
+    $("nav").load("nav.html")
+    $("footer").load("footer.html")
+ });
+</script>
+<jsp:include page="footer.html" ></jsp:include>
 </body>
 
 
@@ -213,9 +268,7 @@
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=814861f68a4b2c5498535e608555d96a&libraries=services"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=814861f68a4b2c5498535e608555d96a&libraries=services,clusterer,drawing"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"
-	integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-	crossorigin="anonymous"></script>
+
 <script>
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
@@ -267,5 +320,5 @@ var myDoughnutChart = new Chart(employerGender, {
 
 
 </script>
-<jsp:include page="footer.html"></jsp:include>
+
 </html>

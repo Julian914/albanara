@@ -6,9 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kosta.albanara.model.NearRecruitments;
-import kosta.albanara.service.HyunMapService;
+import kosta.albanara.service.MapService;
 
-public class HyunMapAction implements Action {
+public class MapAction implements Action {
 	
 
 	
@@ -16,7 +16,7 @@ public class HyunMapAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();
-		HyunMapService service = HyunMapService.getInstance();
+		MapService service = MapService.getInstance();
 		List<NearRecruitments> list = service.nearRecruitment();
 //		HttpSession session =
 		double lat1 = 126.890098469594; 
@@ -25,7 +25,7 @@ public class HyunMapAction implements Action {
 			System.out.println(i);
 			double lat2 = Double.parseDouble(list.get(i).getLatitude());
 			double lon2 = Double.parseDouble(list.get(i).getLongitude());
-			double distance = HyunMapService.distance(lat1, lon1, lat2, lon2);
+			double distance = MapService.distance(lat1, lon1, lat2, lon2);
 			System.out.println(distance);
 			if (distance > 3) {
 				System.out.println(list.get(i));
@@ -34,7 +34,7 @@ public class HyunMapAction implements Action {
 		}
 		request.setAttribute("list", list);
 		forward.setRedirect(false);
-		 forward.setPath("/HyunNewFile.jsp");
+		 forward.setPath("/main.jsp");
 		return forward;
 	}
 

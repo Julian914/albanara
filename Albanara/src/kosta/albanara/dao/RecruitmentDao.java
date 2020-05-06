@@ -54,24 +54,7 @@ public class RecruitmentDao {
 		return list;
 	}
 
-	// 한 공고에 해당하는 지원자목록
-	public List<Employees> employeeList(int recruitmentSeq) {
-		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<Employees> employeeList = null;
 
-		try {
-			employeeList = sqlSession.getMapper(RecruitmentMapper.class).employeeList(recruitmentSeq);
-			//System.out.println("dao: " + employeeList);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (sqlSession != null) {
-				sqlSession.close();
-			}
-		}
-		return employeeList;
-
-	}
 
 	public int insertRecruitment(Recruitments recruitment) {
 		int resultCount = -1;
@@ -155,6 +138,26 @@ public class RecruitmentDao {
 	}
 
 
+	//진행중인 전체 공고목록
+		public List<Recruitments> recruitmentList(){
+			SqlSession sqlSession = getSqlSessionFactory().openSession();
+			List<Recruitments> list = null;
+			try {
+				list = sqlSession.getMapper(RecruitmentMapper.class).recruitmentList();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				if (sqlSession != null) {
+					sqlSession.close();
+				}
+			}
+
+			return list;
+		}
+		
+	
+	
+	
 	public List<Recruitments> nowRecruinmentList(int employerSeq) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<Recruitments> nowRecruinmentList= null;
@@ -350,23 +353,6 @@ public class RecruitmentDao {
 	}
 	
 
-	public List<Employees> hiredEmployeeList(){
-		List<Employees> hiredEmployeeList = null;
-		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		
-		try {
-			hiredEmployeeList = sqlSession.getMapper(RecruitmentMapper.class).hiredEmployeeList();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			if (sqlSession != null) {
-				sqlSession.close();
-			}
-		}
-		return hiredEmployeeList;
-	};
-	
 	
 	
 	//추천받은 구직자에게 제안하기 proposals

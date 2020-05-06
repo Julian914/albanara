@@ -85,7 +85,14 @@ public class RecruitmentController extends HttpServlet {
 				e.printStackTrace();
 			}
 			break;	
-		case "recruitmentList.do":  //진행중인 공고목록 불러오기
+		case "recruitmentList.do":  //한 기업의 공고목록 불러오기
+			try {
+				actionForward = new RecruitmentListAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case "totalRecruitmentList.do":  //전체 공고목록 불러오기
 			try {
 				actionForward = new RecruitmentListAction().execute(request, response);
 			} catch (Exception e) {

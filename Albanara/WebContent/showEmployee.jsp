@@ -6,12 +6,29 @@
 <html>
 <head>
 <style type="text/css">
+.container {
+	max-width: 960px;
+}
+#employeeDetail li{
+	font-weight: bolder4;
+	font-size : 15px;
+	
+}
+h3{
+	background-color: #5A8DCC;
+	margin-top: 30px;
+	display: inline;
+	font-style: D2coding;
+	font-weight: bold;
+	
+}
 
 </style>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/Albanara/css/jquery-ui.css">
 <link rel="stylesheet" href="/Albanara/css/bootstrap.css">
 <link rel="stylesheet" href="/Albanara/css/bootstrap-theme.css">
+<link rel="stylesheet" href="/Albanara/css/style.css">
 <script src="/Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
 <script src="/Albanara/js/jquery-ui.js" type="text/javascript"></script>
 <script src="/Albanara/js/bootstrap.js" type="text/javascript"></script>
@@ -22,19 +39,32 @@
 		$('.accordion').accordion();
 	});
 </script>
+<script>
+$(document).ready(function() {
+    $("header").load("/Albanara/header.html")
+    $("nav").load("/Albanara/nav.html")
+    $("footer").load("/Albanara/footer.html")
+ });
+</script>
 <title>Insert title here</title>
 </head>
 <body>
-<header></header>	
-	<h1>구직자 마이페이지</h1>	
-	이름: ${employee.employeeName }<br>
-	생년월일: ${employee.employeeBirthday }<br>
-	성별: ${employee.employeeGender }<br>
-	주소: ${employee.employeeAddress }<br>
-	연락처: ${employee.employeePhone }<br>
-	이메일: ${employee.employeeEmail }<br>
-	
+<header></header>
+<nav></nav>
+<div class = "container">
+	<div id = "employeeDetail">
+		<h1>구직자 마이페이지</h1>
+			<ul>	
+				<li>이름: ${employee.employeeName }</li>
+				<li>생년월일: ${employee.employeeBirthday }</li>
+				<li>성별: ${employee.employeeGender }</li>
+				<li>주소: ${employee.employeeAddress }</li>
+				<li>연락처: ${employee.employeePhone }</li>
+				<li>이메일: ${employee.employeeEmail }</li>
+			</ul>
+	</div>
 	<h3>제안 받은 공고</h3>
+	
 	<div id="wrap">
 		<div class="accordion">
 			<c:forEach var="list" items="${recruitmentList}" varStatus="status">
@@ -122,8 +152,10 @@
 			</c:forEach>
 		</div>
 	</div>
+</div>
 	<canvas id="myChart1" width="800"></canvas>
-	<canvas id="myChart2" width="800"></canvas>	
+	<canvas id="myChart2" width="800"></canvas>
+<footer></footer>		
 </body>
 <script>
 var mychartDataArr1 = [${employee.strengthCount }, ${employee.intelligenceCount }, ${employee.kindnessCount }, ${employee.patienceCount }];

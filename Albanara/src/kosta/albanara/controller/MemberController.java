@@ -17,26 +17,22 @@ import kosta.albanara.action.EmployeeFormAction;
 import kosta.albanara.action.EmployeeLogInAction;
 import kosta.albanara.action.EmployeeLogInFormAction;
 import kosta.albanara.action.EmployeeSignUpAction;
-import kosta.albanara.action.EmployeeUpdateAction;
-import kosta.albanara.action.EmployeeUpdateFormAction;
 import kosta.albanara.action.EmployerDeleteAction;
 import kosta.albanara.action.EmployerDetailAction;
-import kosta.albanara.action.InsertResumeAction;
-import kosta.albanara.action.InsertResumeForm;
-import kosta.albanara.action.EmployerLogInFormAction;
-import kosta.albanara.action.SearchResumeAction;
-import kosta.albanara.action.ShowEmployeeAction;
-import kosta.albanara.action.UpdateResumeAction;
-import kosta.albanara.action.UpdateResumeFormAction;
-import kosta.albanara.action.ShowEmployerPageAction;
-import kosta.albanara.action.logOutAction;
-//import kosta.albanara.action.recommendEmployeeFormAction;
 import kosta.albanara.action.EmployerFormAction;
 import kosta.albanara.action.EmployerLogInAction;
+import kosta.albanara.action.EmployerLogInFormAction;
 import kosta.albanara.action.EmployerSignUpAction;
-import kosta.albanara.action.EmployerUpdateAction;
-import kosta.albanara.action.EmployerUpdateFormAction;
-import kosta.albanara.action.HyunMapAction;
+import kosta.albanara.action.InsertResumeAction;
+import kosta.albanara.action.InsertResumeForm;
+import kosta.albanara.action.RecommendEmployeeFormAction;
+import kosta.albanara.action.SearchResumeAction;
+import kosta.albanara.action.ShowEmployeeAction;
+import kosta.albanara.action.ShowEmployerPageAction;
+import kosta.albanara.action.UpdateResumeAction;
+import kosta.albanara.action.UpdateResumeFormAction;
+import kosta.albanara.action.logOutAction;
+
  
 @WebServlet("/member/*")
 public class MemberController extends HttpServlet {
@@ -353,14 +349,14 @@ public class MemberController extends HttpServlet {
 			
 			}
 		
-    	}/*else if(command.equals("recommendEmployeeActionForm.do")) {
-    		action = new recommendEmployeeFormAction();
+    	}else if(command.equals("recommendEmployeeActionForm.do")) {
+    		action = new RecommendEmployeeFormAction();
     		try {
 				actionForward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-    	}*/
+    	}
 
 		if (actionForward != null){
 			if (actionForward.isRedirect()) {
@@ -370,7 +366,6 @@ public class MemberController extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 		}
-    
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
