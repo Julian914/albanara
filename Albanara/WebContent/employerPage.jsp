@@ -23,6 +23,9 @@
 <script src="/Albanara/js/Chart.js" type="text/javascript"></script>
 <script src="/Albanara/js/Chart.bundle.js" type="text/javascript"></script>
 
+<jsp:include page="header.html" ></jsp:include>
+<jsp:include page="nav.html" ></jsp:include>
+
 
 <script>
    $(function() {
@@ -31,20 +34,8 @@
       });
    });
 
-
-<jsp:include page="header.html" ></jsp:include>
-<jsp:include page="nav.html" ></jsp:include>
-
-
 </script>
 
-<style>
-.typeIcon {
-	width: 30px;
-	height: 30px;
-	margin-bottom: 6px;
-}
-</style>
 
 </head>
 <body>
