@@ -9,11 +9,26 @@
 .container {
 	max-width: 960px;
 }
+#employeeDetail li{
+	font-weight: bolder4;
+	font-size : 15px;
+	
+}
+h3{
+	background-color: #5A8DCC;
+	margin-top: 30px;
+	display: inline;
+	font-style: D2coding;
+	font-weight: bold;
+	
+}
+
 </style>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/Albanara/css/jquery-ui.css">
 <link rel="stylesheet" href="/Albanara/css/bootstrap.css">
 <link rel="stylesheet" href="/Albanara/css/bootstrap-theme.css">
+<link rel="stylesheet" href="/Albanara/css/style.css">
 <script src="/Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
 <script src="/Albanara/js/jquery-ui.js" type="text/javascript"></script>
 <script src="/Albanara/js/bootstrap.js" type="text/javascript"></script>
@@ -37,14 +52,17 @@ $(document).ready(function() {
 <header></header>
 <nav></nav>
 <div class = "container">
-	<h1>구직자 마이페이지</h1>	
-	이름: ${employee.employeeName }<br>
-	생년월일: ${employee.employeeBirthday }<br>
-	성별: ${employee.employeeGender }<br>
-	주소: ${employee.employeeAddress }<br>
-	연락처: ${employee.employeePhone }<br>
-	이메일: ${employee.employeeEmail }<br>
-	
+	<div id = "employeeDetail">
+		<h1>구직자 마이페이지</h1>
+			<ul>	
+				<li>이름: ${employee.employeeName }</li>
+				<li>생년월일: ${employee.employeeBirthday }</li>
+				<li>성별: ${employee.employeeGender }</li>
+				<li>주소: ${employee.employeeAddress }</li>
+				<li>연락처: ${employee.employeePhone }</li>
+				<li>이메일: ${employee.employeeEmail }</li>
+			</ul>
+	</div>
 	<h3>제안 받은 공고</h3>
 	
 	<div id="wrap">
