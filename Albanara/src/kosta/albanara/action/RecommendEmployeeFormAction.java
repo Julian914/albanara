@@ -28,12 +28,12 @@ public class RecommendEmployeeFormAction implements Action {
 		int employerSeq = (Integer)session.getAttribute("seq");
 		double employerLatitude =  Double.parseDouble((String)session.getAttribute("latitude"));
 		System.out.println(employerLatitude);
-		double employerLongitude = Double.valueOf((double)session.getAttribute("longitude"));
+		double employerLongitude = Double.parseDouble((String)session.getAttribute("longitude"));
 		List<Employees> allEmployeeList = service.allEmployeeListService(request);
 		List<Recruitments> recruitment = recruitmentService.nowRecruinmentListService(employerSeq);
 		String recruitmentType = recruitment.get(0).getRecruitmentType();
 		String gender = recruitment.get(0).getGender();
-		
+		Resumes resumes = service.searchResumeService(employeeSeq);
 		for (int i = 0; i < allEmployeeList.size(); i++) {
 			Resumes resume = service.searchResumeService(allEmployeeList.get(i).getEmployeeSeq());
 			String favoriteField = resume.getFavoriteField();
