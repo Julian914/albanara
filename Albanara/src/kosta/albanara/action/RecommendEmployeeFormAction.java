@@ -1,6 +1,7 @@
 package kosta.albanara.action;
 
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -10,7 +11,6 @@ import kosta.albanara.model.MarkerLocation;
 import kosta.albanara.model.Recruitments;
 import kosta.albanara.model.Resumes;
 import kosta.albanara.service.EmployeeService;
-import kosta.albanara.service.HyunMapService;
 import kosta.albanara.service.MapService;
 import kosta.albanara.service.MarkerLocationService;
 import kosta.albanara.service.RecruitmentService;
