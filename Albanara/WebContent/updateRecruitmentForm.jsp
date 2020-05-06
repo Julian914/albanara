@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="/Albanara/css/jquery-ui.css">
 <link rel="stylesheet" href="/Albanara/css/bootstrap.css">
 <link rel="stylesheet" href="/Albanara/css/bootstrap-theme.css">
+<link rel="stylesheet" href="/Albanara/css/style.css">
 <script src="/Albanara/js/jquery-3.4.1.js" type="text/javascript"></script>
 <script src="/Albanara/js/jquery-ui.js" type="text/javascript"></script>
 <script src="/Albanara/js/bootstrap.js" type="text/javascript"></script>
@@ -35,8 +36,17 @@
 	margin: 0px 6px 6px 0px;
 }
 </style>
+<script>
+$(document).ready(function() {
+    $("header").load("/Albanara/header.html")
+    $("nav").load("/Albanara/nav.html")
+    $("footer").load("/Albanara/footer.html")
+ });
+</script>
 </head>
 <body class="bg-light">
+	<header></header>
+	<nav></nav>
 	<div class="container">
 		<div class="py-5 text-center">
 			<h1>모집 공고</h1>
@@ -223,6 +233,7 @@
 
 		</div>
 	</div>
+	<footer></footer>
 </body>
 
 <script>
