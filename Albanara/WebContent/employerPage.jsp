@@ -26,6 +26,9 @@
 <script src="/Albanara/js/Chart.bundle.js" type="text/javascript"></script>
 <script src="/Albanara/js/employerPage.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+$(".accordion").accordion();
+</script>
 
 <jsp:include page="header.html"></jsp:include>
 <jsp:include page="nav.html"></jsp:include>
@@ -40,24 +43,31 @@
 	<nav></nav>
 
 	<div class="container">
-
+	<div class="employer">
 		<h1>기업 마이페이지(기업관점)</h1>
-		<br>
+		
 		<div class="row">
 			<div class="col-md-4">
-				<img class="employerFile" width="200px" height="200px"><br>
-				기업이미지 <br>
+				<img class="employerFile" src="/Albanara/images/employerPage/noImage.png" style="width: 300px; height: 300px; margin-top: 10px;"><br>
+				<br>
 			</div>
 			<br>
 			<div class="col-md-4">
 				<div class="employerInfo">
 				<ul>
-					<li>기업명 : ${employer.employerName}</li> 
-					<li>주소:	${employer.employerAddress }</li> 
-					<li>전화번호 :	${employer.employerNumber} </li> 
-					<li>홈페이지:	<button type="button" class="btn btn-link">${employer.employerHomePage}</button></li>
-					<li> 분야 : ${employer.employerField}</li>
+					<li>기업명 :</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> ${employer.employerName}</b></li> 
+					<li>주소:	</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>${employer.employerAddress }</b></li> 
+					<li>전화번호 :	</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>${employer.employerNumber}</b> </li> 
+					<li>홈페이지:</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="homepageAddress" href="employer.employerHomePage">${employer.employerHomePage}</a></li>
+					<li>분야 :</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>${employer.employerField}</b></li>
 				</ul>
+				<br>
+				<br>
 				<br>
 				<br>
 				<input type="button" class="btn btn-primary updatebutton"
@@ -67,15 +77,15 @@
 				</div>
 			</div>
 			<div class="col-md-4">
-				기업지도
 				<div id="map" style="width: 300px; height: 300px; margin-top: 10px;"></div>
 			</div>
 		</div>
-		<br> <br>
-		<div id="wrap">
-			<h3>현재 진행중인 공고목록</h3>
+	</div>
+	<br> <br>
+	<div id="wrap">
+		<h3>현재 진행중인 공고목록</h3>
 
-			<div class="accordion recruitmentList">
+		<div class="accordion recruitmentList">
 
 				<c:forEach var="list" items="${nowRecruinmentList}"
 					varStatus="status">
@@ -169,13 +179,13 @@
 					<div id="accordion-contents">
 						<ul class="recruitmentDown">
 							<li>총 근무시간 : ${endlist.totalWorkingTime} 시간</li>
-							<li>연령제한 : ${endlist.minAge} 세 ~${list.maxAge} 세</li>
+							<li>연령제한 : ${endlist.minAge} 세 ~${endlist.maxAge} 세</li>
 							<li>시급 : ${endlist.wage} 원</li>
 							<li>근무지 주소 : ${endlist.workingPlaceAddress}</li>
 							<li>근무일자 :<fmt:parseDate var="startdate"
 									value="${endlist.startingWorkingDate}" pattern="yyyy-MM-dd" />
 								<fmt:formatDate value="${startdate}" pattern="yyyy.MM.dd" /> ~<fmt:parseDate
-									var="enddate" value="${list.endingWorkingDate}"
+									var="enddate" value="${endlist.endingWorkingDate}"
 									pattern="yyyy-MM-dd" /> <fmt:formatDate value="${enddate}"
 									pattern="yyyy.MM.dd" /></li>
 							<li><input type="button" class="btn btn-light"
@@ -317,7 +327,7 @@ var employerGrade = new Chart(employerGrade, {
     }
 });
 
-var employerScore = ${avgTotal};
+var employerScore = 66;
 var employerScoreGrade = '';
 if (employerScore >= 90) {
 	employerScoreGrade = '최우수';
@@ -362,7 +372,7 @@ var employeeGender = new Chart(employeeGender, {
         labels: ['여자', '남자'],
         datasets: [{
             label: '채용자 성별 현황',
-            data: [${woman}, ${man}],
+            data: [1,2],//[${woman}, ${man}],
             backgroundColor: [
             	'rgba(255, 99, 132, 0.2)',
             	'rgba(54, 162, 235, 0.2)'

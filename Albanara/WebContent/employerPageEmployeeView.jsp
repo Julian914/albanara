@@ -44,9 +44,10 @@
 
 		<h1>기업 마이페이지(구직자관점)</h1>
 		<br>
+		<br>
 		<div class="row">
 			<div class="col-md-4">
-				<img class="employerFile" width="200px" height="200px"><br>
+				<img class="employerFile" style="width:300px; height:300px; margin-top:10px;"><br>
 				기업이미지 <br>
 			</div>
 			<br>
@@ -58,6 +59,7 @@
 					<li>홈페이지 주소 :<button type="button" class="btn btn-link">${employer.employerHomePage}</button></li>
 					<li>전화번호:${employer.employerNumber}</li>
 					<li>분야	:${employer.employerField} </li>
+					<br>
 					<li><b><img	class="evalIcon" onclick="insertEmployerEval.do?seq=${employer.employerSeq}"
 						src="/Albanara/images/employerEval/like.png" name="좋아요" value="like">좋아요 ${employer.likeCount}
 					<img class="evalIcon" onclick="insertEmployerEval.do?seq=${employer.employerSeq}"

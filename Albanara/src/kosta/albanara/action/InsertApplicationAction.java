@@ -16,7 +16,7 @@ public class InsertApplicationAction implements Action {
 
 		
 		actionForward.setRedirect(true);
-		actionForward.setPath("/index.jsp");
+		actionForward.setPath("../member/showEmployersPage.do");
 		
 		
 		return actionForward;

@@ -120,17 +120,19 @@
 		</div>
 	</div>
 	<canvas id="myChart1" width="800"></canvas>
-	<canvas id="myChart2" width="800"></canvas>
+	<canvas id="myChart2" width="800"></canvas>	
 </body>
 <script>
+var mychartDataArr1 = [${employee.strengthCount }, ${employee.intelligenceCount }, ${employee.kindnessCount }, ${employee.patienceCount }];
 var ctx1 = $('#myChart1');
 var myChart2 = new Chart(ctx1, {
 	type : 'bar',
 	data : {
-		labels : [ 'Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange' ],
+		labels : [ '힘', '지능', '친절', '끈기'],
 		datasets : [ {
-			label : '# of Votes',
-			data : [ 12, 19, 3, 5, 2, 3 ],
+			label : '분야별 지원횟수',
+			//data : [ ${employee.strengthCount }, 19, 3, 5 ],
+			data : mychartDataArr1,
 			backgroundColor : [ 'rgba(255, 99, 132, 0.2)',
 					'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)',
 					'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)',
@@ -152,17 +154,18 @@ var myChart2 = new Chart(ctx1, {
 		}
 	}
 });
-
+var mychartDataArr2 = [${employee.workingDayCount }, ${employee.lateCount }, ${employee.noshowCount }];
 var ctx2 = $('#myChart2');
 var myDoughnutChart = new Chart(ctx2, {
 	type : 'doughnut',
 	data : {
-		labels : [ 'Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange' ],
+		labels : [ '총 근무일수', '지각횟수', '결석횟수'],
 		datasets : [ {
-			label : '# of Votes',
-			data : [ 12, 19, 3, 5, 2, 3 ],
-			backgroundColor : [ 'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)',
+			label : '근무 완수 통계',
+			//data : [ 12, 19, 3, 5, 2, 3 ],
+			data : mychartDataArr2,
+			backgroundColor : [ 'rgba(75, 192, 192, 0.2)',
+					'rgba(255, 206, 86, 0.2)', 'rgba(255, 99, 132, 0.2)',
 					'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)',
 					'rgba(255, 159, 64, 0.2)' ],
 			borderColor : [ 'rgba(255, 99, 132, 1)',
