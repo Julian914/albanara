@@ -194,13 +194,13 @@
 
 	<!--한 기업의 현재 진행중인 공고목록 -->
 	<select id="nowRecruinmentList" resultMap="Recruitments">
-		select *from recruitments where closing_date > sysdate and employer_seq=#{employer_seq}
+		select *from recruitments where closing_date > sysdate and employer_seq=#{employerSeq}
 	</select>
 
 
 	<!--한 기업의 마감된 공고목록 -->
 	<select id="endRecruitmentList" resultMap="Recruitments">
-		select *from recruitments where sysdate > closing_date and employer_seq=#{employer_seq}
+		select *from recruitments where sysdate > closing_date and employer_seq=#{employerSeq}
 	</select>
 
 

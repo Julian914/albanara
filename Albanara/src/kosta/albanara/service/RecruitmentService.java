@@ -7,6 +7,7 @@ import java.text.ParseException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -38,10 +39,8 @@ public class RecruitmentService {
 		return list;
 	}
 
-	public List<Recruitments> nowRecruinmentListService(HttpServletRequest request) throws Exception {
-		request.setCharacterEncoding("utf-8");
+	public List<Recruitments> nowRecruinmentListService(int employerSeq) throws Exception {
 		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
-		int employerSeq =1;
 		List<Recruitments> list =  recruitmentDao.nowRecruinmentList(employerSeq);
 		return list;
 	}

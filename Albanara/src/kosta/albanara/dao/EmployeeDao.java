@@ -1,6 +1,7 @@
 package kosta.albanara.dao;
 
 import java.io.InputStream;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -216,6 +217,19 @@ public Employees employeeLogIn(Employees employees) {
 		return employee;
 	}
 
-
+public List<Employees> allEmployeeList(){
+	SqlSession sqlSession = getSqlSessionFactory().openSession();
+	List<Employees> employeeList = null;
+	try {
+		employeeList = sqlSession.getMapper(EmployeeMapper.class).allEmployeeList();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}finally {
+		if (sqlSession != null) {
+			sqlSession.close();
+		}
+	}
+	return employeeList;
+}
 
 }

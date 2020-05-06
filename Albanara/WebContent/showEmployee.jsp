@@ -5,6 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+
+</style>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/Albanara/css/jquery-ui.css">
 <link rel="stylesheet" href="/Albanara/css/bootstrap.css">
@@ -22,7 +25,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+<header></header>	
 	<h1>구직자 마이페이지</h1>	
 	이름: ${employee.employeeName }<br>
 	생년월일: ${employee.employeeBirthday }<br>

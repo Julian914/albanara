@@ -18,25 +18,33 @@ public class EmployerLogInAction implements Action {
 		EmployerService service = EmployerService.getInstance();
 
 		Employers employers = service.employerLogInService(request);
+		System.out.println(employers);
 		if (employers != null) {
+			System.out.println(employers);
 			MarkerLocationService markerService = MarkerLocationService.getInstance();
-			String address = employers.getEmployerAddress();
-			MarkerLocation markerLocation = markerService.sessionAddressService(address);
+			MarkerLocation markerLocation = markerService.sessionAddressService(employers.getEmployerAddress());
 			
 			HttpSession session = request.getSession();
 			
 			session.setAttribute("id", employers.getEmployerId());
+			System.out.println("id : " + session.getAttribute("id"));
 			session.setAttribute("seq", employers.getEmployerSeq());
+			System.out.println("seq : " + session.getAttribute("seq"));
 			session.setAttribute("latitude", markerLocation.getLatitude());
+			
 			session.setAttribute("longitude", markerLocation.getLongitude());
-		}
-		
-		forward.setRedirect(false);
-		forward.setPath("/employerLogInForm.jsp");
-
-		if (employers == null) {
+			System.out.println("1 : " +session.getAttribute("longitude"));
+			System.out.println("2 : "   +session.getAttribute("latitude"));
+			
+			
+			forward.setRedirect(true);
+			forward.setPath("recommendEmployeeActionForm.do");
+		}else if(employers == null) {
+			forward.setRedirect(false);
 			forward.setPath("/index.jsp");
+			
 		}
+
 		return forward;
 	}
 

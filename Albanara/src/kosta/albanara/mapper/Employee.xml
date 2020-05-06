@@ -87,6 +87,9 @@
 		select * from employees where employee_id= #{employeeId} AND employee_pw = #{employeePw}
 	</select>
 	
+	<select id = "allEmployeeList" resultMap="Employees">
+		select * from employees
+	</select>
 
 	
 </mapper>

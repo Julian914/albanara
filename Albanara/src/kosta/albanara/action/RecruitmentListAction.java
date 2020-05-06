@@ -103,9 +103,9 @@ public class RecruitmentListAction implements Action {
 		 request.setAttribute("employeeListMapList", mapList1);
 		
 		 
-
+		 int employerSeq = Integer.parseInt(request.getParameter("employerSeq"));
 		// 진행중인 공고목록
-		List<Recruitments> nowRecruinmentList = service.nowRecruinmentListService(request);
+		List<Recruitments> nowRecruinmentList = service.nowRecruinmentListService(employerSeq);
 		request.setAttribute("nowRecruinmentList", nowRecruinmentList);
 
 		// 해당 공고의 지원자목록 불러오기
