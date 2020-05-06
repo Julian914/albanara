@@ -91,3 +91,7 @@ div.modal-body ul{
 	height: 30px;
 	margin-bottom: 6px;
 }
+
+#chart{
+	width: 1000px;
+}
