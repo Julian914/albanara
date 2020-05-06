@@ -36,7 +36,7 @@ import kosta.albanara.action.EmployerLogInAction;
 import kosta.albanara.action.EmployerSignUpAction;
 import kosta.albanara.action.EmployerUpdateAction;
 import kosta.albanara.action.EmployerUpdateFormAction;
-import kosta.albanara.action.HyunMapAction;
+import kosta.albanara.action.MapAction;
  
 @WebServlet("/member/*")
 public class MemberController extends HttpServlet {
