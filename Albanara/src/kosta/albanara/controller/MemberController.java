@@ -30,7 +30,7 @@ import kosta.albanara.action.UpdateResumeAction;
 import kosta.albanara.action.UpdateResumeFormAction;
 import kosta.albanara.action.ShowEmployerPageAction;
 import kosta.albanara.action.logOutAction;
-import kosta.albanara.action.recommendEmployeeFormAction;
+//import kosta.albanara.action.recommendEmployeeFormAction;
 import kosta.albanara.action.EmployerFormAction;
 import kosta.albanara.action.EmployerLogInAction;
 import kosta.albanara.action.EmployerSignUpAction;
@@ -353,14 +353,14 @@ public class MemberController extends HttpServlet {
 			
 			}
 		
-    	}else if(command.equals("recommendEmployeeActionForm.do")) {
+    	}/*else if(command.equals("recommendEmployeeActionForm.do")) {
     		action = new recommendEmployeeFormAction();
     		try {
 				actionForward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-    	}
+    	}*/
 
 		if (actionForward != null){
 			if (actionForward.isRedirect()) {
@@ -370,6 +370,7 @@ public class MemberController extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 		}
+    
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

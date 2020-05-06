@@ -15,7 +15,7 @@ public class SearchResumeAction implements Action {
 		
 		//구직자 seq 던지면 그 사람의 이력서가 나오게 하는 방법 (하지만 
 		//int employeeSeq = Integer.parseInt(request.getParameter("employeeSeq"));
-		int employeeSeq = 3;
+		int employeeSeq = 21;
 		Resumes resume = service.searchResumeService(employeeSeq);
 		System.out.println("action");
 		
