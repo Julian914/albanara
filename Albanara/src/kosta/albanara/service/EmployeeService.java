@@ -3,6 +3,7 @@ package kosta.albanara.service;
 
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -196,5 +197,11 @@ public void logOut(HttpServletRequest request) throws Exception{
 	System.out.println("로그아웃");
 		
 	}
+
+public List<Employees> allEmployeeListService(HttpServletRequest request)throws Exception{
+	request.setCharacterEncoding("utf-8");
+	List<Employees> list = employeeDao.allEmployeeList();
+	return list;
+}
 
 }

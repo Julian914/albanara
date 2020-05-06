@@ -1,5 +1,7 @@
 package kosta.albanara.mapper;
 
+import java.util.List;
+
 import kosta.albanara.model.Employees;
 import kosta.albanara.model.Resumes;
 
@@ -14,5 +16,5 @@ public interface EmployeeMapper {
 	Employees getEmployee(int seq);
 	int deleteEmployee(Employees employee);
 	Employees employeeLogIn(Employees employees);
-
+	List<Employees> allEmployeeList();
 }

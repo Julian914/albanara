@@ -30,11 +30,13 @@ import kosta.albanara.action.UpdateResumeAction;
 import kosta.albanara.action.UpdateResumeFormAction;
 import kosta.albanara.action.ShowEmployerPageAction;
 import kosta.albanara.action.logOutAction;
+import kosta.albanara.action.recommendEmployeeFormAction;
 import kosta.albanara.action.EmployerFormAction;
 import kosta.albanara.action.EmployerLogInAction;
 import kosta.albanara.action.EmployerSignUpAction;
 import kosta.albanara.action.EmployerUpdateAction;
 import kosta.albanara.action.EmployerUpdateFormAction;
+import kosta.albanara.action.HyunMapAction;
  
 @WebServlet("/member/*")
 public class MemberController extends HttpServlet {
@@ -351,6 +353,13 @@ public class MemberController extends HttpServlet {
 			
 			}
 		
+    	}else if(command.equals("recommendEmployeeActionForm.do")) {
+    		action = new recommendEmployeeFormAction();
+    		try {
+				actionForward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
     	}
 
 		if (actionForward != null){
