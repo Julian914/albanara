@@ -23,6 +23,7 @@ import kosta.albanara.action.EmployerDeleteAction;
 import kosta.albanara.action.EmployerDetailAction;
 import kosta.albanara.action.InsertResumeAction;
 import kosta.albanara.action.InsertResumeForm;
+import kosta.albanara.action.RecommendEmployeeFormAction;
 import kosta.albanara.action.EmployerLogInFormAction;
 import kosta.albanara.action.SearchResumeAction;
 import kosta.albanara.action.ShowEmployeeAction;
@@ -354,7 +355,7 @@ public class MemberController extends HttpServlet {
 			}
 		
     	}else if(command.equals("recommendEmployeeActionForm.do")) {
-    		action = new recommendEmployeeFormAction();
+    		action = new RecommendEmployeeFormAction();
     		try {
 				actionForward = action.execute(request, response);
 			} catch (Exception e) {

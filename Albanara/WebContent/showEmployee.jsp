@@ -6,7 +6,9 @@
 <html>
 <head>
 <style type="text/css">
-
+.container {
+	max-width: 960px;
+}
 </style>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/Albanara/css/jquery-ui.css">
@@ -22,10 +24,19 @@
 		$('.accordion').accordion();
 	});
 </script>
+<script>
+$(document).ready(function() {
+    $("header").load("/Albanara/header.html")
+    $("nav").load("/Albanara/nav.html")
+    $("footer").load("/Albanara/footer.html")
+ });
+</script>
 <title>Insert title here</title>
 </head>
 <body>
-<header></header>	
+<header></header>
+<nav></nav>
+<div class = "container">
 	<h1>구직자 마이페이지</h1>	
 	이름: ${employee.employeeName }<br>
 	생년월일: ${employee.employeeBirthday }<br>
@@ -35,6 +46,7 @@
 	이메일: ${employee.employeeEmail }<br>
 	
 	<h3>제안 받은 공고</h3>
+	
 	<div id="wrap">
 		<div class="accordion">
 			<c:forEach var="list" items="${recruitmentList}" varStatus="status">
@@ -122,8 +134,10 @@
 			</c:forEach>
 		</div>
 	</div>
+</div>
 	<canvas id="myChart1" width="800"></canvas>
-	<canvas id="myChart2" width="800"></canvas>	
+	<canvas id="myChart2" width="800"></canvas>
+<footer></footer>		
 </body>
 <script>
 var mychartDataArr1 = [${employee.strengthCount }, ${employee.intelligenceCount }, ${employee.kindnessCount }, ${employee.patienceCount }];
