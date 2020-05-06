@@ -19,7 +19,7 @@ public class UpdateResumeAction implements Action {
 		
 		
 		actionForward.setRedirect(false);
-		actionForward.setPath("/resumetotal.jsp");
+		actionForward.setPath("/index.jsp");
 		
 		return actionForward;
 	}

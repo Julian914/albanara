@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +16,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 
-/* css´Ü */
+/* cssë‹¨ */
 </style>
 
 </head>
@@ -28,45 +28,45 @@
 
 	<div class="container">
 		<div class="page-header text-center">
-			<h1>ÀÌ·Â¼­</h1>
-			<h3>¾Æ·¡ ¾ç½Ä¿¡ ¸Â°Ô ÀÛ¼ºÇØÁÖ½Ã¸é µË´Ï´Ù.</h3>
+			<h1>ì´ë ¥ì„œ</h1>
+			<h3>ì•„ëž˜ ì–‘ì‹ì— ë§žê²Œ ìž‘ì„±í•´ì£¼ì‹œë©´ ë©ë‹ˆë‹¤.</h3>
 		</div>
 
 
 		<div class="row">
 			<form action="insertResume.do" method="post" enctype="multipart/form-data">
 				<div class="form-group">
-					<div>»çÁø Ã·ºÎ</div>
+					<div>ì‚¬ì§„ ì²¨ë¶€</div>
 					<input type="file" name="pictureFilename">
 				</div>
 	
 				<div class="form-group">
-					<div>ÀÌ·Â¼­ Á¦¸ñ</div>
-					<input type="text" name="resumeTitle" placeholder="ÀÌ·Â¼­ Á¦¸ñ µî·Ï">	
+					<div>ì´ë ¥ì„œ ì œëª©</div>
+					<input type="text" name="resumeTitle" placeholder="ì´ë ¥ì„œ ì œëª© ë“±ë¡">	
 				</div>
 				
 				<div class="form-group">
-					<div>ÀÌ·Â¼­ Á¦¸ñ</div>
+					<div>ì´ë ¥ì„œ ì œëª©</div>
 					<textarea cols="100" rows="10" name="resumeContents"
-						placeholder="ÀÚ±â¼Ò°³" style="overflow-x: hidden; overflow-y: auto"></textarea>
+						placeholder="ìžê¸°ì†Œê°œ" style="overflow-x: hidden; overflow-y: auto"></textarea>
 				</div>
 				
 				<div class="form-group">
-					<div>Èñ¸Á ±Ù¹« Áö¿ª</div>
-					<input type="text" name="desiredWorkingArea" placeholder="Èñ¸Á ±Ù¹« Áö¿ª">		
+					<div>í¬ë§ ê·¼ë¬´ ì§€ì—­</div>
+					<input type="text" name="desiredWorkingArea" placeholder="í¬ë§ ê·¼ë¬´ ì§€ì—­">		
 				</div>
 				
 				<div class="form-group">
-					<div>°ü½ÉÁ÷Á¾<br> 
-						<input type="radio" name="favoriteField" value="Èû">Èû<br>
-						<input type="radio" name="favoriteField" value="Áö´É">Áö´É<br>
-						<input type="radio" name="favoriteField" value="²ö±â">²ö±â<br>
-						<input type="radio" name="favoriteField" value="Ä£Àý">Ä£Àý<br>
+					<div>ê´€ì‹¬ì§ì¢…<br> 
+						<input type="radio" name="favoriteField" value="íž˜">íž˜<br>
+						<input type="radio" name="favoriteField" value="ì§€ëŠ¥">ì§€ëŠ¥<br>
+						<input type="radio" name="favoriteField" value="ëˆê¸°">ëˆê¸°<br>
+						<input type="radio" name="favoriteField" value="ì¹œì ˆ">ì¹œì ˆ<br>
 					</div>
 				</div>
 				
 				<div class="form-group">
-					<input type="submit" value="µî·Ï">
+					<input type="submit" value="ë“±ë¡">
 				</div>
 
 			</form>
@@ -87,24 +87,24 @@ $(document).ready(function() {
 	<!-- 
 		<form action="insertResume.do" method="post"
 			enctype="multipart/form-data">
-			<h3>ÀÌ·Â¼­</h3>
-			<div>»çÁø Ã·ºÎ</div>
+			<h3>ì´ë ¥ì„œ</h3>
+			<div>ì‚¬ì§„ ì²¨ë¶€</div>
 			<input type="file" name="pictureFilename"><br>
-			<div>ÀÌ·Â¼­ Á¦¸ñ</div>
-			<input type="text" name="resumeTitle" placeholder="ÀÌ·Â¼­ Á¦¸ñ µî·Ï"><br>
-			<div>ÀÌ·Â¼­ Á¦¸ñ</div>
+			<div>ì´ë ¥ì„œ ì œëª©</div>
+			<input type="text" name="resumeTitle" placeholder="ì´ë ¥ì„œ ì œëª© ë“±ë¡"><br>
+			<div>ì´ë ¥ì„œ ì œëª©</div>
 			<textarea cols="100" rows="10" name="resumeContents"
-				placeholder="ÀÚ±â¼Ò°³" style="overflow-x: hidden; overflow-y: auto"></textarea>
+				placeholder="ìžê¸°ì†Œê°œ" style="overflow-x: hidden; overflow-y: auto"></textarea>
 			<br>
-			<div>Èñ¸Á ±Ù¹« Áö¿ª</div>
-			<input type="text" name="desiredWorkingArea" placeholder="Èñ¸Á ±Ù¹« Áö¿ª"><br>
+			<div>í¬ë§ ê·¼ë¬´ ì§€ì—­</div>
+			<input type="text" name="desiredWorkingArea" placeholder="í¬ë§ ê·¼ë¬´ ì§€ì—­"><br>
 			<div>
-				°ü½ÉÁ÷Á¾<br> <input type="radio" name="favoriteField" value="Èû">Èû<br>
-				<input type="radio" name="favoriteField" value="Áö´É">Áö´É<br>
-				<input type="radio" name="favoriteField" value="²ö±â">²ö±â<br>
-				<input type="radio" name="favoriteField" value="Ä£Àý">Ä£Àý<br>
+				ê´€ì‹¬ì§ì¢…<br> <input type="radio" name="favoriteField" value="íž˜">íž˜<br>
+				<input type="radio" name="favoriteField" value="ì§€ëŠ¥">ì§€ëŠ¥<br>
+				<input type="radio" name="favoriteField" value="ëˆê¸°">ëˆê¸°<br>
+				<input type="radio" name="favoriteField" value="ì¹œì ˆ">ì¹œì ˆ<br>
 			</div>
-			<br> <br> <input type="submit" value="µî·Ï">
+			<br> <br> <input type="submit" value="ë“±ë¡">
 		</form>
 		
 	 -->

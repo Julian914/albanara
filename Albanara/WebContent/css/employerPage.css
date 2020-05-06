@@ -85,3 +85,9 @@ div.modal-body ul{
 	border-color: #BDDBFF;
 	margin: 0px;
 }
+
+.typeIcon {
+	width: 30px;
+	height: 30px;
+	margin-bottom: 6px; 
+}

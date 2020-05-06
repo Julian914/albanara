@@ -28,7 +28,7 @@
 
 
 		<div class="row">
-			<form action="insertResume.do" method="post" enctype="multipart/form-data">
+			<form action="updateResumeAction.do" method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<div>사진 첨부</div>
 					<input type="file" name="pictureFilename">
