@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kosta.albanara.model.ApplyedEmployeeListMap;
-import kosta.albanara.model.Employers;
+import kosta.albanara.model.Employer;
 import kosta.albanara.model.MarkerLocation;
-import kosta.albanara.model.Recruitments;
+import kosta.albanara.model.Recruitment;
 import kosta.albanara.service.EmployeeService;
 import kosta.albanara.service.EmployerService;
 import kosta.albanara.service.EvaluationService;
@@ -33,7 +33,7 @@ public class EmployerDetailAction implements Action {
 		
 		HttpSession session = request.getSession();
 
-		Employers employer = employerService.detailEmployerService(seq);
+		Employer employer = employerService.detailEmployerService(seq);
 
 		//int employerSeq = Integer.parseInt(session.getAttribute("seq").toString());
 		int employerSeq = 24;
@@ -65,7 +65,7 @@ public class EmployerDetailAction implements Action {
 		
 		// 한 기업의 전체 공고목록 불러오기
 
-		List<Recruitments> recruitmentList = employerService.recruitmentListService(seq);
+		List<Recruitment> recruitmentList = employerService.recruitmentListService(seq);
 
 		request.setAttribute("recruitmentList", recruitmentList);
 		System.out.println("전체 공고목록 : " + recruitmentList.size());
@@ -87,7 +87,7 @@ public class EmployerDetailAction implements Action {
 		
 		// 진행중인 공고목록
 
-		List<Recruitments> nowRecruinmentList = employerService.nowRecruinmentListService(seq);
+		List<Recruitment> nowRecruinmentList = employerService.nowRecruinmentListService(seq);
 
 		request.setAttribute("nowRecruinmentList", nowRecruinmentList);
 		System.out.println("진행중 공고목록 : " + nowRecruinmentList.size());
@@ -107,7 +107,7 @@ public class EmployerDetailAction implements Action {
 		
 		// 마감된 공고목록
 
-		List<Recruitments> endRecruitmentList = employerService.endRecruitmentListService(seq);
+		List<Recruitment> endRecruitmentList = employerService.endRecruitmentListService(seq);
 
 		request.setAttribute("endRecruitmentList", endRecruitmentList);
 		System.out.println("endRecruitmentList : "+endRecruitmentList.size());

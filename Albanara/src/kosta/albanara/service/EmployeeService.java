@@ -12,8 +12,8 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kosta.albanara.dao.EmployeeDao;
-import kosta.albanara.model.Employees;
-import kosta.albanara.model.Resumes;
+import kosta.albanara.model.Employee;
+import kosta.albanara.model.Resume;
 
 public class EmployeeService {
 	public static EmployeeService instance;
@@ -56,7 +56,7 @@ public class EmployeeService {
 		 * employeeAddress ="?��?��?��?��?��?��";
 		 */
 
-		Employees employee = new Employees(employeeId, employeePw, employeeName, employeeBirthday, employeeEmail,
+		Employee employee = new Employee(employeeId, employeePw, employeeName, employeeBirthday, employeeEmail,
 				employeeGender, employeePhone, employeeAddress);
 
 		return employeeDao.insertEmployee(employee);
@@ -92,13 +92,13 @@ public class EmployeeService {
 				}
 		*/
 		
-		Resumes resume = new Resumes(pictureFilename, resumeTitle, resumeContents, desiredWorkingArea, favoriteField);
+		Resume resume = new Resume(pictureFilename, resumeTitle, resumeContents, desiredWorkingArea, favoriteField);
 	System.out.println(resume.toString());
 		
 		return employeeDao.insertResume(resume);
 	}
 
-	public Resumes searchResumeService(int employeeSeq)throws Exception {
+	public Resume searchResumeService(int employeeSeq)throws Exception {
 	System.out.println(employeeSeq);
 		return employeeDao.searchResume(employeeSeq);
 	}
@@ -120,30 +120,30 @@ public class EmployeeService {
 		String pictureFilename = (String)multi.getFilesystemName("pictureFilename");
 		String favoriteField = multi.getParameter("favoriteField");
 		
-		Resumes resume = new Resumes(pictureFilename, resumeTitle, resumeContents, desiredWorkingArea, favoriteField);
+		Resume resume = new Resume(pictureFilename, resumeTitle, resumeContents, desiredWorkingArea, favoriteField);
 		
 	System.out.println(resume.toString());
 		
 		return employeeDao.updateResume(resume);
 	}
 
-	public Employees getEmployee(int seq) {
+	public Employee getEmployee(int seq) {
 		return employeeDao.getEmployee(seq);
 	}
 	
 
-	public int updateEmployeeService(Employees employee) throws Exception{
+	public int updateEmployeeService(Employee employee) throws Exception{
 		
 		return employeeDao.updateEmployee(employee);
 	}
 	
-	public int deleteEmployeeService(Employees employee) throws Exception{
+	public int deleteEmployeeService(Employee employee) throws Exception{
 		
 		
 		return employeeDao.deleteEmployee(employee);
 	}
 	
-	public Employees basicInformationService(int employeeSeq) {
+	public Employee basicInformationService(int employeeSeq) {
 		return employeeDao.basicInformation(employeeSeq);
 	}
 	
@@ -153,12 +153,12 @@ public class EmployeeService {
 	
 	
 	
-public Employees employeeLogInService(HttpServletRequest request) throws Exception {
+public Employee employeeLogInService(HttpServletRequest request) throws Exception {
 		
 	request.setCharacterEncoding("utf-8");
 	
-	Employees employee = new Employees();
-	Employees login = new Employees();
+	Employee employee = new Employee();
+	Employee login = new Employee();
 	
 	employee.setEmployeeId(request.getParameter("employeeLogInId"));
 	employee.setEmployeePw(request.getParameter("employeeLogInPw"));
@@ -199,20 +199,20 @@ public void logOut(HttpServletRequest request) throws Exception{
 	}
 
 
-public List<Employees> allEmployeeListService(HttpServletRequest request)throws Exception{
+public List<Employee> allEmployeeListService(HttpServletRequest request)throws Exception{
 	request.setCharacterEncoding("utf-8");
-	List<Employees> list = employeeDao.allEmployeeList();
+	List<Employee> list = employeeDao.allEmployeeList();
 	return list;
 }
 
 
-public List<Employees> employeeListService(int recruitmentSeq) throws Exception {
-	List<Employees> employeeList = employeeDao.employeeList(recruitmentSeq);
+public List<Employee> employeeListService(int recruitmentSeq) throws Exception {
+	List<Employee> employeeList = employeeDao.employeeList(recruitmentSeq);
 	return employeeList;
 }
 
 
-public List<Employees> hiredEmployeeListService()throws Exception{
+public List<Employee> hiredEmployeeListService()throws Exception{
 	return employeeDao.hiredEmployeeList();
 }
 

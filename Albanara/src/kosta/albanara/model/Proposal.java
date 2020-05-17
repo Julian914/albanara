@@ -3,7 +3,7 @@ package kosta.albanara.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Proposals implements Serializable{
+public class Proposal implements Serializable{
 	
 	private int proposalSeq;  
 	private int recruitmentSeq;	
@@ -11,9 +11,9 @@ public class Proposals implements Serializable{
 	private int isAccepted;  
 	private Date proposalDate; 
 	
-	public Proposals() {};
+	public Proposal() {};
 	
-	public Proposals(int recruitmentSeq, int employeeSeq) {
+	public Proposal(int recruitmentSeq, int employeeSeq) {
 		super();
 		this.recruitmentSeq = recruitmentSeq;
 		this.employeeSeq = employeeSeq;

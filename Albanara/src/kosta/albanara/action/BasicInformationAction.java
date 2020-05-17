@@ -3,7 +3,7 @@ package kosta.albanara.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kosta.albanara.model.Employees;
+import kosta.albanara.model.Employee;
 import kosta.albanara.service.EmployeeService;
 
 public class BasicInformationAction implements Action {
@@ -16,7 +16,7 @@ public class BasicInformationAction implements Action {
 		//int employeeSeq = Integer.parseInt(request.getParameter("employeeSeq"));
 		int employeeSeq = 3;
 		
-		Employees employee = service.basicInformationService(employeeSeq);
+		Employee employee = service.basicInformationService(employeeSeq);
 		
 		request.setAttribute("Employee", employee);
 		

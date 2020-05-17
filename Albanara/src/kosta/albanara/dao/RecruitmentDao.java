@@ -9,11 +9,11 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kosta.albanara.mapper.RecruitmentMapper;
-import kosta.albanara.model.Applications;
-import kosta.albanara.model.Employees;
+import kosta.albanara.model.Application;
+import kosta.albanara.model.Employee;
 import kosta.albanara.model.HiredHistory;
-import kosta.albanara.model.Proposals;
-import kosta.albanara.model.Recruitments;
+import kosta.albanara.model.Proposal;
+import kosta.albanara.model.Recruitment;
 
 public class RecruitmentDao {
 	private static RecruitmentDao instance;
@@ -37,9 +37,9 @@ public class RecruitmentDao {
 		return new SqlSessionFactoryBuilder().build(in);
 	}
 
-	public List<Recruitments> totalRecruitmentList(int employerSeq) {
+	public List<Recruitment> totalRecruitmentList(int employerSeq) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<Recruitments> list = null;
+		List<Recruitment> list = null;
 		try {
 			list = sqlSession.getMapper(RecruitmentMapper.class).totalRecruitmentList(employerSeq);
 			//System.out.println("dao : "+list);
@@ -56,7 +56,7 @@ public class RecruitmentDao {
 
 
 
-	public int insertRecruitment(Recruitments recruitment) {
+	public int insertRecruitment(Recruitment recruitment) {
 		int resultCount = -1;
 		SqlSession session = getSqlSessionFactory().openSession();
 		RecruitmentMapper mapper = null;
@@ -78,7 +78,7 @@ public class RecruitmentDao {
 		return resultCount;
 	}
 
-	public int updateRecruitment(Recruitments recruitment) {
+	public int updateRecruitment(Recruitment recruitment) {
 		int resultCount = -1;
 		SqlSession session = getSqlSessionFactory().openSession();
 		RecruitmentMapper mapper = null;
@@ -100,10 +100,10 @@ public class RecruitmentDao {
 		return resultCount;
 	}
 
-	public Recruitments getRecruitment(int seq) {
+	public Recruitment getRecruitment(int seq) {
 		SqlSession session = getSqlSessionFactory().openSession();
 		RecruitmentMapper mapper = null;
-		Recruitments recruitment = null;
+		Recruitment recruitment = null;
 		try {
 			mapper = session.getMapper(RecruitmentMapper.class);
 			System.out.println("공고수정 SEQ: " + seq);
@@ -139,9 +139,9 @@ public class RecruitmentDao {
 
 
 	//진행중인 전체 공고목록
-		public List<Recruitments> recruitmentList(){
+		public List<Recruitment> recruitmentList(){
 			SqlSession sqlSession = getSqlSessionFactory().openSession();
-			List<Recruitments> list = null;
+			List<Recruitment> list = null;
 			try {
 				list = sqlSession.getMapper(RecruitmentMapper.class).recruitmentList();
 			} catch (Exception e) {
@@ -158,9 +158,9 @@ public class RecruitmentDao {
 	
 	
 	
-	public List<Recruitments> nowRecruinmentList(int employerSeq) {
+	public List<Recruitment> nowRecruinmentList(int employerSeq) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<Recruitments> nowRecruinmentList= null;
+		List<Recruitment> nowRecruinmentList= null;
 		
 		try {
 			nowRecruinmentList = sqlSession.getMapper(RecruitmentMapper.class).nowRecruinmentList(employerSeq);
@@ -176,9 +176,9 @@ public class RecruitmentDao {
 	};
 	
 	
-	public List<Recruitments> endRecruitmentList(int employerSeq) {
+	public List<Recruitment> endRecruitmentList(int employerSeq) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<Recruitments> endRecruitmentList = null;
+		List<Recruitment> endRecruitmentList = null;
 		
 		try {
 			endRecruitmentList= sqlSession.getMapper(RecruitmentMapper.class).endRecruitmentList(employerSeq);
@@ -195,7 +195,7 @@ public class RecruitmentDao {
 	
 	
 	
-	public int insertApplication(Applications application) {
+	public int insertApplication(Application application) {
 		int result = -1;
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		try {
@@ -215,8 +215,8 @@ public class RecruitmentDao {
 	}
 
 	
-	public List<Applications> totalApplicationList(){
-		List<Applications> totalApplicationList = null;
+	public List<Application> totalApplicationList(){
+		List<Application> totalApplicationList = null;
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		try {
 			totalApplicationList = sqlSession.getMapper(RecruitmentMapper.class).totalApplicationList();			
@@ -232,9 +232,9 @@ public class RecruitmentDao {
 
 
 	/*제안 받은 공고 리스트 */
-	public List<Recruitments> showProposalRecruitments(int seq) {
+	public List<Recruitment> showProposalRecruitments(int seq) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<Recruitments> list = null;
+		List<Recruitment> list = null;
 		
 		try {
 			list = sqlSession.getMapper(RecruitmentMapper.class).showProposalRecruitments(seq);
@@ -322,9 +322,9 @@ public class RecruitmentDao {
 		return re;
 	}
 	
-	public List<Recruitments> completeRecruitment(int seq){
+	public List<Recruitment> completeRecruitment(int seq){
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<Recruitments> list = null;
+		List<Recruitment> list = null;
 		try {
 			list = sqlSession.getMapper(RecruitmentMapper.class).completeRecruitment(seq);
 		} catch (Exception e) {
@@ -337,9 +337,9 @@ public class RecruitmentDao {
 		return list;
 	}
 	
-	public List<Recruitments> applyRecruitment(int seq){
+	public List<Recruitment> applyRecruitment(int seq){
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<Recruitments> applyList = null;
+		List<Recruitment> applyList = null;
 		try {
 			applyList = sqlSession.getMapper(RecruitmentMapper.class).applyRecruitment(seq);
 		} catch (Exception e) {
@@ -356,7 +356,7 @@ public class RecruitmentDao {
 	
 	
 	//추천받은 구직자에게 제안하기 proposals
-	public int insertProposal(Proposals proposals) {
+	public int insertProposal(Proposal proposals) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = -1;
 		

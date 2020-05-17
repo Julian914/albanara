@@ -10,12 +10,12 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kosta.albanara.mapper.EmployerMapper;
 import kosta.albanara.mapper.RecruitmentMapper;
-import kosta.albanara.model.Employees;
-import kosta.albanara.model.Employers;
+import kosta.albanara.model.Employee;
+import kosta.albanara.model.Employer;
 import kosta.albanara.model.HiredHistory;
 import kosta.albanara.model.MarkerLocation;
-import kosta.albanara.model.Proposals;
-import kosta.albanara.model.Recruitments;
+import kosta.albanara.model.Proposal;
+import kosta.albanara.model.Recruitment;
 
 public class EmployerDao {
 	private static EmployerDao instance;
@@ -39,7 +39,7 @@ public class EmployerDao {
 		return new SqlSessionFactoryBuilder().build(in);
 	}
 
-	public int insertEmployer(Employers employers) {
+	public int insertEmployer(Employer employers) {
 
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = -1;
@@ -62,10 +62,10 @@ public class EmployerDao {
 		return re;
 	}
 	
-	public Employers employerLogIn(Employers employers) {
+	public Employer employerLogIn(Employer employers) {
 		
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		Employers employer = new Employers();
+		Employer employer = new Employer();
 		
 		try {
 			employer = sqlSession.getMapper(EmployerMapper.class).employerLogIn(employers);
@@ -80,7 +80,7 @@ public class EmployerDao {
 		return employer;
 	}
 	
-	public int updateEmployer(Employers employer) {
+	public int updateEmployer(Employer employer) {
 		
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re= -1;
@@ -101,7 +101,7 @@ public class EmployerDao {
 		return re;
 	}
 	
-public int deleteEmployer(Employers employer) {
+public int deleteEmployer(Employer employer) {
 		
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re= -1;
@@ -122,9 +122,9 @@ public int deleteEmployer(Employers employer) {
 		return re;
 	}
 
-public Employers detailEmployers(int employerSeq) {
+public Employer detailEmployers(int employerSeq) {
 	SqlSession sqlSession = getSqlSessionFactory().openSession();
-	Employers employer = null;
+	Employer employer = null;
 	try {
 		employer = sqlSession.getMapper(EmployerMapper.class).detailEmployer(employerSeq);
 		
@@ -194,9 +194,9 @@ public Employers detailEmployers(int employerSeq) {
 	
 	
 	//한 기업의 전체 공고 목록
-	public List<Recruitments> totalRecruitmentList(int employerSeq) {
+	public List<Recruitment> totalRecruitmentList(int employerSeq) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<Recruitments> list = null;
+		List<Recruitment> list = null;
 		try {
 			list = sqlSession.getMapper(RecruitmentMapper.class).totalRecruitmentList(employerSeq);
 			//System.out.println("dao : "+list);
@@ -212,9 +212,9 @@ public Employers detailEmployers(int employerSeq) {
 	}
 	
 	//한 기업의 진행중인 공고목록
-	public List<Recruitments> nowRecruinmentList(int employerSeq) {
+	public List<Recruitment> nowRecruinmentList(int employerSeq) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<Recruitments> nowRecruinmentList= null;
+		List<Recruitment> nowRecruinmentList= null;
 		
 		try {
 			nowRecruinmentList = sqlSession.getMapper(RecruitmentMapper.class).nowRecruinmentList(employerSeq);
@@ -230,9 +230,9 @@ public Employers detailEmployers(int employerSeq) {
 	};
 	
 	//한 기업의 마감된 공고목록
-	public List<Recruitments> endRecruitmentList(int employerSeq) {
+	public List<Recruitment> endRecruitmentList(int employerSeq) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<Recruitments> endRecruitmentList = null;
+		List<Recruitment> endRecruitmentList = null;
 		
 		try {
 			endRecruitmentList= sqlSession.getMapper(RecruitmentMapper.class).endRecruitmentList(employerSeq);
@@ -250,7 +250,7 @@ public Employers detailEmployers(int employerSeq) {
 	
 	
 	//추천받은 구직자에게 제안하기 proposals
-	public int insertProposal(Proposals proposals) {
+	public int insertProposal(Proposal proposals) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = -1;
 		

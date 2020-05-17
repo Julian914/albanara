@@ -6,16 +6,16 @@
 <configuration>
 	<typeAliases>		
 		<typeAlias type="java.lang.String" alias="String"/>
-		<typeAlias type="kosta.albanara.model.Recruitments" alias="Recruitments"/>		
+		<typeAlias type="kosta.albanara.model.Recruitment" alias="Recruitment"/>		
 		<typeAlias type="kosta.albanara.model.HyunMap" alias="MapClass"/>
-		<typeAlias type="kosta.albanara.model.Employees" alias="Employees"/>
-		<typeAlias type="kosta.albanara.model.Employers" alias="Employers"/>
-		<typeAlias type="kosta.albanara.model.Resumes" alias="Resumes"/>
-		<typeAlias type="kosta.albanara.model.Applications" alias="Applications"/>
+		<typeAlias type="kosta.albanara.model.Employee" alias="Employee"/>
+		<typeAlias type="kosta.albanara.model.Employer" alias="Employer"/>
+		<typeAlias type="kosta.albanara.model.Resume" alias="Resume"/>
+		<typeAlias type="kosta.albanara.model.Application" alias="Application"/>
 		<typeAlias type="kosta.albanara.model.MarkerLocation" alias="MarkerLocation"/>
-		<typeAlias type="kosta.albanara.model.NearRecruitments" alias="NearRecruitments"/>
+		<typeAlias type="kosta.albanara.model.NearRecruitment" alias="NearRecruitment"/>
 		<typeAlias type="kosta.albanara.model.HiredHistory" alias="HiredHistory"/>
-		<typeAlias type="kosta.albanara.model.Proposals" alias="Proposals"/>
+		<typeAlias type="kosta.albanara.model.Proposal" alias="Proposal"/>
 	</typeAliases>
 	
 	<environments default="development">

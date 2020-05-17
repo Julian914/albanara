@@ -2,13 +2,13 @@ package kosta.albanara.model;
 
 import java.util.Date;
 
-public class Messages {
-	private int messageSeq; 	//ÂÊÁö¹øÈ£
-	private int employeeSeq; 	//±â¾÷¹øÈ£
-	private int employerSeq;	//±¸Á÷ÀÚ¹øÈ£
-	private String contents; 	//ÂÊÁö³»¿ë
-	private Date sendDate;	//º¸³½³¯Â¥
-	private String senderType; 	//¹ß½Å±¸ºÐ
+public class Message {
+	private int messageSeq; 	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+	private int employeeSeq; 	//ï¿½ï¿½ï¿½ï¿½ï¿½È£
+	private int employerSeq;	//ï¿½ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½È£
+	private String contents; 	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private Date sendDate;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¥
+	private String senderType; 	//ï¿½ß½Å±ï¿½ï¿½ï¿½
 	
 	
 	public int getMessageSeq() {

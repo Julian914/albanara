@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kosta.albanara.model.Employees;
+import kosta.albanara.model.Employee;
 import kosta.albanara.model.MarkerLocation;
 import kosta.albanara.service.EmployeeService;
 import kosta.albanara.service.MarkerLocationService;
@@ -16,7 +16,7 @@ public class EmployeeLogInAction implements Action {
 		ActionForward forward = new ActionForward();
 		EmployeeService employeeService = EmployeeService.getInstance();
 		
-		Employees employees = employeeService.employeeLogInService(request);
+		Employee employees = employeeService.employeeLogInService(request);
 		
 		request.setAttribute("employee", employees);
 		

@@ -5,7 +5,7 @@
 <mapper namespace="kosta.albanara.mapper.EmployerMapper">
 	<cache />
 	
-	<resultMap id="Employers" type="Employers">
+	<resultMap id="Employer" type="Employer">
 		<result column="employer_seq" property="employerSeq" />
 		<result column="employer_id" property="employerId" />
 		<result column="employer_pw" property="employerPw" />
@@ -23,14 +23,14 @@
 	</resultMap>
 	
 	
-	<resultMap type="MarkerLocation" id="MarkerLocation">
+	<resultMap id="MarkerLocation" type="MarkerLocation">
 		<result column="MARKER_LOCATION_SEQ" property="markerLocationSeq"/>
 		<result column="ROAD_ADDRESS" property="roadAddress"/>
 		<result column="LATITUDE" property="latitude"/>
 		<result column="LONGITUDE" property="longitude"/>
 	</resultMap>
 	
-	<insert id="insertEmployer" parameterType="Employers">
+	<insert id="insertEmployer" parameterType="Employer">
 		insert into employers(
 			employer_seq, employer_id, employer_pw, employer_name, employer_number,
 			employer_address, employer_field, owner_name, owner_phone, employer_homepage) 
@@ -48,21 +48,21 @@
 			)
 	</insert>
 	
-	<select id="employerLogIn" parameterType="Employers" resultMap="Employers">
+	<select id="employerLogIn" parameterType="Employer" resultMap="Employer">
 		select * from employers where employer_id= #{employerId} AND employer_pw = #{employerPw}
 	</select>
 	
-	<update id="updateEmployer" parameterType="Employers">
+	<update id="updateEmployer" parameterType="Employer">
 		update employers set employer_pw = #{employerPw}, employer_address = #{employerAddress},
 			owner_name = #{ownerName}, owner_phone = #{ownerPhone},	employer_homepage = #{employerHomePage} 
 			where employer_id = #{employerId}
 	</update> 
 	
-	<delete id="deleteEmployer" parameterType="Employers">
+	<delete id="deleteEmployer" parameterType="Employer">
 		delete from employers where employer_id = #{employerId}
 	</delete>
 	
-	<select id="detailEmployer" parameterType="int" resultMap="Employers">
+	<select id="detailEmployer" parameterType="int" resultMap="Employer">
 		select * from employers where employer_seq = #{employerSeq}
 	</select>
 	

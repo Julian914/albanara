@@ -6,10 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kosta.albanara.model.Employees;
+import kosta.albanara.model.Employee;
 import kosta.albanara.model.MarkerLocation;
-import kosta.albanara.model.Recruitments;
-import kosta.albanara.model.Resumes;
+import kosta.albanara.model.Recruitment;
+import kosta.albanara.model.Resume;
 import kosta.albanara.service.EmployeeService;
 import kosta.albanara.service.MapService;
 import kosta.albanara.service.MarkerLocationService;
@@ -31,12 +31,12 @@ public class RecommendEmployeeFormAction implements Action {
 		double employerLatitude =  Double.parseDouble((String)session.getAttribute("latitude"));
 		System.out.println(employerLatitude);
 		double employerLongitude = Double.parseDouble((String)session.getAttribute("longitude"));
-		List<Employees> allEmployeeList = service.allEmployeeListService(request);
-		List<Recruitments> recruitment = recruitmentService.nowRecruinmentListService(employerSeq);
+		List<Employee> allEmployeeList = service.allEmployeeListService(request);
+		List<Recruitment> recruitment = recruitmentService.nowRecruinmentListService(employerSeq);
 		String recruitmentType = recruitment.get(0).getRecruitmentType();
 		String gender = recruitment.get(0).getGender();
 		for (int i = 0; i < allEmployeeList.size(); i++) {
-			Resumes resume = service.searchResumeService(allEmployeeList.get(i).getEmployeeSeq());
+			Resume resume = service.searchResumeService(allEmployeeList.get(i).getEmployeeSeq());
 			String favoriteField = resume.getFavoriteField();
 			String address = allEmployeeList.get(i).getEmployeeAddress();
 			String employeeGender = allEmployeeList.get(i).getEmployeeGender(); 

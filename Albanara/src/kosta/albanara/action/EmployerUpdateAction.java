@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kosta.albanara.model.Employees;
-import kosta.albanara.model.Employers;
+import kosta.albanara.model.Employee;
+import kosta.albanara.model.Employer;
 import kosta.albanara.service.EmployeeService;
 import kosta.albanara.service.EmployerService;
 
@@ -20,7 +20,7 @@ public class EmployerUpdateAction implements Action {
 		ActionForward forward = new ActionForward();
 		EmployerService service = EmployerService.getInstance(); 
 		
-		Employers employer = new Employers();
+		Employer employer = new Employer();
 		HttpSession session = request.getSession();
 		System.out.println("dd"+session.getAttribute("id"));
 		

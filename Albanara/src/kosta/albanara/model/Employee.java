@@ -3,7 +3,7 @@ package kosta.albanara.model;
 import java.io.Serializable;
 import java.sql.Date;
 
-public class Employees implements Serializable {
+public class Employee implements Serializable {
 	private int employeeSeq;
 	private int resumeSeq; // �̷¼� ��ȣ
 	private String employeeId; // ������id
@@ -29,10 +29,10 @@ public class Employees implements Serializable {
 	private int kindnessCount;
 	private int patienceCount;
 
-	public Employees() {
+	public Employee() {
 	};
 
-	public Employees(String employeeId, String employeePw, String employeeName, Date employeeBirthday,
+	public Employee(String employeeId, String employeePw, String employeeName, Date employeeBirthday,
 			String employeeEmail, String employeeGender, String employeePhone, String employeeAddress) {
 		super();
 		this.employeeId = employeeId;
@@ -237,7 +237,7 @@ public class Employees implements Serializable {
 		this.patienceCount = patienceCount;
 	}
 
-	public Employees(int employeeSeq, int resumeSeq, String employeeId, String employeePw, String employeeName,
+	public Employee(int employeeSeq, int resumeSeq, String employeeId, String employeePw, String employeeName,
 			Date employeeBirthday, String employeeEmail, String employeeGender, String employeePhone,
 			String employeeAddress, int attributeCount, int noshowCount, int lateCount, int workingDayCount, int activityAvg,
 			int collaborationAvg, int diligencyAvg, int leadershipAvg, int comprehensionAvg, int contentmentAvg,

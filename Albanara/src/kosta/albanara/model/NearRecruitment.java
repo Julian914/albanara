@@ -3,7 +3,7 @@ package kosta.albanara.model;
 import java.io.Serializable;
 import java.sql.Date;
 
-public class NearRecruitments implements Serializable{
+public class NearRecruitment implements Serializable{
    private int recruitmentSeq;
    private String recruitmentTitle;
    private String recruitmentType;
@@ -16,7 +16,7 @@ public class NearRecruitments implements Serializable{
    private String latitude;
    private String longitude;
       
-   public NearRecruitments() {};
+   public NearRecruitment() {};
 
    public int getRecruitmentSeq() {
       return recruitmentSeq;
@@ -84,7 +84,7 @@ public class NearRecruitments implements Serializable{
    public void setLongitude(String longitude) {
       this.longitude = longitude;
    }
-   public NearRecruitments(int recruitmentSeq, String recruitmentTitle, String recruitmentType,
+   public NearRecruitment(int recruitmentSeq, String recruitmentTitle, String recruitmentType,
          Date startingWorkingDate, Date endingWorkingDate, int startingWorkingTime, int endingWorkingTime, int wage,
          String wageType, String latitude, String longitude) {
       super();

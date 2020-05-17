@@ -2,7 +2,7 @@ package kosta.albanara.model;
 
 import java.io.Serializable;
 
-public class Employers implements Serializable{
+public class Employer implements Serializable{
 	private int employerSeq;	//�����ȣ
 	private String employerId;	//������̵�
 	private String employerPw;	//�����й�ȣ
@@ -18,10 +18,10 @@ public class Employers implements Serializable{
 	private int unlikeCount; //���ο��� ���� Ƚ��
 	private int favoriteEmployerCount;	//���ɱ�� ���� Ƚ��
 	
-	public Employers() {}
+	public Employer() {}
 	
 	
-	public Employers(String employerId, String employerPw, String employerName, String employerNumber,
+	public Employer(String employerId, String employerPw, String employerName, String employerNumber,
 			String employerAddress, String employerHomePage, String employerField, String ownerName,
 			String ownerPhone) {
 		super();

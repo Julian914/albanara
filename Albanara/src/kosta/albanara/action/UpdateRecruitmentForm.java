@@ -3,7 +3,7 @@ package kosta.albanara.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kosta.albanara.model.Recruitments;
+import kosta.albanara.model.Recruitment;
 import kosta.albanara.service.RecruitmentService;
 
 public class UpdateRecruitmentForm implements Action {
@@ -12,7 +12,7 @@ public class UpdateRecruitmentForm implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// Call Service
 		int seq = Integer.parseInt(request.getParameter("seq"));
-		Recruitments recruitment = RecruitmentService.getInstance().getRecruitment(seq);
+		Recruitment recruitment = RecruitmentService.getInstance().getRecruitment(seq);
 
 		// Set value to HttpSession
 		request.setAttribute("recruitment", recruitment);

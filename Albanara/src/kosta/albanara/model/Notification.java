@@ -2,14 +2,14 @@ package kosta.albanara.model;
 
 import java.util.Date;
 
-public class Notifications {
+public class Notification {
 	
-	private int notificationSeq;     //¾Ë¸² seq
-	private int receiverSeq;	     //¹Þ´Â»ç¶÷ seq
-	private String receiverType;	 //¼ö½Å±¸ºÐ
-	private String notificationContents; //¾Ë¸²³»¿ë
-	private int isChecked;  	 //¼ö½ÅÈ®ÀÎ¿©ºÎ
-	private Date notificationDate; //¾Ë¸²³¯Â¥
+	private int notificationSeq;     //ï¿½Ë¸ï¿½ seq
+	private int receiverSeq;	     //ï¿½Þ´Â»ï¿½ï¿½ seq
+	private String receiverType;	 //ï¿½ï¿½ï¿½Å±ï¿½ï¿½ï¿½
+	private String notificationContents; //ï¿½Ë¸ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int isChecked;  	 //ï¿½ï¿½ï¿½ï¿½È®ï¿½Î¿ï¿½ï¿½ï¿½
+	private Date notificationDate; //ï¿½Ë¸ï¿½ï¿½ï¿½Â¥
 	
 	
 	public int getNotificationSeq() {

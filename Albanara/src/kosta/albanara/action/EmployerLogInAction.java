@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kosta.albanara.model.Employers;
+import kosta.albanara.model.Employer;
 import kosta.albanara.model.MarkerLocation;
 import kosta.albanara.service.EmployerService;
 import kosta.albanara.service.MarkerLocationService;
@@ -17,7 +17,7 @@ public class EmployerLogInAction implements Action {
 		ActionForward forward = new ActionForward();
 		EmployerService service = EmployerService.getInstance();
 
-		Employers employers = service.employerLogInService(request);
+		Employer employers = service.employerLogInService(request);
 		System.out.println(employers);
 		if (employers != null) {
 			System.out.println(employers);

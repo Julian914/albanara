@@ -3,7 +3,7 @@ package kosta.albanara.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kosta.albanara.model.Resumes;
+import kosta.albanara.model.Resume;
 import kosta.albanara.service.EmployeeService;
 
 public class InsertResumeAction implements Action {
@@ -19,7 +19,7 @@ public class InsertResumeAction implements Action {
 		System.out.println();
 		
 		actionForward.setRedirect(false);
-		actionForward.setPath("/index.jsp");	//ÀÎ¼­Æ®ÇÏ°í ³ª¼­´Â ´Ù½Ã ¸¶ÀÌÆäÀÌÁö¿¡ ±âº»Á¤º¸ º¸¿©ÁÖ´Â °÷À¸·Î µ¹¾Æ°¡±â. Áö±ÝÀº ÀÓ½Ã·Î index·Î µ¹¾Æ°£´Ù
+		actionForward.setPath("/index.jsp");	//ï¿½Î¼ï¿½Æ®ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½Ã·ï¿½ indexï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½
 		
 		return actionForward;
 	}

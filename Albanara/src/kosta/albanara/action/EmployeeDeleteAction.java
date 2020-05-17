@@ -3,8 +3,8 @@ package kosta.albanara.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kosta.albanara.model.Employees;
-import kosta.albanara.model.Employers;
+import kosta.albanara.model.Employee;
+import kosta.albanara.model.Employer;
 import kosta.albanara.service.EmployeeService;
 import kosta.albanara.service.EmployerService;
 
@@ -17,7 +17,7 @@ public class EmployeeDeleteAction implements Action {
 		ActionForward forward = new ActionForward();
 		EmployeeService service = EmployeeService.getInstance(); 
 		
-		Employees employee = new Employees();
+		Employee employee = new Employee();
 		
 		employee.setEmployeeId(request.getParameter("employeeId"));
 		service.deleteEmployeeService(employee);

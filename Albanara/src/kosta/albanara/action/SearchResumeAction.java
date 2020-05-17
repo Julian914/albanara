@@ -3,7 +3,7 @@ package kosta.albanara.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kosta.albanara.model.Resumes;
+import kosta.albanara.model.Resume;
 import kosta.albanara.service.EmployeeService;
 
 public class SearchResumeAction implements Action {
@@ -13,10 +13,10 @@ public class SearchResumeAction implements Action {
 		ActionForward actionForward = new ActionForward();
 		EmployeeService service = new EmployeeService().getInstance();
 		
-		//±¸Á÷ÀÚ seq ´øÁö¸é ±× »ç¶÷ÀÇ ÀÌ·Â¼­°¡ ³ª¿À°Ô ÇÏ´Â ¹æ¹ý (ÇÏÁö¸¸ 
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ seq ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì·Â¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 		//int employeeSeq = Integer.parseInt(request.getParameter("employeeSeq"));
 		int employeeSeq = 21;
-		Resumes resume = service.searchResumeService(employeeSeq);
+		Resume resume = service.searchResumeService(employeeSeq);
 		System.out.println("action");
 		
 		request.setAttribute("Resume", resume);

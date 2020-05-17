@@ -12,9 +12,9 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.annotations.Param;
 
 import kosta.albanara.dao.RecruitmentDao;
-import kosta.albanara.model.Applications;
-import kosta.albanara.model.Proposals;
-import kosta.albanara.model.Recruitments;
+import kosta.albanara.model.Application;
+import kosta.albanara.model.Proposal;
+import kosta.albanara.model.Recruitment;
 
 public class RecruitmentService {
 	public static RecruitmentService instance;
@@ -28,27 +28,27 @@ public class RecruitmentService {
 		return instance; 
 	}
 
-	public List<Recruitments> recruitmentListService() throws Exception {
-		List<Recruitments> list = recruitmentDao.recruitmentList();
+	public List<Recruitment> recruitmentListService() throws Exception {
+		List<Recruitment> list = recruitmentDao.recruitmentList();
 		return list;
 	}
 	
 
 	
-	public List<Recruitments> totalRecruitmentListService(int seq) throws Exception {
-		List<Recruitments> list = recruitmentDao.totalRecruitmentList(seq);
+	public List<Recruitment> totalRecruitmentListService(int seq) throws Exception {
+		List<Recruitment> list = recruitmentDao.totalRecruitmentList(seq);
 		return list;
 	}
 
-	public List<Recruitments> nowRecruinmentListService(int employerSeq) throws Exception {
+	public List<Recruitment> nowRecruinmentListService(int employerSeq) throws Exception {
 		//int employerSeq = Integer.parseInt(request.getParameter("seq"));
-		List<Recruitments> list =  recruitmentDao.nowRecruinmentList(employerSeq);
+		List<Recruitment> list =  recruitmentDao.nowRecruinmentList(employerSeq);
 		return list;
 	}
 
 
-	public List<Recruitments> endRecruitmentListService(int seq) throws Exception {
-		List<Recruitments> list =  recruitmentDao.endRecruitmentList(seq);
+	public List<Recruitment> endRecruitmentListService(int seq) throws Exception {
+		List<Recruitment> list =  recruitmentDao.endRecruitmentList(seq);
 		return list;
 	}
 
@@ -72,8 +72,10 @@ public class RecruitmentService {
 		String wageType = request.getParameter("wageType");
 		String gender = request.getParameter("gender");
 		int minAge = 0, maxAge = 100;
-		if (request.getParameter("age").equals("age")) {
+		if (request.getParameter("minAge") != null) {
 			minAge = Integer.parseInt(request.getParameter("minAge"));
+		}
+		if (request.getParameter("maxAge") != null) {
 			maxAge = Integer.parseInt(request.getParameter("maxAge"));
 		}
 		String recruitmentContents = request.getParameter("recruitmentContents");
@@ -83,7 +85,7 @@ public class RecruitmentService {
 		String workingPlaceAddress = request.getParameter("workingPlaceAddress");
 		Date closingDate = Date.valueOf(request.getParameter("closingDate"));
 
-		Recruitments recruitment = new Recruitments(employerSeq, recruitmentTitle, recruitmentType, recruitmentSize,
+		Recruitment recruitment = new Recruitment(employerSeq, recruitmentTitle, recruitmentType, recruitmentSize,
 				startingWorkingDate, endingWorkingDate, totalWorkingDay, startingWorkingTime, endingWorkingTime,
 				totalWorkingTime, wageType, wage, gender, minAge, maxAge, requirementQuestion1, requirementQuestion2,
 				requirementQuestion3, workingPlaceAddress, closingDate, recruitmentContents);
@@ -93,7 +95,7 @@ public class RecruitmentService {
 		return resultCount;
 	}
 
-	public Recruitments getRecruitment(int seq) {
+	public Recruitment getRecruitment(int seq) {
 		return recruitmentDao.getRecruitment(seq);
 	}
 
@@ -116,9 +118,11 @@ public class RecruitmentService {
 		int wage = Integer.parseInt(request.getParameter("wage"));
 		String wageType = request.getParameter("wageType");
 		String gender = request.getParameter("gender");
-		int minAge = 0, maxAge = 0;
-		if (request.getParameter("age") == "age") {
+		int minAge = 0, maxAge = 100;
+		if (request.getParameter("minAge") != null) {
 			minAge = Integer.parseInt(request.getParameter("minAge"));
+		}
+		if (request.getParameter("maxAge") != null) {
 			maxAge = Integer.parseInt(request.getParameter("maxAge"));
 		}
 		String recruitmentContents = request.getParameter("recruitmentContents");
@@ -128,7 +132,7 @@ public class RecruitmentService {
 		String workingPlaceAddress = request.getParameter("workingPlaceAddress");
 		Date closingDate = Date.valueOf(request.getParameter("closingDate"));
 
-		Recruitments recruitment = new Recruitments(employerSeq, recruitmentTitle, recruitmentType, recruitmentSize,
+		Recruitment recruitment = new Recruitment(employerSeq, recruitmentTitle, recruitmentType, recruitmentSize,
 				startingWorkingDate, endingWorkingDate, totalWorkingDay, startingWorkingTime, endingWorkingTime,
 				totalWorkingTime, wageType, wage, gender, minAge, maxAge, requirementQuestion1, requirementQuestion2,
 				requirementQuestion3, workingPlaceAddress, closingDate, recruitmentContents);
@@ -180,7 +184,7 @@ public class RecruitmentService {
 			 System.out.println("답변 3 :" +requirementAnswer3); 
 		};
 		  
-		Applications application = new Applications(recruitmentSeq, employeeSeq, requirementAnswer1, requirementAnswer2, requirementAnswer3); 
+		Application application = new Application(recruitmentSeq, employeeSeq, requirementAnswer1, requirementAnswer2, requirementAnswer3); 
 		  result = recruitmentDao.insertApplication(application);
 
 		return result;
@@ -188,7 +192,7 @@ public class RecruitmentService {
 	
 	
 	
-	public List<Applications> totalApplicationListService() throws Exception{
+	public List<Application> totalApplicationListService() throws Exception{
 		return recruitmentDao.totalApplicationList();
 	}
 	
@@ -205,7 +209,7 @@ public class RecruitmentService {
 		//System.out.println("employeeSeq : "+employeeSeq);
 		
 		
-		Proposals proposals = new Proposals(recruitmentSeq, employeeSeq);
+		Proposal proposals = new Proposal(recruitmentSeq, employeeSeq);
 		proposals.setEmployeeSeq(employeeSeq);
 		proposals.setRecruitmentSeq(recruitmentSeq);
 		
@@ -214,8 +218,8 @@ public class RecruitmentService {
 	}
 	
 	/*제안 받은 공고 리스트*/
-	public List<Recruitments> showProposalRecruitments(int seq) throws Exception {
-		List<Recruitments> list = recruitmentDao.showProposalRecruitments(seq);
+	public List<Recruitment> showProposalRecruitments(int seq) throws Exception {
+		List<Recruitment> list = recruitmentDao.showProposalRecruitments(seq);
 		return list;
 	}
 	
@@ -241,15 +245,15 @@ public class RecruitmentService {
 	}
 
 
-	public List<Recruitments> completeRecruitmentService(int seq){
+	public List<Recruitment> completeRecruitmentService(int seq){
 		return recruitmentDao.completeRecruitment(seq);
 	}
 	
-	public List<Recruitments> applyRecruitmentService(int seq){
+	public List<Recruitment> applyRecruitmentService(int seq){
 		return recruitmentDao.applyRecruitment(seq);
 	};
 	
-	public List<Recruitments> completeRecruitment(HttpServletRequest request){
+	public List<Recruitment> completeRecruitment(HttpServletRequest request){
 		int employeeSeq = Integer.parseInt(request.getParameter("employeeSeq"));
 		return recruitmentDao.completeRecruitment(employeeSeq);
 	}

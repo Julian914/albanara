@@ -4,7 +4,7 @@ import java.util.List;
 
 import kosta.albanara.dao.MapDao;
 import kosta.albanara.model.MarkerLocation;
-import kosta.albanara.model.NearRecruitments;
+import kosta.albanara.model.NearRecruitment;
 
 
 public class MapService {
@@ -32,7 +32,7 @@ public class MapService {
     
 	
 
-	public List<NearRecruitments> nearRecruitment() {
+	public List<NearRecruitment> nearRecruitment() {
 		System.out.println("MapService 안");
 		return mapDao.nearRecruitment();
 	}

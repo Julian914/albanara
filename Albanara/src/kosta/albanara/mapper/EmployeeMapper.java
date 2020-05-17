@@ -2,24 +2,32 @@ package kosta.albanara.mapper;
 
 import java.util.List;
 
-import kosta.albanara.model.Employees;
-import kosta.albanara.model.Resumes;
+import kosta.albanara.model.Employee;
+import kosta.albanara.model.Resume;
 
 public interface EmployeeMapper {
-	int insertEmployee(Employees employees);
-	
-	int insertResume(Resumes resume);	//�̷¼� ���?(����)
-	Resumes searchResume(int employeeSeq);	//�̷¼� ��ȸ��ư�� Ŭ���ϸ� resume_seq�� ��������(����)
-	int updateResume(Resumes resume);	//�̷¼� ����(����)
-	int updateEmployee(Employees employee);
-	Employees basicInformation(int employeeSeq);
-	Employees getEmployee(int seq);
-	int deleteEmployee(Employees employee);
-	Employees employeeLogIn(Employees employees);
+	int insertEmployee(Employee employee);
 
-	List<Employees> allEmployeeList();
+	int insertResume(Resume resume); // �̷¼� ���?(����)
 
-	List<Employees> employeeList(int recruitmentSeq);
-	List<Employees> hiredEmployeeList();
+	Resume searchResume(int employeeSeq); // �̷¼� ��ȸ��ư�� Ŭ���ϸ� resume_seq�� ��������(����)
+
+	int updateResume(Resume resume); // �̷¼� ����(����)
+
+	int updateEmployee(Employee employee);
+
+	Employee basicInformation(int employeeSeq);
+
+	Employee getEmployee(int seq);
+
+	int deleteEmployee(Employee employee);
+
+	Employee employeeLogIn(Employee employee);
+
+	List<Employee> allEmployeeList();
+
+	List<Employee> employeeList(int recruitmentSeq);
+
+	List<Employee> hiredEmployeeList();
 
 }

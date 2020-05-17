@@ -2,7 +2,7 @@ package kosta.albanara.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import kosta.albanara.model.Employers;
+import kosta.albanara.model.Employer;
 import kosta.albanara.service.EmployerService;
 
 public class EmployerDeleteAction implements Action {
@@ -14,12 +14,12 @@ public class EmployerDeleteAction implements Action {
 		ActionForward forward = new ActionForward();
 		EmployerService service = EmployerService.getInstance(); 
 		
-		Employers employer = new Employers();
+		Employer employer = new Employer();
 		
 		employer.setEmployerId(request.getParameter("employerId"));
 		service.deleteEmployerService(employer);
 		
-		System.out.println(request.getParameter("employerId")+"¾×¼Ç");
+		System.out.println(request.getParameter("employerId")+"ï¿½×¼ï¿½");
 		
 		
 		forward.setRedirect(true); 

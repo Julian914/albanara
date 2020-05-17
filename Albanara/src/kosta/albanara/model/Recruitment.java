@@ -3,7 +3,7 @@ package kosta.albanara.model;
 import java.io.Serializable;
 import java.sql.Date;
 
-public class Recruitments implements Serializable {
+public class Recruitment implements Serializable {
 	private int recruitmentSeq;
 	private int employerSeq;
 	private String recruitmentTitle;
@@ -28,11 +28,11 @@ public class Recruitments implements Serializable {
 	private Date closingDate;
 	private Date lastModifyDate;
 
-	public Recruitments() {
+	public Recruitment() {
 		super();
 	}
 
-	public Recruitments(int employerSeq, String recruitmentTitle, String recruitmentType, int recruitmentSize,
+	public Recruitment(int employerSeq, String recruitmentTitle, String recruitmentType, int recruitmentSize,
 			Date startingWorkingDate, Date endingWorkingDate, int totalWorkingDay, int startingWorkingTime,
 			int endingWorkingTime, int totalWorkingTime, String wageType, int wage, String gender, int minAge,
 			int maxAge, String requirementQuestion1, String requirementQuestion2, String requirementQuestion3,

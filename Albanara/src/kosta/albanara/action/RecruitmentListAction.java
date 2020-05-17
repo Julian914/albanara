@@ -6,7 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kosta.albanara.model.Recruitments;
+import kosta.albanara.model.Recruitment;
 import kosta.albanara.service.RecruitmentService;
 public class RecruitmentListAction implements Action {
 
@@ -19,7 +19,7 @@ public class RecruitmentListAction implements Action {
 
 		
 		// 전체 공고목록 불러오기 
-		 List<Recruitments> recruitmentList =  recruitmentService.recruitmentListService();
+		 List<Recruitment> recruitmentList =  recruitmentService.recruitmentListService();
 		 request.setAttribute("recruitmentList", recruitmentList); //
 		 System.out.println("전체 공고목록 : " + recruitmentList.size());
 		  

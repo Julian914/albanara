@@ -11,7 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import kosta.albanara.mapper.EmployerMapper;
 import kosta.albanara.mapper.RecruitmentMapper;
 import kosta.albanara.model.MarkerLocation;
-import kosta.albanara.model.NearRecruitments;
+import kosta.albanara.model.NearRecruitment;
 
 
 public class MapDao {
@@ -36,9 +36,9 @@ public class MapDao {
       return new SqlSessionFactoryBuilder().build(in);
    }
 
-   public List<NearRecruitments> nearRecruitment() {
+   public List<NearRecruitment> nearRecruitment() {
       SqlSession sqlSession = getSqlSessionFactory().openSession();
-      List<NearRecruitments> list = null;
+      List<NearRecruitment> list = null;
       try {
     	 list = sqlSession.getMapper(RecruitmentMapper.class).showNearRecruitments();
          System.out.println(list);

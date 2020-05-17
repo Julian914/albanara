@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kosta.albanara.model.NearRecruitments;
+import kosta.albanara.model.NearRecruitment;
 import kosta.albanara.service.MapService;
 
 public class MapAction implements Action {
@@ -18,7 +18,7 @@ public class MapAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();
 		MapService service = MapService.getInstance();
-		List<NearRecruitments> list = service.nearRecruitment();
+		List<NearRecruitment> list = service.nearRecruitment();
 		HttpSession session = request.getSession();
 		
 		double lat1; 

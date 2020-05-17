@@ -11,11 +11,11 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import kosta.albanara.mapper.EmployeeMapper;
 import kosta.albanara.mapper.EmployerMapper;
 import kosta.albanara.mapper.RecruitmentMapper;
-import kosta.albanara.model.Employees;
-import kosta.albanara.model.Employers;
+import kosta.albanara.model.Employee;
+import kosta.albanara.model.Employer;
 import kosta.albanara.model.MarkerLocation;
-import kosta.albanara.model.Recruitments;
-import kosta.albanara.model.Resumes;
+import kosta.albanara.model.Recruitment;
+import kosta.albanara.model.Resume;
 
 
 public class EmployeeDao {
@@ -40,7 +40,7 @@ public class EmployeeDao {
 		return new SqlSessionFactoryBuilder().build(in);
 	}
 	
-	public int insertEmployee(Employees employees) {
+	public int insertEmployee(Employee employees) {
 		
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = -1;
@@ -64,7 +64,7 @@ public class EmployeeDao {
 	}
 	
 	
-	public int insertResume(Resumes resume){
+	public int insertResume(Resume resume){
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = -1;
 		
@@ -85,9 +85,9 @@ public class EmployeeDao {
 	}
 	
 	
-	public Resumes searchResume(int employeeSeq) {
+	public Resume searchResume(int employeeSeq) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		Resumes resume = null;
+		Resume resume = null;
 		
 		try {
 			resume = sqlSession.getMapper(EmployeeMapper.class).searchResume(employeeSeq);
@@ -101,7 +101,7 @@ public class EmployeeDao {
 		return resume;
 	}
 	
-	public int updateResume(Resumes resume) {
+	public int updateResume(Resume resume) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = -1;
 		
@@ -122,9 +122,9 @@ public class EmployeeDao {
 	}
 
 	
-	public Employees basicInformation(int employeeSeq) {
+	public Employee basicInformation(int employeeSeq) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		Employees employee = null;
+		Employee employee = null;
 		
 		try {
 			employee = sqlSession.getMapper(EmployeeMapper.class).basicInformation(employeeSeq);
@@ -141,10 +141,10 @@ public class EmployeeDao {
 	
 	
 	
-	public Employees getEmployee(int seq) {
+	public Employee getEmployee(int seq) {
 		SqlSession session = getSqlSessionFactory().openSession();
 		EmployeeMapper mapper = null;
-		Employees employee = null;
+		Employee employee = null;
 		try {
 			mapper = session.getMapper(EmployeeMapper.class);
 			System.out.println("?��?�쭅�옄 SEQ: " + seq);
@@ -158,7 +158,7 @@ public class EmployeeDao {
 		return employee;
 	}
 
-	public int updateEmployee(Employees employee) {
+	public int updateEmployee(Employee employee) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re= -1;
 		
@@ -178,7 +178,7 @@ public class EmployeeDao {
 		return re;
 	}
 	
-	public int deleteEmployee(Employees employee) {
+	public int deleteEmployee(Employee employee) {
 		
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re= -1;
@@ -199,10 +199,10 @@ public class EmployeeDao {
 		return re;
 	}
 	
-public Employees employeeLogIn(Employees employees) {
+public Employee employeeLogIn(Employee employees) {
 		
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		Employees employee = new Employees();
+		Employee employee = new Employee();
 		
 		try {
 			employee = sqlSession.getMapper(EmployeeMapper.class).employeeLogIn(employees);
@@ -218,9 +218,9 @@ public Employees employeeLogIn(Employees employees) {
 	}
 
 
-public List<Employees> allEmployeeList(){
+public List<Employee> allEmployeeList(){
 	SqlSession sqlSession = getSqlSessionFactory().openSession();
-	List<Employees> employeeList = null;
+	List<Employee> employeeList = null;
 	try {
 		employeeList = sqlSession.getMapper(EmployeeMapper.class).allEmployeeList();
 	} catch (Exception e) {
@@ -236,9 +236,9 @@ public List<Employees> allEmployeeList(){
 
 
 //한 공고에 해당하는 지원자목록
-	public List<Employees> employeeList(int recruitmentSeq) {
+	public List<Employee> employeeList(int recruitmentSeq) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<Employees> employeeList = null;
+		List<Employee> employeeList = null;
 
 		try {
 			employeeList = sqlSession.getMapper(EmployeeMapper.class).employeeList(recruitmentSeq);
@@ -254,8 +254,8 @@ public List<Employees> allEmployeeList(){
 	}
 	
 	//채용된 구직자 목록
-	public List<Employees> hiredEmployeeList(){
-		List<Employees> hiredEmployeeList = null;
+	public List<Employee> hiredEmployeeList(){
+		List<Employee> hiredEmployeeList = null;
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		
 		try {

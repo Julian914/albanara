@@ -5,4 +5,3 @@ import kosta.albanara.model.HiredHistory;
 public interface HiredHistoryMapper {
 	int insertHiredHistory(HiredHistory hiredHistory);
 }
-

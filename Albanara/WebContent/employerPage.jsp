@@ -1,4 +1,4 @@
-<%@page import="kosta.albanara.model.Employers"%>
+<%@page import="kosta.albanara.model.Employer"%>
 <%@page import="kosta.albanara.dao.EmployerDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

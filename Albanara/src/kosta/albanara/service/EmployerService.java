@@ -6,10 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import kosta.albanara.dao.EmployerDao;
-import kosta.albanara.model.Employees;
-import kosta.albanara.model.Employers;
+import kosta.albanara.model.Employee;
+import kosta.albanara.model.Employer;
 import kosta.albanara.model.MarkerLocation;
-import kosta.albanara.model.Recruitments;
+import kosta.albanara.model.Recruitment;
 
 public class EmployerService {
 	public static EmployerService instance;
@@ -37,19 +37,19 @@ public class EmployerService {
 		String ownerName = request.getParameter("ownerName");
 		String ownerPhone = request.getParameter("ownerPhoneNo1")+request.getParameter("ownerPhoneNo2")+request.getParameter("ownerPhoneNo3");
 		
-		Employers employers = new Employers(employerId, employerPw, employerName, employerNumber, employerAddress, employerHomePage, employerField, ownerName, ownerPhone);
+		Employer employers = new Employer(employerId, employerPw, employerName, employerNumber, employerAddress, employerHomePage, employerField, ownerName, ownerPhone);
 				
 				
 		return employerDao.insertEmployer(employers);
 
 	}
 	
-	public Employers employerLogInService(HttpServletRequest request) throws Exception {
+	public Employer employerLogInService(HttpServletRequest request) throws Exception {
 		
 		request.setCharacterEncoding("utf-8");
 		
-		Employers employer = new Employers();
-		Employers login = new Employers();
+		Employer employer = new Employer();
+		Employer login = new Employer();
 		
 		employer.setEmployerId(request.getParameter("employerLogInId"));
 		employer.setEmployerPw(request.getParameter("employerLogInPw"));
@@ -81,20 +81,20 @@ public class EmployerService {
 		return login;
 	}
 	
-	public int updateEmployerService(Employers employer) throws Exception{
+	public int updateEmployerService(Employer employer) throws Exception{
 		
 		System.out.println(employer.getEmployerId());
 		
 		return employerDao.updateEmployer(employer);
 	}
 	
-	public int deleteEmployerService(Employers employer) throws Exception{
+	public int deleteEmployerService(Employer employer) throws Exception{
 		
 		
 		return employerDao.deleteEmployer(employer);
 	}
 	
-	public Employers detailEmployerService(int employerSeq) throws Exception{
+	public Employer detailEmployerService(int employerSeq) throws Exception{
 		System.out.println("기업seq : " + employerSeq);
 		return employerDao.detailEmployers(employerSeq);
 
@@ -119,19 +119,19 @@ public class EmployerService {
 	
 	
 	//기업의 전체 공고목록
-	public List<Recruitments> recruitmentListService(int seq) throws Exception {
-		List<Recruitments> list = employerDao.totalRecruitmentList(seq);
+	public List<Recruitment> recruitmentListService(int seq) throws Exception {
+		List<Recruitment> list = employerDao.totalRecruitmentList(seq);
 		return list;
 	}
 	// 기업의 진행중인 공고목록
-	public List<Recruitments> nowRecruinmentListService(int seq) throws Exception {
-		List<Recruitments> list =  employerDao.nowRecruinmentList(seq);
+	public List<Recruitment> nowRecruinmentListService(int seq) throws Exception {
+		List<Recruitment> list =  employerDao.nowRecruinmentList(seq);
 		return list;
 	}
 
 		//기업의 마감된 공고목록
-	public List<Recruitments> endRecruitmentListService(int seq) throws Exception {
-		List<Recruitments> list =  employerDao.endRecruitmentList(seq);
+	public List<Recruitment> endRecruitmentListService(int seq) throws Exception {
+		List<Recruitment> list =  employerDao.endRecruitmentList(seq);
 		return list;
 	}	
 	

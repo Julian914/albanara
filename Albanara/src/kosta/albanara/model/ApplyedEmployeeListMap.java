@@ -4,13 +4,13 @@ import java.util.List;
 
 public class ApplyedEmployeeListMap {
 	private int key;
-	private List<Employees> employeeList;
+	private List<Employee> employeeList;
 	
 	
 	public ApplyedEmployeeListMap() {};
 	
 	
-	public ApplyedEmployeeListMap(int key, List<Employees> employeeList) {
+	public ApplyedEmployeeListMap(int key, List<Employee> employeeList) {
 		super();
 		this.key = key;
 		this.employeeList = employeeList;
@@ -22,10 +22,10 @@ public class ApplyedEmployeeListMap {
 	public void setKey(int key) {
 		this.key = key;
 	}
-	public List<Employees> getEmployeeList() {
+	public List<Employee> getEmployeeList() {
 		return employeeList;
 	}
-	public void setEmployeeList(List<Employees> employeeList) {
+	public void setEmployeeList(List<Employee> employeeList) {
 		this.employeeList = employeeList;
 	}
 	

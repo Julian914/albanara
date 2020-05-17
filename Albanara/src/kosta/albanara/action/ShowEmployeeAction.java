@@ -5,8 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kosta.albanara.model.Employees;
-import kosta.albanara.model.Recruitments;
+import kosta.albanara.model.Employee;
+import kosta.albanara.model.Recruitment;
 import kosta.albanara.service.EmployeeService;
 import kosta.albanara.service.RecruitmentService;
 
@@ -19,11 +19,11 @@ public class ShowEmployeeAction implements Action {
 		RecruitmentService service = RecruitmentService.getInstance(); 
 		int seq = Integer.parseInt(request.getParameter("seq"));	
 		
-		Employees employee = EmployeeService.getInstance().getEmployee(seq);
-		List<Recruitments> recruitmentList = RecruitmentService.getInstance().showProposalRecruitments(seq);
+		Employee employee = EmployeeService.getInstance().getEmployee(seq);
+		List<Recruitment> recruitmentList = RecruitmentService.getInstance().showProposalRecruitments(seq);
 
-		List<Recruitments> completeRecruitment = service.completeRecruitmentService(seq);
-		List<Recruitments> applyRecruitment = service.applyRecruitmentService(seq);
+		List<Recruitment> completeRecruitment = service.completeRecruitmentService(seq);
+		List<Recruitment> applyRecruitment = service.applyRecruitmentService(seq);
 
 		request.setAttribute("employee", employee);
 		request.setAttribute("recruitmentList", recruitmentList);

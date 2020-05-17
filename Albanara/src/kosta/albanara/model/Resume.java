@@ -2,21 +2,21 @@ package kosta.albanara.model;
 
 import java.util.Date;
 
-public class Resumes {
+public class Resume {
 
-	private int resumeSeq;  //ÀÌ·Â¼­¹øÈ£
-	private String pictureFilename;	//»çÁø
-	private String resumeTitle;  	//ÀÌ·Â¼­Á¦¸ñ
-	private String resumeContents;	//ÀÌ·Â¼­ ³»¿ë
-	private String desiredWorkingArea; //Èñ¸Á±Ù¹«Áö¿ª
-	private String favoriteField; //°ü½É Á÷Á¾
-	private Date lastModifyDate;  //¸¶Áö¸·¼öÁ¤³¯Â¥
+	private int resumeSeq;  //ï¿½Ì·Â¼ï¿½ï¿½ï¿½È£
+	private String pictureFilename;	//ï¿½ï¿½ï¿½ï¿½
+	private String resumeTitle;  	//ï¿½Ì·Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String resumeContents;	//ï¿½Ì·Â¼ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private String desiredWorkingArea; //ï¿½ï¿½ï¿½ï¿½Ù¹ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String favoriteField; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private Date lastModifyDate;  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¥
 	
-	public Resumes() {}
+	public Resume() {}
 
 	
 	
-	public Resumes(String pictureFilename, String resumeTitle, String resumeContents, String desiredWorkingArea,
+	public Resume(String pictureFilename, String resumeTitle, String resumeContents, String desiredWorkingArea,
 			String favoriteField) {
 		super();
 		this.pictureFilename = pictureFilename;

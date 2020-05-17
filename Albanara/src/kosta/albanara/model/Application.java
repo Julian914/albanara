@@ -4,7 +4,7 @@ package kosta.albanara.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Applications implements Serializable {
+public class Application implements Serializable {
 	private int applicationSeq;		//������ȣ
 	private int recruitmentSeq;		//�����ȣ
 	private int employeeSeq;		//�����ڹ�ȣ
@@ -13,10 +13,10 @@ public class Applications implements Serializable {
 	private int requirementAnswer2;	//������Ǵ亯2
 	private int requirementAnswer3;	//������Ǵ亯3
 	
-	public Applications() {}
+	public Application() {}
 	
 	
-	public Applications(int recruitmentSeq, int employeeSeq, int requirementAnswer1,
+	public Application(int recruitmentSeq, int employeeSeq, int requirementAnswer1,
 			int requirementAnswer2, int requirementAnswer3) {
 		super();
 		this.recruitmentSeq = recruitmentSeq;

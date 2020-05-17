@@ -9,7 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kosta.albanara.mapper.EmployeeMapper;
 import kosta.albanara.mapper.MarkerLocationMapper;
-import kosta.albanara.model.Employees;
+import kosta.albanara.model.Employee;
 import kosta.albanara.model.MarkerLocation;
 
 public class MarkerLocationDao {
