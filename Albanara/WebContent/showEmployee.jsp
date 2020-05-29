@@ -172,8 +172,14 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
-	<canvas id="myChart1" width="800"></canvas>
-	<canvas id="myChart2" width="800"></canvas>
+	<div class="col-md-12">
+				<div class="col-md-6">
+					<canvas id="myChart1"></canvas>
+				</div>
+				<div class="col-md-6">
+					<canvas id="myChart2"></canvas>
+				</div>
+			</div>
 <footer></footer>		
 </body>
 <script>
